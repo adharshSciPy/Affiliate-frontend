@@ -1,12 +1,12 @@
 // navbar
 .navbar {
     height: 10vh;
-    width: 100vw;
+    width: calc(100vw - 17px);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: var(--primary-color);
+    color: var(--text-white);
     background-color: var(--background-1);
 
 

@@ -1,24 +1,12 @@
 import React from 'react'
 import { useState } from 'react'
+import { Button, Switch } from 'antd'
+import { toggleDarkMode } from '../../util/darkmode'
+
 
 const Navbar = () => {
     const [isDark, setIsDark] = useState(false)
 
-    const toggleDarkMode = () => {
-        setIsDark((prev) => {
-            const newTheme = !prev;
-
-            if (newTheme) {
-                document.body.classList.add('dark-theme');
-                document.body.classList.remove('light-theme');
-            } else {
-                document.body.classList.add('light-theme');
-                document.body.classList.remove('dark-theme');
-            }
-
-            return newTheme; // Return the new state
-        });
-    };
 
     return (
         <div className='navbar'>
@@ -37,9 +25,13 @@ const Navbar = () => {
                     </div>
 
                     <div className="navbar__button">
-                        <button>Login</button>
-                        <button>Sign Up</button>
-                        <button onClick={() => toggleDarkMode()}>toggle</button>
+                        <Button>Login</Button>
+                        <Button>Sign Up</Button>
+                        <Switch onClick={() => toggleDarkMode(setIsDark)}
+                            checkedChildren="light"
+                            unCheckedChildren="dark"
+                            defaultChecked size='large'
+                        />
                     </div>
                 </div>
             </div>

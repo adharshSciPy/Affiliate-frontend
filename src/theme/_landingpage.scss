@@ -1,0 +1,61 @@
+.landingpage {
+    min-height: 100vh;
+    height: auto;
+    width: calc(100vw - 17px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: var(--background-2);
+
+    &__hero {
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1500px;
+        position: absolute;
+        top: 13rem;
+        // background-color: red;
+    }
+
+    &__text {
+        color: var(--text-white);
+        width: 60%;
+        z-index: 1;
+
+        h1 {
+            font-size: 130px;
+        }
+
+        h2 {
+            font-size: 80px;
+        }
+
+        p:nth-child(3) {
+            font-size: 25px;
+        }
+
+        p:nth-child(4) {
+            font-size: 20px;
+        }
+    }
+
+    &__wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 0;
+    }
+
+    &__image {
+        height: 50vh;
+        width: 50vw;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
