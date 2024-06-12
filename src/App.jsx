@@ -8,6 +8,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <LandingPage />,
         children: [
+            // auth routes
             {
                 path: "auth",
                 element: <AuthLayout />,
@@ -31,18 +32,21 @@ const router = createBrowserRouter([
                 ]
             },
 
+            // admin routes
             {
                 path: 'admin',
                 element: <AdminLayout />,
                 // children: []
             },
 
+            // customer routes
             {
                 path: 'customer',
                 element: <CustomerLayout />,
                 // children: []
             },
 
+            // affiliater routes
             {
                 path: 'affiliater',
                 element: <AffiliateLayout />,
@@ -54,7 +58,9 @@ const router = createBrowserRouter([
 
 const App = () => {
     return (
-        <RouterProvider router={router} />
+        // <div className="light-theme">
+            <RouterProvider router={router} />
+        // </div>
     )
 }
 
