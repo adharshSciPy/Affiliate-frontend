@@ -1,4 +1,5 @@
-.landingpage {
+// hero section
+.hero {
     min-height: 100vh;
     height: auto;
     width: calc(100vw - 17px);
@@ -8,7 +9,7 @@
     position: relative;
     background-color: var(--background-2);
 
-    &__hero {
+    &__section {
         width: 100vw;
         display: flex;
         align-items: center;
@@ -16,7 +17,6 @@
         max-width: 1500px;
         position: absolute;
         top: 13rem;
-        // background-color: red;
     }
 
     &__text {
