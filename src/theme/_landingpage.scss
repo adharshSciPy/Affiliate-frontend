@@ -1,7 +1,6 @@
 // hero section
 .hero {
-    min-height: 100vh;
-    height: auto;
+    height: 105vh;
     width: calc(100vw - 17px);
     display: flex;
     align-items: center;
@@ -60,7 +59,7 @@
     }
 }
 
-//clients section
+// clients section
 .clients {
     min-height: 100vh;
     height: auto;
@@ -95,6 +94,11 @@
         margin-top: 3rem;
         overflow-x: scroll;
 
+        img {
+            // color: var(--text-white);
+            color: red;
+        }
+
         &::-webkit-scrollbar {
             display: none;
         }
@@ -126,6 +130,7 @@
         gap: 3rem;
         max-width: 1500px;
         margin-top: 1rem;
+        color: var(--text-grey);
     }
 
     &__card {
@@ -177,4 +182,81 @@
         }
     }
 
+}
+
+// service section
+.service {
+    min-height: 100vh;
+    height: auto;
+    width: calc(100vw - 17px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-2);
+}
+
+// achievements
+.achievements {
+    min-height: 50vh;
+    height: auto;
+    width: calc(100vw - 17px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-2);
+
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 70%;
+        max-width: 1500px;
+    }
+
+    &__header {
+        flex: 1;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        flex-direction: column;
+        gap: .5rem;
+
+        p {
+            font-size: 40px;
+            font-weight: 600;
+            color: var(--text-grey);
+        }
+        p span {
+            color: var(--primary-color);
+        }
+
+        p:nth-child(3) {
+            font-size: 18px;
+            font-weight: 300;
+        }
+    }
+
+    &__counts {
+        max-width: 35%;
+        width: 30%;
+        display: grid;
+        align-items: center;
+        justify-content: space-between;
+        grid-template-columns: auto auto;
+        gap: 2rem;
+    }
+
+    &__text {
+        p:nth-child(1) {
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--text-grey);
+        }
+        p:nth-child(2) {
+            font-size: 18px;
+            font-weight: 300;
+            color: var(--text-grey);
+        }
+    }
 }

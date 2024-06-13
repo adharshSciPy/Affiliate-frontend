@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { Button, Switch } from 'antd'
-import { toggleDarkMode } from '../../util/darkmode'
+import { toggleDarkMode } from '../../utils/darkmode'
 
 
 const Navbar = () => {
