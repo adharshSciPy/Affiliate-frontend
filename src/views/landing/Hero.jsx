@@ -1,6 +1,6 @@
 import React from 'react'
-import heroImg from '../../assets/hero.svg'
-import wave from '../../assets/wave.svg'
+import heroImg from '../../assets/landing-page/hero.svg'
+import wave from '../../assets/landing-page/wave.svg'
 
 const Hero = () => {
     return (
