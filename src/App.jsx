@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider, theme } from 'antd';
 import { AdminLogin, CompanyRegister, LandingPage, Login, Regsiter } from './views'
@@ -58,6 +58,7 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+
     return (
         <ConfigProvider
             theme={{
@@ -68,6 +69,7 @@ const App = () => {
             }}
         >
             <RouterProvider router={router} />
+
         </ConfigProvider>
     )
 }

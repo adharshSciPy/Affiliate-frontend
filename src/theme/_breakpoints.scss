@@ -1,0 +1,14 @@
+// source bootstrap
+$breakpoints: (
+    "xs"     : 36em,  
+    "sm"     : 48em,
+    "md"     : 62em,
+    "lg"     : 75em,
+    "xl"     : 87em
+);
+
+@mixin breakpoint($size) {
+    @media (max-width: map-get($breakpoints, $size)){
+        @content;
+    }
+}
