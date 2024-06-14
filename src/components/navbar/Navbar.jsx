@@ -2,10 +2,12 @@ import React from 'react'
 import { useState } from 'react'
 import { Button, Switch } from 'antd'
 import { toggleDarkMode } from '../../utils/darkmode'
+import { List, X } from '@phosphor-icons/react'
 
 
 const Navbar = () => {
     const [isDark, setIsDark] = useState(false)
+    const [isMobile, setIsMobile] = useState(false)
 
 
     return (
@@ -25,15 +27,36 @@ const Navbar = () => {
                     </div>
 
                     <div className="navbar__button">
-                        <Button>Login</Button>
-                        <Button>Sign Up</Button>
                         <Switch onClick={() => toggleDarkMode(setIsDark)}
                             checkedChildren="light"
                             unCheckedChildren="dark"
                             defaultChecked size='large'
                         />
+                        <Button>Login</Button>
+                        <Button>Sign Up</Button>
                     </div>
                 </div>
+
+                {/* mobile navbar */}
+                <div className="navbar__handburger"
+                    onClick={() => setIsMobile((prev) => !prev)}
+                >
+                    {
+                        isMobile ?
+                            <X size={32} />
+                            :
+                            <List size={32} />
+                    }
+
+                </div>
+
+                {
+                    isMobile &&
+                    <div className="navbar__mobile">
+                        ss
+                    </div>
+                }
+
             </div>
         </div>
     )

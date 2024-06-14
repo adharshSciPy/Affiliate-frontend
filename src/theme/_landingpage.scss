@@ -10,11 +10,17 @@
     overflow: hidden;
 
     @include breakpoint(lg) {
-        padding: 0 2rem;    
+        height: 100vh;
+        padding: 0 2rem;
+    }
+
+    @include breakpoint(sm) {
+        height: 90vh;
+        padding: 0 1rem;
     }
 
     &__section {
-        width: 100vw;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -25,17 +31,15 @@
 
         @include breakpoint(lg) {
             padding: 0 2rem;
-            // background-color: red;
         }
 
         @include breakpoint(md) {
             width: 100%;
             flex-direction: column;
-            // background-color: rgb(113, 184, 136);
         }
 
         @include breakpoint(sm) {
-            background-color: rgb(14, 183, 212);
+            top: 3rem;
         }
     }
 
@@ -125,6 +129,10 @@
         left: 0;
         width: 100%;
         z-index: 0;
+
+        @include breakpoint(sm) {
+            bottom: 1rem;
+        }
     }
 
     &__image {
@@ -157,6 +165,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--background-1);
+    overflow: hidden;
 
     &__heading {
         max-width: 1500px;
@@ -469,7 +478,7 @@
     &__footer {
         min-height: 20vh;
         height: 20vh;
-        width: calc(100vw - 17px);
+        width: 100%;
         background-color: var(--background-2);
         display: flex;
         flex-direction: column;

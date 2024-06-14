@@ -14,15 +14,16 @@
     left: 0;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
 
     @include breakpoint(lg) {
         padding: 0 2rem;
     }
 
     @include breakpoint(md) {
-        display: none;
+        height: 7vh;
+        padding: 0 1rem;
     }
-
 
     &__container {
         display: flex;
@@ -33,10 +34,11 @@
     }
 
     &__items {
+        width: 70%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 2rem
+        gap: 2rem;
     }
 
     &__item {
@@ -44,6 +46,11 @@
         align-items: center;
         justify-content: space-between;
         gap: 3rem;
+
+        
+        @include breakpoint(md) {
+            display: none;
+        }
     }
 
     &__button {
@@ -51,5 +58,36 @@
         align-items: center;
         justify-content: space-between;
         gap: 1rem;
+
+        
+        @include breakpoint(md) {
+            display: none;
+        }
+    }
+
+    &__handburger {
+        display: none;
+        position: absolute;
+        z-index: 2;
+        right: 1rem;
+
+        @include breakpoint(sm) {
+            display: block;
+        }
+    }
+
+    &__mobile {
+        display: none;
+
+        @include breakpoint(lg) {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 80%;
+            z-index: 1;
+            background-color: var(--primary-color);
+        }
     }
 }
