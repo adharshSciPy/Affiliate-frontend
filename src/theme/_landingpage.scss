@@ -227,6 +227,7 @@
             font-weight: 600;
             color: var(--text-grey);
         }
+
         p span {
             color: var(--primary-color);
         }
@@ -253,10 +254,165 @@
             font-weight: 600;
             color: var(--text-grey);
         }
+
         p:nth-child(2) {
             font-size: 18px;
             font-weight: 300;
             color: var(--text-grey);
         }
+    }
+}
+
+// potential customers
+.potcustomers {
+    min-height: 50vh;
+    height: auto;
+    width: calc(100vw - 17px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-1);
+
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 90%;
+        max-width: 1500px;
+        margin-top: 4rem;
+    }
+
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        color: var(--text-grey);
+        width: 60%;
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: .6rem;
+        }
+
+        p {
+            font-size: 14px;
+            text-align: center;
+            width: 70%;
+        }
+    }
+
+    &__cards {
+        width: 95%;
+        min-height: 30vh;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 3rem;
+        margin-top: 2rem;
+    }
+
+    &__card {
+        height: 25rem;
+        width: 25rem;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        color: var(--text-grey);
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__msgbox {
+        height: 50%;
+        width: 70%;
+        position: absolute;
+        z-index: 1;
+        border-radius: 8px;
+        bottom: -1rem;
+        padding: 1.1rem;
+        overflow: hidden;
+        display: flex;
+        align-items: baseline;
+        flex-direction: column;
+        justify-content: space-between;
+        background-color: var(--background-2);
+
+
+        p:nth-child(1) {
+            font-size: 14px;
+            max-height: 60%;
+            overflow: hidden;
+        }
+    }
+
+    &__readmore {
+        height: 30px;
+        width: 40%;
+        font-size: 13px;
+        color: var(--primary-color);
+        gap: .5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        z-index: 2;
+        bottom: 1rem;
+        border-radius: 2rem;
+        border: 1px solid var(--primary-color);
+
+        &:hover {
+            background-color: var(--primary-color);
+            color: var(--background-1);
+        }
+    }
+
+    &__footer {
+        min-height: 20vh;
+        height: 20vh;
+        width: calc(100vw - 17px);
+        background-color: var(--background-2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__text {
+        height: inherit;
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 35px;
+        color: var(--text-grey);
+    }
+}
+
+// contact
+.contact {
+    min-height: 30vh;
+    height: auto;
+    width: calc(100vw - 17px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+
+    &__body {
+        height: 100%;
+        width: 100%;
+        max-width: 1500px;
     }
 }

@@ -2,18 +2,20 @@ import React from 'react'
 import { Navbar } from '../../components'
 import Hero from './Hero'
 import Clients from './Clients'
-import Service from './Service'
 import Achievements from './Achievements'
+import PotentialCustomer from './PotentialCustomer'
+import Contact from './Contact'
 
 
 const LandingPage = () => {
   return (
     <>
-      <Navbar />
+      <Navbar />  
       <Hero />
       <Clients />
       <Achievements />
-      {/* <Service /> */}
+      <PotentialCustomer />
+      <Contact />
     </>
   )
 }

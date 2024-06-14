@@ -37,7 +37,6 @@ const Clients = () => {
 
     return (
         <div className='clients'>
-
             <div className="clients__heading">
                 <h1>Our Clients</h1>
                 <p>We have been working with some fortunes 500+ clients</p>
