@@ -5,7 +5,7 @@ import { setupListeners } from "@reduxjs/toolkit/query"
 import { apiSlice } from "../features/api/apiSlice"
 
 // features
-import authSlice from "../features/auth/authSlice"
+import authSlice from "../features/slice/authSlice"
 
 const store = configureStore({
     reducer: {
