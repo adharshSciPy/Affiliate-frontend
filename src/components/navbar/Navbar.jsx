@@ -1,11 +1,14 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, Switch } from 'antd'
 import { toggleDarkMode } from '../../utils/darkmode'
 import { List, X } from '@phosphor-icons/react'
 
 
 const Navbar = () => {
+    const navigate = useNavigate()
+
     const [isDark, setIsDark] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
 
@@ -32,8 +35,8 @@ const Navbar = () => {
                             unCheckedChildren="dark"
                             defaultChecked size='large'
                         />
-                        <Button>Login</Button>
-                        <Button>Sign Up</Button>
+                        <Button onClick={() => navigate('/auth/login')}>Login</Button>
+                        <Button onClick={() => navigate('/auth/register')}>Sign Up</Button>
                     </div>
                 </div>
 
