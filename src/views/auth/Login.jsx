@@ -10,14 +10,27 @@ const Login = () => {
 
   const validate = () => {
     const errors = {}
+    const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
     if (!email) {
-      errors.name = "Name is required"
+      errors.email = "Email is required"
+    } else if (!emailRegex.test(email)) {
+      errors.email = "Email formate is required"
     }
     if (!password) {
       errors.password = "Password is required"
+    } else if (!passwordRegex.test(password)) {
+      errors.password = 'Password must be at least 8 characters long, include an uppercase letter, a lowercase letter, a number, and a special character'
     }
-    if (password !== cPassword) {
-      errors.cPassword = "Password not matching"
+    if (cPassword === "") {
+      errors.cPassword = "Re-type the password"
+    } else if (password !== cPassword) {
+      if (password === "" || !passwordRegex.test(password)) {
+        errors.password = "password required"
+      }
+      else {
+        errors.cPassword = "Password not matching"
+      }
     }
     return errors
   }
@@ -30,6 +43,12 @@ const Login = () => {
       // Handle form submission
       console.log('Form submitted successfully');
     }
+  }
+  const handleReset = () => {
+    setEmail("")
+    setPassword("")
+    setCPassword("")
+    setErrors("")
   }
 
   return (
@@ -44,12 +63,13 @@ const Login = () => {
           </div>
 
           <div className="login__form" >
-            <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            {errors.name && <p>{errors.name}</p>}
-            <Input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+            <Input placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+            {errors.email && <p>{errors.email}</p>}
+            <Input type='password' placeholder='Password should be alphanumeric' value={password} onChange={(e) => setPassword(e.target.value)} />
             {errors.password && <p>{errors.password}</p>}
-            <Input placeholder='Confirm password' value={cPassword} onChange={(e) => setCPassword(e.target.value)} />
+            <Input type='password' placeholder='Re-type password' value={cPassword} onChange={(e) => setCPassword(e.target.value)} />
             {errors.cPassword && <p>{errors.cPassword}</p>}
+            <Button onClick={() => handleReset()} size='large'>Reset</Button>
             <Button onClick={(e) => handleSubmit(e)} disabled={false} size='large'>Submit</Button>
           </div>
         </div>
