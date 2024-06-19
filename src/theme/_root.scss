@@ -1,22 +1,20 @@
 :root,
 .light-theme {
-    --scrollbar-width: 0px; /* Default value */
-    --primary-color: #39843B;   
+    --primary-color: #39843B;
     --text-dark: #FFFFFF;
     --text-grey: #555151;
     --text-white: #1d1b1b;
+    --text-error: #e21313; 
     --background-1: #FFFFFF;
-    --background-2: #F5F7FA;
-    --backgroun-3: #39843B
+    --background-2: #faf5f5;
 }
 
 .dark-theme {
-    --scrollbar-width: 0px; /* Default value */
     --primary-color: #39843B;
     --text-dark: #1d1b1b;
     --text-grey: #e1e9db;
     --text-white: #FFFFFF;
+    --text-error: #e21313 ;
     --background-1: #323335;
-    --background-2: #121213;
-    --backgroun-3: #39843B
+    --background-2: #252527;
 }
