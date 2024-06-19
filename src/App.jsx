@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider, theme } from 'antd';
-import { AdminLogin, CompanyRegister, LandingPage, Login, Register } from './views'
+import { AdminLogin, CompanyLogin, CompanyRegister, LandingPage, Login, Register } from './views'
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout } from './layout';
 
 const router = createBrowserRouter([
@@ -28,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: "company-register",
                 element: <CompanyRegister />
+            },
+            {
+                path:"company-login",
+                element:<CompanyLogin/>
             }
         ],
     },
