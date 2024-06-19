@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Input } from 'antd'
+import { Button, Input, Tooltip } from 'antd'
 import LoginImg from '../../assets/images/login-img.png'
 
-import { useuserRegisterMutation } from '../../features/api/authApiSlice'
+import { useUserRegisterMutation } from '../../features/api/authApiSlice'
 
 const Register = () => {
 
-  const [userRegistration, { isLoading, isSuccess, isError }] = useuserRegisterMutation()
+  const [userRegistration] = useUserRegisterMutation()
 
+  // input fields
   const fields = {
     firstName: '',
     lastName: '',
@@ -16,32 +17,36 @@ const Register = () => {
     cPassword: '',
   }
 
-
   const [form, setForm] = useState(fields)
   const [errors, setErrors] = useState(fields)
   const [touched, setTouched] = useState(fields)
   const [isDisabled, setIsDisabled] = useState(false)
 
+  // handle reset
   const handleReset = () => {
     setForm(fields)
     setErrors(fields)
     setTouched(fields)
   }
 
+  // handle input field change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
+  // handle blur for traking is touched or not
   const handleBlur = (e) => {
     const { name, value } = e.target;
     setTouched({ ...touched, [name]: true });
+    setIsDisabled(false)
 
-    // Validate on blur
     if (!value) {
       setErrors({ ...errors, [name]: true });
+      setIsDisabled(true)
     }
   };
 
+  // final api submi button
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -73,7 +78,8 @@ const Register = () => {
               value={form.firstName}
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleBlur(e)}
-              size='large' />
+              size='medium'
+            />
             {touched.firstName && errors.firstName && (
               <p>First name required</p>
             )}
@@ -88,7 +94,7 @@ const Register = () => {
               value={form.lastName}
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleBlur(e)}
-              size='large'
+              size='medium'
             />
             {touched.lastName && errors.lastName && (
               <p>Last name required</p>
@@ -104,7 +110,7 @@ const Register = () => {
               value={form.email}
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleBlur(e)}
-              size='large'
+              size='medium'
             />
             {touched.email && errors.email && (
               <p>Email required</p>
@@ -113,15 +119,17 @@ const Register = () => {
 
           {/* password */}
           <div className="register__form--input">
-            <p>Last Name</p>
-            <Input
-              placeholder='Password should be alphanumeric'
-              name='password'
-              value={form.password}
-              onChange={(e) => handleChange(e)}
-              onBlur={(e) => handleBlur(e)}
-              size='large'
-            />
+            <p>Password</p>
+            <Tooltip title="Password contains 8 characters">
+              <Input
+                placeholder='Password should be alphanumeric'
+                name='password'
+                value={form.password}
+                onChange={(e) => handleChange(e)}
+                onBlur={(e) => handleBlur(e)}
+                size='medium'
+              />
+            </Tooltip>
             {touched.password && errors.password && (
               <p>Password required</p>
             )}
@@ -129,14 +137,14 @@ const Register = () => {
 
           {/* confirm password */}
           <div className="register__form--input">
-            <p>Last Name</p>
+            <p>Confirm Password</p>
             <Input
               placeholder='Re-type password'
               name='cPassword'
               value={form.cPassword}
               onChange={(e) => handleChange(e)}
               onBlur={(e) => handleBlur(e)}
-              size='large'
+              size='medium'
             />
             {touched.cPassword && errors.cPassword && (
               <p>Confirm Password required</p>
@@ -145,7 +153,7 @@ const Register = () => {
 
           <div className="register__form--footer">
             <Button onClick={() => handleReset()}>Reset</Button>
-            <Button disabled={isDisabled} onClick={() => handleSubmit()}>{isLoading ? 'Loading' : 'Save'}</Button>
+            <Button disabled={isDisabled} onClick={() => handleSubmit()}>Save</Button>
           </div>
         </div>
 
