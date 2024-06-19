@@ -8,44 +8,34 @@ const CompanyLogin = () => {
   const [cPassword, setCPassword] = useState("");
   const [errors, setErrors] = useState({});
 
-  // const validate =()=>{
-  //   const error ={}
-  //   // const mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   if (!email) {
-  //     error.email="email is required"
-  //   }
-  //   // else if (!mail.test(String(email).toLowerCase())) {
-  //   //   error.email="format error"
-  //   // }
-  // }
+  
 
   const validation = () => {
     const errors = {};
+    const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g;
+    const passRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!email) {
       errors.email = "email required";
+    } else if (!emailRegex.test(email)) {
+      errors.email = "email formate error";
     }
     if (!password) {
-      errors.password = "password required";
+      errors.password = "Password required";
+    } else if (!passRegex.test(password)) {
+      errors.password =
+        "Password must be at least 8 characters long, contain an uppercase letter, a lowercase letter, a number, and a special character";
     }
-    if (password !== cPassword) {
+    if (cPassword === "") {
+      errors.cPassword = "";
+    } else if (password !== cPassword) {
       errors.cPassword = "password not matching";
     }
     return errors;
   };
 
-  // const validateEmail = (email) => {
-  //   const mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   return mail.test(String(email).toLowerCase());
-  // };
-
-  // const validatePassword = (password) => {
-  //   // Password must be at least 6 characters long and contain at least one number
-  //   const pass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/
-  //   return pass.test(String(password));
-  // };
 
   const handleSubmit = (e) => {
-    console.log("hello");
     e.preventDefault();
     const validationError = validation();
     setErrors(validationError);
@@ -54,34 +44,8 @@ const CompanyLogin = () => {
     }
   };
 
-  //   const handleSubmit = (e) => {
-  //     console.log("hello");
-  //     e.preventDefault();
-  //     const validationErrors= validate()
-  //     if (Object.keys(validationErrors).length > 0) {
-  //       setErrors(validationErrors);
-  //   } else {
-  //       // Proceed with form submission
-  //       console.log('Form submitted successfully:');
-  //   }
+ 
 
-  //     // if (!validateEmail(email)) {
-  //     //   setError('Invalid email format.');
-  //     //   return;
-  //     // }
-
-  //     // if (!validatePassword(password)) {
-  //     //   setError('Password must be at least 6 characters long and contain both letters and numbers.');
-  //     //   return;
-  //     // }
-
-  //     // if (email === 'email' && password === 'password') {
-  //     //     alert('Login successful!');
-  //     //     setError('');
-  //     // } else {
-  //     //     setError('Invalid username or password');
-  //     // }
-  // };
   return (
     <div className="login">
       <div className="login__container">
