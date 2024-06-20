@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider, theme } from 'antd';
 import { AdminLogin, CompanyLogin, CompanyRegister, LandingPage, Login, Register } from './views'
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout } from './layout';
+import { NotificationProvider } from './context/NotificationContext';
 
 const router = createBrowserRouter([
     {
@@ -30,8 +31,8 @@ const router = createBrowserRouter([
                 element: <CompanyRegister />
             },
             {
-                path:"company-login",
-                element:<CompanyLogin/>
+                path: "company-login",
+                element: <CompanyLogin />
             }
         ],
     },
@@ -66,7 +67,9 @@ const App = () => {
                 }
             }}
         >
-            <RouterProvider router={router} />
+            <NotificationProvider>
+                <RouterProvider router={router} />
+            </NotificationProvider>
 
         </ConfigProvider>
     )

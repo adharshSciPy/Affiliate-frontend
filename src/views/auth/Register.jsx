@@ -1,12 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Input, Tooltip } from 'antd'
-import LoginImg from '../../assets/images/login-img.png'
+import React, { useState } from 'react'
+import { Button, Input, Tooltip, notification } from 'antd'
+import { useNavigate } from 'react-router-dom'
 
+import { openNotification } from '../../utils/notification'
 import { useUserRegisterMutation } from '../../features/api/authApiSlice'
+import LoginImg from '../../assets/images/login-img.png'
 
 const Register = () => {
 
+  const navigate = useNavigate()
   const [userRegistration] = useUserRegisterMutation()
+  const [api, contextHolder] = notification.useNotification()
 
   // input fields
   const fields = {
@@ -38,7 +42,6 @@ const Register = () => {
   const handleBlur = (e) => {
     const { name, value } = e.target;
     setTouched({ ...touched, [name]: true });
-    setIsDisabled(false)
 
     if (!value) {
       setErrors({ ...errors, [name]: true });
@@ -51,16 +54,28 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const result = await userRegistration(payload).unwrap();
-      console.log('User registered:', result);
+      let payload = {
+        firstName: form.firstName,
+        lastName: form.lastName,
+        email: form.email,
+        password: form.password,
+        role: 'customer'
+      }
+      const result = await userRegistration({ payload }).unwrap();
+      if (result) {
+        openNotification(api, 'success', 'Registration Success', result?.data?.message, 'bottomRight')
+        navigate('/auth/login')
+      }
     } catch (error) {
       console.error('Failed to register user:', error);
+      openNotification(api, 'error', 'Registration failed', error?.data?.message, 'bottomRight')
     }
   };
 
 
   return (
     <div className='register'>
+      {contextHolder}
       <div className="register__container">
 
         <div className="register__form">
@@ -120,8 +135,8 @@ const Register = () => {
           {/* password */}
           <div className="register__form--input">
             <p>Password</p>
-            <Tooltip title="Password contains 8 characters">
-              <Input
+            <Tooltip title="Password contains 8 characters" placement="topRight">
+              <Input.Password
                 placeholder='Password should be alphanumeric'
                 name='password'
                 value={form.password}
@@ -138,7 +153,7 @@ const Register = () => {
           {/* confirm password */}
           <div className="register__form--input">
             <p>Confirm Password</p>
-            <Input
+            <Input.Password
               placeholder='Re-type password'
               name='cPassword'
               value={form.cPassword}
@@ -152,8 +167,8 @@ const Register = () => {
           </div>
 
           <div className="register__form--footer">
-            <Button onClick={() => handleReset()}>Reset</Button>
-            <Button disabled={isDisabled} onClick={() => handleSubmit()}>Save</Button>
+            <Button onClick={handleReset}>Reset</Button>
+            <Button disabled={isDisabled} onClick={handleSubmit}>Save</Button>
           </div>
         </div>
 
