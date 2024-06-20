@@ -27,18 +27,14 @@
 
         &__navbar {
             grid-area: navbar;
-            background-color: #333;
-            color: white;
         }
 
         &__sidebar {
             grid-area: sidebar;
-            background-color: #f0f0f0;
         }
 
         &__body {
             grid-area: body;
-            background-color: #fff;
             padding: 20px;
         }
     }
