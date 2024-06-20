@@ -75,25 +75,29 @@ const Register = () => {
     setErrors(prevErrors => ({ ...prevErrors, [name]: errorMessage }));
   };
 
+  // reset form fields
   const handleReset = () => {
     setForm(fields);
     setErrors(fields);
     setTouched(fields);
-    setIsDisabled(true); // Reset the form and disable the button
+    setIsDisabled(true);
   };
 
+  // input field onchange
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
     validateField(name, value);
   };
 
+  // focus tracking of input fields
   const handleBlur = (e) => {
     const { name, value } = e.target;
     setTouched({ ...touched, [name]: true });
     validateField(name, value);
   };
 
+  // submit button
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -116,15 +120,15 @@ const Register = () => {
   };
 
   return (
-    <div className='register'>
-      <div className="register__container">
-        <div className="register__form">
-          <div className="register__form--heading">
+    <div className='auth'>
+      <div className="auth__container">
+        <div className="auth__form">
+          <div className="auth__form--heading">
             <h2>Welcome</h2>
             <p>Create a new free account as a customer</p>
           </div>
 
-          <div className="register__form--input">
+          <div className="auth__form--input">
             <p>First Name</p>
             <Input
               placeholder='John'
@@ -139,7 +143,7 @@ const Register = () => {
             )}
           </div>
 
-          <div className="register__form--input">
+          <div className="auth__form--input">
             <p>Last Name</p>
             <Input
               placeholder='Doe'
@@ -154,7 +158,7 @@ const Register = () => {
             )}
           </div>
 
-          <div className="register__form--input">
+          <div className="auth__form--input">
             <p>Email</p>
             <Input
               placeholder='john@example.com'
@@ -169,7 +173,7 @@ const Register = () => {
             )}
           </div>
 
-          <div className="register__form--input">
+          <div className="auth__form--input">
             <p>Password</p>
             <Tooltip title="Password must contain at least 8 characters, including uppercase, lowercase, number, and symbol" placement="topRight">
               <Input.Password
@@ -186,7 +190,7 @@ const Register = () => {
             )}
           </div>
 
-          <div className="register__form--input">
+          <div className="auth__form--input">
             <p>Confirm Password</p>
             <Input.Password
               placeholder='Re-type password'
@@ -201,13 +205,13 @@ const Register = () => {
             )}
           </div>
 
-          <div className="register__form--footer">
+          <div className="auth__form--footer">
             <Button onClick={handleReset}>Reset</Button>
             <Button disabled={isDisabled} onClick={handleSubmit}>Save</Button>
           </div>
         </div>
 
-        <div className="register__image">
+        <div className="auth__image">
           <img src={LoginImg} alt="" />
         </div>
       </div>

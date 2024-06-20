@@ -1,76 +1,44 @@
-import React, { useState } from 'react'
-import { Input, Button } from 'antd';
+import React from 'react'
 import LoginImg from '../../assets/images/login-img.png'
+import { Button, Input, Tooltip } from 'antd'
 
-const AdminLogin = () => {
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [cPassword, setCPassword] = useState('')
-  const [error, setError] = useState('');
-
-
-  const validateEmail = (email) => {
-    const mail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return mail.test(String(email).toLowerCase());
-  };
-
-  const validatePassword = (password) => {
-    // Password must be at least 6 characters long and contain at least one number
-    const pass = /^(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$/;
-    return pass.test(String(password));
-  };
-
-  const handleSubmit = async (e) => {
-
-    e.preventDefault();
-
-    if (!validateEmail(email)) {
-      setError('Invalid email format.');
-      return;
-    }
-
-    if (!validatePassword(password)) {
-      setError('Password must be at least 6 characters long and contain both letters and numbers.');
-      return;
-    }
-
-    if (password !== cPassword) {
-      setError('Passwords do not match.');
-      return;
-    }
-
-
-      if (email === email && password === password) {
-        alert('Login successful!');
-   
-      } else {
-        setError('Invalid email or password, please try again.');
-      }
-    
-  };
-
+const Login = () => {
   return (
-    <div className='login' >
-      <div className="login__container">
-
-        <div className="login__hero">
-
-          <div className="login__heading">
+    <div className='auth'>
+      <div className="auth__container">
+        <div className="auth__form">
+          <div className="auth__form--heading">
             <h2>Welcome</h2>
-            <p>Login as Admin</p>
+            <p>Login to your account</p>
           </div>
 
-          <div className="login__form">
-            <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <Input placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-            <Input placeholder='Confirm password' value={cPassword} onChange={(e) => setCPassword(e.target.value)} />
-            {error && <div className="error">{error}</div>}
-            <Button disabled={false} onClick={handleSubmit} size='large'>Submit</Button>
+          <div className="auth__form--input">
+            <p>Email</p>
+            <Input
+              placeholder='john@example.com'
+              name='firstName'
+              size='large'
+            />
+          </div>
+
+          <div className="auth__form--input">
+            <p>Password</p>
+            <Tooltip title="Password must contain at least 8 characters, including uppercase, lowercase, number, and symbol" placement="topRight">
+              <Input.Password
+                placeholder='Password should be alphanumeric'
+                name='password'
+                size='large'
+              />
+            </Tooltip>
+          </div>
+
+          <div className="auth__form--footer">
+            <Button size='large'>Reset</Button>
+            <Button size='large'>Save</Button>
           </div>
         </div>
 
-        <div className="login__image">
+        <div className="auth__image">
           <img src={LoginImg} alt="" />
         </div>
       </div>
@@ -78,4 +46,4 @@ const AdminLogin = () => {
   )
 }
 
-export default AdminLogin
+export default Login
