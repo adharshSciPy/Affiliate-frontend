@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
-import { Button, Input, Tooltip, notification } from 'antd'
-import { useNavigate } from 'react-router-dom'
-
-import { openNotification } from '../../utils/notification'
-import { useUserRegisterMutation } from '../../features/api/authApiSlice'
-import LoginImg from '../../assets/images/login-img.png'
+import React, { useState, useEffect } from 'react';
+import { Button, Input, Tooltip } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { useUserRegisterMutation } from '../../features/api/authApiSlice';
+import LoginImg from '../../assets/images/login-img.png';
+import { useNotification } from '../../context/NotificationContext';
 
 const Register = () => {
-
-  const navigate = useNavigate()
-  const [userRegistration] = useUserRegisterMutation()
-  const [api, contextHolder] = notification.useNotification()
+  const navigate = useNavigate();
+  const [userRegistration] = useUserRegisterMutation();
+  const { notification } = useNotification();
 
   // input fields
   const fields = {
@@ -19,150 +17,187 @@ const Register = () => {
     email: '',
     password: '',
     cPassword: '',
-  }
+  };
 
-  const [form, setForm] = useState(fields)
-  const [errors, setErrors] = useState(fields)
-  const [touched, setTouched] = useState(fields)
-  const [isDisabled, setIsDisabled] = useState(false)
+  const [form, setForm] = useState(fields);
+  const [errors, setErrors] = useState(fields);
+  const [touched, setTouched] = useState(fields);
+  const [isDisabled, setIsDisabled] = useState(true);
 
-  // handle reset
+  // to manage submit button's disable state
+  useEffect(() => {
+    const hasErrors = Object.values(errors).some(error => error !== null && error !== false);
+    setIsDisabled(hasErrors);
+  }, [errors]);
+
+  // custom validation for input fields
+  const validateField = (name, value) => {
+    let errorMessage = false;
+
+    switch (name) {
+      case 'firstName':
+      case 'lastName':
+        errorMessage = value.trim() === '' ? 'This field is required.' : false;
+        break;
+      case 'email':
+        if (value.trim() === '') {
+          errorMessage = 'Email is required.';
+        } else if (!/\S+@\S+\.\S+/.test(value)) {
+          errorMessage = 'Please enter a valid email address.';
+        }
+        break;
+      case 'password':
+        if (value.trim() === '') {
+          errorMessage = 'Password is required.';
+        } else if (value.length < 8) {
+          errorMessage = 'Password must be at least 8 characters.';
+        } else if (!/[a-z]/.test(value)) {
+          errorMessage = 'Password must contain at least one lowercase letter.';
+        } else if (!/[A-Z]/.test(value)) {
+          errorMessage = 'Password must contain at least one uppercase letter.';
+        } else if (!/\d/.test(value)) {
+          errorMessage = 'Password must contain at least one number.';
+        } else if (!/[!@#$%^&*()_\-+[\]{}|;:',.<>?]/.test(value)) {
+          errorMessage = 'Password must contain at least one special character.';
+        }
+        break;
+      case 'cPassword':
+        if (value.trim() === '') {
+          errorMessage = 'Confirm password is required.';
+        } else if (value !== form.password) {
+          errorMessage = 'Passwords do not match.';
+        }
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: errorMessage }));
+  };
+
   const handleReset = () => {
-    setForm(fields)
-    setErrors(fields)
-    setTouched(fields)
-  }
+    setForm(fields);
+    setErrors(fields);
+    setTouched(fields);
+    setIsDisabled(true); // Reset the form and disable the button
+  };
 
-  // handle input field change
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+    validateField(name, value);
+  };
 
-  // handle blur for traking is touched or not
   const handleBlur = (e) => {
     const { name, value } = e.target;
     setTouched({ ...touched, [name]: true });
-
-    if (!value) {
-      setErrors({ ...errors, [name]: true });
-      setIsDisabled(true)
-    }
+    validateField(name, value);
   };
 
-  // final api submi button
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      let payload = {
+      const payload = {
         firstName: form.firstName,
         lastName: form.lastName,
         email: form.email,
         password: form.password,
         role: 'customer'
-      }
+      };
       const result = await userRegistration({ payload }).unwrap();
       if (result) {
-        openNotification(api, 'success', 'Registration Success', result?.data?.message, 'bottomRight')
-        navigate('/auth/login')
+        notification('success', 'Registration Succesfull', result?.data?.message, 'bottomRight');
+        navigate('/auth/login');
       }
     } catch (error) {
-      console.error('Failed to register user:', error);
-      openNotification(api, 'error', 'Registration failed', error?.data?.message, 'bottomRight')
+      notification('error', 'Registration Failed', error?.data?.message, 'bottomRight');
     }
   };
 
-
   return (
     <div className='register'>
-      {contextHolder}
       <div className="register__container">
-
         <div className="register__form">
           <div className="register__form--heading">
             <h2>Welcome</h2>
             <p>Create a new free account as a customer</p>
           </div>
 
-          {/* fist name */}
           <div className="register__form--input">
             <p>First Name</p>
             <Input
               placeholder='John'
               name='firstName'
               value={form.firstName}
-              onChange={(e) => handleChange(e)}
-              onBlur={(e) => handleBlur(e)}
+              onChange={handleChange}
+              onBlur={handleBlur}
               size='medium'
             />
             {touched.firstName && errors.firstName && (
-              <p>First name required</p>
+              <p className='error-message'>{errors.firstName}</p>
             )}
           </div>
 
-          {/* last name */}
           <div className="register__form--input">
             <p>Last Name</p>
             <Input
               placeholder='Doe'
               name='lastName'
               value={form.lastName}
-              onChange={(e) => handleChange(e)}
-              onBlur={(e) => handleBlur(e)}
+              onChange={handleChange}
+              onBlur={handleBlur}
               size='medium'
             />
             {touched.lastName && errors.lastName && (
-              <p>Last name required</p>
+              <p className='error-message'>{errors.lastName}</p>
             )}
           </div>
 
-          {/* email */}
           <div className="register__form--input">
             <p>Email</p>
             <Input
               placeholder='john@example.com'
               name='email'
               value={form.email}
-              onChange={(e) => handleChange(e)}
-              onBlur={(e) => handleBlur(e)}
+              onChange={handleChange}
+              onBlur={handleBlur}
               size='medium'
             />
             {touched.email && errors.email && (
-              <p>Email required</p>
+              <p className='error-message'>{errors.email}</p>
             )}
           </div>
 
-          {/* password */}
           <div className="register__form--input">
             <p>Password</p>
-            <Tooltip title="Password contains 8 characters" placement="topRight">
+            <Tooltip title="Password must contain at least 8 characters, including uppercase, lowercase, number, and symbol" placement="topRight">
               <Input.Password
                 placeholder='Password should be alphanumeric'
                 name='password'
                 value={form.password}
-                onChange={(e) => handleChange(e)}
-                onBlur={(e) => handleBlur(e)}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 size='medium'
               />
             </Tooltip>
             {touched.password && errors.password && (
-              <p>Password required</p>
+              <p className='error-message'>{errors.password}</p>
             )}
           </div>
 
-          {/* confirm password */}
           <div className="register__form--input">
             <p>Confirm Password</p>
             <Input.Password
               placeholder='Re-type password'
               name='cPassword'
               value={form.cPassword}
-              onChange={(e) => handleChange(e)}
-              onBlur={(e) => handleBlur(e)}
+              onChange={handleChange}
+              onBlur={handleBlur}
               size='medium'
             />
             {touched.cPassword && errors.cPassword && (
-              <p>Confirm Password required</p>
+              <p className='error-message'>{errors.cPassword}</p>
             )}
           </div>
 
@@ -177,7 +212,7 @@ const Register = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

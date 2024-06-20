@@ -4,9 +4,15 @@
     --text-dark: #FFFFFF;
     --text-grey: #555151;
     --text-white: #1d1b1b;
-    --text-error: #e21313; 
+    --text-error: #e21313;
+
     --background-1: #FFFFFF;
     --background-2: #faf5f5;
+
+    --green-gradient: linear-gradient(270deg, #578342 0%, #4CAF4F 100%);
+
+
+
 }
 
 .dark-theme {
@@ -14,7 +20,10 @@
     --text-dark: #1d1b1b;
     --text-grey: #e1e9db;
     --text-white: #FFFFFF;
-    --text-error: #e21313 ;
+    --text-error: #e21313;
+
     --background-1: #323335;
     --background-2: #252527;
+
+    --green-gradient: linear-gradient(270deg, #578342 0%, #4CAF4F 100%);
 }
