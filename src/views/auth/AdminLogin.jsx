@@ -1,8 +1,111 @@
-import React from 'react'
-import LoginImg from '../../assets/images/login-img.png'
-import { Button, Input, Tooltip } from 'antd'
+import React, { useState, useEffect }  from 'react';
+import LoginImg from '../../assets/images/login-img.png';
+import { Button, Input, Tooltip } from 'antd';
+import { useNavigate } from 'react-router-dom';
+import { useAdminLoginMutation } from '../../features/api/authApiSlice';
+import { useNotification } from '../../context/NotificationContext';
 
-const Login = () => {
+const AdminLogin = () => {
+  const navigate = useNavigate();
+  const [adminLogin] = useAdminLoginMutation();
+  const { notification } = useNotification();
+
+  // input fields
+  const fields = {
+    email: '',
+    password: '',
+  };
+
+  const [form, setForm] = useState(fields);
+  const [errors, setErrors] = useState(fields);
+  const [touched, setTouched] = useState(fields);
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  // to manage submit button's disable state
+  useEffect(() => {
+    const hasErrors = Object.values(errors).some(error => error !== null && error !== false);
+    setIsDisabled(hasErrors);
+  }, [errors]);
+
+  // custom validation for input fields
+  const validateField = (name, value) => {
+    let errorMessage = false;
+
+    switch (name) {
+    
+      case 'email':
+        if (value.trim() === '') {
+          errorMessage = 'Email is required.';
+        } else if (!/\S+@\S+\.\S+/.test(value)) {
+          errorMessage = 'Please enter a valid email address.';
+        }
+        break;
+      case 'password':
+        if (value.trim() === '') {
+          errorMessage = 'Password is required.';
+        } else if (value.length < 8) {
+          errorMessage = 'Password must be at least 8 characters.';
+        } else if (!/[a-z]/.test(value)) {
+          errorMessage = 'Password must contain at least one lowercase letter.';
+        } else if (!/[A-Z]/.test(value)) {
+          errorMessage = 'Password must contain at least one uppercase letter.';
+        } else if (!/\d/.test(value)) {
+          errorMessage = 'Password must contain at least one number.';
+        } else if (!/[!@#$%^&*()_\-+[\]{}|;:',.<>?]/.test(value)) {
+          errorMessage = 'Password must contain at least one special character.';
+        }
+        break;
+      default:
+        break;
+    }
+
+    setErrors(prevErrors => ({ ...prevErrors, [name]: errorMessage }));
+  };
+
+  // reset form fields
+  const handleReset = () => {
+    setForm(fields);
+    setErrors(fields);
+    setTouched(fields);
+    setIsDisabled(true);
+  };
+
+  // input field onchange
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+    validateField(name, value);
+  };
+
+  // focus tracking of input fields
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+    setTouched({ ...touched, [name]: true });
+    validateField(name, value);
+  };
+
+  // submit button
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const payload = {
+        email: form.email,
+        password: form.password,
+        role: 'admin'
+      };
+      const result = await adminLogin({ payload }).unwrap();
+      if (result) {
+        notification('success', 'Login successfull', result?.data?.message, 'bottomRight');
+        //navigate('');
+      }
+    } catch (error) {
+      notification('error', 'Login Failed', error?.data?.message, 'bottomRight');
+    }
+  };
+
+
+
   return (
     <div className='auth'>
       <div className="auth__container">
@@ -16,9 +119,15 @@ const Login = () => {
             <p>Email</p>
             <Input
               placeholder='john@example.com'
-              name='firstName'
+              name='email'
+              value={form.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
               size='large'
             />
+             {touched.email && errors.email && (
+              <p className='error-message'>{errors.email}</p>
+            )}
           </div>
 
           <div className="auth__form--input">
@@ -27,14 +136,20 @@ const Login = () => {
               <Input.Password
                 placeholder='Password should be alphanumeric'
                 name='password'
+                value={form.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
                 size='large'
               />
             </Tooltip>
+            {touched.password && errors.password && (
+              <p className='error-message'>{errors.password}</p>
+            )}
           </div>
 
           <div className="auth__form--footer">
-            <Button size='large'>Reset</Button>
-            <Button size='large'>Save</Button>
+            <Button onClick={handleReset} size='large'>Reset</Button>
+            <Button  disabled={isDisabled} onClick={handleSubmit} size='large'>Login</Button>
           </div>
         </div>
 
@@ -46,4 +161,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default AdminLogin;
