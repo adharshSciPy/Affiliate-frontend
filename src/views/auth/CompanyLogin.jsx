@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LoginImg from "../../assets/images/login-img.png";
-import { Button, Input, Tooltip, notification } from "antd";
+import { Button, Input, Tooltip } from "antd";
 import { useNavigate } from "react-router-dom";
 import { useCompanyLoginMutation } from "../../features/api/authApiSlice";
 import { useNotification } from "../../context/NotificationContext";
@@ -19,6 +19,7 @@ const CompanyLogin = () => {
   const [errors, setErrors] = useState(fields);
   const [touched, setTouched] = useState(fields);
   const [isDisabled, setIsDisabled] = useState(true);
+
   // to manage submit button's disable state
   useEffect(() => {
     const hasErrors = Object
@@ -26,6 +27,7 @@ const CompanyLogin = () => {
       .some((error) => error !== null && error !== false);
     setIsDisabled(hasErrors);
   }, [errors]);
+
   // custom validation for input fields
   const validateField = (name, value) => {
     let errorMessage = false;
@@ -58,6 +60,7 @@ const CompanyLogin = () => {
     }
     setErrors((prevErrors) => ({ ...prevErrors, [name]: errorMessage }));
   };
+
   //reset form fields
   const handleReset = () => {
     setForm(fields);
@@ -67,18 +70,19 @@ const CompanyLogin = () => {
   };
 
   //input field onchange
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
     validateField(name, value);
   };
+
   //focus tracking of input fields
   const handleBlur = (e) => {
     const { name, value } = e.target;
     setTouched({ ...touched, [name]: true });
     validateField(name, value);
   };
+
   //submit button
   const handleSubmit = async (e) => {
     e.preventDefault();

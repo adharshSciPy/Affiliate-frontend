@@ -1,4 +1,4 @@
-import React, { useState, useEffect }  from 'react';
+import React, { useState, useEffect } from 'react';
 import LoginImg from '../../assets/images/login-img.png';
 import { Button, Input, Tooltip } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -32,7 +32,7 @@ const AdminLogin = () => {
     let errorMessage = false;
 
     switch (name) {
-    
+
       case 'email':
         if (value.trim() === '') {
           errorMessage = 'Email is required.';
@@ -97,14 +97,12 @@ const AdminLogin = () => {
       const result = await adminLogin({ payload }).unwrap();
       if (result) {
         notification('success', 'Login successfull', result?.data?.message, 'bottomRight');
-        navigate('');
+        // navigate('');
       }
     } catch (error) {
       notification('error', 'Login Failed', error?.data?.message, 'bottomRight');
     }
   };
-
-
 
   return (
     <div className='auth'>
@@ -125,7 +123,7 @@ const AdminLogin = () => {
               onBlur={handleBlur}
               size='large'
             />
-             {touched.email && errors.email && (
+            {touched.email && errors.email && (
               <p className='error-message'>{errors.email}</p>
             )}
           </div>
@@ -149,7 +147,7 @@ const AdminLogin = () => {
 
           <div className="auth__form--footer">
             <Button onClick={handleReset} size='large'>Reset</Button>
-            <Button  disabled={isDisabled} onClick={handleSubmit} size='large'>Login</Button>
+            <Button disabled={isDisabled} onClick={handleSubmit} size='large'>Login</Button>
           </div>
         </div>
 
