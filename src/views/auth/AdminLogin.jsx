@@ -97,7 +97,7 @@ const AdminLogin = () => {
       const result = await adminLogin({ payload }).unwrap();
       if (result) {
         notification('success', 'Login successfull', result?.data?.message, 'bottomRight');
-        //navigate('');
+        navigate('');
       }
     } catch (error) {
       notification('error', 'Login Failed', error?.data?.message, 'bottomRight');
