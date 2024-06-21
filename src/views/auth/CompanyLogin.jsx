@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { useCompanyLoginMutation } from "../../features/api/authApiSlice";
 import { useNotification } from "../../context/NotificationContext";
 
-const companyLogin = () => {
+const CompanyLogin = () => {
   const navigate = useNavigate();
-  const [Login] = useCompanyLoginMutation();
+  const [companyLogin] = useCompanyLoginMutation();
   const { notification } = useNotification();
 
   //input fields
@@ -88,7 +88,7 @@ const companyLogin = () => {
         password: form.password,
         role: "company",
       };
-      const result = await Login({ payload }).unwrap();
+      const result = await companyLogin({ payload }).unwrap();
       if (result) {
         notification(
           "error",
@@ -96,7 +96,7 @@ const companyLogin = () => {
           result?.data?.message,
           "bottomRight"
         );
-        navigate();
+        //navigate();
       }
     } catch (error) {
       notification(
@@ -170,4 +170,4 @@ const companyLogin = () => {
   );
 };
 
-export default companyLogin;
+export default CompanyLogin;
