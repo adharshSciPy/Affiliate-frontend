@@ -123,7 +123,7 @@
         width: 2rem;
         position: absolute;
         top: 50%;
-        left: 100%; 
+        left: 100%;
         transform: translate(-50%, -50%);
         transition: all 0.3s ease-in-out;
         border-radius: 50%;
@@ -135,4 +135,44 @@
 .offSidebar {
     width: 4%;
     min-width: auto;
+}
+
+// service navbar
+.servicenavbar {
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-white);
+    background-color: var(--background-1);
+    position: fixed;
+    padding: 0 3rem;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+}
+
+// service sidebar
+.servicesidebar {
+    height: 100vh;
+    width: 20%;
+    background-color: var(--background-2);
+    position: relative;
+    transition: all 0.4s ease-in-out;
+
+    &__shutter {
+        height: 2rem;
+        width: 2rem;
+        position: absolute;
+        top: 50%;
+        left: 100%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease-in-out;
+        border-radius: 50%;
+        background-color: var(--background-2);
+        cursor: pointer;
+    }
 }

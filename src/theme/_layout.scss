@@ -40,6 +40,41 @@
     }
 }
 
+// service layout
+.service {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 70px 1fr;
+    grid-template-areas:
+        "navbar navbar"
+        "sidebar body";
+
+    &__container {
+        display: grid;
+        grid-template-areas:
+            "navbar"
+            "sidebar"
+            "body";
+        grid-template-columns: 240px 1fr;
+        grid-template-rows: 70px 1fr;
+        height: 100%;
+
+        &__navbar {
+            grid-area: navbar;
+        }
+
+        &__sidebar {
+            grid-area: sidebar;
+        }
+
+        &__body {
+            grid-area: body;
+            padding: 20px;
+        }
+    }
+}
+
 // customer layout
 .customerlayout {
     min-height: 100vh;
