@@ -132,11 +132,6 @@
     }
 }
 
-.offSidebar {
-    width: 4%;
-    min-width: auto;
-}
-
 // service navbar
 .servicenavbar {
     height: 10vh;
@@ -175,4 +170,9 @@
         background-color: var(--background-2);
         cursor: pointer;
     }
+}
+
+.offSidebar {
+    width: 4%;
+    min-width: auto;
 }
