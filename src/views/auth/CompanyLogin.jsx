@@ -95,7 +95,7 @@ const CompanyLogin = () => {
       const result = await companyLogin({ payload }).unwrap();
       if (result) {
         notification(
-          "error",
+          "success",
           "Login Successfull",
           result?.data?.message,
           "bottomRight"
