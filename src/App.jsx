@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider, theme } from 'antd';
-import { AdminLogin, CompanyLogin, CompanyRegister, LandingPage, Login, Register } from './views'
+import { AdminLogin, AdminRegister, CompanyLogin, CompanyRegister, LandingPage, Login, Register } from './views'
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, ServiceLayout } from './layout';
 import { NotificationProvider } from './context/NotificationContext';
 
@@ -25,6 +25,10 @@ const router = createBrowserRouter([
             {
                 path: "admin-login",
                 element: <AdminLogin />
+            },
+            {
+                path: "admin-register",
+                element: <AdminRegister/>
             },
             {
                 path: "company-register",
