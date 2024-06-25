@@ -1,17 +1,23 @@
-import React, { useState,useEffect } from 'react'
-import LoginImg from '../../assets/images/login-img.png'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button, Input, Tooltip } from 'antd'
+import { useDispatch } from 'react-redux'
+import LoginImg from '../../assets/images/login-img.png'
+
 import { useUserLoginMutation } from '../../features/api/authApiSlice'
 import { useNotification } from '../../context/NotificationContext'
+import { setLogin } from '../../features/slice/authSlice'
 
 const Login = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [userLogin] = useUserLoginMutation()
   const { notification } = useNotification()
 
   // input fields
   const fields = {
-    email: '',
-    password: ''
+    email: 'johndoe@gmail.com',
+    password: 'JOHNjohn@1'
   }
 
   const [form, setForm] = useState(fields)
@@ -89,8 +95,9 @@ const Login = () => {
       }
       const result = await userLogin({ payload }).unwrap()
       if (result) {
+        dispatch(setLogin({ accessToken: result?.token }))
         notification('success', 'Login Succesfull', result?.data?.message, 'bottomRight');
-        console.log(result);
+        navigate('/admin')
       }
     } catch (error) {
       notification('error', 'Login Failed', error?.data?.message, 'bottomRight');

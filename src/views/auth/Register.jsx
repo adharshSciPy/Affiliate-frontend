@@ -107,7 +107,7 @@ const Register = () => {
         lastName: form.lastName,
         email: form.email,
         password: form.password,
-        role: 'customer'
+        role: 200
       };
       const result = await userRegistration({ payload }).unwrap();
       if (result) {

@@ -1,9 +1,10 @@
 import { apiSlice } from "./apiSlice";
+import { setLogin, setLogout } from "../slice/authSlice";
 
 export const authApiSlice = apiSlice.injectEndpoints({
 
     endpoints: (builder) => ({
-        // user auth endpoints
+        // user register
         userRegister: builder.mutation({
             query: ({ payload }) => ({
                 url: `/user/register`,
@@ -12,6 +13,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        // user login
         userLogin: builder.mutation({
             query: ({ payload }) => ({
                 url: `/user/login`,
@@ -20,7 +22,26 @@ export const authApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
-        // company auth endpoints
+        // user logout
+        userLogout: builder.mutation({
+            query: () => ({
+                url: `/user/logout`,
+                method: 'POST',
+            }),
+
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled
+                    dispatch(setLogout())
+                    dispatch(apiSlice.util.resetApiState())
+                }
+                catch (err) {
+                    throw err;
+                }
+            }
+        }),
+
+        // company register
         companyRegister: builder.mutation({
             query: ({ payload }) => ({
                 url: `/company/register`,
@@ -29,6 +50,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        // company login
         companyLogin: builder.mutation({
             query: ({ payload }) => ({
                 url: `/company/login`,
@@ -37,7 +59,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
-        // admin auth endpoints
+        // admin register
         adminRegister: builder.mutation({
             query: ({ payload }) => ({
                 url: `/admin/register`,
@@ -46,6 +68,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        // admin login
         adminLogin: builder.mutation({
             query: ({ payload }) => ({
                 url: `/admin/login`,
@@ -53,7 +76,27 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 body: payload
             })
         }),
+
+        // auth refresh
+        authRefresh: builder.mutation({
+            query: () => ({
+                url: `/user/refresh`,
+                method: 'GET',
+
+                async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                    try {
+                        const { data } = await queryFulfilled
+                        console.log('refresh data', data)
+                        dispatch(setLogin({ accessToken: data?.accessToken }))
+                        dispatch(apiSlice.util.resetApiState())
+                    }
+                    catch (err) {
+                        throw err;
+                    }
+                }
+            })
+        }),
     }),
 })
 
-export const { useUserRegisterMutation, useUserLoginMutation, useCompanyRegisterMutation, useCompanyLoginMutation, useAdminRegisterMutation, useAdminLoginMutation } = authApiSlice
+export const { useUserRegisterMutation, useUserLoginMutation, useUserLogoutMutation, useCompanyRegisterMutation, useCompanyLoginMutation, useAdminRegisterMutation, useAdminLoginMutation, useAuthRefreshMutation } = authApiSlice
