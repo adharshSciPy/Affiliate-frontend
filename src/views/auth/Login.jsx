@@ -97,7 +97,7 @@ const Login = () => {
       if (result) {
         dispatch(setLogin({ accessToken: result?.token }))
         notification('success', 'Login Succesfull', result?.data?.message, 'bottomRight');
-        navigate('/admin')
+        navigate('/logged-in')
       }
     } catch (error) {
       notification('error', 'Login Failed', error?.data?.message, 'bottomRight');

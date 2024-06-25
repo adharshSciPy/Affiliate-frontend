@@ -54,7 +54,7 @@ const PersistLogin = ({ children }) => {
         console.log('error');
         content = (
             <p className='errmsg'>
-                {error.data?.message}
+                {error?.data?.message}
                 <Link to="/auth/login">Please login again</Link>.
             </p>
         );

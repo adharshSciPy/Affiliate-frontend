@@ -22,6 +22,7 @@ const baseQueryWithAutoRefresh = async (args, api, extraOptions) => {
 
     if (result?.error?.status === 403) {
         const refreshResult = await baseQuery('/user/refresh', api, extraOptions)
+        console.log('rfresh datra', refreshResult)
 
         if (refreshResult.data) {
             console.log('refresh result', refreshResult)

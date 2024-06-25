@@ -5,4 +5,6 @@ export { default as AdminSidebar } from './sidebar/AdminSidebar';
 export { default as ServiceNavbar } from './navbar/ServiceNavbar';
 export { default as ServiceSidebar } from './sidebar/ServiceSidebar';
 export { default as PersistLogin } from './auth/PersistLogin';
+export { default as LoggedInPage } from './auth/LoggedInPage';
+export { default as ForceRedirect } from './auth/ForceRedirect';
 export { default as Loader } from './loader/Loader';

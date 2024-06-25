@@ -83,14 +83,16 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 url: `/user/refresh`,
                 method: 'GET',
 
-                async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                async onQueryStarted(arg, { dispatch, queryFulfilled  }) {
+                    console.log('query', queryFulfilled )
                     try {
                         const { data } = await queryFulfilled
-                        console.log('refresh data', data)
-                        dispatch(setLogin({ accessToken: data?.accessToken }))
-                        dispatch(apiSlice.util.resetApiState())
+                        console.log('refreshed... data', data)
+                        // dispatch(setLogin({ accessToken: data?.accessToken }))
+                        // dispatch(apiSlice.util.resetApiState())
                     }
                     catch (err) {
+                        console.log('error emoney')
                         throw err;
                     }
                 }

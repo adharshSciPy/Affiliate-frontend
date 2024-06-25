@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider, theme } from 'antd';
 import { AdminLogin, CompanyLogin, CompanyRegister, LandingPage, Login, Register } from './views';
-import { PersistLogin } from './components';
+import { PersistLogin, LoggedInPage, ForceRedirect } from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, ServiceLayout } from './layout';
 import { NotificationProvider } from './context/NotificationContext';
 
@@ -12,12 +12,21 @@ const router = createBrowserRouter([
         element: <LandingPage />,
     },
     {
+        path: "/logged-in",
+        element: <LoggedInPage />,
+    },
+    {
         path: "/auth",
-        element: <AuthLayout />,
+        element:
+            <PersistLogin>
+                <ForceRedirect>
+                    <AuthLayout />
+                </ForceRedirect>
+            </PersistLogin>,
         children: [
             {
                 path: "login",
-                element: <Login />
+                element: <ForceRedirect><Login /></ForceRedirect>
             },
             {
                 path: "register",
@@ -48,19 +57,28 @@ const router = createBrowserRouter([
     },
     {
         path: "/customer",
-        element: <CustomerLayout />,
+        element:
+            <PersistLogin>
+                <CustomerLayout />
+            </PersistLogin>,
         // Define children routes for customer if necessary
         // children: []
     },
     {
         path: "/affiliate",
-        element: <AffiliateLayout />,
+        element:
+            <PersistLogin>
+                <AffiliateLayout />
+            </PersistLogin >,
         // Define children routes for affiliate if necessary
         // children: []
     },
     {
         path: "/service",
-        element: <ServiceLayout />,
+        element:
+            <PersistLogin >
+                <ServiceLayout />
+            </PersistLogin>,
         // Define children routes for affiliate if necessary
         // children: []
     },

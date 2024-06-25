@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Button, Switch } from 'antd'
 import { toggleDarkMode } from '../../utils/darkmode'
 import { List, X } from '@phosphor-icons/react'
+import useAuth from '../../hooks/useAuth'
 
 
 const Navbar = () => {
@@ -12,6 +13,7 @@ const Navbar = () => {
     const [isDark, setIsDark] = useState(false)
     const [isMobile, setIsMobile] = useState(false)
 
+    const { isLoggedIn } = useAuth()
 
     return (
         <div className='navbar'>
@@ -35,8 +37,16 @@ const Navbar = () => {
                             unCheckedChildren="dark"
                             defaultChecked size='large'
                         />
-                        <Button onClick={() => navigate('/auth/login')}>Login</Button>
-                        <Button onClick={() => navigate('/auth/register')}>Sign Up</Button>
+                        {
+                            isLoggedIn ?
+                                <Button>Logout</Button>
+                                :
+                                <>
+                                    <Button onClick={() => navigate('/auth/login')}>Login</Button>
+                                    <Button onClick={() => navigate('/auth/register')}>Sign Up</Button>
+                                </>
+                        }
+
                     </div>
                 </div>
 
