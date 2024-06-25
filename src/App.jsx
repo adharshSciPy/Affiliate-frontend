@@ -40,7 +40,9 @@ const router = createBrowserRouter([
     {
         path: "/admin",
         element:
-            <PersistLogin><AdminLayout /></PersistLogin>,
+            <PersistLogin>
+                <AdminLayout />
+            </PersistLogin>,
         // Define children routes for admin if necessary
         // children: []
     },

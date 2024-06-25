@@ -176,3 +176,18 @@
     width: 4%;
     min-width: auto;
 }
+
+// loader
+.loader {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    p {
+        font-size: 18px;
+        color: var(--primary-color);
+    }
+}
