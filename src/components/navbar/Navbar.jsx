@@ -1,19 +1,39 @@
-import React from 'react'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Button, Switch } from 'antd'
-import { toggleDarkMode } from '../../utils/darkmode'
-import { List, X } from '@phosphor-icons/react'
-import useAuth from '../../hooks/useAuth'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { List, X } from '@phosphor-icons/react';
+import { Button, Switch } from 'antd';
 
+import { useUserLogoutMutation } from '../../features/api/authApiSlice';
+import { useNotification } from '../../context/NotificationContext';
+import { toggleDarkMode } from '../../utils/darkmode';
+import useAuth from '../../hooks/useAuth';
 
 const Navbar = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { notification } = useNotification();
+    const [userLogout, { data, isSuccess, isLoading, isError, error }] = useUserLogoutMutation();
 
-    const [isDark, setIsDark] = useState(false)
-    const [isMobile, setIsMobile] = useState(false)
+    useEffect(() => {
+        if (isSuccess) {
+            notification('success', 'Logout Successful', '', 'bottomRight');
+        } else if (isError) {
+            notification('error', 'Logout Failed', error?.data?.message || 'An error occurred', 'bottomRight');
+        }
+    }, [isSuccess, isError, error, notification]);
 
-    const { isLoggedIn } = useAuth()
+    const [isDark, setIsDark] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    const { isLoggedIn } = useAuth();
+
+    const handleLogout = async () => {
+        try {
+            await userLogout().unwrap();
+            navigate('/auth/login')
+        } catch (err) {
+            notification('error', 'Logout Failed', error?.data?.message || 'An error occurred', 'bottomRight');
+        }
+    };
 
     return (
         <div className='navbar'>
@@ -32,47 +52,53 @@ const Navbar = () => {
                     </div>
 
                     <div className="navbar__button">
-                        <Switch onClick={() => toggleDarkMode(setIsDark)}
-                            checkedChildren="light"
-                            unCheckedChildren="dark"
-                            defaultChecked size='large'
+                        <Switch
+                            onClick={() => toggleDarkMode(setIsDark)}
+                            checkedChildren="Light"
+                            unCheckedChildren="Dark"
+                            defaultChecked={isDark}
+                            size='large'
                         />
-                        {
-                            isLoggedIn ?
-                                <Button>Logout</Button>
-                                :
-                                <>
-                                    <Button onClick={() => navigate('/auth/login')}>Login</Button>
-                                    <Button onClick={() => navigate('/auth/register')}>Sign Up</Button>
-                                </>
-                        }
-
+                        {isLoggedIn ? (
+                            <Button onClick={handleLogout}>{isLoading ? 'Logging out...' : 'Logout'}</Button>
+                        ) : (
+                            <>
+                                <Button onClick={() => navigate('/auth/login')}>Login</Button>
+                                <Button onClick={() => navigate('/auth/register')}>Sign Up</Button>
+                            </>
+                        )}
                     </div>
                 </div>
 
-                {/* mobile navbar */}
-                <div className="navbar__handburger"
+                {/* Mobile navbar toggle */}
+                <div
+                    className="navbar__handburger"
                     onClick={() => setIsMobile((prev) => !prev)}
                 >
-                    {
-                        isMobile ?
-                            <X size={32} />
-                            :
-                            <List size={32} />
-                    }
-
+                    {isMobile ? <X size={32} /> : <List size={32} />}
                 </div>
 
-                {
-                    isMobile &&
+                {/* Mobile menu */}
+                {isMobile && (
                     <div className="navbar__mobile">
-                        ss
+                        <p onClick={() => navigate('/')}>Home</p>
+                        <p onClick={() => navigate('/about')}>About Us</p>
+                        <p onClick={() => navigate('/testimonials')}>Testimonials</p>
+                        <p onClick={() => navigate('/faq')}>FAQ</p>
+                        <p onClick={() => navigate('/contact')}>Contact Us</p>
+                        {isLoggedIn ? (
+                            <Button onClick={handleLogout}>{isLoading ? 'Logging out...' : 'Logout'}</Button>
+                        ) : (
+                            <>
+                                <Button onClick={() => navigate('/auth/login')}>Login</Button>
+                                <Button onClick={() => navigate('/auth/register')}>Sign Up</Button>
+                            </>
+                        )}
                     </div>
-                }
-
+                )}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;

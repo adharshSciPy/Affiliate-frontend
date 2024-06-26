@@ -191,3 +191,70 @@
         color: var(--primary-color);
     }
 }
+
+// 404 page not found
+.pagenotfound {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__image {
+        height: 50%;
+        width: 40%;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__text {
+        font-size: 20px;
+        margin-bottom: 1rem;
+    }
+}
+
+// something went wrong page
+.tryloginagain {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__image {
+        height: 60%;
+        width: 30%;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    &__text {
+        margin-top: .5rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+
+        h3 {
+            color: var(--primary-color);
+        }
+
+        p {
+            color: var(--text-error);
+        }
+    }
+
+    &__button {
+        margin-top: .5rem;
+    }
+}

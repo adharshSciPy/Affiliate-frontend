@@ -2,11 +2,15 @@ import React, { useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider, theme } from 'antd';
 import { AdminLogin, CompanyLogin, CompanyRegister, LandingPage, Login, Register, AdminRegister } from './views';
-import { PersistLogin, LoggedInPage, ForceRedirect } from './components';
+import { PersistLogin, LoggedInPage, ForceRedirect, PageNotFound } from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, ServiceLayout } from './layout';
 import { NotificationProvider } from './context/NotificationContext';
 
 const router = createBrowserRouter([
+    {
+        path: "*",
+        element: <PageNotFound />,
+    },
     {
         path: "/",
         element: <LandingPage />,
@@ -17,14 +21,17 @@ const router = createBrowserRouter([
     },
     {
         path: "/auth",
-        element: <AuthLayout />,
+        element:
+            <PersistLogin checkAuth={false}>
+                <ForceRedirect>
+                    <AuthLayout />
+                </ForceRedirect>
+            </PersistLogin>,
+
         children: [
             {
                 path: "login",
-                element:
-                    <ForceRedirect>
-                        <Login />
-                    </ForceRedirect>
+                element: <Login />
             },
             {
                 path: "register",
@@ -67,7 +74,7 @@ const router = createBrowserRouter([
         // children: []
     },
     {
-        path: "/affiliate",
+        path: "/affiliater",
         element:
             <PersistLogin>
                 <AffiliateLayout />
@@ -76,7 +83,7 @@ const router = createBrowserRouter([
         // children: []
     },
     {
-        path: "/service",
+        path: "/company",
         element:
             <PersistLogin>
                 <ServiceLayout />

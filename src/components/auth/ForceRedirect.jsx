@@ -7,7 +7,6 @@ const ForceRedirect = ({ children }) => {
     const navigate = useNavigate();
     const { isLoggedIn } = useAuth();
     const [isLoading, setIsLoading] = useState(true);
-    console.log('isLoggedIn:', isLoggedIn);
 
     useEffect(() => {
         if (isLoggedIn) {

@@ -1,15 +1,15 @@
 import { jwtDecode } from 'jwt-decode';
 import { useSelector } from 'react-redux';
+import { roles } from '../constants/roles';
 
 const useAuth = () => {
     const { token } = useSelector((state) => state?.auth);
-    console.log('token', token)
 
     // Role values
-    const ADMIN_ROLE = 500;
-    const COMPANY_ROLE = 400;
-    const AFFILIATER_ROLE = 300;
-    const CUSTOMER_ROLE = 200;
+    const ADMIN_ROLE = roles.ADMIN_ROLE;
+    const COMPANY_ROLE = roles.COMPANY_ROLE;
+    const AFFILIATER_ROLE = roles.AFFILIATER_ROLE;
+    const CUSTOMER_ROLE = roles.CUSTOMER_ROLE;
 
     let status = '';
     let isAdmin = false;
@@ -23,7 +23,6 @@ const useAuth = () => {
     if (token) {
         try {
             const decoded = jwtDecode(token);
-            console.log('decoded', decoded)
             firstName = decoded?.firstName;
             role = decoded?.role;
 
