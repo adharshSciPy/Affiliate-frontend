@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider, theme } from 'antd';
-import { AdminLogin, CompanyLogin, CompanyRegister, LandingPage, Login, Register } from './views';
+import { AdminLogin, CompanyLogin, CompanyRegister, LandingPage, Login, Register, AdminRegister } from './views';
 import { PersistLogin, LoggedInPage, ForceRedirect } from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, ServiceLayout } from './layout';
 import { NotificationProvider } from './context/NotificationContext';
@@ -17,16 +17,14 @@ const router = createBrowserRouter([
     },
     {
         path: "/auth",
-        element:
-            <PersistLogin>
-                <ForceRedirect>
-                    <AuthLayout />
-                </ForceRedirect>
-            </PersistLogin>,
+        element: <AuthLayout />,
         children: [
             {
                 path: "login",
-                element: <ForceRedirect><Login /></ForceRedirect>
+                element:
+                    <ForceRedirect>
+                        <Login />
+                    </ForceRedirect>
             },
             {
                 path: "register",
@@ -38,7 +36,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "admin-register",
-                element: <AdminRegister/>
+                element: <AdminRegister />
             },
             {
                 path: "company-register",
@@ -80,7 +78,7 @@ const router = createBrowserRouter([
     {
         path: "/service",
         element:
-            <PersistLogin >
+            <PersistLogin>
                 <ServiceLayout />
             </PersistLogin>,
         // Define children routes for affiliate if necessary

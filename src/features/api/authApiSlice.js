@@ -88,8 +88,8 @@ export const authApiSlice = apiSlice.injectEndpoints({
                     try {
                         const { data } = await queryFulfilled
                         console.log('refreshed... data', data)
-                        // dispatch(setLogin({ accessToken: data?.accessToken }))
-                        // dispatch(apiSlice.util.resetApiState())
+                        dispatch(setLogin({ accessToken: data?.accessToken }))
+                        dispatch(apiSlice.util.resetApiState())
                     }
                     catch (err) {
                         console.log('error emoney')

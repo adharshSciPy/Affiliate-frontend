@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 const useAuth = () => {
     const { token } = useSelector((state) => state?.auth);
+    console.log('token', token)
 
     // Role values
     const ADMIN_ROLE = 500;

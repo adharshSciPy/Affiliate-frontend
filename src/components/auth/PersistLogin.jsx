@@ -7,7 +7,6 @@ import { Loader } from "../../components";
 const PersistLogin = ({ children }) => {
 
     const { token } = useSelector((state) => state?.auth);
-    console.log('token', token);
 
     const [trueSuccess, setTrueSuccess] = useState(false);
     const [showLoader, setShowLoader] = useState(true);
@@ -24,7 +23,6 @@ const PersistLogin = ({ children }) => {
         let isMounted = true;
 
         const verifyRefreshToken = async () => {
-            console.log('verifying refresh token');
             try {
                 await refresh();
                 if (isMounted) setTrueSuccess(true);
@@ -48,10 +46,8 @@ const PersistLogin = ({ children }) => {
 
     let content;
     if (showLoader || isLoading) { // Show loader for at least 2 seconds
-        console.log('loading');
         content = <Loader message='Loading...' isVisible={true}/>;
-    } else if (isError) { //persist: yes, token: no
-        console.log('error');
+    } else if (isError) { 
         content = (
             <p className='errmsg'>
                 {error?.data?.message}
@@ -59,11 +55,8 @@ const PersistLogin = ({ children }) => {
             </p>
         );
     } else if (isSuccess && trueSuccess) { //persist: yes, token: yes
-        console.log('success');
         content = children;
     } else if (token && isUninitialized) { //persist: yes, token: yes
-        console.log('token and uninit');
-        console.log(isUninitialized);
         content = children;
     }
 
