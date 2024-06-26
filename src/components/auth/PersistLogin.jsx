@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useAuthRefreshMutation } from "../../features/api/authApiSlice";
-import { Loader } from "../../components";
+import { Loader, TryLoginAgain } from "../../components";
 
-const PersistLogin = ({ children }) => {
+const PersistLogin = ({ children, checkAuth = true }) => {
 
     const { token } = useSelector((state) => state?.auth);
 
@@ -45,21 +45,20 @@ const PersistLogin = ({ children }) => {
     }, []);
 
     let content;
-    if (showLoader || isLoading) { // Show loader for at least 2 seconds
-        content = <Loader message='Loading...' isVisible={true}/>;
-    } else if (isError) { 
-        content = (
-            <p className='errmsg'>
-                {error?.data?.message}
-                <Link to="/auth/login">Please login again</Link>.
-            </p>
-        );
-    } else if (isSuccess && trueSuccess) { //persist: yes, token: yes
-        content = children;
-    } else if (token && isUninitialized) { //persist: yes, token: yes
+    if (checkAuth) {
+        if (showLoader || isLoading) { // Show loader for at least 2 seconds
+            content = <Loader message='Loading...' isVisible={true} />;
+        } else if (isError) {
+            content = <TryLoginAgain message={error?.data?.message} />;
+        } else if (isSuccess && trueSuccess) { //persist: yes, token: yes
+            content = children;
+        } else if (token && isUninitialized) { //persist: yes, token: yes
+            content = children;
+        }
+    }
+    else {
         content = children;
     }
-
     return content;
 };
 

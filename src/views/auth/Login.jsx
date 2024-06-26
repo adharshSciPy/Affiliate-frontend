@@ -16,8 +16,8 @@ const Login = () => {
 
   // input fields
   const fields = {
-    email: 'johndoe@gmail.com',
-    password: 'JOHNjohn@1'
+    email: '',
+    password: ''
   }
 
   const [form, setForm] = useState(fields)

@@ -9,7 +9,6 @@ const baseQuery = fetchBaseQuery({
     // setting bearer token
     prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token;
-        console.log('while preparing headers', token)
         if (token) {
             headers.set('Authorization', `Bearer ${token}`);
         }
@@ -19,14 +18,13 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithAutoRefresh = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions)
+    api.dispatch(setLogin({ accessToken: result?.data?.data }))
 
     if (result?.error?.status === 403) {
         const refreshResult = await baseQuery('/user/refresh', api, extraOptions)
-        console.log('rfresh datra', refreshResult)
 
         if (refreshResult.data) {
-            console.log('refresh result', refreshResult)
-            api.dispatch(setLogin({ accessToken: refreshResult.data }))
+            api.dispatch(setLogin({ accessToken: refreshResult?.data?.data }))
             result = await baseQuery(args, api, extraOptions)
         }
         else {

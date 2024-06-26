@@ -8,3 +8,5 @@ export { default as PersistLogin } from './auth/PersistLogin';
 export { default as LoggedInPage } from './auth/LoggedInPage';
 export { default as ForceRedirect } from './auth/ForceRedirect';
 export { default as Loader } from './loader/Loader';
+export { default as PageNotFound } from './404/PageNotFound'
+export { default as TryLoginAgain } from './404/TryLoginAgain'
