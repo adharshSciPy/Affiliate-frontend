@@ -37,6 +37,10 @@ const router = createBrowserRouter([
                 element: <AdminLogin />
             },
             {
+                path: "admin-register",
+                element: <AdminRegister/>
+            },
+            {
                 path: "company-register",
                 element: <CompanyRegister />
             },
