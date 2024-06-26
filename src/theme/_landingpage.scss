@@ -547,7 +547,7 @@
 
 // contact
 .contact {
-    min-height: 30vh;
+    min-height: 40vh;
     height: auto;
     width: 100%;
     display: flex;
@@ -560,5 +560,106 @@
         height: 100%;
         width: 100%;
         max-width: 1500px;
+        display: flex;
+        gap: 30px;
+        // border: 1px solid blue;
     }
+
+    &__copyright{
+        height: 30vh;
+        width: 30%;
+        // border: 1px solid red;
+        margin-right: 200px;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        // flex-direction: column;
+
+        p{
+            font-family: 'Times New Roman', Times, serif;
+            padding: 5px;
+            color: white;
+            padding-left: 0px;
+            font-size: small;
+        }
+    }
+    &__copy{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        // border: 1px solid red;
+    }
+
+    &__company{
+        
+        // border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        color: white;
+        margin-top: 40px;
+
+        h1{
+            font-size: large;
+        }
+
+        p{
+            margin-bottom: 10px;
+            color: white;
+            font-size: small;
+        }
+    }
+
+    &__support{
+    
+        // border: 1px solid red;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        color: white;
+        margin-top: 40px;
+
+        h1{
+            font-size: large;
+        }
+
+        p{
+            margin-bottom: 10px;
+            color: white;
+            font-size: small;
+        } p{
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+    }
+
+    &__email{
+        height: 30vh;
+        width: 50vh;
+        border: 1px solid red;
+    }
+    &__sociallinks{
+        // border: 1px solid black;
+        margin-top: 30px;
+        display: flex;
+        gap: 15px;
+
+        a{
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.078);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    &__main{
+        // border: 1px solid black;
+        display: flex;
+        justify-content: space-between;
+        width: 70%;
+    }
+   
 }
