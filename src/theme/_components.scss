@@ -93,9 +93,9 @@
 }
 
 // admin navbar
-.adminnavbar {
+.dashnavbar {
     height: 10vh;
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -105,58 +105,47 @@
     position: fixed;
     padding: 0 3rem;
     top: 0;
-    left: 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-}
-
-// admin sidebar
-.adminsidebar {
-    height: 100vh;
-    width: 20%;
-    background-color: var(--background-2);
-    position: relative;
+    right: 0;
     transition: all 0.4s ease-in-out;
 
-    &__shutter {
-        height: 2rem;
-        width: 2rem;
-        position: absolute;
-        top: 50%;
-        left: 100%;
-        transform: translate(-50%, -50%);
-        transition: all 0.3s ease-in-out;
-        border-radius: 50%;
-        background-color: var(--background-2);
-        cursor: pointer;
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1500px;
+    }
+
+    &__text {
+        color: var(--text-grey);
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 1rem;
+
+        button {
+            height: 33px;
+            width: 33px;
+            border-radius: 6px;
+            background-color: var(--primary-color);
+            box-shadow: 0px 4px 4px 0px #00000040;
+            color: var(--text-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }
 
-// service navbar
-.servicenavbar {
-    height: 10vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-white);
-    background-color: var(--background-1);
-    position: fixed;
-    padding: 0 3rem;
-    top: 0;
-    left: 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 999;
-}
-
-// service sidebar
-.servicesidebar {
+// sidebar (dasboard)
+.sidebar {
     height: 100vh;
     width: 20%;
-    background-color: var(--background-2);
+    background-color: var(--primary-color);
     position: relative;
     transition: all 0.4s ease-in-out;
+    z-index: 999;
 
     &__shutter {
         height: 2rem;
@@ -175,6 +164,10 @@
 .offSidebar {
     width: 4%;
     min-width: auto;
+}
+
+.fullwidth {
+    width: 100%;
 }
 
 // loader

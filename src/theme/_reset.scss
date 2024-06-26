@@ -8,5 +8,22 @@ body {
     margin: 0;
     padding: 0;
     // overflow: hidden;
-    font-family: "Reddit Sans Condensed", sans-serif;
+    // font-family: "Reddit Sans Condensed", sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
+
+}
+
+button {
+    outline: none;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
 }

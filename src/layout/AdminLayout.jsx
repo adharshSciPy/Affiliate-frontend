@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
-import { AdminNavbar, AdminSidebar } from '../components'
+import { DashboardNavbar, Sidebar } from '../components'
 
 const AdminLayout = () => {
+
+  const [isOpen, setIsOpen] = useState(true)
+
   return (
-    <div className='admin'>
-      <div className="admin__container">
-        <div className="admin__navbar">
-          <AdminNavbar/>
+    <div className='dasbhoard'>
+      <div className="dasbhoard__container">
+        <div className="dasbhoard__navbar">
+          <DashboardNavbar isOpen={isOpen} />
         </div>
 
-        <div className="admin__sidebar">
-          <AdminSidebar/>
+        <div className="dasbhoard__sidebar">
+          <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
 
-        <div className="admin__body">
+        <div className="dasbhoard__body">
           <Outlet />
         </div>
       </div>

@@ -5,14 +5,14 @@
     background-color: var(--background-1);
 }
 
-// admin layout
-.admin {
+// dashboard layout
+.dashboard {
     height: 100vh;
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 70px 1fr;
     grid-template-areas:
-        "navbar navbar"
+        "sidebar navbar"
         "sidebar body";
 
     &__container {
@@ -24,54 +24,19 @@
         grid-template-columns: 240px 1fr;
         grid-template-rows: 70px 1fr;
         height: 100%;
-
-        &__navbar {
-            grid-area: navbar;
-        }
-
-        &__sidebar {
-            grid-area: sidebar;
-        }
-
-        &__body {
-            grid-area: body;
-            padding: 20px;
-        }
     }
-}
 
-// service layout
-.service {
-    height: 100vh;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    grid-template-rows: 70px 1fr;
-    grid-template-areas:
-        "navbar navbar"
-        "sidebar body";
+    &__navbar {
+        grid-area: navbar;
+    }
 
-    &__container {
-        display: grid;
-        grid-template-areas:
-            "navbar"
-            "sidebar"
-            "body";
-        grid-template-columns: 240px 1fr;
-        grid-template-rows: 70px 1fr;
-        height: 100%;
+    &__sidebar {
+        grid-area: sidebar;
+    }
 
-        &__navbar {
-            grid-area: navbar;
-        }
-
-        &__sidebar {
-            grid-area: sidebar;
-        }
-
-        &__body {
-            grid-area: body;
-            padding: 20px;
-        }
+    &__body {
+        grid-area: body;
+        padding: 20px;
     }
 }
 
