@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useUserRegisterMutation } from '../../features/api/authApiSlice';
 import LoginImg from '../../assets/images/login-img.png';
 import { useNotification } from '../../context/NotificationContext';
+import RegisterModal from "./RegisterModal"
+import { roles } from "../../constants/roles.js";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -23,6 +25,7 @@ const Register = () => {
   const [errors, setErrors] = useState(fields);
   const [touched, setTouched] = useState(fields);
   const [isDisabled, setIsDisabled] = useState(true);
+  const [role, setRole] = useState(null)
 
   // to manage submit button's disable state
   useEffect(() => {
@@ -97,6 +100,8 @@ const Register = () => {
     validateField(name, value);
   };
 
+  console.log("role", role)
+
   // submit button
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -107,7 +112,7 @@ const Register = () => {
         lastName: form.lastName,
         email: form.email,
         password: form.password,
-        role: 200
+        role: role
       };
       const result = await userRegistration({ payload }).unwrap();
       if (result) {
@@ -125,7 +130,7 @@ const Register = () => {
         <div className="auth__form">
           <div className="auth__form--heading">
             <h2>Welcome</h2>
-            <p>Create a new free account as a customer</p>
+            <p>Create a new free account as a {role === roles.AFFILIATER_ROLE ? 'affiliater' : role === roles.CUSTOMER_ROLE ? 'customer' : ''}</p>
           </div>
 
           <div className="auth__form--input">
@@ -214,6 +219,7 @@ const Register = () => {
         <div className="auth__image">
           <img src={LoginImg} alt="" />
         </div>
+        <RegisterModal isOpen={true} setRole={setRole} />
       </div>
     </div>
   );
