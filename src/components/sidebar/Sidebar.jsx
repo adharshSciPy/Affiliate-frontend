@@ -1,26 +1,38 @@
-import { ArrowCircleRight, ArrowCircleLeft, SignOut, ListMagnifyingGlass } from '@phosphor-icons/react'
-import React from 'react'
+import { ArrowCircleRight, ArrowCircleLeft, SignOut } from '@phosphor-icons/react'
+import React, { useEffect, useState } from 'react'
+import SideRoutes from './SideRoutes'
+import useAuth from '../../hooks/useAuth'
+import { adminSidebarRoutes } from '../../constants/sidebarRoutes'
+import { roles } from '../../constants/roles'
 import profileImg from '../../assets/images/profile.png'
-import { MagnifyingGlass } from 'react-loader-spinner'
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
 
+  const { role } = useAuth()
+
+  const [activeIndex, setActiveIndex] = useState(null);
+  const [routes, setRoutes] = useState()
+
+  useEffect(() => {
+    if (role === roles.ADMIN_ROLE) {
+      setRoutes(adminSidebarRoutes)
+    }
+  }, [role])
+
   const handleSidebar = () => {
     setIsOpen((prev) => {
-      localStorage.setItem('sidebarOpen', !prev)
       return !prev
     })
   }
 
   return (
-    <div className={`sidebar ${!isOpen && 'offSidebar'}`}>
-      {/* middle button to close and open */}
-      <div className="sidebar__shutter" onClick={() => handleSidebar()}>
-        {
-          isOpen ? <ArrowCircleRight size={32} color='grey' /> : <ArrowCircleLeft size={32} color='grey' />
-        }
+    <div className={`sidebar ${isOpen ? 'sidebar--open' : 'sidebar--closed'}`}>
+      <div
+        className={`sidebar__shutter ${isOpen ? 'shutter--open' : ''}`}
+        onClick={handleSidebar}
+      >
+        {isOpen ? <ArrowCircleLeft size={32} color='grey' /> : <ArrowCircleRight size={32} color='grey' />}
       </div>
-
 
       <div className="sidebar__container">
         <div className="sidebar__logo">
@@ -32,12 +44,21 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         </div>
 
         <div className="sidebar__routes">
-          
+          {routes?.map((route, index) => (
+            <SideRoutes
+              route={route}
+              index={index}
+              key={index}
+              isActive={activeIndex === index}
+              setActiveIndex={setActiveIndex}
+              isOpen={isOpen}
+            />
+          ))}
         </div>
 
         <div className="sidebar__profile">
           <div className="sidebar__profile--logo">
-            <img src={profileImg} alt="profile-picture" />
+            <img src={profileImg} alt="profile" />
           </div>
 
           <div className="sidebar__profile--name">
@@ -51,21 +72,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             </button>
           </div>
         </div>
-
-        <div className="sidebar__support">
-          <div className="sidebar__support--text">
-            <h4>Help and Support</h4>
-            <p>support@affiliatemarketting.com</p>
-          </div>
-
-          <div className="sidebar__support--social">
-            Facebook
-          </div>
-
-        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

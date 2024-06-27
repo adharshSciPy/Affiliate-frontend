@@ -33,7 +33,6 @@ const PersistLogin = ({ children, checkAuth = true }) => {
 
         if (!token) verifyRefreshToken();
 
-        // Simulate a delay of 2 seconds for the loading screen
         const timer = setTimeout(() => {
             setShowLoader(false);
         }, 2000);
@@ -46,13 +45,13 @@ const PersistLogin = ({ children, checkAuth = true }) => {
 
     let content;
     if (checkAuth) {
-        if (showLoader || isLoading) { // Show loader for at least 2 seconds
+        if (showLoader || isLoading) { 
             content = <Loader message='Loading...' isVisible={true} />;
         } else if (isError) {
             content = <TryLoginAgain message={error?.data?.message} />;
-        } else if (isSuccess && trueSuccess) { //persist: yes, token: yes
+        } else if (isSuccess && trueSuccess) { 
             content = children;
-        } else if (token && isUninitialized) { //persist: yes, token: yes
+        } else if (token && isUninitialized) {
             content = children;
         }
     }
