@@ -25,8 +25,8 @@ function RegisterModal({ setRole }) {
                         <div className='registermodal__firstimage'><img src={Affiliate} /></div>
                         <div className='registermodal__firstheading'><p>Register as Affiliate Marketer</p></div>
                         <div className='registermodal__firsttext'><p>Affiliate marketing is like a partnership between companies and individuals.
-                            You promote products or services, and when someone makes a purchase through your unique link, you earn a commission.
-                            It's a win-win: companies get sales, and you earn money without handling the product directly.
+                            <div className='registermodal__firsttext--affiliatersyle'>You promote products or services, and when someone makes a purchase through your unique link, you earn a commission.
+                                It's a win-win: companies get sales, and you earn money without handling the product directly.</div>
                         </p></div>
                     </div>
                     <div className='registermodal__line'></div>
@@ -37,9 +37,9 @@ function RegisterModal({ setRole }) {
                         <div className='registermodal__secondimage'><img src={User} /></div>
                         <div className='registermodal__secondheading'><p>Register as a Customer</p></div>
                         <div className='registermodal__secondtext'><p>Customers are the lifeblood of any business.
-                            They're the individuals or entities who purchase goods or services from a company in exchange for money.
-                            Understanding their needs, preferences, and behaviors is crucial for businesses to thrive.
-                            Building strong relationships with customers through excellent service.
+                            <div className='registermodal__secondtext--customerstyle'>They're the individuals or entities who purchase goods or services from a company in exchange for money.
+                                Understanding their needs, preferences, and behaviors is crucial for businesses to thrive.
+                                Building strong relationships with customers through excellent service.</div>
                         </p></div>
                     </div>
                 </div>
