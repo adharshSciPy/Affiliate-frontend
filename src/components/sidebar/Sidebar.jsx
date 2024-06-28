@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import SideRoutes from './SideRoutes'
 import useAuth from '../../hooks/useAuth'
-import { adminSidebarRoutes } from '../../constants/sidebarRoutes'
+import { adminSidebarRoutes, affiliateSidebarRoutes, companySidebarRoutes } from '../../constants/sidebarRoutes'
 import { roles } from '../../constants/roles'
 import profileImg from '../../assets/images/profile.png'
 
@@ -16,6 +16,12 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   useEffect(() => {
     if (role === roles.ADMIN_ROLE) {
       setRoutes(adminSidebarRoutes)
+    }
+    else if(role === roles.COMPANY_ROLE) {
+      setRoutes(companySidebarRoutes)
+    }
+    else if(role === roles.AFFILIATER_ROLE) {
+      setRoutes(affiliateSidebarRoutes)
     }
   }, [role])
 

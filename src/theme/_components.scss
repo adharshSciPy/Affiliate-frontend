@@ -415,3 +415,50 @@
     margin-top: 0.5rem;
   }
 }
+
+// dashcard
+.dashcard {
+  height: 150px;
+  width: 30%;
+  max-width: 480px;
+  border-radius: 15px;
+  background-color: var(--background-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 3rem 1rem;
+    overflow: hidden;
+  }
+
+  &__icon {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      height: 80%;
+      width: 80%;
+    }
+  }
+
+  &__text {
+    color: var(--text-grey);
+
+    p:nth-child(1) {
+      font-size: 50px;
+      font-weight: 600;
+    }
+
+    p:nth-child(2) {
+      font-size: 20px;
+    }
+  }
+}
