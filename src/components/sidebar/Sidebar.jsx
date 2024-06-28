@@ -39,9 +39,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <h1>LOGO</h1>
         </div>
 
-        <div className="sidebar__search">
-          <input type="text" placeholder='Search here..' />
-        </div>
+          {/* <div className="sidebar__search">
+            <input type="text" placeholder='Search here..' />
+          </div> */}
 
         <div className="sidebar__routes">
           {routes?.map((route, index) => (
