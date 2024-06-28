@@ -95,17 +95,13 @@
 // admin navbar
 .dashnavbar {
     height: 10vh;
-    width: 80%;
+    width: inherit;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: var(--text-white);
     background-color: var(--background-1);
-    position: fixed;
-    padding: 0 3rem;
-    top: 0;
-    right: 0;
     transition: all 0.4s ease-in-out;
 
     &__container {
@@ -113,7 +109,7 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        max-width: 1500px;
+        max-width: 2500px;
     }
 
     &__text {
@@ -146,12 +142,12 @@
     position: relative;
     transition: all 0.4s ease-in-out;
     z-index: 999;
-    min-width: 300px;
+    min-width: 350px;
 
 
     &--closed {
-        width: 4%;
-        min-width: 30px;
+        width: 5%;
+        min-width: 80px;
     }
 
     &__shutter {
@@ -236,6 +232,13 @@
         left: 0;
         bottom: 2rem;
         position: absolute;
+
+        &--details {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
 
         &--logo {
             height: 3rem;

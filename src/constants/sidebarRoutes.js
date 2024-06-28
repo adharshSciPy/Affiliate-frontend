@@ -2,12 +2,12 @@ const adminSidebarRoutes = [
     {
         icon: 'DB',
         title: 'Dashboard',
-        path: '#',
+        path: '/admin/home',
     },
     {
         icon: 'SP',
         title: 'Service Providers',
-        path: '#',
+        path: false,
         children: [
             {
                 title: 'Active Companies',
@@ -26,7 +26,7 @@ const adminSidebarRoutes = [
     {
         icon: 'AF',
         title: 'Affilaters',
-        path: '#',
+        path: false,
         children: [
             {
                 title: 'Active Members',
@@ -49,7 +49,7 @@ const adminSidebarRoutes = [
     {
         icon: 'CT',
         title: 'Customers',
-        path: '#',
+        path: false,
         children: [
             {
                 title: 'Active Members',

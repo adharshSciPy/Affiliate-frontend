@@ -1,5 +1,6 @@
 import { ArrowCircleRight, ArrowCircleLeft, SignOut } from '@phosphor-icons/react'
 import React, { useEffect, useState } from 'react'
+
 import SideRoutes from './SideRoutes'
 import useAuth from '../../hooks/useAuth'
 import { adminSidebarRoutes } from '../../constants/sidebarRoutes'
@@ -7,7 +8,6 @@ import { roles } from '../../constants/roles'
 import profileImg from '../../assets/images/profile.png'
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
-
   const { role } = useAuth()
 
   const [activeIndex, setActiveIndex] = useState(null);
@@ -31,7 +31,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         className={`sidebar__shutter ${isOpen ? 'shutter--open' : ''}`}
         onClick={handleSidebar}
       >
-        {isOpen ? <ArrowCircleLeft size={32} color='grey' /> : <ArrowCircleRight size={32} color='grey' />}
+        {isOpen ? <ArrowCircleLeft size={32} color='#2F6F31' /> : <ArrowCircleRight size={32} color='#2F6F31' />}
       </div>
 
       <div className="sidebar__container">
@@ -57,13 +57,16 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         </div>
 
         <div className="sidebar__profile">
-          <div className="sidebar__profile--logo">
-            <img src={profileImg} alt="profile" />
-          </div>
 
-          <div className="sidebar__profile--name">
-            <p><span>hello, </span>Rajan David</p>
-            <p>helloadmin@gmail.com</p>
+          <div className="sidebar__profile--details">
+            <div className="sidebar__profile--logo">
+              <img src={profileImg} alt="profile" />
+            </div>
+
+            <div className="sidebar__profile--name">
+              <p><span>hello, </span>Rajan David</p>
+              <p>helloadmin@gmail.com</p>
+            </div>
           </div>
 
           <div className="sidebar__profile--logout">
