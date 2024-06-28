@@ -130,7 +130,8 @@ const Register = () => {
         <div className="auth__form">
           <div className="auth__form--heading">
             <h2>Welcome</h2>
-            <p>Create a new free account as a {role === roles.AFFILIATER_ROLE ? 'affiliater' : role === roles.CUSTOMER_ROLE ? 'customer' : ''}</p>
+            <p>{!role && 'Create a new free account'}</p>
+            <p>{role && 'Create a new free account as a '} <span>{role === roles.AFFILIATER_ROLE ? 'Affiliater' : role === roles.CUSTOMER_ROLE ? 'Customer' : ''}</span></p>
           </div>
 
           <div className="auth__form--input">
@@ -219,7 +220,7 @@ const Register = () => {
         <div className="auth__image">
           <img src={LoginImg} alt="" />
         </div>
-        <RegisterModal isOpen={true} setRole={setRole} />
+        <RegisterModal isOpen={true} role={role} setRole={setRole} />
       </div>
     </div>
   );

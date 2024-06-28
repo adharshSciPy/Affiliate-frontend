@@ -30,6 +30,12 @@
             h2 {
                 font-size: 25px;
             }
+
+            span {
+                color: var(--primary-color);
+                font-weight: 700;
+                font-size: 20px;
+            }
         }
 
         &--input {
@@ -71,7 +77,6 @@
 }
 
 //register modal
-
 .registermodal {
     display: flex;
     justify-content: space-between;
@@ -83,11 +88,12 @@
         flex-direction: column;
     }
 
-    &__firstcontainer {
+    &__container {
         width: 50%;
         padding: 10px;
         text-align: left;
         position: relative;
+        cursor: pointer;
 
         @include breakpoint(lg) {
             flex-direction: column;
@@ -104,73 +110,14 @@
         }
     }
 
-    &__secondcontainer {
-        width: 50%;
-        padding: 10px;
-        text-align: left;
-        margin-left: 35px;
-
-        @include breakpoint(lg) {
-            flex-direction: column;
-        }
-
-        @include breakpoint(md) {
-            flex-direction: column;
-        }
-
-        @include breakpoint(sm) {
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-    }
-
-    &__heading {
-        color: var(--text-grey);
-        font-size: large;
-    }
-
-    &__firstimage {
+    &__image {
         margin-bottom: 7px;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    &__secondimage {
-        margin-bottom: 8px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        @include breakpoint(sm) {
-            margin-right: 20px;
-        }
-    }
-
-    &__firstheading {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 5px;
-        font-size: 1rem;
-
-        @include breakpoint(lg) {
-            flex-direction: column;
-
-        }
-
-        @include breakpoint(md) {
-            flex-direction: column;
-        }
-
-        @include breakpoint(sm) {
-            flex-direction: column;
-            width: auto;
-        }
-    }
-
-    &__secondheading {
+    &__heading {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -188,6 +135,11 @@
         @include breakpoint(sm) {
             flex-direction: column;
             width: auto;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: var(--text-grey);
         }
     }
 
@@ -206,16 +158,18 @@
         }
     }
 
-    &__firsttext {
+    &__text {
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 14px;
+        text-align: center;
+        font-size: 17px;
         width: auto;
         color: var(--text-grey);
         line-height: 1.5;
         position: relative;
         flex-direction: column;
+        margin-top: -.5rem;
 
         @include breakpoint(lg) {
             flex-direction: column;
@@ -228,10 +182,12 @@
         @include breakpoint(sm) {
             flex-direction: column;
             align-items: center;
-            justify-content: center;    
+            justify-content: center;
         }
 
-        &--affiliatersyle {
+        &--mobile {
+            margin-top: 1rem;
+            font-size: 14px;
             display: block;
 
             @include breakpoint(sm) {
@@ -240,38 +196,17 @@
         }
     }
 
-    &__secondtext {
+    &__selectedcontainer {
+        width: 100%;
+        text-align: center;
+    }
+
+    &__button {
+        margin-top: 1rem;
         display: flex;
-        justify-content: center;
         align-items: center;
-        font-size: 14px;
-        width: auto;
-        color: var(--text-grey);
-        line-height: 1.5;
-        position: relative;
-
-        @include breakpoint(lg) {
-            flex-direction: column;
-        }
-
-        @include breakpoint(md) {
-            flex-direction: column;
-        }
-
-        @include breakpoint(sm) {
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        &--customerstyle {
-            display: block;
-
-            @include breakpoint(sm) {
-                flex-direction: column;
-                display: none;
-            }
-        }
+        justify-content: center;
+        gap: 1rem;
     }
 
 }
