@@ -79,10 +79,29 @@
     width: 100%;
     padding: 0px;
 
+    @include breakpoint(sm) {
+        flex-direction: column;
+    }
+
     &__firstcontainer {
         width: 50%;
         padding: 10px;
         text-align: left;
+        position: relative;
+
+        @include breakpoint(lg) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(md) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(sm) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__secondcontainer {
@@ -90,6 +109,20 @@
         padding: 10px;
         text-align: left;
         margin-left: 35px;
+
+        @include breakpoint(lg) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(md) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(sm) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__heading {
@@ -99,39 +132,146 @@
 
     &__firstimage {
         margin-bottom: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     &__secondimage {
         margin-bottom: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include breakpoint(sm) {
+            margin-right: 20px;
+        }
     }
 
     &__firstheading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-bottom: 5px;
         font-size: 1rem;
+
+        @include breakpoint(lg) {
+            flex-direction: column;
+
+        }
+
+        @include breakpoint(md) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(sm) {
+            flex-direction: column;
+            width: auto;
+        }
     }
 
     &__secondheading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin-bottom: 5px;
         font-size: 1rem;
+
+        @include breakpoint(lg) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(md) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(sm) {
+            flex-direction: column;
+            width: auto;
+        }
     }
 
     &__line {
         width: 3px;
         height: 300px;
         background-color: var(--text-white);
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+
+        @include breakpoint(sm) {
+            transform: rotate(90deg);
+            margin-top: -100px;
+            margin-bottom: -100px;
+        }
     }
 
     &__firsttext {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 14px;
-        width: 350px;
+        width: auto;
         color: var(--text-grey);
         line-height: 1.5;
+        position: relative;
+        flex-direction: column;
+
+        @include breakpoint(lg) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(md) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(sm) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;    
+        }
+
+        &--affiliatersyle {
+            display: block;
+
+            @include breakpoint(sm) {
+                display: none;
+            }
+        }
     }
 
     &__secondtext {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 14px;
-        width: 350px;
+        width: auto;
         color: var(--text-grey);
         line-height: 1.5;
+        position: relative;
+
+        @include breakpoint(lg) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(md) {
+            flex-direction: column;
+        }
+
+        @include breakpoint(sm) {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &--customerstyle {
+            display: block;
+
+            @include breakpoint(sm) {
+                flex-direction: column;
+                display: none;
+            }
+        }
     }
+
 }
