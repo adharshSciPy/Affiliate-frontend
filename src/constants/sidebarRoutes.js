@@ -75,58 +75,58 @@ const companySidebarRoutes = [
         path: '/admin/home',
     },
     {
-        icon: 'SP',
-        title: 'Service Providers',
+        icon: 'OD',
+        title: 'Offers & Discounts',
         path: false,
         children: [
             {
-                title: 'Active Companies',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Verifications',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Payments',
+                title: '',
                 path: '#',
             }
         ]
     },
     {
-        icon: 'AF',
-        title: 'Affilaters',
+        icon: 'OS',
+        title: 'Our Services',
         path: false,
         children: [
             {
-                title: 'Active Members',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Verifications',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Coupons',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Payments',
+                title: '',
                 path: '#',
             }
         ]
     },
     {
-        icon: 'CT',
-        title: 'Customers',
+        icon: 'CB',
+        title: 'CRM & Billing',
         path: false,
         children: [
             {
-                title: 'Active Members',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Verifications',
+                title: '',
                 path: '#',
             }
         ]
@@ -145,58 +145,58 @@ const affiliateSidebarRoutes = [
         path: '/admin/home',
     },
     {
-        icon: 'SP',
-        title: 'Service Providers',
+        icon: 'CP',
+        title: 'Coupons',
         path: false,
         children: [
             {
-                title: 'Active Companies',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Verifications',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Payments',
+                title: '',
                 path: '#',
             }
         ]
     },
     {
-        icon: 'AF',
-        title: 'Affilaters',
+        icon: 'CM',
+        title: 'Comission',
         path: false,
         children: [
             {
-                title: 'Active Members',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Verifications',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Coupons',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Payments',
+                title: '',
                 path: '#',
             }
         ]
     },
     {
-        icon: 'CT',
-        title: 'Customers',
+        icon: 'TS',
+        title: 'Transactions',
         path: false,
         children: [
             {
-                title: 'Active Members',
+                title: '',
                 path: '#',
             },
             {
-                title: 'Verifications',
+                title: '',
                 path: '#',
             }
         ]

@@ -14,16 +14,20 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const [routes, setRoutes] = useState()
 
   useEffect(() => {
-    if (role === roles.ADMIN_ROLE) {
-      setRoutes(adminSidebarRoutes)
+    switch (role) {
+      case roles.ADMIN_ROLE:
+        setRoutes(adminSidebarRoutes);
+        break;
+      case roles.COMPANY_ROLE:
+        setRoutes(companySidebarRoutes);
+        break;
+      case roles.AFFILIATER_ROLE:
+        setRoutes(affiliateSidebarRoutes);
+        break;
+      default:
+        setRoutes([]); 
     }
-    else if(role === roles.COMPANY_ROLE) {
-      setRoutes(companySidebarRoutes)
-    }
-    else if(role === roles.AFFILIATER_ROLE) {
-      setRoutes(affiliateSidebarRoutes)
-    }
-  }, [role])
+  }, [role]);
 
   const handleSidebar = () => {
     setIsOpen((prev) => {
