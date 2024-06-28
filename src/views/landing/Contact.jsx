@@ -1,5 +1,8 @@
-import { DribbbleLogo, InstagramLogo, TwitterLogo, YoutubeLogo } from '@phosphor-icons/react'
+import { DribbbleLogo, InstagramLogo, PaperPlaneRight, PaperPlaneTilt, TwitterLogo, YoutubeLogo } from '@phosphor-icons/react'
 import React from 'react'
+import { Input, Space } from 'antd';
+import { color } from 'framer-motion';
+const { Search } = Input;
 
 const Contact = () => {
   return (
@@ -45,7 +48,17 @@ const Contact = () => {
 
           </div>
 
-          <div className="contact__email"></div>
+          <div className="contact__email">
+            <h1>Stay up to date</h1>
+            <Input
+              className='contact__input'
+              addonAfter={<PaperPlaneRight color='white' />}
+              placeholder="Your email address"
+              style={{
+                width: 200,
+              }}
+            />
+          </div>
 
         </div>
 
