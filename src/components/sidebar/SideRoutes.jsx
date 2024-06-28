@@ -1,19 +1,27 @@
 import { CaretDown, CaretRight } from '@phosphor-icons/react';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 const SideRoutes = ({ route, index, isActive, setActiveIndex }) => {
 
+    const navigate = useNavigate()
     const [isChildren, setIsChildren] = useState(route?.children && route?.children?.length > 0)
-    const handleClick = () => {
-        isChildren && setActiveIndex(isActive ? null : index);
+    const handleClick = (path) => {
+        console.log('path', path)
+        if (!path) {
+            isChildren && setActiveIndex(isActive ? null : index);
+        }
+        else {
+            navigate(path)
+        }
     };
 
     return (
         <div className={`sideroutes`} key={index}>
-            <div className={`sideroutes__title ${isActive && 'activesideroute'}`} onClick={handleClick}>
+            <div className={`sideroutes__title ${isActive && 'activesideroute'}`} onClick={() => handleClick(route?.path)}>
                 <div className="sideroutes__title--text">
-                    <p>{route.icon}</p>
-                    <p>{route.title}</p>
+                    <p>{route?.icon}</p>
+                    <p>{route?.title}</p>
                 </div>
 
                 <div className="sideroutes__title--button">

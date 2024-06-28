@@ -1,6 +1,11 @@
 export { default as Navbar } from './navbar/Navbar';
+
+// dashboard
 export { default as Sidebar } from './sidebar/Sidebar';
 export { default as DashboardNavbar } from './navbar/DashboardNavbar'
+export { default as Dashcard } from './dashcard/Dashcard';
+
+// auth
 export { default as PersistLogin } from './auth/PersistLogin';
 export { default as LoggedInPage } from './auth/LoggedInPage';
 export { default as ForceRedirect } from './auth/ForceRedirect';

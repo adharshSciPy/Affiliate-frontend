@@ -7,17 +7,17 @@ const AdminLayout = () => {
   const [isOpen, setIsOpen] = useState(true)
 
   return (
-    <div className='dasbhoard'>
-      <div className="dasbhoard__container">
-        <div className="dasbhoard__navbar">
+    <div className='dashboard'>
+      <div className="dashboard__container">
+        <div className="dashboard__navbar">
           <DashboardNavbar isOpen={isOpen} />
         </div>
 
-        <div className="dasbhoard__sidebar">
+        <div className="dashboard__sidebar">
           <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
 
-        <div className="dasbhoard__body">
+        <div className="dashboard__body">
           <Outlet />
         </div>
       </div>
