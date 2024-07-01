@@ -100,7 +100,6 @@ const Register = () => {
     validateField(name, value);
   };
 
-  console.log("role", role)
 
   // submit button
   const handleSubmit = async (e) => {

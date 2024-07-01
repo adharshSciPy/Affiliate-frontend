@@ -22,25 +22,6 @@ export const authApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
-        // user logout
-        userLogout: builder.mutation({
-            query: () => ({
-                url: `/user/logout`,
-                method: 'POST',
-            }),
-
-            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
-                try {
-                    await queryFulfilled
-                    dispatch(setLogout())
-                    dispatch(apiSlice.util.resetApiState())
-                }
-                catch (err) {
-                    throw err;
-                }
-            }
-        }),
-
         // company register
         companyRegister: builder.mutation({
             query: ({ payload }) => ({
@@ -83,7 +64,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 url: `/user/refresh`,
                 method: 'GET',
 
-                async onQueryStarted(arg, { dispatch, queryFulfilled  }) {
+                async onQueryStarted(arg, { dispatch, queryFulfilled }) {
                     try {
                         const { data } = await queryFulfilled
                         dispatch(setLogin({ accessToken: data?.data }))
@@ -95,7 +76,26 @@ export const authApiSlice = apiSlice.injectEndpoints({
                 }
             })
         }),
+
+        // auth logout
+        authLogout: builder.mutation({
+            query: () => ({
+                url: `/user/logout`,
+                method: 'POST',
+            }),
+
+            async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+                try {
+                    await queryFulfilled
+                    dispatch(setLogout())
+                    dispatch(apiSlice.util.resetApiState())
+                }
+                catch (err) {
+                    throw err;
+                }
+            }
+        }),
     }),
 })
 
-export const { useUserRegisterMutation, useUserLoginMutation, useUserLogoutMutation, useCompanyRegisterMutation, useCompanyLoginMutation, useAdminRegisterMutation, useAdminLoginMutation, useAuthRefreshMutation } = authApiSlice
+export const { useUserRegisterMutation, useUserLoginMutation, useAuthLogoutMutation, useCompanyRegisterMutation, useCompanyLoginMutation, useAdminRegisterMutation, useAdminLoginMutation, useAuthRefreshMutation } = authApiSlice

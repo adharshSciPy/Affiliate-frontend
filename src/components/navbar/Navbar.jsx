@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { List, X } from '@phosphor-icons/react';
 import { Button, Switch } from 'antd';
 
-import { useUserLogoutMutation } from '../../features/api/authApiSlice';
+import { useAuthLogoutMutation } from '../../features/api/authApiSlice';
 import { useNotification } from '../../context/NotificationContext';
 import { toggleDarkMode } from '../../utils/darkmode';
 import useAuth from '../../hooks/useAuth';
@@ -11,7 +11,7 @@ import useAuth from '../../hooks/useAuth';
 const Navbar = () => {
     const navigate = useNavigate();
     const { notification } = useNotification();
-    const [userLogout, { data, isSuccess, isLoading, isError, error }] = useUserLogoutMutation();
+    const [userLogout, {isSuccess, isLoading, isError, error }] = useAuthLogoutMutation();
 
     useEffect(() => {
         if (isSuccess) {
@@ -29,7 +29,7 @@ const Navbar = () => {
     const handleLogout = async () => {
         try {
             await userLogout().unwrap();
-            navigate('/auth/login')
+            navigate('/auth/login', { replace: true });
         } catch (err) {
             notification('error', 'Logout Failed', error?.data?.message || 'An error occurred', 'bottomRight');
         }
