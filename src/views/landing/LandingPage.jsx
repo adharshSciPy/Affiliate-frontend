@@ -5,6 +5,7 @@ import Clients from './Clients'
 import Achievements from './Achievements'
 import PotentialCustomer from './PotentialCustomer'
 import Contact from './Contact'
+import Bussiness from './Bussiness'
 
 
 const LandingPage = () => {
@@ -14,6 +15,7 @@ const LandingPage = () => {
       <Hero />
       <Clients />
       <Achievements />
+      <Bussiness/>
       <PotentialCustomer />
       <Contact />
     </>
