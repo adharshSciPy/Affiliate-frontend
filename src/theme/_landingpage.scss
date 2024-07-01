@@ -165,6 +165,7 @@
   justify-content: center;
   background-color: var(--background-1);
   overflow: hidden;
+  padding: 20px;
 
   &__heading {
     max-width: 1500px;
@@ -306,6 +307,11 @@
     overflow: hidden;
     flex: 1;
 
+    @include breakpoint(sm) {
+      display: none;
+    }
+
+
     img {
       height: 100%;
       width: 100%;
@@ -322,6 +328,19 @@
 
     h2 {
       font-size: 32px;
+    }
+
+    @include breakpoint(sm) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+
+      Button {
+        padding: 0px 10px 0px 10px;
+        height: 28px;
+      }
     }
   }
 }
@@ -355,20 +374,27 @@
     width: 70%;
     max-width: 1500px;
     overflow: hidden;
+
+    @include breakpoint(sm) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__header {
-    flex: 1;
     display: flex;
-    align-items: start;
-    justify-content: space-between;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 0.5rem;
 
     p {
       font-size: 40px;
       font-weight: 600;
       color: var(--text-grey);
+      text-align: center;
     }
 
     p span {
@@ -378,7 +404,20 @@
     p:nth-child(3) {
       font-size: 18px;
       font-weight: 300;
+
+      @include breakpoint(sm) {
+        text-align: center;
+      }
     }
+
+    @include breakpoint(sm) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
   }
 
   &__counts {
@@ -389,9 +428,47 @@
     justify-content: space-between;
     grid-template-columns: auto auto;
     gap: 2rem;
+
+    @include breakpoint(lg) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0px 15px 20px;
+    }
+
+    @include breakpoint(md) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0px 15px 20px;
+    }
+
+    @include breakpoint(sm) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 0px 15px 20px;
+
+    }
+
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1px;
   }
 
   &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     p:nth-child(1) {
       font-size: 30px;
       font-weight: 600;
@@ -565,6 +642,10 @@
       flex-wrap: wrap;
       gap: 10px;
     }
+
+    @include breakpoint(sm) {
+      height: auto;
+    }
   }
 
   &__copyright {
@@ -577,7 +658,7 @@
 
     p {
       padding: 5px;
-      color: white;
+      color: var(--text-dark);
       padding-left: 0px;
       font-size: small;
     }
@@ -585,6 +666,15 @@
     @include breakpoint(md) {
       margin-right: 0;
       flex-wrap: wrap;
+      p {
+        font-size: large;
+      }
+    }
+
+    @include breakpoint(sm) {
+      p {
+        font-size: large;
+      }
     }
   }
 
@@ -593,7 +683,7 @@
     align-items: flex-start;
     flex-direction: column;
 
-    @include breakpoint(sm) {
+    @include breakpoint(md) {
       padding-right: 0;
       margin-right: 0;
       flex-wrap: wrap;
@@ -606,7 +696,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    color: white;
+    color: var(--text-dark);
     margin-top: 40px;
 
     h1 {
@@ -615,8 +705,18 @@
 
     p {
       margin-bottom: 10px;
-      color: white;
+      color: var(--text-dark);
       font-size: small;
+    }
+
+    @include breakpoint(md) {
+      h1 {
+        font-size: x-large;
+      }
+
+      p {
+        font-size: large;
+      }
     }
   }
 
@@ -624,7 +724,7 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    color: white;
+    color: var(--text-dark);
     margin-top: 40px;
 
     h1 {
@@ -633,20 +733,30 @@
 
     p {
       margin-bottom: 10px;
-      color: white;
+      color: var(--text-dark);
       font-size: small;
     }
 
     p {
       margin-bottom: 10px;
-      color: white;
+      color: var(--text-dark);
+    }
+
+    @include breakpoint(md) {
+      h1 {
+        font-size: x-large;
+      }
+
+      p {
+        font-size: large;
+      }
     }
   }
 
   &__email {
     height: 30vh;
     padding-right: 50px;
-    color: white;
+    color: var(--text-dark);
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -656,10 +766,10 @@
       font-size: large;
     }
 
-    @include breakpoint(sm) {
+    @include breakpoint(md) {
       padding-right: 0;
       margin-right: 0;
-
+      height: auto;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
@@ -668,7 +778,7 @@
     @include breakpoint(xs) {
       padding-right: 0;
       margin-right: 0;
-
+      height: auto;
       flex-wrap: wrap;
       align-items: center;
       justify-content: flex-start;
@@ -687,11 +797,18 @@
     a {
       padding: 5px;
       background-color: rgba(255, 255, 255, 0.078);
-      color: white;
+      color: var(--text-dark);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    @include breakpoint(md) {
+      a .icon {
+        height: 40px;
+        width: 40px;
+      }
     }
   }
 
@@ -702,19 +819,20 @@
 
     @include breakpoint(md) {
       flex-wrap: wrap;
+      margin-bottom: 20px;
     }
 
     @include breakpoint(sm) {
       flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 50px;
     }
 
     @include breakpoint(xs) {
       flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       gap: 50px;
     }
   }

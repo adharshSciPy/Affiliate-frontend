@@ -82,7 +82,7 @@ const Clients = () => {
                 <div className="clients__hero">
                     <h2>  Create Your Profile And Earn Money</h2>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque tenetur vero esse error, minus incidunt! Vero eos corrupti error aliquid sint aut. Architecto ea enim cupiditate rem exercitationem eius laudantium porro reprehenderit iste. Autem architecto minima perferendis eius odit sapiente illo nemo, consequatur reiciendis omnis voluptates atque unde excepturi aut veritatis fugiat incidunt, quis doloribus exercitationem dolorum sunt beatae cum iste ipsa! Adipisci corporis</p>
-                    <Button type='primary' size='large'>Learn More</Button>
+                    <Button type='primary' size='medium'>Learn More</Button>
                 </div>
             </div>
         </div>
