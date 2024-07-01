@@ -20,6 +20,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const [activeIndex, setActiveIndex] = useState(null);
   const [routes, setRoutes] = useState([]);
   const { notification } = useNotification(); // Use your custom notification hook
+  const [isModal, setIsModal] = useState(false);
 
   useEffect(() => {
     switch (role) {
@@ -41,8 +42,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     setIsOpen(prev => !prev);
   };
 
-  const handleLogout = async (e) => {
-    e.preventDefault();
+  const showmodal = () => {
+    setIsModal(true)
+  }
+
+  const handleLogout = async () => {
     try {
       const response = await authLogout().unwrap();
       if (response) {
@@ -91,13 +95,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           </div>
 
           <div className="sidebar__profile--logout">
-            <button onClick={(e) => handleLogout(e)}>
+            <button onClick={() => showmodal()}>
               <SignOut size={28} color="white" weight="fill" />
             </button>
           </div>
         </div>
       </div>
-      <LogoutModal logout={handleLogout} />
+      <LogoutModal isModal={isModal} setIsModal={setIsModal} logout={handleLogout} />
     </div>
   );
 };
