@@ -7,7 +7,6 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex }) => {
     const navigate = useNavigate()
     const [isChildren, setIsChildren] = useState(route?.children && route?.children?.length > 0)
     const handleClick = (path) => {
-        console.log('path', path)
         if (!path) {
             isChildren && setActiveIndex(isActive ? null : index);
         }
