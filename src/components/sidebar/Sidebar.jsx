@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Spin } from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
 import { ArrowCircleRight, ArrowCircleLeft, SignOut } from '@phosphor-icons/react';
 
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +10,7 @@ import { roles } from '../../constants/roles';
 import { adminSidebarRoutes, affiliateSidebarRoutes, companySidebarRoutes } from '../../constants/sidebarRoutes';
 import SideRoutes from './SideRoutes';
 import profileImg from '../../assets/images/profile.png';
+import LogoutModal from '../modals/LogoutModal';
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const { role } = useAuth();
@@ -92,16 +91,13 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           </div>
 
           <div className="sidebar__profile--logout">
-            <button onClick={(e) => !isLoading && handleLogout(e)}>
-              {isLoading ? (
-                <Spin indicator={<LoadingOutlined spin />} />
-              ) : (
-                <SignOut size={28} color="white" weight="fill" />
-              )}
+            <button onClick={(e) => handleLogout(e)}>
+              <SignOut size={28} color="white" weight="fill" />
             </button>
           </div>
         </div>
       </div>
+      <LogoutModal logout={handleLogout} />
     </div>
   );
 };
