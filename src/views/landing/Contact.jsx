@@ -14,10 +14,10 @@ const Contact = () => {
             <p>Copyright @ 2024</p>
             <p>All rights reserved</p>
             <div className="contact__sociallinks">
-              <a href=""><InstagramLogo size={25} /></a>
-              <a href=""><DribbbleLogo size={25} /></a>
-              <a href=""><TwitterLogo size={25} /></a>
-              <a href=""><YoutubeLogo size={25} /></a>
+              <a href=""><InstagramLogo className='icon' size={25} /></a>
+              <a href=""><DribbbleLogo className='icon'  size={25} /></a>
+              <a href=""><TwitterLogo className='icon'  size={25} /></a>
+              <a href=""><YoutubeLogo className='icon'  size={25} /></a>
             </div>
           </div>
         </div>
