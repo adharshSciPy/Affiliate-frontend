@@ -1,11 +1,23 @@
+import Dashboard from "../assets/sidebar-icons/home.png"
+import Service from "../assets/sidebar-icons/technical-service.png"
+import Affiliate from "../assets/sidebar-icons/connection.png"
+import Customer from "../assets/sidebar-icons/customer.png"
+import Setting from "../assets/sidebar-icons/settings.png"
+import Offers from "../assets/sidebar-icons/sidebaricon6.png"
+import OurService from "../assets/sidebar-icons/sidebaricon7.png"
+import Billing from "../assets/sidebar-icons/sidebaricon8.png"
+import Coupons from "../assets/sidebar-icons/sidebaricon9.png"
+import Commissions from "../assets/sidebar-icons/sidebaricon10.png"
+import Transaction from "../assets/sidebar-icons/sidebaricon10.png"
+
 const adminSidebarRoutes = [
     {
-        icon: 'DB',
+        icon: Dashboard,
         title: 'Dashboard',
         path: '/admin/home',
     },
     {
-        icon: 'SP',
+        icon: Service,
         title: 'Service Providers',
         path: false,
         children: [
@@ -24,7 +36,7 @@ const adminSidebarRoutes = [
         ]
     },
     {
-        icon: 'AF',
+        icon: Affiliate,
         title: 'Affilaters',
         path: false,
         children: [
@@ -47,7 +59,7 @@ const adminSidebarRoutes = [
         ]
     },
     {
-        icon: 'CT',
+        icon: Customer,
         title: 'Customers',
         path: false,
         children: [
@@ -62,7 +74,7 @@ const adminSidebarRoutes = [
         ]
     },
     {
-        icon: 'ST',
+        icon: Setting,
         title: 'Settings',
         path: '#',
     }
@@ -70,12 +82,12 @@ const adminSidebarRoutes = [
 
 const companySidebarRoutes = [
     {
-        icon: 'DB',
+        icon: Dashboard,
         title: 'Dashboard',
         path: '/admin/home',
     },
     {
-        icon: 'OD',
+        icon: Offers,
         title: 'Offers & Discounts',
         path: false,
         children: [
@@ -94,7 +106,7 @@ const companySidebarRoutes = [
         ]
     },
     {
-        icon: 'OS',
+        icon: OurService,
         title: 'Our Services',
         path: false,
         children: [
@@ -117,7 +129,7 @@ const companySidebarRoutes = [
         ]
     },
     {
-        icon: 'CB',
+        icon: Billing,
         title: 'CRM & Billing',
         path: false,
         children: [
@@ -132,7 +144,7 @@ const companySidebarRoutes = [
         ]
     },
     {
-        icon: 'ST',
+        icon: Setting,
         title: 'Settings',
         path: '#',
     }
@@ -140,12 +152,12 @@ const companySidebarRoutes = [
 
 const affiliateSidebarRoutes = [
     {
-        icon: 'DB',
+        icon: Dashboard,
         title: 'Dashboard',
         path: '/affiliater/home',
     },
     {
-        icon: 'CP',
+        icon: Coupons,
         title: 'Coupons',
         path: false,
         children: [
@@ -164,8 +176,8 @@ const affiliateSidebarRoutes = [
         ]
     },
     {
-        icon: 'CM',
-        title: 'Comission',
+        icon: Commissions,
+        title: 'Commission',
         path: false,
         children: [
             {
@@ -187,7 +199,7 @@ const affiliateSidebarRoutes = [
         ]
     },
     {
-        icon: 'TS',
+        icon: Transaction,
         title: 'Transactions',
         path: false,
         children: [
