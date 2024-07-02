@@ -134,10 +134,10 @@
 
 // // sidebar (dasboard)
 .sidebar {
-  height: 100vh;
+  height: 100%;
   width: 15%;
   background-color: var(--secondary-color);
-  position: relative;
+  position: fixed;
   transition: all 0.4s ease-in-out;
   z-index: 999;
   min-width: 300px;

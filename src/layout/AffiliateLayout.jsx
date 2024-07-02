@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { DashboardNavbar, Sidebar } from '../components'
 
@@ -11,7 +11,7 @@ const AffiliateLayout = () => {
     <div className='dashboard'>
       <div className="dashboard__container">
         <div className="dashboard__navbar">
-          <DashboardNavbar isOpen={isOpen} />
+          <DashboardNavbar isOpen={isOpen} message='Welcome Affiliater' />
         </div>
 
         <div className="dashboard__sidebar">
