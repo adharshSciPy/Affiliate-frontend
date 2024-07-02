@@ -272,7 +272,37 @@
   }
 }
 
-.logoutmodal {}
+//logoutmodal
+.logoutmodal {
+  text-align: center;
+  padding: 1rem;
+
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  p {
+    padding: 2px;
+    font-size: 18px;
+  }
+
+  &__button {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__icon {
+    position: absolute;
+    padding: 0.5rem;
+  }
+}
+
 
 // sidebar routes
 .sideroutes {
