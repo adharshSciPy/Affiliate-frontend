@@ -1,5 +1,5 @@
 import React from 'react'
-import { DashCount, DashBarchart, DashTable, DashDetails, DashCoupon } from '../../components'
+import { DashCount, DashBarchart, DashTable, DashDetails } from '../../components'
 
 import dashIcon1 from '../../assets/dashboard-icons/admindash1.png'
 import dashIcon2 from '../../assets/dashboard-icons/admindash2.png'
