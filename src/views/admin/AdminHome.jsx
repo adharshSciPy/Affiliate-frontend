@@ -7,6 +7,7 @@ import { UserOutlined } from '@ant-design/icons'
 import dashIcon1 from '../../assets/dashboard-icons/admindash1.png'
 import dashIcon2 from '../../assets/dashboard-icons/admindash2.png'
 import dashIcon3 from '../../assets/dashboard-icons/admindash3.png'
+import { color } from 'framer-motion'
 
 
 const AdminHome = () => {
@@ -33,6 +34,44 @@ const AdminHome = () => {
     {
       title: 'Total Service Provider',
       value: '2590'
+    }
+  ]
+
+  const details = [
+    {
+      title: "Total Service Provider",
+      value: "2590"
+    },
+    {
+      title: "Total Affiliate Marketer",
+      value: "1594"
+    },
+    {
+      title: "Total Customer",
+      value: "3670"
+    },
+    {
+      title: "Total Verified Service Provider",
+      value: "1853"
+    },
+    {
+      title: "Total Verified Marketers",
+      value: "1250"
+    }
+  ]
+
+  const coupons = [
+    {
+      title: "Total Coupons",
+      value: "2500"
+    },
+    {
+      title: "Expired Coupons",
+      value: "250"
+    },
+    {
+      title: "Validate Coupons",
+      value: "....."
     }
   ]
 
@@ -64,7 +103,7 @@ const AdminHome = () => {
       key: 'button',
     },
   ];
-  
+
   const tableData = [
     {
       avatar: <Avatar size="large" icon={<UserOutlined />} />,
@@ -108,7 +147,7 @@ const AdminHome = () => {
           <DashBarchart />
         </div>
         <div className="adminhome__middle--right">
-          <DashDetails />
+          <DashDetails heading='Details' data={details} isFirstSelected={true} />
         </div>
       </div>
 
@@ -122,7 +161,7 @@ const AdminHome = () => {
           />
         </div>
         <div className="adminhome__bottom--right">
-          <DashDetails />
+          <DashDetails heading='Coupons' data={coupons} />
         </div>
       </div>
     </div>
