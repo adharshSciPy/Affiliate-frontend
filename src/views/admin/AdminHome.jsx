@@ -25,6 +25,13 @@ const AdminHome = () => {
     }
   ]
 
+  const data = [
+    {
+      title: 'Total Service Provider',
+      value: '2590'
+    }
+  ]
+
   return (
     <div className='adminhome'>
       <div className="adminhome__top">
@@ -51,7 +58,7 @@ const AdminHome = () => {
           <DashTable />
         </div>
         <div className="adminhome__bottom--right">
-          <DashCoupon />
+          <DashDetails />
         </div>
       </div>
     </div>

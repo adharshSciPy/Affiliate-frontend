@@ -7,7 +7,6 @@ export { default as DashCount } from './dashboard/DashCount';
 export { default as DashTable } from './dashboard/DashTable';
 export { default as DashBarchart } from './dashboard/DashBarchart';
 export { default as DashDetails } from './dashboard/DashDetails';
-export { default as DashCoupon } from './dashboard/DashCoupon';
 export { default as DashboardProfile } from './dashboard/DashboardProfile';
 
 // auth
