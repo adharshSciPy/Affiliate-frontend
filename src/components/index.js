@@ -7,7 +7,7 @@ export { default as DashCount } from './dashboard/DashCount';
 export { default as DashTable } from './dashboard/DashTable';
 export { default as DashBarchart } from './dashboard/DashBarchart';
 export { default as DashDetails } from './dashboard/DashDetails';
-export { default as DashboardProfile } from './dashboard/DashboardProfile';
+export { default as DashProfileCard } from './dashboard/DashProfileCard';
 
 // auth
 export { default as PersistLogin } from './auth/PersistLogin';

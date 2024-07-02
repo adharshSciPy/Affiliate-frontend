@@ -142,7 +142,7 @@ const affiliateSidebarRoutes = [
     {
         icon: 'DB',
         title: 'Dashboard',
-        path: '/admin/home',
+        path: '/affiliater/home',
     },
     {
         icon: 'CP',
