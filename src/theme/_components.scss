@@ -303,7 +303,6 @@
   }
 }
 
-
 // sidebar routes
 .sideroutes {
   height: auto;
@@ -511,9 +510,25 @@
 
 // dashboard table
 .dashtable {
-  min-height: 200%;
-  min-height: 100%;
-  background-color: rgba(12, 133, 117, 0.658);
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--background-1);
+  border-radius: 15px;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 .2rem;
+    margin-bottom: .5rem;
+
+    p:nth-child(1) {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-grey);
+    }
+  }
 }
 
 // dashboard coupon
