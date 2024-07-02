@@ -504,9 +504,48 @@
 
 // dashboard details
 .dashdetails {
-  min-height: 100%;
-  min-height: 100%;
-  background-color: rgba(32, 133, 12, 0.445);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 100%;
+  border-radius: 10px;
+  background-color: var(--background-1);
+  color: var(--text-grey);
+
+  &__nobullets {
+    list-style-type: none;
+    padding: 0 8px;
+    margin: 0;
+  }
+
+  &__selected {
+    background-color: var(--primary-color);
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  &__head {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-grey);
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 5px 0;
+    gap: 30px;
+  }
+
+  &__title {
+    flex: 1;
+  }
+
+  &__value {
+    flex: 0;
+  }
 }
 
 // dashboard table
