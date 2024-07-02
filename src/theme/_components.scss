@@ -272,8 +272,35 @@
   }
 }
 
+//logoutmodal
 .logoutmodal {
+  text-align: center;
+  padding: 1rem;
 
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+
+  p {
+    padding: 2px;
+    font-size: 18px;
+  }
+
+  &__button {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__icon {
+    position: absolute;
+    padding: 0.5rem;
+  }
 }
 
 // sidebar routes
@@ -430,6 +457,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   &__container {
     display: flex;
@@ -465,4 +493,48 @@
       font-size: 20px;
     }
   }
+}
+
+// dashboard bar chart
+.dashbarchart {
+  min-height: 40vh;
+  min-height: 100%;
+  background-color: rgba(133, 12, 133, 0.445);
+}
+
+// dashboard details
+.dashdetails {
+  min-height: 100%;
+  min-height: 100%;
+  background-color: rgba(32, 133, 12, 0.445);
+}
+
+// dashboard table
+.dashtable {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--background-1);
+  border-radius: 15px;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 .2rem;
+    margin-bottom: .5rem;
+
+    p:nth-child(1) {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-grey);
+    }
+  }
+}
+
+// dashboard coupon
+.dashcoupon {
+  min-height: 100%;
+  min-height: 100%;
+  background-color: rgba(212, 136, 22, 0.445);
 }

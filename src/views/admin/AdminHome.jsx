@@ -1,9 +1,13 @@
 import React from 'react'
-import { Dashcard } from '../../components'
+import { DashCount, DashBarchart, DashTable, DashDetails } from '../../components'
+
+import { Avatar, Button } from 'antd'
+import { UserOutlined } from '@ant-design/icons'
 
 import dashIcon1 from '../../assets/dashboard-icons/admindash1.png'
 import dashIcon2 from '../../assets/dashboard-icons/admindash2.png'
 import dashIcon3 from '../../assets/dashboard-icons/admindash3.png'
+
 
 const AdminHome = () => {
 
@@ -25,24 +29,101 @@ const AdminHome = () => {
     }
   ]
 
+  const data = [
+    {
+      title: 'Total Service Provider',
+      value: '2590'
+    }
+  ]
+
+  // columns, data
+  const columns = [
+    {
+      title: 'Avatar',
+      dataIndex: 'avatar',
+      key: 'avatar',
+    },
+    {
+      title: 'Full Name',
+      dataIndex: 'fullName',
+      key: 'fullName',
+    },
+    {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+    },
+    {
+      title: 'Address',
+      dataIndex: 'address',
+      key: 'address',
+    },
+    {
+      title: '',
+      dataIndex: 'button',
+      key: 'button',
+    },
+  ];
+  
+  const tableData = [
+    {
+      avatar: <Avatar size="large" icon={<UserOutlined />} />,
+      fullName: 'Brown',
+      email: 'brown@gmail.com',
+      address: 'New York No. 1 Lake Park',
+      button: <Button>Verify</Button>
+    },
+    {
+      avatar: <Avatar size="large" icon={<UserOutlined />} />,
+      fullName: 'Green',
+      email: 'green@gmail.com',
+      address: 'London No. 1 Lake Park',
+      button: <Button>Verify</Button>
+    },
+    {
+      avatar: <Avatar size="large" icon={<UserOutlined />} />,
+      fullName: 'Black',
+      email: 'black@green.com',
+      button: <Button>Verify</Button>
+    },
+  ];
   return (
     <div className='adminhome'>
       <div className="adminhome__top">
         {
           dashcard.map((item, index) => {
             return (
-              <Dashcard key={index} icon={item.icon} title={item.title} count={item.count} />
+              <DashCount
+                key={index}
+                icon={item.icon}
+                title={item.title}
+                count={item.count} />
             )
           })
         }
       </div>
 
       <div className="adminhome__middle">
-        s
+        <div className="adminhome__middle--left">
+          <DashBarchart />
+        </div>
+        <div className="adminhome__middle--right">
+          <DashDetails />
+        </div>
       </div>
 
       <div className="adminhome__bottom">
-        a
+        <div className="adminhome__bottom--left">
+          <DashTable
+            heading='Latest Affiliaters Marketer'
+            columns={columns}
+            data={tableData}
+            path='/admin/affiliaters'
+          />
+        </div>
+        <div className="adminhome__bottom--right">
+          <DashDetails />
+        </div>
       </div>
     </div>
   )

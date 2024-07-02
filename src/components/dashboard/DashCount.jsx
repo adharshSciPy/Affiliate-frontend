@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Dashcard = ({ title, icon, count }) => {
+const DashCount = ({ title, icon, count }) => {
   return (
     <div className='dashcard'>
       <div className="dashcard__container">
@@ -17,4 +17,4 @@ const Dashcard = ({ title, icon, count }) => {
   )
 }
 
-export default Dashcard
+export default DashCount
