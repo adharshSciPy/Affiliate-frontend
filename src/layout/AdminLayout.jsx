@@ -10,7 +10,7 @@ const AdminLayout = () => {
     <div className='dashboard'>
       <div className="dashboard__container">
         <div className="dashboard__navbar">
-          <DashboardNavbar isOpen={isOpen} />
+          <DashboardNavbar isOpen={isOpen} message='Welcome to Admin Dashboard'/>
         </div>
 
         <div className="dashboard__sidebar">

@@ -18,13 +18,13 @@
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 1rem;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
 
-    &__middle {    
-        min-height: 40%;
+    &__middle {
+        max-height: 40%;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 1rem;
@@ -42,9 +42,9 @@
     }
 
     &__bottom {
-        min-height: 38%;
+        max-height: 40%;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 1rem;
@@ -57,7 +57,7 @@
         }
 
         &--right {
-            flex: 1;    
+            flex: 1;
         }
     }
 }

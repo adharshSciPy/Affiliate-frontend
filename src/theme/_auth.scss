@@ -25,30 +25,32 @@
         padding-left: 5rem;
 
         &--heading {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
 
             h2 {
-                font-size: 25px;
+                font-size: 35px;
             }
 
             span {
                 color: var(--primary-color);
                 font-weight: 700;
-                font-size: 20px;
+                font-size: 24px;
             }
         }
 
         &--input {
             width: 60%;
+            margin-top: .5rem;
 
             p:nth-child(1) {
-                margin: .2rem 0;
+                margin-bottom: .3rem;
                 font-size: 14px;
             }
 
             p:nth-child(3) {
                 font-size: 12px;
                 color: var(--text-error);
+                margin-bottom: .5rem;
             }
         }
 
