@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider, theme } from 'antd';
 import { AdminLogin, CompanyLogin, CompanyRegister, LandingPage, Login, Register, AdminRegister, AdminHome } from './views';
-import { PersistLogin, LoggedInPage, ForceRedirect, PageNotFound } from './components';
+import { PersistLogin, AllowedRoles, LoggedInPage, ForceRedirect, PageNotFound } from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, CompanyLayout } from './layout';
+import { roles } from './constants/roles'
 import { NotificationProvider } from './context/NotificationContext';
 
 const router = createBrowserRouter([
@@ -13,7 +14,12 @@ const router = createBrowserRouter([
     },
     {
         path: "/",
-        element: <LandingPage />,
+        element:
+            <PersistLogin checkAuth={false}>
+                <ForceRedirect>
+                    <LandingPage />
+                </ForceRedirect>
+            </PersistLogin>,
     },
     {
         path: "/logged-in",
@@ -59,7 +65,9 @@ const router = createBrowserRouter([
         path: "/admin",
         element:
             <PersistLogin>
-                <AdminLayout />
+                <AllowedRoles roles={[roles.ADMIN_ROLE]}>
+                    <AdminLayout />
+                </AllowedRoles>
             </PersistLogin>,
         // Define children routes for admin if necessary
         children: [
@@ -73,7 +81,9 @@ const router = createBrowserRouter([
         path: "/customer",
         element:
             <PersistLogin>
-                <CustomerLayout />
+                <AllowedRoles roles={[roles.CUSTOMER_ROLE]}>
+                    <CustomerLayout />
+                </AllowedRoles>
             </PersistLogin>,
         // Define children routes for customer if necessary
         // children: []
@@ -82,7 +92,9 @@ const router = createBrowserRouter([
         path: "/affiliater",
         element:
             <PersistLogin>
-                <AffiliateLayout />
+                <AllowedRoles roles={[roles.AFFILIATER_ROLE]}>
+                    <AffiliateLayout />
+                </AllowedRoles>
             </PersistLogin >,
         // Define children routes for affiliate if necessary
         // children: []
@@ -91,7 +103,9 @@ const router = createBrowserRouter([
         path: "/company",
         element:
             <PersistLogin>
-                <CompanyLayout />
+                <AllowedRoles roles={[roles.COMPANY_ROLE]}>
+                    <CompanyLayout />
+                </AllowedRoles>
             </PersistLogin>,
         // Define children routes for affiliate if necessary
         // children: []

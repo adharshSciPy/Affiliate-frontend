@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dashcard } from '../../components'
+import { DashCount, DashBarchart, DashTable, DashDetails, DashCoupon } from '../../components'
 
 import dashIcon1 from '../../assets/dashboard-icons/admindash1.png'
 import dashIcon2 from '../../assets/dashboard-icons/admindash2.png'
@@ -31,18 +31,28 @@ const AdminHome = () => {
         {
           dashcard.map((item, index) => {
             return (
-              <Dashcard key={index} icon={item.icon} title={item.title} count={item.count} />
+              <DashCount key={index} icon={item.icon} title={item.title} count={item.count} />
             )
           })
         }
       </div>
 
       <div className="adminhome__middle">
-        s
+        <div className="adminhome__middle--left">
+          <DashBarchart />
+        </div>
+        <div className="adminhome__middle--right">
+          <DashDetails />
+        </div>
       </div>
 
       <div className="adminhome__bottom">
-        a
+        <div className="adminhome__bottom--left">
+          <DashTable />
+        </div>
+        <div className="adminhome__bottom--right">
+          <DashCoupon />
+        </div>
       </div>
     </div>
   )

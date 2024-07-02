@@ -4,7 +4,7 @@
     width: 100%;
     border-radius: 20px;
     background-color: var(--background-3);
-    padding: 2rem;
+    padding: 1rem;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
@@ -12,6 +12,7 @@
     }
 
     &__top {
+        min-height: 10%;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -20,21 +21,43 @@
         margin-bottom: 1rem;
     }
 
-    &__middle {
+    &__middle {    
+        min-height: 40%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 1rem;
         margin-bottom: 1rem;
+        background-color: rgba(255, 0, 0, 0.445);
+        border-radius: 15px;
+
+        &--left {
+            flex: 2;
+        }
+
+        &--right {
+            flex: 1;
+        }
     }
 
     &__bottom {
+        min-height: 38%;
         display: flex;
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
         gap: 1rem;
         margin-bottom: 1rem;
+        background-color: rgba(26, 116, 8, 0.493);
+        border-radius: 15px;
+
+        &--left {
+            flex: 2;
+        }
+
+        &--right {
+            flex: 1;    
+        }
     }
 }
