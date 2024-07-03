@@ -12,6 +12,7 @@ const AdminLayout = () => {
         <div className="dashboard__navbar">
           <DashboardNavbar
             isOpen={isOpen}
+            setIsOpen={setIsOpen}
             message='Welcome to Admin Dashboard'
           />
         </div>
@@ -19,7 +20,6 @@ const AdminLayout = () => {
         <div className="dashboard__sidebar">
           <Sidebar
             isOpen={isOpen}
-            setIsOpen={setIsOpen}
           />
         </div>
 
