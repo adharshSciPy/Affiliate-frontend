@@ -1,6 +1,7 @@
 import { CaretDown, CaretRight } from '@phosphor-icons/react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion';
 
 const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) => {
 
@@ -15,13 +16,34 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) =
         }
     };
 
-    console.log('iswe', isWidthWorthy)
     return (
         <div className={`sideroutes`} key={index}>
-            <div className={`sideroutes__title ${isActive && 'activesideroute'}`} onClick={() => handleClick(route?.path)}>
+            <div className={`sideroutes__title ${isActive && 'activesideroute'}`}
+                style={!isWidthWorthy ? { justifyContent: 'center' } : {}}
+                onClick={() => handleClick(route?.path)}>
                 <div className="sideroutes__title--text">
-                    <img src={route?.icon} alt='sidebar--icon' />
-                    {isWidthWorthy && <p>{route?.title}</p>}
+                    <img
+                        src={route?.icon}
+                        alt="sidebar--icon"
+                        style={!isWidthWorthy ? { 
+                            height: '1.5rem',
+                            width: '1.5rem'
+                         } : {}}
+                    />
+
+                    <AnimatePresence initial={false}>
+                        {isWidthWorthy
+                            &&
+                            <motion.p
+                                key={route?.title} // Ensure the key is unique for each item
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0, scale: 0.9, x: 20 }} // Add additional properties for a smooth exit
+                                transition={{ duration: 0.2 }} // Adjust the duration as needed
+                            >
+                                {route?.title}
+                            </motion.p>}
+                    </AnimatePresence>
                 </div>
 
                 <div className="sideroutes__title--button">
