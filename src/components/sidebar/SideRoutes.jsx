@@ -19,7 +19,7 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex }) => {
         <div className={`sideroutes`} key={index}>
             <div className={`sideroutes__title ${isActive && 'activesideroute'}`} onClick={() => handleClick(route?.path)}>
                 <div className="sideroutes__title--text">
-                    <p>{route?.icon}</p>
+                    <img src={route?.icon} alt="route?.icon" />
                     <p>{route?.title}</p>
                 </div>
 

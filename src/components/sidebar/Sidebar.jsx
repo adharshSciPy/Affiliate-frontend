@@ -11,6 +11,7 @@ import { adminSidebarRoutes, affiliateSidebarRoutes, companySidebarRoutes } from
 import SideRoutes from './SideRoutes';
 import profileImg from '../../assets/images/profile.png';
 import LogoutModal from '../modals/LogoutModal';
+import { CloseOutlined, MenuOutlined } from '@ant-design/icons';
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const { role } = useAuth();
@@ -60,13 +61,19 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
   return (
     <div className={`sidebar ${isOpen ? 'sidebar--open' : 'sidebar--closed'}`}>
-      <div className={`sidebar__shutter ${isOpen ? 'shutter--open' : ''}`} onClick={handleSidebar}>
+      {/* <div className={`sidebar__shutter ${isOpen ? 'shutter--open' : ''}`} onClick={handleSidebar}>
         {isOpen ? <ArrowCircleLeft size={32} color='#2F6F31' /> : <ArrowCircleRight size={32} color='#2F6F31' />}
-      </div>
+      </div> */}
 
       <div className="sidebar__container">
-        <div className="sidebar__logo">
-          <h1>LOGO</h1>
+        <div className="sidebar__header">
+          <div className="sidebar__header--icon" onClick={() => { handleSidebar() }}>
+            {isOpen ? <MenuOutlined size={35} color='white'/> : <CloseOutlined size={35} color='white'/>}
+          </div>
+
+          <div className="sidebar__header--logo">
+            <h1>LOGO</h1>
+          </div>
         </div>
 
         <div className="sidebar__routes">
