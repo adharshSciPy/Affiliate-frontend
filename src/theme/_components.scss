@@ -330,10 +330,8 @@
   }
 }
 
-// sidebar routes
 .sideroutes {
-  min-height: 5vh;
-  max-height: 5vh;
+  min-height: 4vh;
   width: 100%;
   color: var(--text-dark);
   -webkit-user-select: none;
@@ -365,6 +363,10 @@
         height: 1rem;
         width: 1rem;
       }
+
+      // .sidebar--closed & {
+      //   display: none;
+      // }
     }
 
     &--button {
