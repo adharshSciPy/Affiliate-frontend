@@ -73,43 +73,82 @@ const AffiliaterHome = () => {
     ];
 
     return (
-        <div className='affiliaterhome'>
-            <div className="affiliaterhome__top">
-                {
-                    dashcard.map((item, index) => {
-                        return (
-                            <DashCount
-                                key={index}
-                                icon={item.icon}
-                                title={item.title}
-                                count={item.count} />
-                        )
-                    })
-                }
+        // <div className='affiliaterhome'>
+        //     <div className="affiliaterhome__top">
+        //         {
+        //             dashcard.map((item, index) => {
+        //                 return (
+        //                     <DashCount
+        //                         key={index}
+        //                         icon={item.icon}
+        //                         title={item.title}
+        //                         count={item.count} />
+        //                 )
+        //             })
+        //         }
 
-                <DashProfileCard />
-            </div>
+        //         <DashProfileCard />
+        //     </div>
 
-            <div className="affiliaterhome__middle">
-                <div className="affiliaterhome__middle--left">
-                    <DashBarchart />
+        //     <div className="affiliaterhome__middle">
+        //         <div className="affiliaterhome__middle--left">
+        //             <DashBarchart />
+        //         </div>
+        //     </div>
+
+        //     <div className="affiliaterhome__bottom">
+        //         <div className="affiliaterhome__bottom--left">
+        //             <DashTable
+        //                 heading='Latest Affiliaters Marketer'
+        //                 columns={columns}
+        //                 data={tableData}
+        //                 path='/admin/affiliaters'
+        //             />
+        //         </div>
+        //         <div className="affiliaterhome__bottom--right">
+        //             <DashDetails />
+        //         </div>
+        //     </div>
+        // </div>
+        <div className="affiliaterhome">
+            <div className="affiliaterhome__container">
+                <div className="affiliater__container--count-1">
+                    {
+                        dashcard.map((item, index) => {
+                            return (
+                                <DashCount
+                                    key={index}
+                                    icon={item.icon}
+                                    title={item.title}
+                                    count={item.count} />
+                            )
+                        })
+                    }
                 </div>
-            </div>
 
-            <div className="affiliaterhome__bottom">
-                <div className="affiliaterhome__bottom--left">
-                    <DashTable
+                <div className="affiliaterhome__container--profile">
+                    Profile Info
+                </div>
+
+                <div className="affiliaterhome__container--chart">
+                    Customers Chart
+                </div>
+
+                <div className="affiliaterhome__container--table">
+                    {/* <DashTable
                         heading='Latest Affiliaters Marketer'
                         columns={columns}
                         data={tableData}
                         path='/admin/affiliaters'
-                    />
+                    /> */}
                 </div>
-                <div className="affiliaterhome__bottom--right">
-                    <DashDetails />
+
+                <div className="affiliaterhome__container--detail">
+                    Services & Details
                 </div>
             </div>
         </div>
+
     )
 }
 
