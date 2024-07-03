@@ -11,11 +11,16 @@ const CompanyLayout = () => {
         <div className='dashboard'>
             <div className="dashboard__container">
                 <div className="dashboard__navbar">
-                    <DashboardNavbar isOpen={isOpen}/>
+                    <DashboardNavbar
+                        isOpen={isOpen}
+                        setIsOpen={setIsOpen}
+                    />
                 </div>
 
                 <div className="dashboard__sidebar">
-                    <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+                    <Sidebar
+                        isOpen={isOpen}
+                    />
                 </div>
 
                 <div className="dashboard__body">

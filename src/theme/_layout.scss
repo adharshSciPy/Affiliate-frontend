@@ -33,8 +33,9 @@
 
     &__body {
         grid-area: body;
-        padding: 2rem 20px;
-        height: 100%;
+        padding: 1rem 20px;
+        max-height: 95vh;
+        overflow: hidden;
     }
 }
 
