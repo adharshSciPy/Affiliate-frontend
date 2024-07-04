@@ -426,21 +426,22 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
- &__body{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
   }
 
   &__image {
     height: 70%;
     width: 75%;
+
     img {
       height: 100%;
-      width: 100%;  
+      width: 100%;
     }
   }
 
@@ -459,20 +460,20 @@
   align-items: center;
   justify-content: center;
 
-  
- 
 
-  &__body{
+
+
+  &__body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
   }
-  
+
 
   &__image {
-    height:60%;
+    height: 60%;
     width: 80%;
 
     img {
@@ -516,6 +517,11 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @include breakpoint(lg) {
     display: flex;
@@ -690,6 +696,11 @@
   height: 100%;
   width: 100%;
   background-color: rgba(133, 12, 133, 0.445);
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .dashdetails {
@@ -697,6 +708,11 @@
   width: 100%;
   background-color: var(--background-1);
   border-radius: 20px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &__heading {
     padding: 1rem;
@@ -753,6 +769,11 @@
   padding: 1rem;
   background-color: var(--background-1);
   border-radius: 15px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &__heading {
     display: flex;
@@ -776,6 +797,11 @@
   padding: 0 1rem;
   background-color: var(--background-1);
   border-radius: 15px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &__heading {
     padding: 1rem;
@@ -811,6 +837,11 @@
   padding: 0 1rem;
   background-color: var(--background-1);
   border-radius: 15px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &__heading {
     display: flex;
@@ -822,6 +853,7 @@
     span {
       // border: 1px solid green;
     }
+
     h1 {
       font-size: medium;
     }
@@ -833,6 +865,7 @@
       color: var(--text-grey);
     }
   }
+
   &__commision-coupon {
     // border: 1px solid red;
     width: 100%;
@@ -840,6 +873,7 @@
     align-items: center;
     justify-content: space-around;
   }
+
   &__commision {
     // border: 1px solid black;
     display: flex;
@@ -851,6 +885,7 @@
       font-size: medium;
     }
   }
+
   &__coupon {
     // border: 1px solid black;
     display: flex;
@@ -862,11 +897,14 @@
       font-size: medium;
     }
   }
+
   &__strength {
+
     // border: 1px solid red;
     h1 {
       font-size: medium;
     }
+
     div {
       width: 100%;
       background-color: green;
@@ -875,12 +913,14 @@
       margin-top: 5px;
     }
   }
+
   &__verification {
     display: flex;
     // border: 1px solid red;
     margin-top: 10px;
     flex-direction: column;
     gap: 5px;
+
     h1 {
       font-size: medium;
     }
@@ -892,6 +932,7 @@
       margin-top: 5px;
     }
   }
+
   &__icons {
     display: flex;
     justify-content: space-around;
