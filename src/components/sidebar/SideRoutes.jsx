@@ -25,10 +25,10 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) =
                     <img
                         src={route?.icon}
                         alt="sidebar--icon"
-                        style={!isWidthWorthy ? { 
+                        style={!isWidthWorthy ? {
                             height: '1.5rem',
                             width: '1.5rem'
-                         } : {}}
+                        } : {}}
                     />
 
                     <AnimatePresence initial={false}>
@@ -36,10 +36,10 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) =
                             &&
                             <motion.p
                                 key={route?.title} // Ensure the key is unique for each item
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0, scale: 0.9, x: 20 }} // Add additional properties for a smooth exit
-                                transition={{ duration: 0.2 }} // Adjust the duration as needed
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, blur: 10, x: -20 }} // Add additional properties for a smooth exit
+                                transition={{ duration: 0.2, ease: [0.42, 0, 1, 1], delay: index * 0.06 }} // Adjust the duration as needed
                             >
                                 {route?.title}
                             </motion.p>}
