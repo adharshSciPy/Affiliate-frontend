@@ -18,28 +18,28 @@
         gap: 1rem;
         height: 100%;
         width: 100%;
-    }
 
-    .affiliater__container--count-1 {
-        grid-column: span 2;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 1rem;
-        background-color: rgb(177, 174, 174);
-    }
-
-    .affiliaterhome__container--chart {
-        grid-column: span 2;
-        background-color: rgb(206, 152, 152);
-    }
-
-    .affiliaterhome__container--profile {
-        grid-column: span 1;
-        grid-row: span 2;
-    }
-
-    .affiliaterhome__container--table {
-        grid-column: span 2;
+        &--counts {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 1rem;
+            background-color: rgb(177, 174, 174);
+        }
+    
+        &--chart {
+            grid-column: span 2;
+            background-color: rgb(206, 152, 152);
+        }
+    
+        &--profile {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+    
+        &--table {
+            grid-column: span 2;
+        }
     }
 }
