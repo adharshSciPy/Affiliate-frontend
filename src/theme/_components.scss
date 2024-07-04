@@ -854,12 +854,16 @@
   background-color: var(--background-1);
   border-radius: 15px;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 
   &::-webkit-scrollbar {
     display: none;
   }
 
   &__heading {
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -867,10 +871,6 @@
     top: 0;
     z-index: 10;
     background-color: var(--background-1);
-
-    span {
-      // border: 1px solid green;
-    }
 
     h1 {
       font-size: medium;
@@ -885,7 +885,6 @@
   }
 
   &__commision-coupon {
-    // border: 1px solid red;
     width: 100%;
     display: flex;
     align-items: center;
@@ -893,7 +892,6 @@
   }
 
   &__commision {
-    // border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -901,11 +899,12 @@
 
     p {
       font-size: medium;
+      font-weight: 600;
+      color:var(--primary-color);
     }
   }
 
   &__coupon {
-    // border: 1px solid black;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -913,34 +912,28 @@
 
     p {
       font-size: medium;
+      font-size: medium;
+      font-weight: 600;
+      color:var(--primary-color);
     }
   }
 
   &__strength {
-
-    // border: 1px solid red;
     h1 {
       font-size: medium;
     }
 
-    div {
-      width: 100%;
-      background-color: green;
-      height: 5px;
-      border-radius: 10px;
-      margin-top: 5px;
-    }
   }
 
   &__verification {
     display: flex;
-    // border: 1px solid red;
     margin-top: 10px;
     flex-direction: column;
     gap: 5px;
 
     h1 {
       font-size: medium;
+      font-weight: 400;
     }
   }
 
@@ -953,6 +946,7 @@
 
   &__icons {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding-bottom: 20px;
   }
 }
