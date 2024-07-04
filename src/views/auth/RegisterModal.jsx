@@ -8,11 +8,11 @@ import { roles } from "../../constants/roles.js";
 function RegisterModal({ role, setRole }) {
     const [isOpen, setIsOpen] = useState(true);
     const [showRoleContent, setShowRoleContent] = useState(false);
-    const [isTransitioning, setIsTransitioning] = useState(false); 
+    const [isTransitioning, setIsTransitioning] = useState(false);
 
     useEffect(() => {
         if (role) {
-            setIsTransitioning(true);   
+            setIsTransitioning(true);
             const timer = setTimeout(() => {
                 setShowRoleContent(true);
                 setIsTransitioning(false);
@@ -23,7 +23,7 @@ function RegisterModal({ role, setRole }) {
         }
     }, [role]);
 
-    const initialPos = role === roles.AFFILIATER_ROLE ? { x: -100 } : { x: 100 }; 
+    const initialPos = role === roles.AFFILIATER_ROLE ? { x: -100 } : { x: 100 };
 
     const handleGoBack = () => {
         setIsTransitioning(true);
@@ -45,7 +45,7 @@ function RegisterModal({ role, setRole }) {
                 closable={false}
                 maskClosable={false}
                 mask={true}
-                style={{minHeight: '50%', height: '50%'}}
+                style={{ minHeight: '50%', height: '50%' }}
             >
                 <AnimatePresence initial={false}>
                     {!role ? (
@@ -56,7 +56,7 @@ function RegisterModal({ role, setRole }) {
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.5 }}
                             className="registermodal"
-                            style={{minHeight: '100%', height: '100%'}}
+                            style={{ minHeight: '100%', height: '100%' }}
                         >
                             <div className="registermodal__container" onClick={() => setRole(roles.AFFILIATER_ROLE)}>
                                 <div className="registermodal__image">
@@ -98,10 +98,10 @@ function RegisterModal({ role, setRole }) {
                                 key={role}
                                 initial={initialPos}
                                 animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: initialPos.x > 0 ? 100 : -100 }}
+                                exit={{ opacity: 0, x: initialPos.x > 0 ? 50 : -50 }}
                                 transition={{ duration: 0.5 }}
                                 className="registermodal__selectedcontainer"
-                                style={{minHeight: '100%', height: '100%'}}
+                                style={{ minHeight: '100%', height: '100%' }}
                             >
                                 {role === roles.AFFILIATER_ROLE && (
                                     <>
