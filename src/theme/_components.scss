@@ -701,6 +701,13 @@
   &::-webkit-scrollbar {
     display: none;
   }
+
+  &__heading {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--background-1);
+  }
 }
 
 .dashdetails {
@@ -715,7 +722,11 @@
   }
 
   &__heading {
+    position: sticky;
+    top: 0;
+    z-index: 10;
     padding: 1rem;
+    background-color: var(--background-1);
 
     p {
       font-size: 20px;
@@ -781,6 +792,10 @@
     justify-content: space-between;
     margin: 0 0.2rem;
     margin-bottom: 0.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--background-1);
 
     p:nth-child(1) {
       font-size: 20px;
@@ -808,6 +823,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    top: 0;
+    z-index: 10;
+    background-color: var(--background-1);
 
     p {
       font-size: 20px;
@@ -848,7 +866,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // border: 1px solid red;
+    top: 0;
+    z-index: 10;
+    background-color: var(--background-1);
 
     span {
       // border: 1px solid green;
