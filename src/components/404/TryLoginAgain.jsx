@@ -7,6 +7,7 @@ const TryLoginAgain = ({ message = '' }) => {
     const navigate = useNavigate()
     return (
         <div className='tryloginagain'>
+            <div className="tryloginagain__body">
             <div className="tryloginagain__image">
                 <img src={wrong} alt="" />
             </div>
@@ -17,6 +18,9 @@ const TryLoginAgain = ({ message = '' }) => {
             <div className="tryloginagain__button">
                 <Button onClick={() => navigate('/auth/login')}>Please Login Again</Button>
             </div>
+
+            </div>
+            
         </div>
     )
 }
