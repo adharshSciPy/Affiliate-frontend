@@ -19,6 +19,24 @@
         flex-wrap: wrap;
         gap: 1rem;
         margin-bottom: 2rem;
+
+        @include breakpoint(lg) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @include breakpoint(md) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @include breakpoint(sm) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 
     &__middle {
