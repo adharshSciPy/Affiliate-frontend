@@ -116,7 +116,7 @@ const Register = () => {
       const result = await userRegistration({ payload }).unwrap();
       if (result) {
         notification('success', 'Registration Succesfull', result?.data?.message, 'bottomRight');
-        navigate('/auth/login');
+        navigate("/auth/login");
       }
     } catch (error) {
       notification('error', 'Registration Failed', error?.data?.message, 'bottomRight');
