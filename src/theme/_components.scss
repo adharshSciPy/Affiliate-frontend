@@ -900,7 +900,7 @@
     p {
       font-size: medium;
       font-weight: 600;
-      color:var(--primary-color);
+      color: var(--primary-color);
     }
   }
 
@@ -914,7 +914,7 @@
       font-size: medium;
       font-size: medium;
       font-weight: 600;
-      color:var(--primary-color);
+      color: var(--primary-color);
     }
   }
 
@@ -948,5 +948,22 @@
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
+  }
+}
+
+// dashboard company profile card
+.dashcompanyprofile {
+  height: 100%;
+  width: 100%;
+  padding: 0 1rem;
+  background-color: var(--background-1);
+  border-radius: 15px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }

@@ -8,5 +8,8 @@ export { default as CompanyRegister } from './auth/CompanyRegister'
 // admin
 export { default as AdminHome } from './admin/AdminHome'
 
+// company
+export { default as CompanyHome } from './company/CompanyHome'
+
 // affiliater
 export { default as AffiliaterHome } from './affiliater/AffiliaterHome'

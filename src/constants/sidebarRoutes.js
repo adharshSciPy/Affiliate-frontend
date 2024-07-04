@@ -84,7 +84,7 @@ const companySidebarRoutes = [
     {
         icon: sideIcon1,
         title: 'Dashboard',
-        path: '/admin/home',
+        path: '/company/home',
     },
     {
         icon: sideIcon6,

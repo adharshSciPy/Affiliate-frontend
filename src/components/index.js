@@ -9,6 +9,7 @@ export { default as DashBarchart } from './dashboard/DashBarchart';
 export { default as DashDetails } from './dashboard/DashDetails';
 export { default as DashProfileCard } from './dashboard/DashProfileCard';
 export { default as DashAffiliaterProfile } from './dashboard/DashAffiliaterProfile';
+export { default as DashCompanyProfile } from './dashboard/DashCompanyProfile';
 
 // auth
 export { default as PersistLogin } from './auth/PersistLogin';
