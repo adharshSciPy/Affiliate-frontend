@@ -11,71 +11,43 @@
         display: none;
     }
 
-    &__top {
-        min-height: 10%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
+    &__container {
+        height: 100%;
+        width: 100%;
+        display: grid;
         gap: 1rem;
-        margin-bottom: 2rem;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(5, 1fr);
 
-        @include breakpoint(lg) {
+        &--count {
+            grid-column: span 4;
+            grid-row: span 1;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
         }
 
-        @include breakpoint(md) {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        &--chart {
+            grid-column: span 2;
+            grid-row: span 2;
         }
 
-        @include breakpoint(sm) {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        &--detail {
+            grid-column: span 1;
+            grid-row: span 2;
+        }
+
+        &--table {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        &--coupon {
+            grid-column: span 1;
+            grid-row: span 2;
         }
     }
 
-    &__middle {
-        max-height: 40%;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        // background-color: rgba(255, 0, 0, 0.445);
-        border-radius: 15px;
 
-        &--left {
-            flex: 2;
-        }
-
-        &--right {
-            flex: 1;
-        }
-    }
-
-    &__bottom {
-        max-height: 40%;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-bottom: 1rem;
-        // background-color: rgba(26, 116, 8, 0.493);
-        border-radius: 15px;
-
-        &--left {
-            flex: 2;
-        }
-
-        &--right {
-            flex: 1;
-        }
-    }
 }

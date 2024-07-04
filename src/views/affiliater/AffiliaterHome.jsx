@@ -96,46 +96,9 @@ const AffiliaterHome = () => {
     ]
 
     return (
-        // <div className='affiliaterhome'>
-        //     <div className="affiliaterhome__top">
-        //         {
-        //             dashcard.map((item, index) => {
-        //                 return (
-        //                     <DashCount
-        //                         key={index}
-        //                         icon={item.icon}
-        //                         title={item.title}
-        //                         count={item.count} />
-        //                 )
-        //             })
-        //         }
-
-        //         <DashProfileCard />
-        //     </div>
-
-        //     <div className="affiliaterhome__middle">
-        //         <div className="affiliaterhome__middle--left">
-        //             <DashBarchart />
-        //         </div>
-        //     </div>
-
-        //     <div className="affiliaterhome__bottom">
-        //         <div className="affiliaterhome__bottom--left">
-        //             <DashTable
-        //                 heading='Latest Affiliaters Marketer'
-        //                 columns={columns}
-        //                 data={tableData}
-        //                 path='/admin/affiliaters'
-        //             />
-        //         </div>
-        //         <div className="affiliaterhome__bottom--right">
-        //             <DashDetails />
-        //         </div>
-        //     </div>
-        // </div>
         <div className="affiliaterhome">
             <div className="affiliaterhome__container">
-                <div className="affiliater__container--count-1">
+                <div className="affiliaterhome__container--counts">
                     {
                         dashcard.map((item, index) => {
                             return (
