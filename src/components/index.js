@@ -8,6 +8,7 @@ export { default as DashTable } from './dashboard/DashTable';
 export { default as DashBarchart } from './dashboard/DashBarchart';
 export { default as DashDetails } from './dashboard/DashDetails';
 export { default as DashProfileCard } from './dashboard/DashProfileCard';
+export { default as DashAffiliaterProfile } from './dashboard/DashAffiliaterProfile';
 
 // auth
 export { default as PersistLogin } from './auth/PersistLogin';

@@ -2,7 +2,7 @@ import React from 'react'
 
 import dashIcon1 from '../../assets/dashboard-icons/affiliaterdash1.png'
 import dashIcon2 from '../../assets/dashboard-icons/affiliaterdash2.png'
-import { DashBarchart, DashCount, DashDetails, DashTable, DashProfileCard } from '../../components'
+import { DashBarchart, DashCount, DashDetails, DashTable, DashAffiliaterProfile } from '../../components'
 import { Avatar, Button } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
 
@@ -72,6 +72,29 @@ const AffiliaterHome = () => {
         },
     ];
 
+    const details = [
+        {
+            title: "Total Service Provider",
+            value: "2590"
+        },
+        {
+            title: "Total Affiliate Marketer",
+            value: "1594"
+        },
+        {
+            title: "Total Customer",
+            value: "3670"
+        },
+        {
+            title: "Total Verified Service Provider",
+            value: "1853"
+        },
+        {
+            title: "Total Verified Marketers",
+            value: "1250"
+        }
+    ]
+
     return (
         // <div className='affiliaterhome'>
         //     <div className="affiliaterhome__top">
@@ -127,24 +150,24 @@ const AffiliaterHome = () => {
                 </div>
 
                 <div className="affiliaterhome__container--profile">
-                    Profile Info
+                    <DashAffiliaterProfile />
                 </div>
 
                 <div className="affiliaterhome__container--chart">
-                    Customers Chart
+                    <DashBarchart />
                 </div>
 
                 <div className="affiliaterhome__container--table">
-                    {/* <DashTable
+                    <DashTable
                         heading='Latest Affiliaters Marketer'
                         columns={columns}
                         data={tableData}
                         path='/admin/affiliaters'
-                    /> */}
+                    />
                 </div>
 
                 <div className="affiliaterhome__container--detail">
-                    Services & Details
+                    <DashDetails heading='Coupons' data={details} isFirstSelected={true} />
                 </div>
             </div>
         </div>
