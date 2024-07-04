@@ -21,9 +21,9 @@ const DashDetails = ({ heading, data, isFirstSelected = false }) => {
         }
       </div>
 
-      <div className="dashdetails__footer">
+      {/* <div className="dashdetails__footer">
         <p>More</p>
-      </div>
+      </div> */}
     </div>
   )
 }

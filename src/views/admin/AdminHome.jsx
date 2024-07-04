@@ -7,7 +7,6 @@ import { UserOutlined } from '@ant-design/icons'
 import dashIcon1 from '../../assets/dashboard-icons/admindash1.png'
 import dashIcon2 from '../../assets/dashboard-icons/admindash2.png'
 import dashIcon3 from '../../assets/dashboard-icons/admindash3.png'
-import { color } from 'framer-motion'
 
 
 const AdminHome = () => {
@@ -127,32 +126,33 @@ const AdminHome = () => {
     },
   ];
   return (
-    <div className='adminhome'>
-      <div className="adminhome__top">
-        {
-          dashcard.map((item, index) => {
-            return (
-              <DashCount
-                key={index}
-                icon={item.icon}
-                title={item.title}
-                count={item.count} />
-            )
-          })
-        }
-      </div>
 
-      <div className="adminhome__middle">
-        <div className="adminhome__middle--left">
+    <div className="adminhome">
+      <div className="adminhome__container">
+
+        <div className="adminhome__container--count">
+          {
+            dashcard.map((item, index) => {
+              return (
+                <DashCount
+                  key={index}
+                  icon={item.icon}
+                  title={item.title}
+                  count={item.count} />
+              )
+            })
+          }
+        </div>
+
+        <div className="adminhome__container--chart">
           <DashBarchart />
         </div>
-        <div className="adminhome__middle--right">
+
+        <div className="adminhome__container--detail">
           <DashDetails heading='Details' data={details} isFirstSelected={true} />
         </div>
-      </div>
 
-      <div className="adminhome__bottom">
-        <div className="adminhome__bottom--left">
+        <div className="adminhome__container--table">
           <DashTable
             heading='Latest Affiliaters Marketer'
             columns={columns}
@@ -160,7 +160,8 @@ const AdminHome = () => {
             path='/admin/affiliaters'
           />
         </div>
-        <div className="adminhome__bottom--right">
+
+        <div className="adminhome__container--coupon">
           <DashDetails heading='Coupons' data={coupons} />
         </div>
       </div>

@@ -10,6 +10,7 @@ const PageNotFound = () => {
     }
     return (
         <div className='pagenotfound'>
+            <div className="pagenotfound__body">
             <div className="pagenotfound__image">
                 <img src={pagenotfoundimg} alt="page-not-found-404" />
             </div>
@@ -21,6 +22,9 @@ const PageNotFound = () => {
             <div className="pagenotfound__button">
                 <Button onClick={handleClick} type='primary'>Go Back</Button>
             </div>
+
+            </div>
+            
         </div>
     )
 }

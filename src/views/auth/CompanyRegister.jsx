@@ -118,7 +118,7 @@ const CompanyRegister = () => {
           result?.data?.message,
           "bottomRight"
         );
-        navigate("/auth/company-login");
+        navigate("/auth/login");
       }
     } catch (error) {
       notification(
