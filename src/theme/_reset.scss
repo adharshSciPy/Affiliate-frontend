@@ -7,10 +7,26 @@
 body {
     margin: 0;
     padding: 0;
-    // overflow: hidden;
-    // font-family: "Reddit Sans Condensed", sans-serif;
     font-family: "Roboto Condensed", sans-serif;
+}
 
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
 
 button {
@@ -29,7 +45,9 @@ button {
 }
 
 /* Reset basic input styles */
-input, select, textarea {
+input,
+select,
+textarea {
     outline: none;
     border: none;
     padding: 0;
