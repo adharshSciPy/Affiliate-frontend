@@ -142,14 +142,23 @@
   position: relative;
   transition: width 0.4s ease-in-out, min-width 0.4s ease-in-out;
   z-index: 998;
-  width: 350px;
+  width: 280px;
 
   &--closed {
     width: 80px;
 
     &:hover {
-      width: 350px;
+      width: 280px;
     }
+
+    .sidebar__profile--logout {
+      display: none;
+    }
+
+    &:hover .sidebar__profile--logout {
+      display: flex;
+    }
+
   }
 
   &__header {
@@ -242,7 +251,7 @@
   }
 
   &__profile {
-    height: 100px;
+    height: 60px;
     width: 95%;
     padding: 0 1rem;
     display: flex;
@@ -266,8 +275,8 @@
     }
 
     &--logo {
-      height: 3rem;
-      width: 3rem;
+      height: 2rem;
+      width: 2rem;
       border-radius: 50%;
       overflow: hidden;
 
@@ -281,12 +290,12 @@
       color: var(--text-dark);
 
       p:nth-child(1) {
-        font-size: 17px;
-        font-weight: 600;
+        font-size: 15px;
+        font-weight: 500;
       }
 
       span {
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 400;
       }
 
