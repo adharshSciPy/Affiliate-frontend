@@ -7,47 +7,99 @@
     padding: 1rem;
     overflow-y: scroll;
 
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
     &__container {
-        height: 100%;
+        height: auto;
         width: 100%;
         display: grid;
         gap: 1rem;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(5, 1fr);
 
+        @include breakpoint(md) {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+        }
+
+        @include breakpoint(sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
         &--count {
             grid-column: span 4;
             grid-row: span 1;
+            min-height: 100px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 1rem;
+
+
+            @include breakpoint(md) {
+                overflow-x: scroll;
+                grid-column: span 3;
+                grid-row: span 2;
+                order: 1;
+            }
         }
 
         &--chart {
             grid-column: span 2;
             grid-row: span 2;
+            min-height: 200px;
+
+            @include breakpoint(md) {
+                grid-column: span 3;
+                grid-row: span 4;
+                order: 2;
+                overflow-y: scroll;
+            }
         }
 
         &--detail {
-            grid-column: span 1;
+            grid-column: span 2;
             grid-row: span 2;
+            min-height: 100px;
+
+            @include breakpoint(md) {
+                grid-column: span 1;
+                grid-row: span 1;
+                order: 4;
+                overflow-y: scroll;
+            }
+
+            @include breakpoint(sm) {
+                grid-column: span 3;
+            }
         }
 
         &--table {
             grid-column: span 2;
             grid-row: span 2;
+            min-height: 200px;
+
+            @include breakpoint(md) {
+                grid-column: span 3;
+                grid-row: span 4;
+                order: 3;
+                overflow-y: scroll;
+            }
         }
 
         &--coupon {
-            grid-column: span 1;
+            grid-column: span 2;
             grid-row: span 2;
+            min-height: 200px;
+
+            @include breakpoint(md) {
+                grid-column: span 2;
+                grid-row: span 1;
+                order: 5;
+                overflow-y: scroll;
+            }
+
+            @include breakpoint(sm) {
+                grid-column: span 3;
+            }
         }
     }
-
-
 }

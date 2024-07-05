@@ -441,7 +441,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
   }
 
   &__image {
@@ -469,17 +468,12 @@
   align-items: center;
   justify-content: center;
 
-
-
-
   &__body {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
   }
-
 
   &__image {
     height: 60%;
@@ -518,7 +512,7 @@
 .dashcard {
   height: 100%;
   width: 100%;
-  max-width: 480px;
+  min-width: 200px;
   border-radius: 15px;
   background-color: var(--background-1);
   display: flex;
@@ -526,37 +520,6 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  overflow-y: scroll;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  @include breakpoint(lg) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
-  }
-
-  @include breakpoint(md) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 100%;
-  }
-
-  @include breakpoint(sm) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 100%;
-  }
 
   &__container {
     display: flex;
@@ -565,76 +528,34 @@
     gap: 1rem;
     padding: 3rem 1rem;
     overflow: hidden;
-
-    @include breakpoint(lg) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    @include breakpoint(md) {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
-
-    @include breakpoint(sm) {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-    }
   }
 
   &__icon {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
 
+    @include breakpoint(sm) {
+      display: none;
+    }
+
     img {
-      height: auto;
-      width: auto;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
 
     @include breakpoint(lg) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        height: auto;
-        width: auto;
-      }
+      height: 40px;
+      width: 40px;
     }
 
     @include breakpoint(md) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        height: auto;
-        width: auto;
-      }
-    }
-
-    @include breakpoint(sm) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        height: 60%;
-        width: 60%;
-      }
+      height: 40px;
+      width: 40px;
     }
   }
 
@@ -651,50 +572,32 @@
     }
 
     @include breakpoint(lg) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
       p:nth-child(1) {
-        font-size: 40px;
-        font-weight: 500;
+        font-size: 30px;
       }
 
       p:nth-child(2) {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
 
     @include breakpoint(md) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
       p:nth-child(1) {
-        font-size: 40px;
-        font-weight: 500;
+        font-size: 25px;
       }
 
       p:nth-child(2) {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
 
     @include breakpoint(sm) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
       p:nth-child(1) {
-        font-size: 30px;
-        font-weight: 500;
+        font-size: 25px;
       }
 
       p:nth-child(2) {
-        font-size: 20px;
+        font-size: 18px;
       }
     }
   }
@@ -931,7 +834,6 @@
     h1 {
       font-size: medium;
     }
-
   }
 
   &__verification {
@@ -974,5 +876,93 @@
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  &__heading {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    z-index: 10;
+    background-color: var(--background-1);
+
+    h1 {
+      font-size: medium;
+    }
+
+    p {
+      font-size: 20px;
+      font-weight: 500;
+      font-size: small;
+      color: var(--text-grey);
+    }
+  }
+
+  &__courses {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: medium;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+  }
+
+  &__listed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: medium;
+      font-size: medium;
+      font-weight: 600;
+      color: var(--primary-color);
+    }
+  }
+
+  &__strength {
+    h1 {
+      font-size: medium;
+    }
+  }
+  &__ratings {
+    h1 {
+      font-size: medium;
+    }
+  }
+  &__review {
+    p {
+      margin: 5px 0px 15px 0px;
+      font-size: small;
+      text-align: start;
+    }
+  }
+
+  &__icon-name {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 10px;
+    // border: 1px solid red;
+    img {
+      width: 1.5rem;
+    }
+  }
+  &__star {
+    margin-top: 4px;
   }
 }
