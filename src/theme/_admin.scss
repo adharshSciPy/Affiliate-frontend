@@ -8,7 +8,7 @@
     overflow-y: scroll;
 
     &__container {
-        height: 100%;
+        height: auto;
         width: 100%;
         display: grid;
         gap: 1rem;
@@ -20,9 +20,14 @@
             grid-template-rows: repeat(10, 1fr);
         }
 
+        @include breakpoint(sm) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
         &--count {
             grid-column: span 4;
             grid-row: span 1;
+            min-height: 100px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -40,6 +45,7 @@
         &--chart {
             grid-column: span 2;
             grid-row: span 2;
+            min-height: 200px;
 
             @include breakpoint(md) {
                 grid-column: span 3;
@@ -52,6 +58,7 @@
         &--detail {
             grid-column: span 2;
             grid-row: span 2;
+            min-height: 100px;
 
             @include breakpoint(md) {
                 grid-column: span 1;
@@ -59,11 +66,16 @@
                 order: 4;
                 overflow-y: scroll;
             }
+
+            @include breakpoint(sm) {
+                grid-column: span 3;
+            }
         }
 
         &--table {
             grid-column: span 2;
             grid-row: span 2;
+            min-height: 200px;
 
             @include breakpoint(md) {
                 grid-column: span 3;
@@ -76,12 +88,17 @@
         &--coupon {
             grid-column: span 2;
             grid-row: span 2;
+            min-height: 200px;
 
             @include breakpoint(md) {
                 grid-column: span 2;
                 grid-row: span 1;
                 order: 5;
                 overflow-y: scroll;
+            }
+
+            @include breakpoint(sm) {
+                grid-column: span 3;
             }
         }
     }
