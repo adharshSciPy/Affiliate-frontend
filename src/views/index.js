@@ -13,3 +13,6 @@ export { default as CompanyHome } from './company/CompanyHome'
 
 // affiliater
 export { default as AffiliaterHome } from './affiliater/AffiliaterHome'
+export { default as AffiliaterCommission } from './affiliater/AffiliaterCommission'
+export { default as AffiliaterCoupon } from './affiliater/AffiliaterCoupon'
+export { default as AffiliaterTransaction } from './affiliater/AffiliaterTransaction'
