@@ -1,3 +1,4 @@
+// admin home page
 .adminhome {
     height: 100%;
     width: auto;
@@ -183,4 +184,60 @@
     //         }
     //     }
     // }
+}
+
+// active companies
+.activecompanies {
+    height: 100%;
+    width: auto;
+    border-radius: 20px;
+    background-color: var(--background-3);
+    padding: 1rem;
+    overflow-y: scroll;
+    box-sizing: border-box;
+
+    &__header {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background-color: var(--background-3);
+        margin-bottom: 1rem;
+        h3 {
+            font-size: 23px;
+            color: var(--text-grey);
+        }
+    }
+
+    &__table {
+        height: 100%;
+        width: 100%; 
+    }
+}
+
+// new requests companies
+.newcompanies {
+    height: 100%;
+    width: auto;
+    border-radius: 20px;
+    background-color: var(--background-3);
+    padding: 1rem;
+    overflow-y: scroll;
+    box-sizing: border-box;
+
+    &__header {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background-color: var(--background-3);
+        margin-bottom: 1rem;
+        h3 {
+            font-size: 23px;
+            color: var(--text-grey);
+        }
+    }
+
+    &__table {
+        height: 100%;
+        width: 100%; 
+    }
 }
