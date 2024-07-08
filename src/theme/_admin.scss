@@ -1,11 +1,92 @@
 .adminhome {
     height: 100%;
-    width: 100%;
+    width: auto;
     border-radius: 20px;
     background-color: var(--background-3);
     padding: 1rem;
     overflow-y: scroll;
     box-sizing: border-box;
+
+    &__container {
+        height: auto;
+        width: auto;
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        grid-template-areas:
+            "count count count"
+            "chart chart detail"
+            "table table coupon";
+
+        @include breakpoint(md) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto auto auto;
+            grid-template-areas:
+                "count count"
+                "chart chart"
+                "detail coupon"
+                "table table";
+        }
+
+        @include breakpoint(sm) {
+            grid-template-columns: 2fr;
+            grid-template-rows: auto auto auto auto auto;
+            grid-template-areas:
+                "count count"
+                "chart chart"
+                "table table"
+                "detail detail"
+                "coupon coupon";
+        }
+
+        &--count {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            grid-area: count;
+
+            @include breakpoint(md) {
+                max-height: 130px;
+                overflow-x: scroll;
+            }
+
+            @include breakpoint(sm) {
+                height: 100px;
+            }
+        }
+
+        &--chart {
+            grid-area: chart;
+            height: 400px;
+        }
+
+        &--detail {
+            grid-area: detail;
+
+            @include breakpoint(md) {
+                max-height: 300px;
+            }
+        }
+
+        &--table {
+            grid-area: table;
+            height: 400px;
+
+            @include breakpoint(md) {
+                max-height: 400px;
+            }
+        }
+
+        &--coupon {
+            grid-area: coupon;
+
+            @include breakpoint(md) {
+                max-height: 300px;
+            }
+        }
+    }
 
     // &__container {
     //     height: auto;
@@ -102,80 +183,4 @@
     //         }
     //     }
     // }
-
-    &__container {
-        height: 100%;
-        width: 100%;
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: 40% 30%;
-        grid-template-rows: 20% 40% 40%;
-        grid-template-areas:
-            "count count count"
-            "chart chart detail"
-            "table table coupon";
-
-        @include breakpoint(md) {
-            grid-template-columns: repeat(2, auto);
-            grid-template-rows: auto auto auto auto auto;
-            grid-template-areas:
-                "count count"
-                "chart chart"
-                "table table"
-                "detail coupon";
-        }
-
-        @include breakpoint(sm) {
-            grid-template-columns: repeat(2, auto);
-            grid-template-rows: auto auto auto auto auto;
-            grid-template-areas:
-                "count"
-                "chart"
-                "table"
-                "detail"
-                "coupon";
-        }
-
-        &--count {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            grid-area: count;
-
-            @include breakpoint(md) {
-                overflow-x: scroll;
-                // max-height: 130px;
-            }
-
-            @include breakpoint(sm) {
-                // max-height: 100px;
-            }
-        }
-
-        &--chart {
-            background-color: rgb(197, 175, 175);
-            // width: 100%;
-            grid-area: chart;
-        }
-
-        &--detail {
-            background-color: rgb(197, 175, 175);
-            // width: 100%;
-            grid-area: detail;
-        }
-
-        &--table {
-            background-color: rgb(197, 175, 175);
-            // width: 100%;745545454544
-            grid-area: table;
-        }
-
-        &--coupon {
-            background-color: rgb(197, 175, 175);
-            width: 100%;
-            grid-area: coupon;
-        }
-    }
 }
