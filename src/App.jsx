@@ -23,7 +23,10 @@ const router = createBrowserRouter([
     },
     {
         path: "/logged-in",
-        element: <LoggedInPage />,
+        element:
+            <PersistLogin>
+                <LoggedInPage />
+            </PersistLogin>,
     },
     {
         path: "/auth",

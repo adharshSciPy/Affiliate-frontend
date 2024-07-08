@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Avatar, Button, Table } from 'antd'
 import { UserOutlined } from '@ant-design/icons';
+import { useVerifiedCompaniesQuery } from '../../features/api/adminApiSlice';
 
 const ActiveCompanies = () => {
+
+  const [page, setPage] = useState(1)
+  const [limit, setLimit] = useState(10)
+
+  const { data } = useVerifiedCompaniesQuery({ page, limit })
+
+  console.log('data', data)
 
   const columns = [
     {
