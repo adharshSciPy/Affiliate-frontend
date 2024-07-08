@@ -7,6 +7,9 @@ export { default as CompanyRegister } from './auth/CompanyRegister'
 
 // admin
 export { default as AdminHome } from './admin/AdminHome'
+export { default as ActiveCompanies } from './admin/ActiveCompanies'
+export { default as CompanyVerifications } from './admin/CompanyVerifications'
+export { default as CompanyPayments } from './admin/CompanyPayments'
 
 // company
 export { default as CompanyHome } from './company/CompanyHome'
