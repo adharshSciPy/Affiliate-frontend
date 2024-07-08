@@ -23,15 +23,15 @@ const adminSidebarRoutes = [
         children: [
             {
                 title: 'Active Companies',
-                path: '#',
+                path: 'companies',
             },
             {
                 title: 'Verifications',
-                path: '#',
+                path: 'new-companies',
             },
             {
                 title: 'Payments',
-                path: '#',
+                path: 'company-payments',
             }
         ]
     },

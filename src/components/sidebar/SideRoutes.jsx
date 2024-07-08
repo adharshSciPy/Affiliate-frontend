@@ -61,7 +61,11 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) =
 
             {isChildren && isActive &&
                 route?.children.map((child, idx) => (
-                    <div className="sideroutes__child" key={idx}>
+                    <div
+                        className="sideroutes__child"
+                        key={idx}
+                        onClick={() => navigate(`/admin/${child?.path}`)}
+                    >
                         <p>{child.icon}</p>
                         <p>{child.title}</p>
                     </div>
