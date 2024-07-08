@@ -159,64 +159,22 @@ const affiliateSidebarRoutes = [
     {
         icon: sideIcon9,
         title: 'Coupons',
-        path: false,
-        children: [
-            {
-                title: '',
-                path: '#',
-            },
-            {
-                title: '',
-                path: '#',
-            },
-            {
-                title: '',
-                path: '#',
-            }
-        ]
+        path: '/affiliater/coupons',
     },
     {
         icon: sideIcon10,
         title: 'Commission',
-        path: false,
-        children: [
-            {
-                title: '',
-                path: '#',
-            },
-            {
-                title: '',
-                path: '#',
-            },
-            {
-                title: '',
-                path: '#',
-            },
-            {
-                title: '',
-                path: '#',
-            }
-        ]
+        path: '/affiliater/commission',
     },
     {
         icon: sideIcon11,
         title: 'Transactions',
-        path: false,
-        children: [
-            {
-                title: '',
-                path: '#',
-            },
-            {
-                title: '',
-                path: '#',
-            }
-        ]
+        path: '/affiliater/transactions',
     },
     {
         icon: sideIcon5,
         title: 'Settings',
-        path: '#',
+        path: '/affiliater/home',
     }
 ]
 
