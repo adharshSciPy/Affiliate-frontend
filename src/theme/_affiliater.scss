@@ -1,52 +1,88 @@
 // affiliater home
 .affiliaterhome {
-    height: 100%;
-    max-height: 100vh;
-    width: 100%;
-    border-radius: 20px;
-    background-color: var(--background-3);
-    padding: 1rem;
-    overflow-y: scroll;
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 1rem;
+  overflow-y: scroll;
 
-    &::-webkit-scrollbar {
-        display: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 1rem;
+    height: 100%;
+    width: 100%;
+
+    &--counts {
+      grid-column: span 2;
+      grid-row: span 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    &__container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(8, 1fr);
-        gap: 1rem;
-        height: 100%;
-        width: 100%;
-    
-        &--counts {
-          grid-column: span 2;
-          grid-row: span 2;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 1rem;
-        }
-    
-        &--chart {
-          grid-column: span 2;
-          grid-row: span 3;
-        }
-    
-        &--profile {
-          grid-column: span 1;
-          grid-row: span 5;
-        }
-    
-        &--table {
-          grid-column: span 2;
-          grid-row: span 4;
-        }
-    
-        &--detail {
-          grid-column: span 1;
-          grid-row: span 4;
-        }
+    &--chart {
+      grid-column: span 2;
+      grid-row: span 3;
+    }
+
+    &--profile {
+      grid-column: span 1;
+      grid-row: span 5;
+    }
+
+    &--table {
+      grid-column: span 2;
+      grid-row: span 4;
+    }
+
+    &--detail {
+      grid-column: span 1;
+      grid-row: span 4;
+    }
+  }
+}
+//affiliater transaction
+.affiliatertransaction {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 1rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__container {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--background-1);
+    overflow: scroll;
+
+    &--counts {
+      grid-column: span 2;
+      grid-row: span 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      @include breakpoint(sm) {
+        flex-wrap: wrap;
       }
+    }
+    h3 {
+      padding: 20px 0 0 20px;
+    }
+  }
 }
