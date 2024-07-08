@@ -16,13 +16,13 @@ const LoggedInPage = () => {
   useEffect(() => {
     switch (role) {
       case ADMIN_ROLE:
-        navigate('/admin');
+        navigate('/admin/home');
         break;
       case COMPANY_ROLE:
-        navigate('/company');
+        navigate('/company/home');
         break;
       case AFFILIATER_ROLE:
-        navigate('/affiliater');
+        navigate('/affiliater/home');
         break;
       case CUSTOMER_ROLE:
         navigate('/customer');
