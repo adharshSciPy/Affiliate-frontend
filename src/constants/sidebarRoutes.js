@@ -174,7 +174,7 @@ const affiliateSidebarRoutes = [
     {
         icon: sideIcon5,
         title: 'Settings',
-        path: '/affiliater/home',
+        path: '/affiliater/settings',
     }
 ]
 
