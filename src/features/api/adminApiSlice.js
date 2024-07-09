@@ -6,7 +6,7 @@ export const adminApiSlice = apiSlice.injectEndpoints({
 
         // get all verified companies
         verifiedCompanies: builder.query({
-            query: ({ page, limit }) => ({
+            query: ({ page = 1, limit = 10 }) => ({
                 url: `/company/companies?page=${page}&limit=${limit}`,
                 method: 'GET'
             })
@@ -14,7 +14,7 @@ export const adminApiSlice = apiSlice.injectEndpoints({
 
         // get all not verified companies
         newCompanies: builder.query({
-            query: ({ page, limit }) => ({
+            query: ({ page = 1, limit = 10 }) => ({
                 url: `/company/companies/not-verified?page=${page}&limit=${limit}`,
                 method: 'GET'
             })
@@ -30,7 +30,7 @@ export const adminApiSlice = apiSlice.injectEndpoints({
 
         // get all verified affiliaters
         verifiedAffiliaters: builder.query({
-            query: ({ page, limit }) => ({
+            query: ({ page = 1, limit = 10 }) => ({
                 url: `/user/affiliaters?page=${page}&limit=${limit}`,
                 method: 'GET'
             })
@@ -38,7 +38,7 @@ export const adminApiSlice = apiSlice.injectEndpoints({
 
         // get all not-verified affiliaters
         newAffiliaters: builder.query({
-            query: ({ page, limit }) => ({
+            query: ({ page = 1, limit = 10 }) => ({
                 url: `/user/affiliaters/not-verified?page=${page}&limit=${limit}`,
                 method: 'GET'
             })
@@ -46,7 +46,7 @@ export const adminApiSlice = apiSlice.injectEndpoints({
 
         // get all tokens
         customers: builder.query({
-            query: ({ page, limit }) => ({
+            query: ({ page = 1, limit = 10 }) => ({
                 url: `/user/customers?page=${page}&limit=${limit}`,
                 method: 'GET'
             })
@@ -54,7 +54,7 @@ export const adminApiSlice = apiSlice.injectEndpoints({
 
         // get all tokens
         tokens: builder.query({
-            query: ({ page, limit }) => ({
+            query: ({ page = 1, limit = 10 }) => ({
                 url: `/token/tokens?page=${page}&limit=${limit}`,
                 method: 'GET'
             })

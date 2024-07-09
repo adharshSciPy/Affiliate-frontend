@@ -1,28 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Spin, Alert, Button } from 'antd';
-import { useNewCompaniesQuery, useVerifyNewCompanyMutation } from '../../features/api/adminApiSlice';
+import { useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedCompaniesQuery } from '../../features/api/adminApiSlice';
 import { AdminCompanyVerifyModal } from '../../components';
+import { useNotification } from '../../context/NotificationContext';
 
 const AdminCompanyVerifications = () => {
+  const { notification } = useNotification()
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [tableData, setTableData] = useState([]);
   const [isModal, setIsModal] = useState(false)
   const [modalData, setModalData] = useState([])
+  const [isEmptyData, setIsEmptyData] = useState(false)
 
   const { data, error, isLoading, refetch } = useNewCompaniesQuery({ page, limit });
+  const { refetch: refetchActiveCompanies } = useVerifiedCompaniesQuery()
   const [verifyCompany] = useVerifyNewCompanyMutation();
 
   // verify company api calling logic
   const handleVerifyCompany = async () => {
     try {
-      await verifyCompany({ companyId: modalData.id }).unwrap();
-      notification.success({ message: 'Company verified successfully!' });
-      refetch()
-      setIsModalVisible(false);
-
+      const response = await verifyCompany({ companyId: modalData?._id }).unwrap();
+      if (response) {
+        notification('success', 'Company verified successfully!', response?.data?.message, 'bottomRight');
+        setIsModal(false);
+        refetchActiveCompanies();
+        refetch();
+      }
     } catch (err) {
-      notification.error({ message: 'Verification failed!', description: err.message });
+      console.log('errpr', err)
+      notification('error', 'Verification failed', err?.data?.message, 'bottomRight');
     }
   };
 
@@ -32,6 +39,7 @@ const AdminCompanyVerifications = () => {
     setModalData(details)
   }
 
+  // table coloumns
   const columns = [
     {
       title: 'Company Name',
@@ -51,6 +59,16 @@ const AdminCompanyVerifications = () => {
       ),
     },
   ]
+
+  // error management
+  useEffect(() => {
+    if (error?.status === 404) {
+      setIsEmptyData(true)
+    }
+    else {
+      setIsEmptyData(false)
+    }
+  }, [error])
 
   // to fetch latest data via api
   useEffect(() => {
@@ -73,14 +91,14 @@ const AdminCompanyVerifications = () => {
   return (
     <div className='adminbasicstyle'>
       <div className="adminbasicstyle__header">
-        <h3>New Requests</h3>
+        <h3>New Registrations</h3>
       </div>
 
       <div className="adminbasicstyle__table">
         {isLoading ? (
           <Spin tip="Loading..." />
         ) : error ? (
-          <Alert message="Error loading data" type="error" showIcon />
+          <Alert message={`${isEmptyData ? 'Waiting for new companies to register' : 'Something error happened'}`} type={`${isEmptyData ? 'warning' : 'error'}`} showIcon />
         ) : (
           <Table
             columns={columns}
@@ -101,8 +119,8 @@ const AdminCompanyVerifications = () => {
         isModal={isModal}
         modalData={modalData}
         setIsModal={setIsModal}
-        verify={handleVerifyCompany} 
-        />
+        verify={handleVerifyCompany}
+      />
     </div>
   );
 };

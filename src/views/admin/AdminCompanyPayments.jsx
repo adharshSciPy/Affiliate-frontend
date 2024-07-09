@@ -4,7 +4,7 @@ const AdminCompanyPayments = () => {
   return (
     <div className='adminbasicstyle'>
     <div className="adminbasicstyle__header">
-      <h3>New Requests</h3>
+      <h3>Service Payments</h3>
     </div>
 
     <div className="adminbasicstyle__table">

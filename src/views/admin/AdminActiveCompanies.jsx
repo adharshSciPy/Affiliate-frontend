@@ -7,6 +7,7 @@ const AdminActiveCompanies = () => {
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(10)
   const [tableData, setTableData] = useState([]);
+  const [isEmptyData, setIsEmptyData] = useState(false)
 
   const { data, error, isLoading } = useVerifiedCompaniesQuery({ page, limit })
 
@@ -38,7 +39,15 @@ const AdminActiveCompanies = () => {
     },
   ]
 
-
+  // error management
+  useEffect(() => {
+    if (error?.status === 404) {
+      setIsEmptyData(true)
+    }
+    else {
+      setIsEmptyData(false)
+    }
+  }, [error])
 
   return (
     <div className='adminbasicstyle'>
@@ -50,7 +59,7 @@ const AdminActiveCompanies = () => {
         {isLoading ? (
           <Spin tip="Loading..." />
         ) : error ? (
-          <Alert message="Error loading data" type="error" showIcon />
+          <Alert message={`${isEmptyData ? 'No Active Companies found on Database' : 'Something error happened'}`} type={`${isEmptyData ? 'warning' : 'error'}`} showIcon />
         ) : (
           <Table
             columns={columns}
