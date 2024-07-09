@@ -27,7 +27,7 @@ const adminSidebarRoutes = [
             },
             {
                 title: 'Verifications',
-                path: 'new-companies',
+                path: 'new-companies-request',
             },
             {
                 title: 'Payments',
