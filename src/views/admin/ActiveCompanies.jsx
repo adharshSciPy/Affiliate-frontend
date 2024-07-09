@@ -1,67 +1,43 @@
-import React, { useState } from 'react'
-import { Avatar, Button, Table } from 'antd'
-import { UserOutlined } from '@ant-design/icons';
+import React, { useEffect, useState } from 'react'
+import { Table, Spin } from 'antd'
 import { useVerifiedCompaniesQuery } from '../../features/api/adminApiSlice';
 
 const ActiveCompanies = () => {
 
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(10)
+  const [tableData, setTableData] = useState([]);
 
-  const { data } = useVerifiedCompaniesQuery({ page, limit })
+  const { data, error, isLoading } = useVerifiedCompaniesQuery({ page, limit })
 
-  console.log('data', data)
+  useEffect(() => {
+    if (data) {
+      const structuredData = data?.data?.companies.map((item, index) => {
+        return {
+          key: index + 1,
+          companyName: item.companyName,
+          email: item.email,
+        };
+      });
+      setTableData(structuredData);
+    } else {
+      console.log('Data is not in the expected format or is empty');
+    }
+  }, [data]);
 
   const columns = [
     {
-      title: 'Avatar',
-      dataIndex: 'avatar',
-      key: 'avatar',
+      title: 'Company Name',
+      dataIndex: 'companyName',
+      key: 'companyName',
     },
     {
-      title: 'Full Name',
-      dataIndex: 'fullName',
-      key: 'fullName',
-    },
-    {
-      title: 'Email',
+      title: 'Email Address',
       dataIndex: 'email',
       key: 'email',
     },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address',
-    },
-    {
-      title: '',
-      dataIndex: 'button',
-      key: 'button',
-    },
-  ];
+  ]
 
-  const tableData = [
-    {
-      avatar: <Avatar size="large" icon={<UserOutlined />} />,
-      fullName: 'Brown',
-      email: 'brown@gmail.com',
-      address: 'New York No. 1 Lake Park',
-      button: <Button>Verify</Button>
-    },
-    {
-      avatar: <Avatar size="large" icon={<UserOutlined />} />,
-      fullName: 'Green',
-      email: 'green@gmail.com',
-      address: 'London No. 1 Lake Park',
-      button: <Button>Verify</Button>
-    },
-    {
-      avatar: <Avatar size="large" icon={<UserOutlined />} />,
-      fullName: 'Black',
-      email: 'black@green.com',
-      button: <Button>MODIFY</Button>
-    },
-  ];
 
 
   return (
@@ -71,10 +47,25 @@ const ActiveCompanies = () => {
       </div>
 
       <div className="activecompanies__table">
-        <Table
-          columns={columns}
-          dataSource={tableData}
-        />
+        {isLoading ? (
+          <Spin tip="Loading..." />
+        ) : error ? (
+          <Alert message="Error loading data" type="error" showIcon />
+        ) : (
+          <Table
+            columns={columns}
+            dataSource={tableData}
+            pagination={{
+              current: page,
+              pageSize: limit,
+              total: data?.total || 0,
+              onChange: (page, pageSize) => {
+                setPage(page);
+                setLimit(pageSize);
+              },
+            }}
+          />
+        )}
       </div>
     </div>
   )

@@ -9,6 +9,20 @@ const CompanyVerifications = () => {
 
   const { data, error, isLoading } = useNewCompaniesQuery({ page, limit });
 
+  const columns =[
+    {
+      title: 'Company Name',
+      dataIndex: 'companyName',
+      key: 'companyName',
+    },
+    {
+      title: 'Email Address',
+      dataIndex: 'email',
+      key: 'email',
+    },
+  ]
+
+  
   useEffect(() => {  
     if (data) {
       const structuredData = data?.data?.companies.map((item, index) => {
@@ -37,18 +51,7 @@ const CompanyVerifications = () => {
           <Alert message="Error loading data" type="error" showIcon />
         ) : (
           <Table
-            columns={[
-              {
-                title: 'Company Name',
-                dataIndex: 'companyName',
-                key: 'companyName',
-              },
-              {
-                title: 'Email Address',
-                dataIndex: 'email',
-                key: 'email',
-              },
-            ]}
+            columns={columns}
             dataSource={tableData}
             pagination={{
               current: page,
