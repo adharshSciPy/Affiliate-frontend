@@ -1,21 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Spin, Alert } from 'antd'
-import { useVerifiedCompaniesQuery } from '../../features/api/adminApiSlice';
+import { Table, Spin, Alert, Button } from 'antd'
+import { useVerifiedCompaniesQuery, useDeleteCompanyMutation } from '../../features/api/adminApiSlice';
+import { DeleteModal } from '../../components';
+import { useNotification } from '../../context/NotificationContext';
 
 const AdminActiveCompanies = () => {
 
+  const { notification } = useNotification()
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(10)
   const [tableData, setTableData] = useState([]);
   const [isEmptyData, setIsEmptyData] = useState(false)
+  const [companyId, setCompanyId] = useState(null)
+  const [isModal, setIsModal] = useState(false)
 
-  const { data, error, isLoading } = useVerifiedCompaniesQuery({ page, limit })
-
+  const { data, error, isLoading, refetch } = useVerifiedCompaniesQuery({ page, limit })
+  const [deleteCompany] = useDeleteCompanyMutation()
+  // table data formatting
   useEffect(() => {
     if (data) {
       const structuredData = data?.data?.companies.map((item, index) => {
         return {
           key: index + 1,
+          id: item?._id,
           companyName: item.companyName,
           email: item.email,
         };
@@ -26,6 +33,27 @@ const AdminActiveCompanies = () => {
     }
   }, [data]);
 
+  const handleButtonClick = (id) => {
+    setCompanyId(id)
+    setIsModal(true)
+  }
+
+  // delete logic
+  const handleDeleteCompany = async () => {
+    try {
+      const response = await deleteCompany({ companyId: companyId }).unwrap();
+      if (response) {
+        notification('success', 'Company Deleted successfully!', response?.data?.message, 'bottomRight');
+        setIsModal(false);
+        refetch();
+      }
+    } catch (err) {
+      console.log('error', err)
+      notification('error', 'Verification failed', err?.data?.message, 'bottomRight');
+    }
+  };
+
+  // table columns
   const columns = [
     {
       title: 'Company Name',
@@ -36,6 +64,13 @@ const AdminActiveCompanies = () => {
       title: 'Email Address',
       dataIndex: 'email',
       key: 'email',
+    },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <Button onClick={() => handleButtonClick(record?.id)} danger>Delete</Button>
+      ),
     },
   ]
 
@@ -76,6 +111,8 @@ const AdminActiveCompanies = () => {
           />
         )}
       </div>
+
+      <DeleteModal isModal={isModal} setIsModal={setIsModal} deleteFn={handleDeleteCompany}/>
     </div>
   )
 }

@@ -28,6 +28,14 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        // to delete a company
+        deleteCompany: builder.mutation({
+            query: ({ companyId }) => ({
+                url: `/company/companies/${companyId}`,
+                method: 'DELETE'
+            })
+        }),
+
         // get all verified affiliaters
         verifiedAffiliaters: builder.query({
             query: ({ page = 1, limit = 10 }) => ({
@@ -63,4 +71,4 @@ export const adminApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedAffiliatersQuery, useNewAffiliatersQuery, useTokensQuery, useCustomersQuery } = adminApiSlice
+export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedAffiliatersQuery, useNewAffiliatersQuery, useTokensQuery, useCustomersQuery, useDeleteCompanyMutation } = adminApiSlice

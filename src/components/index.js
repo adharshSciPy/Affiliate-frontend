@@ -22,3 +22,4 @@ export { default as TryLoginAgain } from './404/TryLoginAgain';
 
 // modals
 export { default as AdminCompanyVerifyModal } from './modals/AdminCompanyVerifyModal'
+export { default as DeleteModal } from './modals/DeleteModal'
