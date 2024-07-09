@@ -42,15 +42,15 @@ const adminSidebarRoutes = [
         children: [
             {
                 title: 'Active Members',
-                path: '#',
+                path: 'affiliaters',
             },
             {
                 title: 'Verifications',
-                path: '#',
+                path: 'new-affiliaters-request',
             },
             {
                 title: 'Coupons',
-                path: '#',
+                path: 'affiliater-tokens',
             },
             {
                 title: 'Payments',
@@ -61,17 +61,7 @@ const adminSidebarRoutes = [
     {
         icon: sideIcon4,
         title: 'Customers',
-        path: false,
-        children: [
-            {
-                title: 'Active Members',
-                path: '#',
-            },
-            {
-                title: 'Verifications',
-                path: '#',
-            }
-        ]
+        path: '/admin/customers',
     },
     {
         icon: sideIcon5,

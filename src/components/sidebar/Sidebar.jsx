@@ -153,7 +153,7 @@ const Sidebar = ({ isOpen }) => {
             </div>
             <div className="sidebar__profile--logout">
               <button onClick={() => showmodal()}>
-                <SignOut size={28} color="white" weight="fill" />
+                <SignOut size={23} color="white" weight="fill" />
               </button>
             </div>
           </div>

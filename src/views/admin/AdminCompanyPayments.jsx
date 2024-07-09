@@ -2,12 +2,12 @@ import React from 'react'
 
 const AdminCompanyPayments = () => {
   return (
-    <div className='admincompanypayments'>
-    <div className="admincompanypayments__header">
+    <div className='adminbasicstyle'>
+    <div className="adminbasicstyle__header">
       <h3>New Requests</h3>
     </div>
 
-    <div className="admincompanypayments__table">
+    <div className="adminbasicstyle__table">
       
     </div>
   </div>

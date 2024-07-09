@@ -71,12 +71,12 @@ const AdminCompanyVerifications = () => {
   }, [data]);
 
   return (
-    <div className='admincompanyverifications'>
-      <div className="admincompanyverifications__header">
+    <div className='adminbasicstyle'>
+      <div className="adminbasicstyle__header">
         <h3>New Requests</h3>
       </div>
 
-      <div className="admincompanyverifications__table">
+      <div className="adminbasicstyle__table">
         {isLoading ? (
           <Spin tip="Loading..." />
         ) : error ? (
