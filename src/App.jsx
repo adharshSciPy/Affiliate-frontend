@@ -181,7 +181,9 @@ const App = () => {
             theme={{
                 // algorithm: mode === 'dark' && theme.darkAlgorithm,
                 token: {
-                    colorPrimary: '#39843B'
+                    colorPrimary: '#39843B',
+                    // fontFamily: "Roboto Condensed, sans-serif",
+                    fontFamily: "Libre Franklin, sans-serif",
                 }
             }}
         >
