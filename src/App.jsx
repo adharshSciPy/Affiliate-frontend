@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider } from 'antd';
-import { CompanyRegister, LandingPage, Login, Register, AdminHome, AffiliaterHome, CompanyHome, AffiliaterTransaction, AffiliaterCoupon, AffiliaterCommission, AdminActiveCompanies, AdminCompanyVerifications, AdminCompanyPayments } from './views';
+import { CompanyRegister, LandingPage, Login, Register, AdminHome, AffiliaterHome, CompanyHome, AffiliaterTransaction, AffiliaterCoupon, AffiliaterCommission, AdminActiveCompanies, AdminCompanyVerifications, AdminCompanyPayments, AffiliaterSettings } from './views';
 import { PersistLogin, AllowedRoles, LoggedInPage, ForceRedirect, PageNotFound } from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, CompanyLayout } from './layout';
 import { roles } from './constants/roles'
@@ -114,6 +114,10 @@ const router = createBrowserRouter([
             {
                 path: "transactions",
                 element: <AffiliaterTransaction />
+            }
+            , {
+                path: "settings",
+                element: <AffiliaterSettings />
             }
         ]
     },
