@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Table, Spin } from 'antd'
 import { useVerifiedCompaniesQuery } from '../../features/api/adminApiSlice';
 
-const ActiveCompanies = () => {
+const AdminActiveCompanies = () => {
 
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(10)
@@ -41,12 +41,12 @@ const ActiveCompanies = () => {
 
 
   return (
-    <div className='activecompanies'>
-      <div className="activecompanies__header">
+    <div className='adminactivecompanies'>
+      <div className="adminactivecompanies__header">
         <h3>Active Companies</h3>
       </div>
 
-      <div className="activecompanies__table">
+      <div className="adminactivecompanies__table">
         {isLoading ? (
           <Spin tip="Loading..." />
         ) : error ? (
@@ -71,4 +71,4 @@ const ActiveCompanies = () => {
   )
 }
 
-export default ActiveCompanies
+export default AdminActiveCompanies

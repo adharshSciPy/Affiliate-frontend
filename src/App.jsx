@@ -1,7 +1,7 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider } from 'antd';
-import { CompanyRegister, LandingPage, Login, Register, AdminHome, AffiliaterHome, CompanyHome, AffiliaterTransaction, AffiliaterCoupon, AffiliaterCommission, ActiveCompanies, CompanyPayments, CompanyVerifications } from './views';
+import { CompanyRegister, LandingPage, Login, Register, AdminHome, AffiliaterHome, CompanyHome, AffiliaterTransaction, AffiliaterCoupon, AffiliaterCommission, AdminActiveCompanies, AdminCompanyVerifications, AdminCompanyPayments } from './views';
 import { PersistLogin, AllowedRoles, LoggedInPage, ForceRedirect, PageNotFound } from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, CompanyLayout } from './layout';
 import { roles } from './constants/roles'
@@ -24,9 +24,7 @@ const router = createBrowserRouter([
     {
         path: "/logged-in",
         element:
-            <PersistLogin>
                 <LoggedInPage />
-            </PersistLogin>,
     },
     {
         path: "/auth",
@@ -68,15 +66,15 @@ const router = createBrowserRouter([
             },
             {
                 path: "companies",
-                element: <ActiveCompanies />
+                element: <AdminActiveCompanies />
             },
             {
-                path: "new-companies",
-                element: <CompanyVerifications />
+                path: "new-companies-request",
+                element: <AdminCompanyVerifications />
             },
             {
                 path: "company-payments",
-                element: <CompanyPayments />
+                element: <AdminCompanyPayments />
             },
         ]
     },

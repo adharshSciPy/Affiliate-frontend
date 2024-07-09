@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Table, Spin, Alert } from 'antd';
 import { useNewCompaniesQuery } from '../../features/api/adminApiSlice';
 
-const CompanyVerifications = () => {
+const AdminCompanyVerifications = () => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [tableData, setTableData] = useState([]);
@@ -39,12 +39,12 @@ const CompanyVerifications = () => {
   }, [data]);
 
   return (
-    <div className='newcompanies'>
-      <div className="newcompanies__header">
+    <div className='admincompanyverifications'>
+      <div className="admincompanyverifications__header">
         <h3>New Requests</h3>
       </div>
 
-      <div className="newcompanies__table">
+      <div className="admincompanyverifications__table">
         {isLoading ? (
           <Spin tip="Loading..." />
         ) : error ? (
@@ -69,4 +69,4 @@ const CompanyVerifications = () => {
   );
 };
 
-export default CompanyVerifications;
+export default AdminCompanyVerifications;
