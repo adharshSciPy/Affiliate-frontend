@@ -20,14 +20,47 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        // to verify a new company
         verifyNewCompany: builder.mutation({
             query: ({ companyId }) => ({
                 url: `/company/companies/${companyId}/verify`,
                 method: 'PATCH'
             })
-        })
+        }),
+
+        // get all verified affiliaters
+        verifiedAffiliaters: builder.query({
+            query: ({ page, limit }) => ({
+                url: `/user/affiliaters?page=${page}&limit=${limit}`,
+                method: 'GET'
+            })
+        }),
+
+        // get all not-verified affiliaters
+        newAffiliaters: builder.query({
+            query: ({ page, limit }) => ({
+                url: `/user/affiliaters/not-verified?page=${page}&limit=${limit}`,
+                method: 'GET'
+            })
+        }),
+
+        // get all tokens
+        customers: builder.query({
+            query: ({ page, limit }) => ({
+                url: `/user/customers?page=${page}&limit=${limit}`,
+                method: 'GET'
+            })
+        }),
+
+        // get all tokens
+        tokens: builder.query({
+            query: ({ page, limit }) => ({
+                url: `/token/tokens?page=${page}&limit=${limit}`,
+                method: 'GET'
+            })
+        }),
 
     })
 })
 
-export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation } = adminApiSlice
+export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedAffiliatersQuery, useNewAffiliatersQuery, useTokensQuery, useCustomersQuery } = adminApiSlice

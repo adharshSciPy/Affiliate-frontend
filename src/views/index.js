@@ -10,6 +10,10 @@ export { default as AdminHome } from './admin/AdminHome'
 export { default as AdminActiveCompanies } from './admin/AdminActiveCompanies'
 export { default as AdminCompanyVerifications } from './admin/AdminCompanyVerifications'
 export { default as AdminCompanyPayments } from './admin/AdminCompanyPayments'
+export { default as AdminActiveAffiliaters } from './admin/AdminActiveAffiliaters'
+export { default as AdminAffiliatersVerifications } from './admin/AdminAffiliatersVerifications'
+export { default as AdminToken } from './admin/AdminToken'
+export { default as AdminCustomers } from './admin/AdminCustomers'
 
 // company
 export { default as CompanyHome } from './company/CompanyHome'

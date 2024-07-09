@@ -41,12 +41,12 @@ const AdminActiveCompanies = () => {
 
 
   return (
-    <div className='adminactivecompanies'>
-      <div className="adminactivecompanies__header">
+    <div className='adminbasicstyle'>
+      <div className="adminbasicstyle__header">
         <h3>Active Companies</h3>
       </div>
 
-      <div className="adminactivecompanies__table">
+      <div className="adminbasicstyle__table">
         {isLoading ? (
           <Spin tip="Loading..." />
         ) : error ? (

@@ -90,66 +90,9 @@
     }
 }
 
-// admin active companies
-.adminactivecompanies {
-    height: 100%;
-    width: auto;
-    border-radius: 20px;
-    background-color: var(--background-3);
-    padding: 1rem;
-    overflow-y: scroll;
-    box-sizing: border-box;
 
-    &__header {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-        background-color: var(--background-3);
-        margin-bottom: 1rem;
-
-        h3 {
-            font-size: 23px;
-            color: var(--text-grey);
-        }
-    }
-
-    &__table {
-        height: 100%;
-        width: 100%;
-    }
-}
-
-// admin new companies verification
-.admincompanyverifications {
-    height: 100%;
-    width: auto;
-    border-radius: 20px;
-    background-color: var(--background-3);
-    padding: 1rem;
-    overflow-y: scroll;
-    box-sizing: border-box;
-
-    &__header {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-        background-color: var(--background-3);
-        margin-bottom: 1rem;
-
-        h3 {
-            font-size: 23px;
-            color: var(--text-grey);
-        }
-    }
-
-    &__table {
-        height: 100%;
-        width: 100%;
-    }
-}
-
-// admin company payments
-.admincompanypayments {
+// admin dashboard pages basic style
+.adminbasicstyle {
     height: 100%;
     width: auto;
     border-radius: 20px;

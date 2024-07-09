@@ -1,7 +1,26 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider } from 'antd';
-import { CompanyRegister, LandingPage, Login, Register, AdminHome, AffiliaterHome, CompanyHome, AffiliaterTransaction, AffiliaterCoupon, AffiliaterCommission, AdminActiveCompanies, AdminCompanyVerifications, AdminCompanyPayments, AffiliaterSettings } from './views';
+import {
+    CompanyRegister,
+    LandingPage,
+    Login,
+    Register,
+    AdminHome,
+    AffiliaterHome,
+    CompanyHome,
+    AffiliaterTransaction,
+    AffiliaterCoupon,
+    AffiliaterCommission,
+    AdminActiveCompanies,
+    AdminCompanyVerifications,
+    AdminCompanyPayments,
+    AffiliaterSettings,
+    AdminActiveAffiliaters,
+    AdminAffiliatersVerifications,
+    AdminCustomers,
+    AdminToken
+} from './views';
 import { PersistLogin, AllowedRoles, LoggedInPage, ForceRedirect, PageNotFound } from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, CompanyLayout } from './layout';
 import { roles } from './constants/roles'
@@ -24,7 +43,7 @@ const router = createBrowserRouter([
     {
         path: "/logged-in",
         element:
-                <LoggedInPage />
+            <LoggedInPage />
     },
     {
         path: "/auth",
@@ -75,6 +94,22 @@ const router = createBrowserRouter([
             {
                 path: "company-payments",
                 element: <AdminCompanyPayments />
+            },
+            {
+                path: "affiliaters",
+                element: <AdminActiveAffiliaters />
+            },
+            {
+                path: "new-affiliaters-request",
+                element: <AdminAffiliatersVerifications />
+            },
+            {
+                path: "affiliater-tokens",
+                element: <AdminToken />
+            },
+            {
+                path: "customers",
+                element: <AdminCustomers />
             },
         ]
     },
