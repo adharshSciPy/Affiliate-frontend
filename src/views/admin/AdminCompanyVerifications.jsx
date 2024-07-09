@@ -1,15 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Spin, Alert } from 'antd';
-import { useNewCompaniesQuery } from '../../features/api/adminApiSlice';
+import { Table, Spin, Alert, Button } from 'antd';
+import { useNewCompaniesQuery, useVerifyNewCompanyMutation } from '../../features/api/adminApiSlice';
+import { AdminCompanyVerifyModal } from '../../components';
 
 const AdminCompanyVerifications = () => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
   const [tableData, setTableData] = useState([]);
+  const [isModal, setIsModal] = useState(false)
+  const [modalData, setModalData] = useState([])
 
-  const { data, error, isLoading } = useNewCompaniesQuery({ page, limit });
+  const { data, error, isLoading, refetch } = useNewCompaniesQuery({ page, limit });
+  const [verifyCompany] = useVerifyNewCompanyMutation();
 
-  const columns =[
+  // verify company api calling logic
+  const handleVerifyCompany = async () => {
+    try {
+      await verifyCompany({ companyId: modalData.id }).unwrap();
+      notification.success({ message: 'Company verified successfully!' });
+      refetch()
+      setIsModalVisible(false);
+
+    } catch (err) {
+      notification.error({ message: 'Verification failed!', description: err.message });
+    }
+  };
+
+  // modal invoking
+  const handleButtonClick = (details) => {
+    setIsModal(true)
+    setModalData(details)
+  }
+
+  const columns = [
     {
       title: 'Company Name',
       dataIndex: 'companyName',
@@ -20,16 +43,25 @@ const AdminCompanyVerifications = () => {
       dataIndex: 'email',
       key: 'email',
     },
+    {
+      title: 'Action',
+      key: 'action',
+      render: (_, record) => (
+        <Button onClick={() => handleButtonClick(record?.rowData)}>Verify</Button>
+      ),
+    },
   ]
 
-  
-  useEffect(() => {  
+  // to fetch latest data via api
+  useEffect(() => {
     if (data) {
       const structuredData = data?.data?.companies.map((item, index) => {
-        return { 
+        return {
           key: index + 1,
-          companyName: item.companyName,
-          email: item.email,
+          id: item?._id,
+          companyName: item?.companyName,
+          email: item?.email,
+          rowData: item
         };
       });
       setTableData(structuredData);
@@ -65,6 +97,12 @@ const AdminCompanyVerifications = () => {
           />
         )}
       </div>
+      <AdminCompanyVerifyModal
+        isModal={isModal}
+        modalData={modalData}
+        setIsModal={setIsModal}
+        verify={handleVerifyCompany} 
+        />
     </div>
   );
 };

@@ -19,3 +19,6 @@ export { default as ForceRedirect } from './auth/ForceRedirect';
 export { default as Loader } from './loader/Loader';
 export { default as PageNotFound } from './404/PageNotFound';
 export { default as TryLoginAgain } from './404/TryLoginAgain';
+
+// modals
+export { default as AdminCompanyVerifyModal } from './modals/AdminCompanyVerifyModal'

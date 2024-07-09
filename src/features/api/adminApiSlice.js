@@ -20,7 +20,14 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        verifyNewCompany: builder.mutation({
+            query: ({ companyId }) => ({
+                url: `/company/companies/${companyId}/verify`,
+                method: 'PATCH'
+            })
+        })
+
     })
 })
 
-export const { useVerifiedCompaniesQuery, useNewCompaniesQuery  } = adminApiSlice
+export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation } = adminApiSlice

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Spin } from 'antd'
+import { Table, Spin, Alert } from 'antd'
 import { useVerifiedCompaniesQuery } from '../../features/api/adminApiSlice';
 
 const AdminActiveCompanies = () => {
