@@ -15,10 +15,11 @@ const DeleteModal = ({ isModal, setIsModal, deleteFn }) => {
                 onCancel={() => close()}
                 style={{ minHeight: '50%', height: '50%' }}
                 footer={null}
+                width={500}
             >
                 <div className='deletemodal__text'>
-                    <b>Are you sure you wanna delete this ?</b>
-                    <p>This change will reflect in your portal after an hour.</p>
+                    <b>Are you sure you want to delete this?</b>
+                    <p>Once deleted, this action cannot be reversed.</p>
                 </div>
                 <div className="deletemodal__container">
                     <Button onClick={() => close()}>Cancel</Button>
