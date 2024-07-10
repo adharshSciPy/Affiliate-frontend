@@ -7,17 +7,25 @@ const DeleteModal = ({ isModal, setIsModal, deleteFn }) => {
     }
 
     return (
-        <Modal
-            centered
-            open={isModal}
-            onOk={() => deleteFn()}
-            onCancel={() => close()}
-            style={{ minHeight: '50%', height: '50%' }}
-        >
-            <p>Delete modal</p>
-            <p>Are you sure ?</p>
-            <Button onClick={() => deleteFn()}>Yes</Button>
-        </Modal>
+        <div className="deletemodal">
+            <Modal
+                centered
+                open={isModal}
+                onOk={() => deleteFn()}
+                onCancel={() => close()}
+                style={{ minHeight: '50%', height: '50%' }}
+                footer={null}
+            >
+                <div className='deletemodal__text'>
+                    <b>Are you sure you wanna delete this ?</b>
+                    <p>This change will reflect in your portal after an hour.</p>
+                </div>
+                <div className="deletemodal__container">
+                    <Button onClick={() => close()}>Cancel</Button>
+                    <Button type="primary" onClick={() => deleteFn()} danger>Delete</Button>
+                </div>
+            </Modal>
+        </div>
     )
 }
 
