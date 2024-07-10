@@ -4,6 +4,7 @@ export const adminApiSlice = apiSlice.injectEndpoints({
 
     endpoints: (builder) => ({
 
+        // company
         // get all verified companies
         verifiedCompanies: builder.query({
             query: ({ page = 1, limit = 10 }) => ({
@@ -25,6 +26,15 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             query: ({ companyId }) => ({
                 url: `/company/companies/${companyId}/verify`,
                 method: 'PATCH'
+            })
+        }),
+
+        // to block a company
+        companyBlockManage: builder.mutation({
+            query: ({ companyId, payload }) => ({
+                url: `/company/companies/${companyId}/manage-block`,
+                method: 'PATCH',
+                body: payload
             })
         }),
 
@@ -71,4 +81,4 @@ export const adminApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedAffiliatersQuery, useNewAffiliatersQuery, useTokensQuery, useCustomersQuery, useDeleteCompanyMutation } = adminApiSlice
+export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedAffiliatersQuery, useNewAffiliatersQuery, useTokensQuery, useCustomersQuery, useDeleteCompanyMutation, useCompanyBlockManageMutation } = adminApiSlice

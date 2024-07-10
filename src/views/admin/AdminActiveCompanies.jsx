@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Spin, Alert, Button } from 'antd'
-import { useVerifiedCompaniesQuery, useDeleteCompanyMutation } from '../../features/api/adminApiSlice';
+import { Table, Spin, Alert, Button, Flex } from 'antd'
+import { useVerifiedCompaniesQuery, useDeleteCompanyMutation, useCompanyBlockManageMutation } from '../../features/api/adminApiSlice';
 import { DeleteModal } from '../../components';
 import { useNotification } from '../../context/NotificationContext';
 
@@ -16,6 +16,7 @@ const AdminActiveCompanies = () => {
 
   const { data, error, isLoading, refetch } = useVerifiedCompaniesQuery({ page, limit })
   const [deleteCompany] = useDeleteCompanyMutation()
+  const [companyBlockManage] = useCompanyBlockManageMutation()
   // table data formatting
   useEffect(() => {
     if (data) {
@@ -23,8 +24,9 @@ const AdminActiveCompanies = () => {
         return {
           key: index + 1,
           id: item?._id,
-          companyName: item.companyName,
-          email: item.email,
+          companyName: item?.companyName,
+          email: item?.email,
+          isBlocked: item?.isBlocked
         };
       });
       setTableData(structuredData);
@@ -33,9 +35,25 @@ const AdminActiveCompanies = () => {
     }
   }, [data]);
 
-  const handleButtonClick = (id) => {
+  const handleButtonClick1 = (id) => {
     setCompanyId(id)
     setIsModal(true)
+  }
+
+  const handleButtonClick2 = async (record) => {
+    let payload = {
+      isBlocked: !record?.isBlocked
+    }
+    try {
+      const response = await companyBlockManage({ companyId: record?.id, payload }).unwrap();
+      if (response) {
+        notification('success', `Company ${record?.isBlocked ? 'Unblocked' : 'blocked'} Succesfully`, response?.data?.message, 'bottomRight');
+        refetch();
+      }
+    } catch (err) {
+      console.log('error', err)
+      notification('error', `Company ${record?.isBlocked ? 'Unblock' : 'block'} Failed`, err?.data?.message, 'bottomRight');
+    }
   }
 
   // delete logic
@@ -69,7 +87,12 @@ const AdminActiveCompanies = () => {
       title: 'Action',
       key: 'action',
       render: (_, record) => (
-        <Button onClick={() => handleButtonClick(record?.id)} danger>Delete</Button>
+        <>
+          <Flex gap={10}>
+            <Button onClick={() => handleButtonClick1(record?.id)} danger>Delete</Button>
+            <Button onClick={() => handleButtonClick2(record)}>{record?.isBlocked ? 'Unblock' : 'Block'}</Button>
+          </Flex>
+        </>
       ),
     },
   ]
@@ -112,7 +135,7 @@ const AdminActiveCompanies = () => {
         )}
       </div>
 
-      <DeleteModal isModal={isModal} setIsModal={setIsModal} deleteFn={handleDeleteCompany}/>
+      <DeleteModal isModal={isModal} setIsModal={setIsModal} deleteFn={handleDeleteCompany} />
     </div>
   )
 }
