@@ -46,6 +46,16 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        // affiliaters
+
+        // to verify a new affiliater
+        verifyAffiliater: builder.mutation({
+            query: ({ affiliaterId }) => ({
+                url: `/user/affiliaters/${affiliaterId}/verify`,
+                method: 'PATCH'
+            })
+        }),
+
         // get all verified affiliaters
         verifiedAffiliaters: builder.query({
             query: ({ page = 1, limit = 10 }) => ({
@@ -81,4 +91,4 @@ export const adminApiSlice = apiSlice.injectEndpoints({
     })
 })
 
-export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedAffiliatersQuery, useNewAffiliatersQuery, useTokensQuery, useCustomersQuery, useDeleteCompanyMutation, useCompanyBlockManageMutation } = adminApiSlice
+export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedAffiliatersQuery, useNewAffiliatersQuery, useTokensQuery, useCustomersQuery, useDeleteCompanyMutation, useCompanyBlockManageMutation, useVerifyAffiliaterMutation } = adminApiSlice
