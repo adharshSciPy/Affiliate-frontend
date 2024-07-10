@@ -17,6 +17,7 @@ const AdminActiveCompanies = () => {
   const { data, error, isLoading, refetch } = useVerifiedCompaniesQuery({ page, limit })
   const [deleteCompany] = useDeleteCompanyMutation()
   const [companyBlockManage] = useCompanyBlockManageMutation()
+  
   // table data formatting
   useEffect(() => {
     if (data) {

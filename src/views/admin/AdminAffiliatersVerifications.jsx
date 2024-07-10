@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Table, Spin, Alert, Button } from 'antd'
-import { useNewAffiliatersQuery, useVerifyAffiliaterMutation } from '../../features/api/adminApiSlice';
+import { useNewAffiliatersQuery, useVerifyAffiliaterMutation, useVerifiedAffiliatersQuery } from '../../features/api/adminApiSlice';
 import { AffiliaterVerifyModal } from '../../components';
 import { useNotification } from '../../context/NotificationContext';
 
@@ -15,6 +15,7 @@ const AdminAffiliatersVerifications = () => {
     const [isEmptyData, setIsEmptyData] = useState(false)
 
     const { data, error, isLoading, refetch } = useNewAffiliatersQuery({ page, limit })
+    const { refetch: refetchActiveAffiliaters } = useVerifiedAffiliatersQuery({ page : 1, limit : 10 })
     const [verifyAffiliater] = useVerifyAffiliaterMutation();
 
 
@@ -31,6 +32,7 @@ const AdminAffiliatersVerifications = () => {
                 notification('success', 'Affiliater verified successfully!', response?.data?.message, 'bottomRight');
                 setIsModal(false);
                 refetch();
+                refetchActiveAffiliaters();
             }
         } catch (err) {
             notification('error', 'Verification failed', err?.data?.message, 'bottomRight');

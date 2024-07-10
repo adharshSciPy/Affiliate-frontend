@@ -47,7 +47,6 @@ export const adminApiSlice = apiSlice.injectEndpoints({
         }),
 
         // affiliaters
-
         // to verify a new affiliater
         verifyAffiliater: builder.mutation({
             query: ({ affiliaterId }) => ({
@@ -72,7 +71,8 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
-        // get all tokens
+        // customers
+        //to get all customers
         customers: builder.query({
             query: ({ page = 1, limit = 10 }) => ({
                 url: `/user/customers?page=${page}&limit=${limit}`,
@@ -80,6 +80,7 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        // tokens
         // get all tokens
         tokens: builder.query({
             query: ({ page = 1, limit = 10 }) => ({
@@ -88,7 +89,27 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        // to generate a new token
+        generateToken: builder.mutation({
+            query: ({ payload, userId, adminId }) => ({
+                url: `/token/tokens/${userId}/${adminId}`,
+                method: 'POST',
+                body: payload
+            })
+        }),
     })
 })
 
-export const { useVerifiedCompaniesQuery, useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedAffiliatersQuery, useNewAffiliatersQuery, useTokensQuery, useCustomersQuery, useDeleteCompanyMutation, useCompanyBlockManageMutation, useVerifyAffiliaterMutation } = adminApiSlice
+export const {
+    useVerifiedCompaniesQuery,
+    useNewCompaniesQuery,
+    useVerifyNewCompanyMutation,
+    useVerifiedAffiliatersQuery,
+    useNewAffiliatersQuery,
+    useTokensQuery,
+    useCustomersQuery,
+    useDeleteCompanyMutation,
+    useCompanyBlockManageMutation,
+    useVerifyAffiliaterMutation,
+    useGenerateTokenMutation
+} = adminApiSlice

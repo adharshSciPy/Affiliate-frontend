@@ -14,7 +14,7 @@ const AdminCompanyVerifications = () => {
   const [isEmptyData, setIsEmptyData] = useState(false)
 
   const { data, error, isLoading, refetch } = useNewCompaniesQuery({ page, limit });
-  const { refetch: refetchActiveCompanies } = useVerifiedCompaniesQuery()
+  const { refetch: refetchActiveCompanies } = useVerifiedCompaniesQuery({ page : 1, limit : 10 })
   const [verifyCompany] = useVerifyNewCompanyMutation();
 
   // verify company api calling logic

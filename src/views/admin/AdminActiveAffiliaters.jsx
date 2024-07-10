@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Spin, Alert } from 'antd'
+import { Table, Spin, Alert, Button } from 'antd'
 import { useVerifiedAffiliatersQuery } from '../../features/api/adminApiSlice';
+import { TokenGenerationModal } from '../../components';
 
 const AdminActiveAffiliaters = () => {
 
     const [page, setPage] = useState(1)
     const [limit, setLimit] = useState(10)
     const [tableData, setTableData] = useState([]);
+    const [isModal, setIsModal] = useState(false)
+    const [userDetails, setUserDetails] = useState(null)
 
-    const { data, error, isLoading } = useVerifiedAffiliatersQuery({ page, limit })
+    const { data, error, isLoading, refetch } = useVerifiedAffiliatersQuery({ page, limit })
 
+    // table data generating from api
     useEffect(() => {
         if (data) {
             const structuredData = data?.data?.affiliaters.map((item, index) => {
                 return {
                     key: index + 1,
-                    firstName: item.firstName,
-                    lastName: item.lastName,
-                    email: item.email,
+                    id: item?._id,
+                    firstName: item?.firstName,
+                    lastName: item?.lastName,
+                    email: item?.email,
                 };
             });
             setTableData(structuredData);
@@ -25,6 +30,11 @@ const AdminActiveAffiliaters = () => {
             console.log('Data is not in the expected format or is empty');
         }
     }, [data]);
+
+    const handleClick = (record) => {
+        setIsModal(true)
+        setUserDetails(record)
+    }
 
     const columns = [
         {
@@ -42,9 +52,16 @@ const AdminActiveAffiliaters = () => {
             dataIndex: 'email',
             key: 'email',
         },
+        {
+            title: 'Token',
+            key: 'token',
+            render: (_, record) => (
+                <>
+                    <Button onClick={() => handleClick(record)}>Generate Token</Button>
+                </>
+            ),
+        },
     ]
-
-
 
     return (
         <div className='adminbasicstyle'>
@@ -73,6 +90,13 @@ const AdminActiveAffiliaters = () => {
                     />
                 )}
             </div>
+
+            <TokenGenerationModal
+                isModal={isModal}
+                userDetails={userDetails}
+                setIsModal={setIsModal}
+                refetch={refetch}
+            />
         </div>
     )
 }
