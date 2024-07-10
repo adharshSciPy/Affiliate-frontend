@@ -996,3 +996,17 @@
     padding: 5px;
   }
 }
+
+//delete modal
+.deletemodal {
+  &__text {
+    padding: 10px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+  }
+}
