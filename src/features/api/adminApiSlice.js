@@ -71,6 +71,14 @@ export const adminApiSlice = apiSlice.injectEndpoints({
             })
         }),
 
+        // to get defails of a user by id
+        userDetailsById: builder.query({
+            query: ({ userId }) => ({
+                url: `/user/users/${userId}`,
+                method: 'GET'
+            })
+        }),
+
         // customers
         //to get all customers
         customers: builder.query({
@@ -111,5 +119,6 @@ export const {
     useDeleteCompanyMutation,
     useCompanyBlockManageMutation,
     useVerifyAffiliaterMutation,
-    useGenerateTokenMutation
+    useGenerateTokenMutation,
+    useUserDetailsByIdQuery
 } = adminApiSlice
