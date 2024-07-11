@@ -1024,3 +1024,49 @@
     gap: 10px;
   }
 }
+
+//tokengenerationmodal
+.tokengenerationmodal {
+  h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  p {
+    padding: 5px;
+  }
+
+  span {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .name {
+    font-size: 11px;
+  }
+
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+
+  &__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-error);
+    font-size: 12px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 8px;
+    padding: 5px;
+  }
+}
