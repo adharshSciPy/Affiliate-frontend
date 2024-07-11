@@ -19,7 +19,8 @@ import {
     AdminActiveAffiliaters,
     AdminAffiliatersVerifications,
     AdminCustomers,
-    AdminToken
+    AdminToken,
+    AdminAffiliaterDetails
 } from './views';
 import { PersistLogin, AllowedRoles, LoggedInPage, ForceRedirect, PageNotFound } from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, CompanyLayout } from './layout';
@@ -97,7 +98,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "affiliaters",
-                element: <AdminActiveAffiliaters />
+                element: <AdminActiveAffiliaters />,
+            },
+            {
+                path: "/admin/affiliaters/:id",
+                element: <AdminAffiliaterDetails />
             },
             {
                 path: "new-affiliaters-request",

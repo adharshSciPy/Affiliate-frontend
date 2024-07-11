@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Table, Spin, Alert, Button } from 'antd'
+import { useNavigate } from 'react-router-dom';
 import { useVerifiedAffiliatersQuery } from '../../features/api/adminApiSlice';
 import { TokenGenerationModal } from '../../components';
 
 const AdminActiveAffiliaters = () => {
 
+    const navigate = useNavigate()
     const [page, setPage] = useState(1)
     const [limit, setLimit] = useState(10)
     const [tableData, setTableData] = useState([]);
@@ -66,7 +68,7 @@ const AdminActiveAffiliaters = () => {
     return (
         <div className='adminbasicstyle'>
             <div className="adminbasicstyle__header">
-                <h3>Active Companies</h3>
+                <h3>Active Affiliaters</h3>
             </div>
 
             <div className="adminbasicstyle__table">
@@ -78,6 +80,13 @@ const AdminActiveAffiliaters = () => {
                     <Table
                         columns={columns}
                         dataSource={tableData}
+                        onRow={(record) => {
+                            return {
+                                onClick: () => {
+                                    navigate(`/admin/affiliaters/${record?.id}`);
+                                }
+                            };
+                        }}
                         pagination={{
                             current: page,
                             pageSize: limit,

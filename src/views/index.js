@@ -14,6 +14,7 @@ export { default as AdminActiveAffiliaters } from './admin/AdminActiveAffiliater
 export { default as AdminAffiliatersVerifications } from './admin/AdminAffiliatersVerifications'
 export { default as AdminToken } from './admin/AdminToken'
 export { default as AdminCustomers } from './admin/AdminCustomers'
+export { default as AdminAffiliaterDetails } from './admin/AdminAffiliaterDetails'
 
 // company
 export { default as CompanyHome } from './company/CompanyHome'
