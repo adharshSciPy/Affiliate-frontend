@@ -1,4 +1,4 @@
-import React from 'react'
+import { React, useState } from 'react'
 import { Tabs } from 'antd';
 import AffiliaterSecurity from './AffiliaterSecurity';
 import AffiliaterPolicies from './AffiliaterPolicies';
@@ -7,6 +7,10 @@ import AffiliaterNotification from './AffiliaterNotification';
 import AffiliaterHelp from './AffiliaterHelp';
 
 function AffiliaterSettings() {
+    const [activeKey, setActiveKey] = useState('1');
+    const handleTabChange = (key) => {
+        setActiveKey(key);
+    };
     return (
         <div className="affiliatersettings">
             <div className="affiliatersettings__container">
@@ -15,11 +19,22 @@ function AffiliaterSettings() {
                     <Tabs
                         defaultActiveKey="1"
                         tabPosition='top'
+                        onChange={handleTabChange}
                         items={[
                             {
                                 label: 'Security & Password',
                                 key: '1',
-                                children: <AffiliaterSecurity />,
+                                children: (
+                                    <>
+                                        {activeKey === '1' && (
+                                            <div className="affiliatersettings__details">
+                                                <h3>Security & Password</h3>
+                                                <p>See information regarding your Security and Password</p>
+                                            </div>
+                                        )}
+                                        <AffiliaterSecurity />
+                                    </>
+                                ),
                             },
                             {
                                 label: 'Privacy & Policies',
@@ -43,9 +58,7 @@ function AffiliaterSettings() {
                             },
                         ]}
                     />
-
                 </div>
-
             </div>
         </div>
     )
