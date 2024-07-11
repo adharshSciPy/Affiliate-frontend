@@ -92,7 +92,7 @@ const TokenGenerationModal = ({ isModal, setIsModal, userDetails, refetch }) => 
         try {
             const response = await generateToken({ payload, userId, adminId }).unwrap();
             if (response) {
-                notification('success', 'Token Generated Succesfully', 'bottomRight');
+                notification('success', 'Token Generated Succesfully', response?.data?.message, 'bottomRight');
                 setIsModal(false);
                 refetch();
                 handleReset()
@@ -102,7 +102,6 @@ const TokenGenerationModal = ({ isModal, setIsModal, userDetails, refetch }) => 
             notification('error', 'Token Generated Failed', err?.data?.message, 'bottomRight');
         }
     }
-
     return (
         <Modal
             centered
@@ -122,8 +121,8 @@ const TokenGenerationModal = ({ isModal, setIsModal, userDetails, refetch }) => 
                 <div className="tokengenerationmodal__body">
 
                     <div className="tokengenerationmodal__body--title">
-                        <p>David Philip</p>
-                        <p>davidphilip@gmail.com</p>
+                        <p>{userDetails?.firstName} {userDetails?.lastName}</p>
+                        <p>{userDetails?.email}</p>
                     </div>
 
                     <div className="tokengenerationmodal__container">

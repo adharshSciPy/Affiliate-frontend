@@ -25,6 +25,7 @@ const AdminActiveAffiliaters = () => {
                     firstName: item?.firstName,
                     lastName: item?.lastName,
                     email: item?.email,
+                    tokens: item?.tokens
                 };
             });
             setTableData(structuredData);
@@ -60,12 +61,17 @@ const AdminActiveAffiliaters = () => {
             key: 'token',
             render: (_, record) => (
                 <>
-                    <Button onClick={(e) => handleClick(record, e)}>Generate Token</Button>
+                    {
+                        record?.tokens?.length > 0 ?
+                            <p>{record?.tokens[0]?.token}</p>
+                            :
+                            <Button onClick={(e) => handleClick(record, e)}>Generate Token</Button>
+                    }
                 </>
             ),
         },
     ]
-
+    
     return (
         <div className='adminbasicstyle'>
             <div className="adminbasicstyle__header">
