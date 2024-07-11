@@ -1,7 +1,26 @@
 import React from 'react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ConfigProvider } from 'antd';
-import { CompanyRegister, LandingPage, Login, Register, AdminHome, AffiliaterHome, CompanyHome, AffiliaterTransaction, AffiliaterCoupon, AffiliaterCommission, ActiveCompanies, CompanyPayments, CompanyVerifications } from './views';
+import {
+    CompanyRegister,
+    LandingPage,
+    Login,
+    Register,
+    AdminHome,
+    AffiliaterHome,
+    CompanyHome,
+    AffiliaterTransaction,
+    AffiliaterCoupon,
+    AffiliaterCommission,
+    AdminActiveCompanies,
+    AdminCompanyVerifications,
+    AdminCompanyPayments,
+    AffiliaterSettings,
+    AdminActiveAffiliaters,
+    AdminAffiliatersVerifications,
+    AdminCustomers,
+    AdminToken
+} from './views';
 import { PersistLogin, AllowedRoles, LoggedInPage, ForceRedirect, PageNotFound } from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, CompanyLayout } from './layout';
 import { roles } from './constants/roles'
@@ -23,7 +42,8 @@ const router = createBrowserRouter([
     },
     {
         path: "/logged-in",
-        element: <LoggedInPage />,
+        element:
+            <LoggedInPage />
     },
     {
         path: "/auth",
@@ -65,15 +85,31 @@ const router = createBrowserRouter([
             },
             {
                 path: "companies",
-                element: <ActiveCompanies />
+                element: <AdminActiveCompanies />
             },
             {
-                path: "new-companies",
-                element: <CompanyVerifications />
+                path: "new-companies-request",
+                element: <AdminCompanyVerifications />
             },
             {
                 path: "company-payments",
-                element: <CompanyPayments />
+                element: <AdminCompanyPayments />
+            },
+            {
+                path: "affiliaters",
+                element: <AdminActiveAffiliaters />
+            },
+            {
+                path: "new-affiliaters-request",
+                element: <AdminAffiliatersVerifications />
+            },
+            {
+                path: "affiliater-tokens",
+                element: <AdminToken />
+            },
+            {
+                path: "customers",
+                element: <AdminCustomers />
             },
         ]
     },
@@ -114,6 +150,10 @@ const router = createBrowserRouter([
                 path: "transactions",
                 element: <AffiliaterTransaction />
             }
+            , {
+                path: "settings",
+                element: <AffiliaterSettings />
+            }
         ]
     },
     {
@@ -141,7 +181,9 @@ const App = () => {
             theme={{
                 // algorithm: mode === 'dark' && theme.darkAlgorithm,
                 token: {
-                    colorPrimary: '#39843B'
+                    colorPrimary: '#39843B',
+                    // fontFamily: "Roboto Condensed, sans-serif",
+                    fontFamily: "Libre Franklin, sans-serif",
                 }
             }}
         >

@@ -115,6 +115,7 @@
     justify-content: center;
     gap: 1rem;
     color: var(--text-grey);
+    font-size: 13px;
   }
 
   &__buttons {
@@ -181,20 +182,6 @@
     }
   }
 
-  // &__shutter {
-  //   height: 2rem;
-  //   width: 2rem;
-  //   position: absolute;
-  //   top: 50%;
-  //   left: 100%;
-  //   transform: translate(-50%, -50%);
-  //   transition: all 0.3s ease-in-out;
-  //   border-radius: 50%;
-  //   background-color: var(--background-2);
-  //   cursor: pointer;
-  //   z-index: 999;
-  // }
-
   &__container {
     width: 100%;
     height: 100%;
@@ -251,7 +238,7 @@
   }
 
   &__profile {
-    height: 60px;
+    height: 70px;
     width: 95%;
     padding: 0 1rem;
     display: flex;
@@ -290,12 +277,14 @@
       color: var(--text-dark);
 
       p:nth-child(1) {
+        font-style: italic;
         font-size: 15px;
-        font-weight: 500;
+        font-weight: 700;
       }
 
       span {
-        font-size: 15px;
+        font-style: italic;
+        font-size: 13px;
         font-weight: 400;
       }
 
@@ -303,6 +292,20 @@
         font-size: 13px;
         font-weight: 400;
         color: var(--text-dark);
+      }
+    }
+
+    &--logout {
+      height: 1rem;
+      width: 1rem;
+      border-radius: 50%;
+      padding: .5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        background-color: var(--secondary-color);
       }
     }
   }
@@ -340,14 +343,14 @@
 }
 
 .sideroutes {
-  min-height: 4vh;
+  // min-height: 2vh;
   width: 100%;
   color: var(--text-dark);
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
   overflow: hidden;
-  gap: 2rem;
+  gap: 1rem;
 
   &__title {
     height: 100%;
@@ -359,24 +362,19 @@
     transition: width 0.5s ease-in-out;
     cursor: pointer;
     border-radius: 1rem;
-    // background-color: var(--primary-color);
 
     &--text {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      font-size: 16px;
-      padding: 0 1rem;
+      font-size: 15px;
+      padding: 0 .1rem;
 
       img {
         height: 1rem;
         width: 1rem;
       }
-
-      // .sidebar--closed & {
-      //   display: none;
-      // }
     }
 
     &--button {
@@ -391,15 +389,19 @@
   }
 
   &__child {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-left: 3rem;
     cursor: pointer;
     transition: all 0.1s ease-in;
-    padding: 0.1rem 0.7rem;
+    padding: 0.3rem;
     border-radius: 0.4rem;
 
     &:hover {
       background-color: var(--primary-color);
+    }
+
+    p {
+      font-size: 12px;
     }
   }
 }
@@ -407,6 +409,10 @@
 .activesideroute {
   background-color: var(--background-1);
   color: var(--text-white);
+}
+
+.selectedchild {
+  background-color: var(--primary-color);
 }
 
 .fullwidth {
@@ -969,5 +975,52 @@
 
   &__star {
     margin-top: 4px;
+  }
+}
+
+//company verify
+.companyverify {
+
+  &__text {
+    text-align: start;
+    letter-spacing: 1px;
+    padding: 5px;
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 5px;
+  }
+}
+
+//delete modal
+.deletemodal {
+  &__text {
+    padding: 10px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+//verifymodal
+.verifymodal {
+  &__text {
+    padding: 10px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 10px;
   }
 }

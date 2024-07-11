@@ -2,9 +2,11 @@ import { CaretDown, CaretRight } from '@phosphor-icons/react';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 
 const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) => {
 
+    const location = useLocation()
     const navigate = useNavigate()
     const [isChildren, setIsChildren] = useState(route?.children && route?.children?.length > 0)
     const handleClick = (path) => {
@@ -12,6 +14,7 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) =
             isChildren && setActiveIndex(isActive ? null : index);
         }
         else {
+            setActiveIndex(isActive ? null : index);
             navigate(path)
         }
     };
@@ -50,9 +53,9 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) =
                     {isChildren ?
                         isActive
                             ?
-                            <CaretDown size={20} color="black" weight="fill" />
+                            <CaretDown size={14} color="black" weight="fill" />
                             :
-                            <CaretRight size={20} color="white" weight="fill" />
+                            <CaretRight size={14} color="white" weight="fill" />
                         :
                         ''
                     }
@@ -62,11 +65,10 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) =
             {isChildren && isActive &&
                 route?.children.map((child, idx) => (
                     <div
-                        className="sideroutes__child"
+                        className={`sideroutes__child ${location?.pathname === `/admin/${child?.path}` && 'selectedchild'}`}
                         key={idx}
                         onClick={() => navigate(`/admin/${child?.path}`)}
                     >
-                        <p>{child.icon}</p>
                         <p>{child.title}</p>
                     </div>
                 ))
