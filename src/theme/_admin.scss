@@ -1,122 +1,182 @@
 // admin home page
 .adminhome {
-    height: 100%;
+  height: 100%;
+  width: auto;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 1rem;
+  overflow-y: scroll;
+  box-sizing: border-box;
+
+  &__container {
+    height: auto;
     width: auto;
-    border-radius: 20px;
-    background-color: var(--background-3);
-    padding: 1rem;
-    overflow-y: scroll;
-    box-sizing: border-box;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+      "count count count"
+      "chart chart detail"
+      "table table coupon";
 
-    &__container {
-        height: auto;
-        width: auto;
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: auto;
-        grid-template-areas:
-            "count count count"
-            "chart chart detail"
-            "table table coupon";
-
-        @include breakpoint(md) {
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto auto auto;
-            grid-template-areas:
-                "count count"
-                "chart chart"
-                "detail coupon"
-                "table table";
-        }
-
-        @include breakpoint(sm) {
-            grid-template-columns: 2fr;
-            grid-template-rows: auto auto auto auto auto;
-            grid-template-areas:
-                "count count"
-                "chart chart"
-                "table table"
-                "detail detail"
-                "coupon coupon";
-        }
-
-        &--count {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            grid-area: count;
-
-            @include breakpoint(md) {
-                max-height: 130px;
-                overflow-x: scroll;
-            }
-
-            @include breakpoint(sm) {
-                height: 100px;
-            }
-        }
-
-        &--chart {
-            grid-area: chart;
-            height: 400px;
-        }
-
-        &--detail {
-            grid-area: detail;
-
-            @include breakpoint(md) {
-                max-height: 300px;
-            }
-        }
-
-        &--table {
-            grid-area: table;
-            height: 400px;
-
-            @include breakpoint(md) {
-                max-height: 400px;
-            }
-        }
-
-        &--coupon {
-            grid-area: coupon;
-
-            @include breakpoint(md) {
-                max-height: 300px;
-            }
-        }
+    @include breakpoint(md) {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto auto;
+      grid-template-areas:
+        "count count"
+        "chart chart"
+        "detail coupon"
+        "table table";
     }
-}
 
+    @include breakpoint(sm) {
+      grid-template-columns: 2fr;
+      grid-template-rows: auto auto auto auto auto;
+      grid-template-areas:
+        "count count"
+        "chart chart"
+        "table table"
+        "detail detail"
+        "coupon coupon";
+    }
+
+    &--count {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      grid-area: count;
+
+      @include breakpoint(md) {
+        max-height: 130px;
+        overflow-x: scroll;
+      }
+
+      @include breakpoint(sm) {
+        height: 100px;
+      }
+    }
+
+    &--chart {
+      grid-area: chart;
+      height: 400px;
+    }
+
+    &--detail {
+      grid-area: detail;
+
+      @include breakpoint(md) {
+        max-height: 300px;
+      }
+    }
+
+    &--table {
+      grid-area: table;
+      height: 400px;
+
+      @include breakpoint(md) {
+        max-height: 400px;
+      }
+    }
+
+    &--coupon {
+      grid-area: coupon;
+
+      @include breakpoint(md) {
+        max-height: 300px;
+      }
+    }
+  }
+}
 
 // admin dashboard pages basic style
 .adminbasicstyle {
-    height: 100%;
-    width: auto;
-    border-radius: 20px;
+  height: 100%;
+  width: auto;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 0 1rem;
+  overflow-y: scroll;
+  box-sizing: border-box;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    z-index: 2;
     background-color: var(--background-3);
-    padding: 0 1rem;
-    overflow-y: scroll;
-    box-sizing: border-box;
+    margin-bottom: 2rem;
+    padding: 10px;
 
-    &__header {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-        background-color: var(--background-3);
-        margin-bottom: 2rem;
-        padding: 10px;
-
-        h3 {
-            font-size: 20px;
-            color: var(--text-grey);
-        }
+    h3 {
+      font-size: 20px;
+      color: var(--text-grey);
     }
+  }
 
-    &__table {
-        height: 100%;
-        width: 100%;
+  &__table {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.adminaffiliater {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 2rem;
+  overflow-y: scroll;
+
+  &__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: var(--background-1);
+  }
+  &__head {
+    // border: 1px solid red;
+    height: 20vh;
+    width: 100%;
+    background: linear-gradient(to left, var(--primary-color), black);
+    border-radius: 20px 20px 0px 0px;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 14vh;
+      left: 35px;
+      width: 75px;
+      background-color: white;
+      border-radius: 50%;
     }
+  }
+  &__detials {
+    margin-top: 5vh;
+    height: 20vh;
+    width: 100%;
+    padding-left: 35px;
+    // background-color: red;
+    line-height: 30px;
+  }
+  &__address {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    font-size: small;
+
+    &--sociallinks {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      //   gap: 20px;
+      //   background-color: red;
+    }
+    
+  }
 }
