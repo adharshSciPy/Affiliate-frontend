@@ -18,7 +18,6 @@ const baseQuery = fetchBaseQuery({
 
 const baseQueryWithAutoRefresh = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions)
-    api.dispatch(setLogin({ accessToken: result?.data?.data }))
 
     if (result?.error?.status === 403) {
         const refreshResult = await baseQuery('/user/refresh', api, extraOptions)

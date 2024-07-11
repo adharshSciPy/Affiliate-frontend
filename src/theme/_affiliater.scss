@@ -50,8 +50,7 @@
     }
   }
 }
-
-// affiliate coupon
+//affiliater coupon
 .affiliatercoupon {
   height: 100%;
   max-height: 100vh;
@@ -133,6 +132,332 @@
       @include breakpoint(xs) {
         width: 100%;
       }
+    }
+  }
+}
+
+//affiliater transaction
+.affiliatertransaction {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 1rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__container {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    background-color: var(--background-1);
+    overflow: scroll;
+
+    &--counts {
+      grid-column: span 2;
+      grid-row: span 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      @include breakpoint(sm) {
+        flex-wrap: wrap;
+      }
+    }
+    h3 {
+      padding: 20px 0 0 20px;
+    }
+  }
+}
+
+//affilaiter setting
+.affiliatersettings {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 1.5rem;
+
+  &__container {
+    display: grid;
+    gap: 2rem;
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-2);
+    border-radius: 15px;
+  }
+
+  &__heading {
+    display: grid;
+    font-weight: 500;
+    font-size: 28px;
+    padding: 1.5rem 0 0 3rem;
+    color: var(--primary-color);
+  }
+
+  &__tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    padding-bottom: 20rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    .ant-tabs-tab-active .ant-tabs-tab-btn {
+      font-weight: bold;
+      color: var(--secondary-color);
+    }
+  }
+}
+
+//affiliater security
+.affiliatersecurity {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-1);
+  overflow-y: scroll;
+
+  padding: 1rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    height: 280px;
+    width: 100%;
+    border-radius: 15px;
+    padding: 1rem;
+    max-height: 100%;
+
+    @include breakpoint(xl) {
+      grid-template-rows: auto;
+      height: 13rem;
+    }
+
+    @include breakpoint(lg) {
+      grid-template-rows: auto;
+      height: 13rem;
+    }
+
+    @include breakpoint(md) {
+      grid-template-rows: auto;
+      height: 13rem;
+    }
+
+    @include breakpoint(sm) {
+      grid-template-rows: auto;
+      height: 13rem;
+    }
+  }
+}
+
+//affiliater policy
+.affiliaterpolicy {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-1);
+  overflow-y: scroll;
+  padding: 1rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__head {
+    display: grid;
+    font-weight: 500;
+    font-size: 22px;
+    padding: 1.5rem 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  &__container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    height: 280px;
+    width: 100%;
+    border-radius: 15px;
+    padding: 1rem;
+    max-height: 100%;
+
+    @include breakpoint(xl) {
+      grid-template-rows: auto;
+      height: 13rem;
+    }
+
+    @include breakpoint(lg) {
+      grid-template-rows: auto;
+      height: 22rem;
+    }
+
+    @include breakpoint(md) {
+      grid-template-rows: auto;
+      height: 22rem;
+    }
+
+    @include breakpoint(sm) {
+      grid-template-rows: auto;
+      height: 22rem;
+    }
+  }
+}
+
+//affilaiter agreement
+.affiliateragreement {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-1);
+  overflow-y: scroll;
+  padding: 1rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__head {
+    display: grid;
+    font-weight: 500;
+    font-size: 22px;
+    padding: 1.5rem 0 0 1rem;
+    color: var(--primary-color);
+  }
+
+  &__container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    height: 280px;
+    width: 100%;
+    border-radius: 15px;
+    padding: 1rem;
+    max-height: 100%;
+
+    @include breakpoint(xl) {
+      grid-template-rows: auto;
+      height: 14rem;
+    }
+
+    @include breakpoint(lg) {
+      grid-template-rows: auto;
+      height: 22rem;
+    }
+
+    @include breakpoint(md) {
+      grid-template-rows: auto;
+      height: 22rem;
+    }
+
+    @include breakpoint(sm) {
+      grid-template-rows: auto;
+      height: 22rem;
+    }
+  }
+}
+
+//affiliater notification
+.affiliaternotification {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-1);
+  overflow-y: scroll;
+
+  padding: 1rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    height: 280px;
+    width: 100%;
+    border-radius: 15px;
+    padding: 1rem;
+    max-height: 100%;
+
+    @include breakpoint(xl) {
+      grid-template-rows: auto;
+      height: 18rem;
+    }
+
+    @include breakpoint(lg) {
+      grid-template-rows: auto;
+      height: 25rem;
+    }
+
+    @include breakpoint(md) {
+      grid-template-rows: auto;
+      height: 25rem;
+    }
+
+    @include breakpoint(sm) {
+      grid-template-rows: auto;
+      height: 25rem;
+    }
+  }
+}
+
+//affiliater Help
+.affiliaterhelp {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-1);
+  overflow-y: scroll;
+
+  padding: 1rem;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2rem;
+    height: 280px;
+    width: 100%;
+    border-radius: 15px;
+    padding: 1rem;
+    max-height: 100%;
+
+    @include breakpoint(xl) {
+      grid-template-rows: auto;
+      height: 18rem;
+    }
+
+    @include breakpoint(lg) {
+      grid-template-rows: auto;
+      height: 25rem;
+    }
+
+    @include breakpoint(md) {
+      grid-template-rows: auto;
+      height: 25rem;
+    }
+
+    @include breakpoint(sm) {
+      grid-template-rows: auto;
+      height: 25rem;
     }
   }
 }
