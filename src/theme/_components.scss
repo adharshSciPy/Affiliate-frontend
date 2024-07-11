@@ -1026,47 +1026,124 @@
 }
 
 //tokengenerationmodal
+// .tokengenerationmodal {
+//   h3 {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//   }
+
+//   p {
+//     padding: 5px;
+//   }
+
+//   span {
+//     font-size: 15px;
+//     font-weight: 700;
+//   }
+
+//   .name {
+//     font-size: 11px;
+//   }
+
+
+//   &__input {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: start;
+//   }
+
+//   &__text {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     color: var(--text-error);
+//     font-size: 12px;
+//   }
+
+//   &__container {
+//     display: flex;
+//     justify-content: end;
+//     align-items: center;
+//     gap: 8px;
+//     padding: 5px;
+//   }
+// }
+
 .tokengenerationmodal {
-  h3 {
+  height: auto;
+
+  &__header {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--text-grey);
+    margin-bottom: 1.3rem;
+
+    img {
+      height: 1.6rem;
+    }
   }
 
-  p {
-    padding: 5px;
-  }
-
-  span {
-    font-size: 15px;
-    font-weight: 700;
-  }
-
-  .name {
-    font-size: 11px;
-  }
-
-
-  &__input {
+  &__body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: start;
-  }
+    gap: 1rem;
 
-  &__text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--text-error);
-    font-size: 12px;
+    &--title {
+      width: 100%;
+      background-color: rgba(0, 128, 0, 0.089);
+      padding: 0 .3rem;
+
+      p {
+        text-align: start;
+      }
+
+      p:nth-child(1) {
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--primary-color);
+      }
+
+      p:nth-child(2) {
+        font-size: 13px;
+        font-weight: 400;
+        color: var(--text-grey);
+      }
+    }
   }
 
   &__container {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    gap: 8px;
-    padding: 5px;
+    width: 100%;
+
+    &--input {
+      margin-bottom: 10px;
+    }
+
+    &--input {
+      label {
+        font-size: 13px;
+      }
+    }
+
+    &--error {
+      p {
+        font-size: 12px;
+        color: var(--text-error);
+      }
+    }
+
+    &--footer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: .5rem;
+      margin-top: .7rem;
+    }
   }
 }

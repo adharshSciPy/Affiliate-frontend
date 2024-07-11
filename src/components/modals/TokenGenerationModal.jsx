@@ -5,6 +5,7 @@ import { useGenerateTokenMutation } from '../../features/api/adminApiSlice'
 import { PercentageOutlined } from '@ant-design/icons'
 import { useNotification } from '../../context/NotificationContext'
 import useAuth from '../../hooks/useAuth'
+import tokenIcon from '../../assets/dashboard-icons/affiliaterdash1.png'
 
 const TokenGenerationModal = ({ isModal, setIsModal, userDetails, refetch }) => {
 
@@ -106,54 +107,66 @@ const TokenGenerationModal = ({ isModal, setIsModal, userDetails, refetch }) => 
         <Modal
             centered
             open={isModal}
-            width={400}
+            width={600}
             onOk={() => verify()}
             onCancel={() => close()}
             footer={null}
         >
 
             <div className="tokengenerationmodal">
-                {/* <p>{`${userDetails?.firstName, '.', userDetails?.lastName}`}</p> */}
-                <h3>Generate Token</h3>
-                <p className='name'>Name: <span>David</span></p>
-                <div className="tokengenerationmodal__input">
-                    <label>Token Discount</label>
-                    <Input
-                        name='discount'
-                        value={form.discount}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        placeholder='Token discount'
-                        addonAfter={<PercentageOutlined />}
-                    />
-                    <div className="tokengenerationmodal__text">
-                        {touched.discount && errors.discount && (
-                            <p className='error-message'>{errors.discount}</p>
-                        )}
-                    </div>
+                <div className="tokengenerationmodal__header">
+                    <img src={tokenIcon} alt="" />
+                    <h3>Generate Token</h3>
                 </div>
 
-                <div className="tokengenerationmodal__input">
-                    <label>Total Use Count</label>
-                    <Input
-                        name='useCount'
-                        value={form.useCount}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        placeholder='Total use count'
-                    />
-                    <div className="tokengenerationmodal__text">
-                        {touched.useCount && errors.useCount && (
-                            <p className='error-message'>{errors.useCount}</p>
-                        )}
+                <div className="tokengenerationmodal__body">
+
+                    <div className="tokengenerationmodal__body--title">
+                        <p>David Philip</p>
+                        <p>davidphilip@gmail.com</p>
                     </div>
+
+                    <div className="tokengenerationmodal__container">
+                        <div className="tokengenerationmodal__container--input">
+                            <label htmlFor="">Discount</label>
+                            <Input
+                                name='discount'
+                                value={form.discount}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                placeholder='Token discount'
+                                addonAfter={<PercentageOutlined />}
+                            />
+                            <div className="tokengenerationmodal__container--error">
+                                {touched.discount && errors.discount && (
+                                    <p>{errors.discount}</p>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className="tokengenerationmodal__container--input">
+                            <label>Total Use Count</label>
+                            <Input
+                                name='useCount'
+                                value={form.useCount}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                placeholder='Total use count'
+                            />
+                            <div className="tokengenerationmodal__container--error">
+                                {touched.useCount && errors.useCount && (
+                                    <p>{errors.useCount}</p>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className="tokengenerationmodal__container--footer">
+                            <Button onClick={handleReset}>Reset</Button>
+                            <Button disabled={isDisabled} type='primary' onClick={() => handleGenerate()}>Generate</Button>
+                        </div>
+                    </div>
+
                 </div>
-
-
-            </div>
-            <div className="tokengenerationmodal__container">
-                <Button onClick={handleReset}>Reset</Button>
-                <Button disabled={isDisabled} type='primary' onClick={() => handleGenerate()}>Generate</Button>
             </div>
         </Modal>
     )

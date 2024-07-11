@@ -33,7 +33,8 @@ const AdminActiveAffiliaters = () => {
         }
     }, [data]);
 
-    const handleClick = (record) => {
+    const handleClick = (record, e) => {
+        e.stopPropagation();
         setIsModal(true)
         setUserDetails(record)
     }
@@ -59,7 +60,7 @@ const AdminActiveAffiliaters = () => {
             key: 'token',
             render: (_, record) => (
                 <>
-                    <Button onClick={() => handleClick(record)}>Generate Token</Button>
+                    <Button onClick={(e) => handleClick(record, e)}>Generate Token</Button>
                 </>
             ),
         },
