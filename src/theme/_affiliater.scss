@@ -50,6 +50,92 @@
     }
   }
 }
+//affiliater coupon
+.affiliatercoupon {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 1rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 20px;
+    background-color: var(--background-1);
+  }
+
+  &__containerbody {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0px 100px 0px 20px;
+
+    @include breakpoint(sm) {
+      justify-content: center;
+      padding: 0px;
+    }
+
+    &--token {
+      width: 300px;
+    }
+  }
+
+  &__progress {
+    width: 90%;
+  }
+
+  &__table {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    &--head {
+      background-color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      height: 50px;
+      border-radius: 5px;
+      color: var(--text-dark);
+    }
+
+    &--content {
+      width: 40%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
+      border-radius: 5px;
+      padding-left: 30px;
+
+      @include breakpoint(lg) {
+        width: 50%;
+      }
+      @include breakpoint(md) {
+        width: 60%;
+      }
+      @include breakpoint(sm) {
+        width: 90%;
+      }
+      @include breakpoint(xs) {
+        width: 100%;
+      }
+    }
+  }
+}
+
 //affiliater transaction
 .affiliatertransaction {
   height: 100%;
@@ -87,6 +173,45 @@
   }
 }
 
+//affiliater commission
+.affiliatercommission {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 1rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &__container {
+   
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    border-radius: 20px;
+     background-color: var(--background-1);
+
+    &--counts {
+      grid-column: span 2;
+      grid-row: span 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      @include breakpoint(sm) {
+        flex-wrap: wrap;
+      }
+    }
+    h3 {
+      padding: 20px 0px 0px 20px;
+      font-weight: 500;
+    }
+  }
+}
+
 //affilaiter setting
 .affiliatersettings {
   height: 100%;
@@ -95,8 +220,6 @@
   border-radius: 20px;
   background-color: var(--background-3);
   padding: 1.5rem;
-
-
 
   &__container {
     display: grid;
@@ -127,7 +250,6 @@
       color: var(--secondary-color);
     }
   }
-
 }
 
 //affiliater security
@@ -174,7 +296,6 @@
       grid-template-rows: auto;
       height: 13rem;
     }
-
   }
 }
 
@@ -229,7 +350,6 @@
       grid-template-rows: auto;
       height: 22rem;
     }
-
   }
 }
 
@@ -284,10 +404,8 @@
       grid-template-rows: auto;
       height: 22rem;
     }
-
   }
 }
-
 
 //affiliater notification
 .affiliaternotification {
@@ -333,10 +451,8 @@
       grid-template-rows: auto;
       height: 25rem;
     }
-
   }
 }
-
 
 //affiliater Help
 .affiliaterhelp {
@@ -382,6 +498,5 @@
       grid-template-rows: auto;
       height: 25rem;
     }
-
   }
 }
