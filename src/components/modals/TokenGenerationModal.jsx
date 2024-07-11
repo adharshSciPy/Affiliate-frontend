@@ -113,8 +113,11 @@ const TokenGenerationModal = ({ isModal, setIsModal, userDetails, refetch }) => 
         >
 
             <div className="tokengenerationmodal">
-                <p>{`${userDetails?.firstName, '.', userDetails?.lastName}`}</p>
+                {/* <p>{`${userDetails?.firstName, '.', userDetails?.lastName}`}</p> */}
+                <h3>Generate Token</h3>
+                <p className='name'>Name: <span>David</span></p>
                 <div className="tokengenerationmodal__input">
+                    <label>Token Discount</label>
                     <Input
                         name='discount'
                         value={form.discount}
@@ -123,12 +126,15 @@ const TokenGenerationModal = ({ isModal, setIsModal, userDetails, refetch }) => 
                         placeholder='Token discount'
                         addonAfter={<PercentageOutlined />}
                     />
-                    {touched.discount && errors.discount && (
-                        <p className='error-message'>{errors.discount}</p>
-                    )}
+                    <div className="tokengenerationmodal__text">
+                        {touched.discount && errors.discount && (
+                            <p className='error-message'>{errors.discount}</p>
+                        )}
+                    </div>
                 </div>
 
                 <div className="tokengenerationmodal__input">
+                    <label>Total Use Count</label>
                     <Input
                         name='useCount'
                         value={form.useCount}
@@ -136,15 +142,19 @@ const TokenGenerationModal = ({ isModal, setIsModal, userDetails, refetch }) => 
                         onBlur={handleBlur}
                         placeholder='Total use count'
                     />
-                    {touched.useCount && errors.useCount && (
-                        <p className='error-message'>{errors.useCount}</p>
-                    )}
+                    <div className="tokengenerationmodal__text">
+                        {touched.useCount && errors.useCount && (
+                            <p className='error-message'>{errors.useCount}</p>
+                        )}
+                    </div>
                 </div>
 
 
             </div>
-            <Button onClick={handleReset}>Reset</Button>
-            <Button disabled={isDisabled} type='primary' onClick={() => handleGenerate()}>Generate</Button>
+            <div className="tokengenerationmodal__container">
+                <Button onClick={handleReset}>Reset</Button>
+                <Button disabled={isDisabled} type='primary' onClick={() => handleGenerate()}>Generate</Button>
+            </div>
         </Modal>
     )
 }
