@@ -15,9 +15,11 @@ export { default as AdminAffiliatersVerifications } from './admin/AdminAffiliate
 export { default as AdminToken } from './admin/AdminToken'
 export { default as AdminCustomers } from './admin/AdminCustomers'
 export { default as AdminAffiliaterDetails } from './admin/AdminAffiliaterDetails'
+export { default as AdminCompanyDetails } from './admin/AdminCompanyDetails'
 
 // company
 export { default as CompanyHome } from './company/CompanyHome'
+export { default as CompanyRegistrationPage } from './company/CompanyRegistrationPage'
 
 // affiliater
 export { default as AffiliaterHome } from './affiliater/AffiliaterHome'
@@ -30,3 +32,4 @@ export { default as AffiliaterPolicies } from "./affiliater/AffiliaterPolicies"
 export { default as AffiliaterNotification } from "./affiliater/AffiliaterNotification"
 export { default as AffiliaterHelp } from "./affiliater/AffiliaterHelp"
 export { default as AffiliaterAgreement } from "./affiliater/AffiliaterAgreement"
+export { default as AffiliaterRegistrationPage } from "./affiliater/AffiliaterRegistrationPage"
