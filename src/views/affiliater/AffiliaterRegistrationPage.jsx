@@ -1,8 +1,12 @@
 import React from 'react'
+import { Navbar } from '../../components'
 
 const AffiliaterRegistrationPage = () => {
   return (
-    <div>AffiliaterRegistrationPage</div>
+    <>
+      <Navbar />
+      <div>AffiliaterRegistrationPage</div>
+    </>
   )
 }
 

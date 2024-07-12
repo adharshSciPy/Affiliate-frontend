@@ -1,8 +1,12 @@
 import React from 'react'
+import { Navbar } from '../../components'
 
 const CompanyRegistrationPage = () => {
   return (
-    <div>CompanyRegistrationPage</div>
+    <>
+      <Navbar />
+      <div>CompanyRegistrationPage</div>
+    </>
   )
 }
 
