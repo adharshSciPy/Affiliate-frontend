@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Table, Spin, Alert, Button, Flex } from 'antd'
+import { useNavigate } from 'react-router-dom';
 import { useVerifiedCompaniesQuery, useDeleteCompanyMutation, useCompanyBlockManageMutation } from '../../features/api/adminApiSlice';
 import { DeleteModal } from '../../components';
 import { useNotification } from '../../context/NotificationContext';
 
 const AdminActiveCompanies = () => {
 
+  const navigate = useNavigate();
   const { notification } = useNotification()
   const [page, setPage] = useState(1)
   const [limit, setLimit] = useState(10)
@@ -17,7 +19,7 @@ const AdminActiveCompanies = () => {
   const { data, error, isLoading, refetch } = useVerifiedCompaniesQuery({ page, limit })
   const [deleteCompany] = useDeleteCompanyMutation()
   const [companyBlockManage] = useCompanyBlockManageMutation()
-  
+
   // table data formatting
   useEffect(() => {
     if (data) {
@@ -36,12 +38,14 @@ const AdminActiveCompanies = () => {
     }
   }, [data]);
 
-  const handleButtonClick1 = (id) => {
+  const handleButtonClick1 = (id, e) => {
+    e.stopPropagation();
     setCompanyId(id)
     setIsModal(true)
   }
 
-  const handleButtonClick2 = async (record) => {
+  const handleButtonClick2 = async (record, e) => {
+    e.stopPropagation();
     let payload = {
       isBlocked: !record?.isBlocked
     }
@@ -90,8 +94,8 @@ const AdminActiveCompanies = () => {
       render: (_, record) => (
         <>
           <Flex gap={10}>
-            <Button onClick={() => handleButtonClick1(record?.id)} danger>Delete</Button>
-            <Button onClick={() => handleButtonClick2(record)}>{record?.isBlocked ? 'Unblock' : 'Block'}</Button>
+            <Button onClick={(e) => handleButtonClick1(record?.id, e)} danger>Delete</Button>
+            <Button onClick={(e) => handleButtonClick2(record, e)}>{record?.isBlocked ? 'Unblock' : 'Block'}</Button>
           </Flex>
         </>
       ),
@@ -123,6 +127,13 @@ const AdminActiveCompanies = () => {
           <Table
             columns={columns}
             dataSource={tableData}
+            onRow={(record) => {
+              return {
+                onClick: () => {
+                  navigate(`/admin/companies/${record?.id}`);
+                }
+              };
+            }}
             pagination={{
               current: page,
               pageSize: limit,

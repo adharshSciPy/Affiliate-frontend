@@ -22,7 +22,8 @@ import {
     AdminToken,
     AdminAffiliaterDetails,
     AffiliaterRegistrationPage,
-    CompanyRegistrationPage
+    CompanyRegistrationPage,
+    AdminCompanyDetails
 } from './views';
 import {
     PersistLogin,
@@ -117,6 +118,10 @@ const router = createBrowserRouter([
             {
                 path: "/admin/affiliaters/:id",
                 element: <AdminAffiliaterDetails />
+            },
+            {
+                path: "/admin/companies/:id",
+                element: <AdminCompanyDetails />
             },
             {
                 path: "new-affiliaters-request",
