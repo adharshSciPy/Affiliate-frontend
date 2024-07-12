@@ -28,7 +28,7 @@ const LoggedInPage = () => {
         navigate('/customer');
         break;
       default:
-        navigate('/auth/login');
+        navigate('/auth/login', { replace: true });
         break;
     }
   }, [role, navigate]);

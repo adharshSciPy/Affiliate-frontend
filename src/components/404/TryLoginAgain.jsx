@@ -8,8 +8,7 @@ const TryLoginAgain = () => {
     const navigate = useNavigate()
     const location = useLocation();
     const { state } = location;
-
-    console.log('state', state)
+    
     return (
         <div className='tryloginagain'>
             <div className="tryloginagain__body">
