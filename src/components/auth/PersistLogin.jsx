@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useAuthRefreshMutation } from "../../features/api/authApiSlice";
-import { Loader, TryLoginAgain } from "../../components";
+import { Loader } from "../../components";
 import { setLogin } from '../../features/slice/authSlice';
+import { useNavigate } from 'react-router-dom';
 
 const PersistLogin = ({ children, checkAuth = true }) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { token } = useSelector((state) => state?.auth);
 
     const [trueSuccess, setTrueSuccess] = useState(false);
@@ -50,7 +52,7 @@ const PersistLogin = ({ children, checkAuth = true }) => {
         if (showLoader || isLoading) {
             content = <Loader message='Loading...' isVisible={true} />;
         } else if (isError) {
-            content = <TryLoginAgain message={error?.data?.message} />;
+            navigate('/tryloginagain', { state: { message: error?.data?.message }, replace: false })
         } else if (isSuccess && trueSuccess) {
             content = children;
         } else if (token && isUninitialized) {

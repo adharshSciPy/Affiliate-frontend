@@ -22,7 +22,14 @@ import {
     AdminToken,
     AdminAffiliaterDetails
 } from './views';
-import { PersistLogin, AllowedRoles, LoggedInPage, ForceRedirect, PageNotFound } from './components';
+import {
+    PersistLogin,
+    AllowedRoles,
+    LoggedInPage,
+    ForceRedirect,
+    PageNotFound,
+    TryLoginAgain
+} from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, CompanyLayout } from './layout';
 import { roles } from './constants/roles'
 import { NotificationProvider } from './context/NotificationContext';
@@ -31,6 +38,10 @@ const router = createBrowserRouter([
     {
         path: "*",
         element: <PageNotFound />,
+    },
+    {
+        path: "/tryloginagain",
+        element: <TryLoginAgain />,
     },
     {
         path: "/",
