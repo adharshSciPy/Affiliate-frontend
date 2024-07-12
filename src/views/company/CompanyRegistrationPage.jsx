@@ -26,7 +26,7 @@ const CompanyRegistrationPage = () => {
         <div className='companyregpage__container'>
           <div className="companyregpage__header">
             <div className="companyregpage__header--text">
-              <h3>Tell us more about your company</h3>
+              <h3>Tell us more yourself</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, error?</p>
             </div>
 

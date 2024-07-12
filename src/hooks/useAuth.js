@@ -26,7 +26,7 @@ const useAuth = () => {
     if (token) {
         try {
             const decoded = jwtDecode(token);
-            console.log('decoded', decoded)
+
             firstName = decoded?.firstName;
             role = decoded?.role;
             loggedInUserId = decoded?.id;

@@ -135,14 +135,16 @@ const AdminActiveCompanies = () => {
               };
             }}
             pagination={{
+              defaultCurrent: 1,
+              showSizeChanger: true,
               current: page,
               pageSize: limit,
-              total: data?.total || 0,
+              total: data?.data?.total,
               onChange: (page, pageSize) => {
-                setPage(page);
-                setLimit(pageSize);
+                  setPage(page);
+                  setLimit(pageSize);
               },
-            }}
+          }}
           />
         )}
       </div>
