@@ -34,27 +34,68 @@ function AffiliaterSettings() {
                                         )}
                                         <AffiliaterSecurity />
                                     </>
-                                ),
+                                )
                             },
                             {
                                 label: 'Privacy & Policies',
                                 key: '2',
-                                children: <AffiliaterPolicies />,
+                                children: (
+                                    <>
+                                        {activeKey === '2' && (
+                                            <div className="affiliatersettings__details">
+                                                <h3>Privacy & Policies</h3>
+                                                <p>See information regarding your Privacy & Policies</p>
+                                            </div>
+                                        )}
+                                        <AffiliaterPolicies />
+                                    </>
+
+                                )
                             },
                             {
                                 label: 'User Agreement',
                                 key: '3',
-                                children: <AffiliaterAgreement />,
+                                children: (
+                                    <>
+                                        {activeKey === '3' && (
+                                            <div className="affiliatersettings__details">
+                                                <h3>User Agreement</h3>
+                                                <p>See information regarding your User Agreement</p>
+                                            </div>
+                                        )}
+                                        <AffiliaterAgreement />
+                                    </>
+                                )
                             },
                             {
                                 label: 'Notifications',
                                 key: '4',
-                                children: <AffiliaterNotification />,
+                                children: (
+                                    <>
+                                        {activeKey === '4' && (
+                                            <div className="affiliatersettings__details">
+                                                <h3>Enable Desktop Notification</h3>
+                                                <p>Decide whether you want to be notified of new messages or updates</p>
+                                            </div>
+                                        )}
+                                        <AffiliaterNotification />
+                                    </>
+                                )
                             },
                             {
                                 label: 'Help?',
                                 key: '5',
-                                children: <AffiliaterHelp />,
+                                children: (
+                                    <>
+                                        {activeKey === '5' && (
+                                            <div className="affiliatersettings__details">
+                                                <h3>Help?</h3>
+                                                <p>See information regarding your Help Settings</p>
+                                            </div>
+                                        )}
+                                        <AffiliaterHelp />
+                                    </>
+                                )
                             },
                         ]}
                     />
