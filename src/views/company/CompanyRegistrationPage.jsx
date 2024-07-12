@@ -1,5 +1,6 @@
 import React from 'react'
 import bgCoverImg from '../../assets/images/reg-coverimage.jpg'
+import { Button } from 'antd'
 
 const CompanyRegistrationPage = () => {
   return (
@@ -13,10 +14,15 @@ const CompanyRegistrationPage = () => {
         }}
       >
         <div className='companyregpage__container'>
-
           <div className="companyregpage__header">
-            <h3>Tell us more about your company</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, error?</p>
+            <div className="companyregpage__header--text">
+              <h3>Tell us more about your company</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, error?</p>
+            </div>
+
+            <div className="companyregpage__header--logout">
+              <Button>Logout</Button>
+            </div>
           </div>
         </div>
       </div>
