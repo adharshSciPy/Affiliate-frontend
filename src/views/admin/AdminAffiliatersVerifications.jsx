@@ -96,7 +96,7 @@ const AdminAffiliatersVerifications = () => {
     return (
         <div className='adminbasicstyle'>
             <div className="adminbasicstyle__header">
-                <h3>Active Companies</h3>
+                <h3>New Affiliaters</h3>
             </div>
 
             <div className="adminbasicstyle__table">
@@ -109,9 +109,11 @@ const AdminAffiliatersVerifications = () => {
                         columns={columns}
                         dataSource={tableData}
                         pagination={{
+                            defaultCurrent: 1,
+                            showSizeChanger: true,
                             current: page,
                             pageSize: limit,
-                            total: data?.total || 0,
+                            total: data?.data?.total,
                             onChange: (page, pageSize) => {
                                 setPage(page);
                                 setLimit(pageSize);

@@ -13,7 +13,7 @@ const AdminActiveAffiliaters = () => {
     const [isModal, setIsModal] = useState(false)
     const [userDetails, setUserDetails] = useState(null)
 
-    const { data, error, isLoading, refetch } = useVerifiedAffiliatersQuery({ page, limit })
+    const { data, error, isLoading, refetch } = useVerifiedAffiliatersQuery({ page: page, limit: limit })
 
     // table data generating from api
     useEffect(() => {
@@ -71,7 +71,7 @@ const AdminActiveAffiliaters = () => {
             ),
         },
     ]
-    
+
     return (
         <div className='adminbasicstyle'>
             <div className="adminbasicstyle__header">
@@ -94,10 +94,13 @@ const AdminActiveAffiliaters = () => {
                                 }
                             };
                         }}
+          
                         pagination={{
+                            defaultCurrent: 1,
+                            showSizeChanger: true,
                             current: page,
                             pageSize: limit,
-                            total: data?.total || 0,
+                            total: data?.data?.total,
                             onChange: (page, pageSize) => {
                                 setPage(page);
                                 setLimit(pageSize);
