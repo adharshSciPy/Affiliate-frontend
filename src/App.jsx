@@ -20,9 +20,20 @@ import {
     AdminAffiliatersVerifications,
     AdminCustomers,
     AdminToken,
-    AdminAffiliaterDetails
+    AdminAffiliaterDetails,
+    AffiliaterRegistrationPage,
+    CompanyRegistrationPage,
+    AdminCompanyDetails
 } from './views';
-import { PersistLogin, AllowedRoles, LoggedInPage, ForceRedirect, PageNotFound } from './components';
+import {
+    PersistLogin,
+    AllowedRoles,
+    LoggedInPage,
+    ForceRedirect,
+    PageNotFound,
+    TryLoginAgain,
+    IsVerifiedCompanyorAffiliater
+} from './components';
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, CompanyLayout } from './layout';
 import { roles } from './constants/roles'
 import { NotificationProvider } from './context/NotificationContext';
@@ -31,6 +42,10 @@ const router = createBrowserRouter([
     {
         path: "*",
         element: <PageNotFound />,
+    },
+    {
+        path: "/tryloginagain",
+        element: <TryLoginAgain />,
     },
     {
         path: "/",
@@ -105,6 +120,10 @@ const router = createBrowserRouter([
                 element: <AdminAffiliaterDetails />
             },
             {
+                path: "/admin/companies/:id",
+                element: <AdminCompanyDetails />
+            },
+            {
                 path: "new-affiliaters-request",
                 element: <AdminAffiliatersVerifications />
             },
@@ -134,9 +153,11 @@ const router = createBrowserRouter([
         element:
             <PersistLogin>
                 <AllowedRoles roles={[roles.AFFILIATER_ROLE]}>
-                    <AffiliateLayout />
+                    <IsVerifiedCompanyorAffiliater>
+                        <AffiliateLayout />
+                    </IsVerifiedCompanyorAffiliater>
                 </AllowedRoles>
-            </PersistLogin >,
+            </PersistLogin>,
         // Define children routes for affiliate if necessary
         children: [
             {
@@ -166,7 +187,9 @@ const router = createBrowserRouter([
         element:
             <PersistLogin>
                 <AllowedRoles roles={[roles.COMPANY_ROLE]}>
-                    <CompanyLayout />
+                    <IsVerifiedCompanyorAffiliater>
+                        <CompanyLayout />
+                    </IsVerifiedCompanyorAffiliater>
                 </AllowedRoles>
             </PersistLogin>,
         // Define children routes for affiliate if necessary
@@ -177,6 +200,24 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: "/affiliaterdetails-registration",
+        element:
+            <PersistLogin>
+                <AllowedRoles roles={[roles.AFFILIATER_ROLE]}>
+                    <AffiliaterRegistrationPage />
+                </AllowedRoles>
+            </PersistLogin>
+    },
+    {
+        path: "/companydetails-registration",
+        element:
+            <PersistLogin>
+                <AllowedRoles roles={[roles.COMPANY_ROLE]}>
+                    <CompanyRegistrationPage />
+                </AllowedRoles>
+            </PersistLogin>
+    }
 ]);
 
 const App = () => {

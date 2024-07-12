@@ -17,6 +17,8 @@ const useAuth = () => {
     let isAffiliater = false;
     let isCustomer = false;
     let isLoggedIn = false;
+    let isBlocked = false;
+    let isVerified = false;
     let firstName = '';
     let role = null;
     let loggedInUserId = null
@@ -24,9 +26,12 @@ const useAuth = () => {
     if (token) {
         try {
             const decoded = jwtDecode(token);
+            console.log('decoded', decoded)
             firstName = decoded?.firstName;
             role = decoded?.role;
             loggedInUserId = decoded?.id;
+            isBlocked = decoded?.isBlocked;
+            isVerified = decoded?.isVerified;
 
             isAdmin = role === ADMIN_ROLE;
             isCompany = role === COMPANY_ROLE;
@@ -43,7 +48,7 @@ const useAuth = () => {
         }
     }
 
-    return { firstName, role, status, isAdmin, isCompany, isAffiliater, isCustomer, isLoggedIn, loggedInUserId };
+    return { firstName, role, status, isAdmin, isCompany, isAffiliater, isCustomer, isLoggedIn, loggedInUserId, isBlocked, isVerified };
 };
 
 export default useAuth;

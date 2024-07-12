@@ -6,7 +6,7 @@ import { roles } from '../../constants/roles';
 
 const LoggedInPage = () => {
   const navigate = useNavigate();
-  const { role } = useAuth();
+  const { role, isVerified } = useAuth();
 
   const ADMIN_ROLE = roles.ADMIN_ROLE;
   const COMPANY_ROLE = roles.COMPANY_ROLE;
@@ -19,19 +19,29 @@ const LoggedInPage = () => {
         navigate('/admin/home');
         break;
       case COMPANY_ROLE:
-        navigate('/company/home');
+        if (!isVerified) {
+          navigate('/companydetails-registration');
+        }
+        else {
+          navigate('/company/home');
+        }
         break;
       case AFFILIATER_ROLE:
-        navigate('/affiliater/home');
+        if (!isVerified) {
+          navigate('/affiliaterdetails-registration');
+        }
+        else {
+          navigate('/affiliater/home');
+        }
         break;
       case CUSTOMER_ROLE:
         navigate('/customer');
         break;
       default:
-        navigate('/auth/login');
+        navigate('/auth/login', { replace: true });
         break;
     }
-  }, [role, navigate]);
+  }, [role, isVerified, navigate]);
 
   return <Loader message='Validating roles...' isVisible={true} />;
 }

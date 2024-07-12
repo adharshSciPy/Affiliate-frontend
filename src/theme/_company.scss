@@ -1,51 +1,107 @@
-.companyhome {
-    height: 100%;
-    max-height: 100vh;
-    width: 100%;
-    border-radius: 20px;
-    background-color: var(--background-3);
-    padding: 1rem;
-    overflow-y: scroll;
+// company registration page
+.companyregpage {
+  position: relative;
+  height: 100vh;
+  width: 100%;
 
-    &::-webkit-scrollbar {
-        display: none;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  &__container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+    width: 70%;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    border-radius: 15px;
+    padding: 2rem;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    padding-top: 1.5rem;
+
+    &--text {
+      color: var(--text-grey);
+
+      h3 {
+        font-size: 18px;
+        margin-bottom: 3px;
+        color: var(--primary-color);
+      }
+
+      p {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+.companyhome {
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 1rem;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 1rem;
+    height: 100%;
+    width: 100%;
+
+    &--counts {
+      grid-column: span 2;
+      grid-row: span 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
     }
 
-    &__container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(10, 1fr);
-        gap: 1rem;
-        height: 100%;
-        width: 100%;
-    
-        &--counts {
-          grid-column: span 2;
-          grid-row: span 1;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 1rem;
-        }
-    
-        &--chart {
-          grid-column: span 2;
-          grid-row: span 5;
-        }
-    
-        &--profile {
-          grid-column: span 1;
-          grid-row: span 6;
-        }
-    
-        &--table {
-          grid-column: span 2;
-          grid-row: span 4;
-        }
-    
-        &--detail {
-          grid-column: span 1;
-          grid-row: span 4;
-        }
-      }
-} 
+    &--chart {
+      grid-column: span 2;
+      grid-row: span 5;
+    }
+
+    &--profile {
+      grid-column: span 1;
+      grid-row: span 6;
+    }
+
+    &--table {
+      grid-column: span 2;
+      grid-row: span 4;
+    }
+
+    &--detail {
+      grid-column: span 1;
+      grid-row: span 4;
+    }
+  }
+}
