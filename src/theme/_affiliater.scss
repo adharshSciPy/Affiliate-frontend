@@ -5,7 +5,7 @@
   width: 100%;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -38,6 +38,8 @@
     top: 0;
     padding-top: 1.5rem;
 
+    width: 95%;
+
     &--text {
       color: var(--text-grey);
 
@@ -52,10 +54,10 @@
       }
     }
   }
-  &__head{
+  &__head {
     margin-top: 4rem;
   }
-  &__tab{
+  &__tab {
     margin-top: 1rem;
   }
 }
@@ -257,7 +259,6 @@
   }
 
   &__container {
-
     height: 100%;
     width: 100%;
     overflow: scroll;
@@ -329,7 +330,6 @@
   }
 
   &__details {
-
     p {
       font-size: 13px;
     }
@@ -378,7 +378,6 @@
       color: var(--text-grey);
       font-size: 12px;
     }
-
 
     @include breakpoint(xl) {
       grid-template-rows: auto;
@@ -635,6 +634,66 @@
     @include breakpoint(sm) {
       grid-template-rows: auto;
       height: 25rem;
+    }
+  }
+}
+
+.affiliaterpersonal {
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+  overflow-x: scroll;
+
+  &__content {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    &--left {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 200px;
+
+      input {
+        border: 1px solid var(--text-white);
+        border-radius: 8px;
+        height: 30px;
+        padding: 15px;
+      }
+      textarea {
+        border: 1px solid var(--text-white);
+        border-radius: 8px;
+      }
+    }
+    &--right {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-right: 200px;
+      input {
+        border: 1px solid var(--text-white);
+        border-radius: 8px;
+        height: 30px;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: end;
+    padding-right: 200px;
+
+    Button {
+      background-color: var(--secondary-color);
+      width: 100px;
+      color: white;
     }
   }
 }
