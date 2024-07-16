@@ -1,13 +1,62 @@
 import { React, useState } from 'react'
 import { Input, Button } from 'antd';
+import { usePersonalInformationMutation } from '../../features/api/companyApiSlice';
+import { useNotification } from '../../context/NotificationContext';
+import useAuth from '../../hooks/useAuth';
 
 function CompanyPersonal() {
     const { TextArea } = Input;
-    // const handleChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setForm({ ...form, [name]: value });
-    //     validateField(name, value);
-    // };
+    const [personaldetails] = usePersonalInformationMutation()
+    const { notification } = useNotification();
+    const { loggedInUserId } = useAuth();
+
+    const fields = {
+        firstName: '',
+        lastName: '',
+        DOB: '',
+        Gender: '',
+        nationality: '',
+        emailAddress: '',
+        phoneNumber: '',
+        website: '',
+        Address: '',
+    }
+    //input field onchange handler
+    const [form, setForm] = useState(fields);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
+    };
+
+    //handlesubmit
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            const payload = {
+                firstName: form.firstName,
+                lastName: form.lastName,
+                DOB: form.DOB,
+                Gender: form.Gender,
+                nationality: form.nationality,
+                emailAddress: form.emailAddress,
+                phoneNumber: form.phoneNumber,
+                website: form.website,
+                Address: form.Address
+            };
+            let companyId = loggedInUserId;
+            console.log("company", companyId)
+            const result = await personaldetails({ companyId, payload })
+            console.log("result", result)
+            if (result) {
+                notification('success', 'Registration Succesfull', result?.data?.message, 'bottomRight');
+                console.log('payload', payload)
+            }
+
+
+        } catch (error) {
+            notification('error', 'Registration Failed', error?.data?.message, 'bottomRight');
+        }
+    }
     return (
         <>
             <div className="companypersonal">
@@ -20,8 +69,8 @@ function CompanyPersonal() {
                             <Input
                                 placeholder='John'
                                 name='firstName'
-                                // value={form.firstName}
-                                // onChange={handleChange}
+                                value={form.firstName}
+                                onChange={handleChange}
                                 size='medium'
                             />
                         </div>
@@ -34,8 +83,8 @@ function CompanyPersonal() {
                             <Input
                                 placeholder='dd/mm/yyyy'
                                 name='DOB'
-                                // value={form.firstName}
-                                // onChange={handleChange}
+                                value={form.DOB}
+                                onChange={handleChange}
                                 size='medium'
                             />
                         </div>
@@ -48,8 +97,8 @@ function CompanyPersonal() {
                             <Input
                                 placeholder='Male/Female'
                                 name='Gender'
-                                // value={form.firstName}
-                                // onChange={handleChange}
+                                value={form.Gender}
+                                onChange={handleChange}
                                 size='medium'
                             />
                         </div>
@@ -61,9 +110,9 @@ function CompanyPersonal() {
                         <div>
                             <Input
                                 placeholder='Indian'
-                                name='firstName'
-                                // value={form.firstName}
-                                // onChange={handleChange}
+                                name='nationality'
+                                value={form.nationality}
+                                onChange={handleChange}
                                 size='medium'
                             />
                         </div>
@@ -75,9 +124,9 @@ function CompanyPersonal() {
                         <div>
                             <TextArea
                                 placeholder='John'
-                                name='firstName'
-                                // value={form.firstName}
-                                // onChange={handleChange}
+                                name='Address'
+                                value={form.Address}
+                                onChange={handleChange}
                                 size='medium'
                                 rows={4}
                             />
@@ -93,8 +142,8 @@ function CompanyPersonal() {
                             <Input
                                 placeholder='Doe'
                                 name='lastName'
-                                // value={form.firstName}
-                                // onChange={handleChange}
+                                value={form.lastName}
+                                onChange={handleChange}
                                 size='medium'
                             />
                         </div>
@@ -106,9 +155,9 @@ function CompanyPersonal() {
                         <div>
                             <Input
                                 placeholder='9874445631'
-                                name='phno'
-                                // value={form.firstName}
-                                // onChange={handleChange}
+                                name='phoneNumber'
+                                value={form.phoneNumber}
+                                onChange={handleChange}
                                 size='medium'
                             />
                         </div>
@@ -120,9 +169,9 @@ function CompanyPersonal() {
                         <div>
                             <Input
                                 placeholder='example@gmail.com'
-                                name='phno'
-                                // value={form.firstName}
-                                // onChange={handleChange}
+                                name='emailAddress'
+                                value={form.emailAddress}
+                                onChange={handleChange}
                                 size='medium'
                             />
                         </div>
@@ -135,11 +184,15 @@ function CompanyPersonal() {
                             <Input
                                 placeholder='example@gmail.com'
                                 name='website'
-                                // value={form.firstName}
-                                // onChange={handleChange}
+                                value={form.website}
+                                onChange={handleChange}
                                 size='medium'
                             />
                         </div>
+
+                    </div>
+                    <div className="companypersonal__containertwo--button">
+                        <Button type='primary' success onClick={handleSubmit}>Next</Button>
                     </div>
                 </div>
             </div>

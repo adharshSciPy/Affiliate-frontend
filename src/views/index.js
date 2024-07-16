@@ -20,6 +20,7 @@ export { default as AdminCompanyDetails } from './admin/AdminCompanyDetails'
 // company
 export { default as CompanyHome } from './company/CompanyHome'
 export { default as CompanyRegistrationPage } from './company/CompanyRegistrationPage'
+export { default as CompanyPersonal } from './company/CompanyPersonal'
 
 // affiliater
 export { default as AffiliaterHome } from './affiliater/AffiliaterHome'

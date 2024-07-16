@@ -128,45 +128,32 @@
 //company personal
 .companypersonal {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 
   &__containerone {
+    display: flex;
+    flex-direction: column;
     width: 20rem;
     height: auto;
-  }
-
-  &__containerone--input {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 5px;
-  }
-
-  &__containerone--label {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 5px;
   }
 
   &__containertwo {
+    display: flex;
+    flex-direction: column;
     width: 20rem;
     height: auto;
-    padding: 0 0 6rem;
+    padding: 0 0 9rem;
   }
 
+  &__containerone--input,
   &__containertwo--input {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: 5px;
+    padding: 1rem;
   }
 
+  &__containerone--label,
   &__containertwo--label {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     padding: 5px;
   }
 }
