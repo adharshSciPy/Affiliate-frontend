@@ -21,7 +21,8 @@ const useAuth = () => {
     let isVerified = false;
     let firstName = '';
     let role = null;
-    let loggedInUserId = null
+    let loggedInUserId = null;
+    let logId = '';
 
     if (token) {
         try {
@@ -32,6 +33,7 @@ const useAuth = () => {
             loggedInUserId = decoded?.id;
             isBlocked = decoded?.isBlocked;
             isVerified = decoded?.isVerified;
+            logId = decoded?._id;
 
             isAdmin = role === ADMIN_ROLE;
             isCompany = role === COMPANY_ROLE;
@@ -48,7 +50,7 @@ const useAuth = () => {
         }
     }
 
-    return { firstName, role, status, isAdmin, isCompany, isAffiliater, isCustomer, isLoggedIn, loggedInUserId, isBlocked, isVerified };
+    return { firstName, role, status, isAdmin, isCompany, isAffiliater, isCustomer, isLoggedIn, loggedInUserId, isBlocked, isVerified, logId };
 };
 
 export default useAuth;

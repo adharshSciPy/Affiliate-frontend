@@ -8,7 +8,7 @@ function CompanyPersonal() {
     const { TextArea } = Input;
     const [personaldetails] = usePersonalInformationMutation()
     const { notification } = useNotification();
-    const { loggedInUserId } = useAuth();
+    const { logId } = useAuth();
 
     const fields = {
         firstName: '',
@@ -43,13 +43,11 @@ function CompanyPersonal() {
                 website: form.website,
                 Address: form.Address
             };
-            let companyId = loggedInUserId;
-            console.log("company", companyId)
+            let companyId = logId;
             const result = await personaldetails({ companyId, payload })
-            console.log("result", result)
             if (result) {
                 notification('success', 'Registration Succesfull', result?.data?.message, 'bottomRight');
-                console.log('payload', payload)
+                setForm(fields)
             }
 
 

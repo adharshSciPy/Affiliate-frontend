@@ -21,9 +21,8 @@ const AdminCompanyVerifyModal = ({ isModal, modalData, setIsModal, verify }) => 
                 <div className="companyverify__text">
                     <p style={{ fontSize: "20px", textAlign: "center", fontFamily: "inherit" }}><strong>Company Details</strong></p>
                     <p>Company: {modalData?.companyName}</p>
-                    <p>Email: {modalData?.email}</p>
-                    <p>Licenses: Certificate</p>
-                    <p>GSTIN: GSTIN87543</p>
+                    <p>Company Email: {modalData?.email}</p>
+                    <p>First Name:{modalData?.firstName}</p>
                 </div>
                 <div className="companyverify__container">
                     <Button style={{ marginRight: "10px" }} onClick={close}>Cancel</Button>
