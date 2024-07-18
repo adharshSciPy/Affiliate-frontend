@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Spin, Alert, Button } from 'antd';
-import { useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedCompaniesQuery } from '../../features/api/adminApiSlice';
+import { useNewCompaniesQuery, useVerifyNewCompanyMutation, useVerifiedCompaniesQuery, usePersonalInfoQuery } from '../../features/api/adminApiSlice';
 import { AdminCompanyVerifyModal } from '../../components';
 import { useNotification } from '../../context/NotificationContext';
 
@@ -12,15 +12,19 @@ const AdminCompanyVerifications = () => {
   const [isModal, setIsModal] = useState(false)
   const [modalData, setModalData] = useState([])
   const [isEmptyData, setIsEmptyData] = useState(false)
+  const [companyId, setCompanyId] = useState(null);
+  const [personalData, setPersonalData] = useState([])
 
   const { data, error, isLoading, refetch } = useNewCompaniesQuery({ page, limit });
-  const { refetch: refetchActiveCompanies } = useVerifiedCompaniesQuery({ page : 1, limit : 10 })
+  const { refetch: refetchActiveCompanies } = useVerifiedCompaniesQuery({ page: 1, limit: 10 })
   const [verifyCompany] = useVerifyNewCompanyMutation();
+  const { data: personalInfoData, refetch: refetchPersonalInfo } = usePersonalInfoQuery({ companyId }, { skip: !companyId });
 
   // verify company api calling logic
   const handleVerifyCompany = async () => {
     try {
       const response = await verifyCompany({ companyId: modalData?._id }).unwrap();
+
       if (response) {
         notification('success', 'Company verified successfully!', response?.data?.message, 'bottomRight');
         setIsModal(false);
@@ -34,10 +38,25 @@ const AdminCompanyVerifications = () => {
   };
 
   // modal invoking
-  const handleButtonClick = (details) => {
+  const handleButtonClick = (record) => {
+    setCompanyId(record._id);
+    setModalData(record)
     setIsModal(true)
-    setModalData(details)
   }
+
+  // useEffect(() => {
+  //   if (companyId) {
+  //     refetchPersonalInfo();
+  //   }
+  // }, [companyId, refetchPersonalInfo]);
+
+  useEffect(() => {
+    if (personalInfoData) {
+      setPersonalData(personalInfoData);
+      refetchPersonalInfo()
+      setIsModal(true);
+    }
+  }, [personalInfoData]);
 
   // table coloumns
   const columns = [
@@ -120,6 +139,7 @@ const AdminCompanyVerifications = () => {
         modalData={modalData}
         setIsModal={setIsModal}
         verify={handleVerifyCompany}
+        personal={personalData}
       />
     </div>
   );

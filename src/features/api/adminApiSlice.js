@@ -105,6 +105,15 @@ export const adminApiSlice = apiSlice.injectEndpoints({
                 body: payload
             })
         }),
+
+        // get personal information
+        personalInfo: builder.query({
+            query: ({ companyId }) => ({
+                url: `/company/companies/${companyId}/get-personal`,
+                method: 'GET'
+            })
+                
+        })
     })
 })
 
@@ -120,5 +129,6 @@ export const {
     useCompanyBlockManageMutation,
     useVerifyAffiliaterMutation,
     useGenerateTokenMutation,
-    useUserDetailsByIdQuery
+    useUserDetailsByIdQuery,
+    usePersonalInfoQuery
 } = adminApiSlice
