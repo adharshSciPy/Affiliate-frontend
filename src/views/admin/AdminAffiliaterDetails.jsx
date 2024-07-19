@@ -8,6 +8,10 @@ import { useUserDetailsByIdQuery } from '../../features/api/adminApiSlice'
 import { Tabs } from 'antd'
 
 import AdminPersonal from './AdminPersonal'
+import AdminContact from './AdminContact'
+import AdminDocuments from './AdminDocuments'
+import AdminProof from './AdminProof'
+import AdminInfo from './AdminInfo'
 
 const AdminAffiliaterDetails = () => {
 
@@ -76,22 +80,39 @@ const AdminAffiliaterDetails = () => {
                 {
                   label: 'Contact Infromation',
                   key: '2',
-                  // children: <AffiliaterPolicies />,
+                   children:(
+                   <>
+                    <AdminContact />
+                    </>
+                    ),
+                   
                 },
                 {
                   label: 'Identification Documents',
                   key: '3',
-                  // children: <AffiliaterAgreement />,
+                  children:(
+                    <>
+                     <AdminDocuments />
+                     </>
+                     ),
                 },
                 {
                   label: 'Proof of Address',
                   key: '4',
-                  // children: <AffiliaterNotification />,
+                  children:(
+                    <>
+                     <AdminProof />
+                     </>
+                     ),
                 },
                 {
-                  label: 'Payments',
+                  label: ' Bank Info',
                   key: '5',
-                  // children: <AffiliaterHelp />,
+                  children:(
+                    <>
+                     <AdminInfo/>
+                     </>
+                     ),
                 },
               ]}
             />
