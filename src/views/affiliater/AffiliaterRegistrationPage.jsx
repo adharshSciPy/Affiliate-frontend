@@ -1,10 +1,48 @@
-import React from "react";
+import { React, useState } from "react";
 import bgCoverImg from "../../assets/images/affreg-coverimage.jpg";
-import { Button,Tabs } from "antd";
+import { Button, Tabs } from "antd";
 import AffiliaterPersonal from "./AffiliaterPersonal";
+import AffiliaterProof from "./AffiliaterProof";
+import AffiliaterBusiness from "./AffiliaterBusiness";
+import AffiliaterBank from "./AffiliaterBank";
 import profile from "../../assets/images/affiliate-profile.png";
+import { useNavigate } from "react-router-dom";
+import LogoutModal from "../../components/modals/LogoutModal";
+import { useNotification } from "../../context/NotificationContext";
+import useAuth from "../../hooks/useAuth";
+import { useAuthLogoutMutation } from "../../features/api/authApiSlice";
 
 const AffiliaterRegistrationPage = () => {
+  const [authLogout, { isLoading, isSuccess, isError, error }] =
+    useAuthLogoutMutation();
+  const [isModal, setIsModal] = useState(false);
+  const { notification } = useNotification();
+  const [activeKey, setActiveKey] = useState("1");
+  const handleTabChange = (key) => {
+    setActiveKey(key);
+  };
+  const navigate = useNavigate();
+
+  const showmodal = () => {
+    setIsModal(true);
+  };
+
+  const handleLogout = async () => {
+    try {
+      const response = await authLogout().unwrap();
+      if (response) {
+        notification("success", response?.message, "", "bottomRight");
+        navigate("/auth/login", { replace: true });
+      }
+    } catch (err) {
+      notification(
+        "error",
+        "Logout Failed",
+        error?.data?.message || "An error occurred",
+        "bottomRight"
+      );
+    }
+  };
   return (
     <>
       <div
@@ -27,39 +65,63 @@ const AffiliaterRegistrationPage = () => {
             </div>
 
             <div className="affiliaterregpage__header--logout">
-              <Button>Logout</Button>
+              <Button onClick={() => showmodal()}>Logout</Button>
             </div>
           </div>
-          <div className="affiliaterregpage__head">
+          <div className="affiliaterregpage__icon">
             <img src={profile} alt="" />
           </div>
           <div className="affiliaterregpage__tab">
             <Tabs
+              defaultActiveKey="1"
+              tabPosition="top"
+              onChange={handleTabChange}
               items={[
                 {
                   label: "Personal Information",
                   key: "1",
-                    children: <AffiliaterPersonal/>,
+                  children: (
+                    <>
+                      <AffiliaterPersonal />
+                    </>
+                  ),
                 },
                 {
                   label: "Proof of Address",
                   key: "2",
-                  // children: <CompanyContact />,
+                  children: (
+                    <>
+                      <AffiliaterProof />
+                    </>
+                  ),
                 },
                 {
                   label: "Business Information",
                   key: "3",
-                  // children: <CompanyIdentification />,
+                  children: (
+                    <>
+                      <AffiliaterBusiness />
+                    </>
+                  ),
                 },
                 {
                   label: "Bank Info",
                   key: "4",
-                  // children: <CompanyProof />,
-                }
+                  children: (
+                    <>
+                      <AffiliaterBank />
+                    </>
+                  ),
+                },
               ]}
             />
           </div>
         </div>
+        <LogoutModal
+          isModal={isModal}
+          setIsModal={setIsModal}
+          logout={handleLogout}
+        />
       </div>
     </>
   );
