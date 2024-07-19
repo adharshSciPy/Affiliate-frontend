@@ -1,16 +1,15 @@
 import React from 'react';
 
 function CompanyPersonal() {
-    return(
+    return (
         <div className="companypersonal">
             <div className="companypersonal__tabs">
-                <p>Photo</p>
-                <p>John Jacob</p>
-                <p>05/07/2001</p>
-                <p>male</p>
-                <p>Indian</p>
+                <p>Name : Jacob </p>
+                <p>Date of Birth : 05/07/2001</p>
+                <p>Gender : Male</p>
+                <p>Nationality : Indian</p>
             </div>
-            <div className="companypersonal__tabs">
+            {/* <div className="companypersonal__tabs">
                 <p>Residential Address</p>
                 <p>Mailing Address(if different)</p>
                 <p>Phone Number</p>
@@ -49,8 +48,8 @@ function CompanyPersonal() {
                 <p>IFSC Code</p>
                 <p>Account Number</p>
                 <p>UPI Number</p>
-            </div>
-            
+            </div> */}
+
         </div>
     )
 }

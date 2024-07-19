@@ -120,7 +120,7 @@
   }
 }
 
-// AdminAffiliater
+// Admin Affiliater
 .adminaffiliater {
   height: 100%;
   width: 100%;
@@ -246,21 +246,67 @@
   }
 }
 
-//AdminPersonal
-.adminPersonal {
-  height: 100%;
-  width: 100%;
-  padding: 10px;
-  overflow: scroll;
-  border-radius: 20px;
+//Affiliater tab 1
+.adminpersonal {
   display: flex;
-  justify-content: space-between;
-  gap: 50px;
+  gap: 2rem;
+  overflow: scroll;
 
   &__childs {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+//Affiliater tab 2
+.admincontact {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  &__childs {
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+//Affiliater tab 3
+.admindocuments {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  Button {
+    height: 1.5rem;
+  }
+
+  &__childs {
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+//Affiliater tab 4
+.adminproof {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  Button {
+    height: 1.5rem;
+  }
+
+  &__childs {
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+//Affiliater tab 5
+.admininfo {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  &__childs {
+    line-height: 2rem;
+    font-size: smaller;
   }
 }
 
@@ -344,6 +390,88 @@
 
 // admin tab first
 .companypersonal {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  &__tabs {
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+
+// admin tab second
+.companycontact {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  &__tabs {
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+
+// admin tab third
+.companyidentification {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  Button {
+    height: 1.5rem;
+  }
+
+  &__tabs {
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+// admin tab forth
+.companyproof {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  Button {
+    height: 1.5rem;
+  }
+  &__tabs {
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+
+// admin tab fifth
+.companybussiness {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  &__tabs {
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+
+// admin tab sixth
+.companylicences {
+  display: flex;
+  gap: 2rem;
+  overflow: scroll;
+
+  Button {
+    height: 1.5rem;
+  }
+
+  &__tabs {
+    line-height: 2rem;
+    font-size: smaller;
+  }
+}
+
+// admin tab seventh
+.companybank {
   display: flex;
   gap: 2rem;
   overflow: scroll;

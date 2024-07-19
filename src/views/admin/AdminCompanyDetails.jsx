@@ -2,6 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs } from "antd";
 import CompanyPersonal from "./CompanyPersonal";
+import CompanyContact from "./CompanyContact";
+import CompanyIdentification from "./CompanyIdentification";
+import CompanyProof from "./CompanyProof";
+import CompanyBussiness from "./CompanyBussiness";
+import CompanyLicences from "./CompanyLicences";
+import CompanyBank from "./CompanyBank";
 import profile from "../../assets/images/affiliate-profile.png";
 import {
   CalendarBlank,
@@ -94,32 +100,32 @@ const AdminCompanyDetails = () => {
                 {
                   label: "Contact Information",
                   key: "2",
-                  // children: <CompanyContact />,
+                  children: <CompanyContact />,
                 },
                 {
                   label: "Identification Document",
                   key: "3",
-                  // children: <CompanyIdentification />,
+                  children: <CompanyIdentification />,
                 },
                 {
                   label: "Proof Of Address",
                   key: "4",
-                  // children: <CompanyProof />,
+                  children: <CompanyProof />,
                 },
                 {
                   label: "Bussiness Information",
                   key: "5",
-                  // children: <CompanyBussiness />,
+                  children: <CompanyBussiness />,
                 },
                 {
                   label: "Bussiness Licences",
                   key: "6",
-                  // children: <CompanyLicences/>,
+                  children: <CompanyLicences />,
                 },
                 {
-                  label: "Payments",
+                  label: "Bank Info",
                   key: "7",
-                  // children: <CompanyBussiness />,
+                  children: <CompanyBank />,
                 },
               ]}
             />
