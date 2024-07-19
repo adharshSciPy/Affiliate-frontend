@@ -12,23 +12,23 @@ const AdminCompanyVerifyModal = ({ isModal, modalData, setIsModal, verify, perso
         <Modal
             centered
             open={isModal}
-            width={500}
+            width={600}
             onOk={() => verify()}
             onCancel={() => close()}
             footer={null}
         >
             <div className="companyverify">
                 <div className="companyverify__text">
-                    <p style={{ fontSize: "20px", textAlign: "center", fontFamily: "inherit" }}><strong>{personal?.data?.companyName}</strong></p>
-                    <p>Company Email: {personal?.data?.email}</p>
-                    <p>Name: {personal?.data?.firstName}{" "}{personal?.data?.lastName}</p>
-                    <p>DOB: {personal?.data?.DOB}</p>
-                    <p>Gender: {personal?.data?.Gender}</p>
-                    <p>Address: {personal?.data?.Address}</p>
-                    <p>Nationality: {personal?.data?.nationality}</p>
-                    <p>Email: {personal?.data?.emailAddress}</p>
-                    <p>Phone Number: {personal?.data?.phoneNumber}</p>
-                    <p>Website: {personal?.data?.website}</p>
+                    <p style={{ fontSize: "20px", textAlign: "center", fontFamily: "inherit"}}><strong>{personal?.data?.companyName}</strong></p>
+                    <p>Company Email: <span>{personal?.data?.email}</span></p>
+                    <p>Name: <span>{personal?.data?.firstName}{" "}{personal?.data?.lastName}</span></p>
+                    <p>DOB: <span>{personal?.data?.DOB}</span></p>
+                    <p>Gender: <span>{personal?.data?.Gender}</span></p>
+                    <p>Address: <span>{personal?.data?.Address}</span></p>
+                    <p>Nationality: <span>{personal?.data?.nationality}</span></p>
+                    <p>Email: <span>{personal?.data?.emailAddress}</span></p>
+                    <p>Phone Number: <span>{personal?.data?.phoneNumber}</span></p>
+                    <p>Website: <span>{personal?.data?.website}</span></p>
                 </div>
                 <div className="companyverify__container">
                     <Button style={{ marginRight: "10px" }} onClick={close}>Cancel</Button>
