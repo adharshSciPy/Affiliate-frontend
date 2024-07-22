@@ -21,14 +21,17 @@ import {
   XLogo,
 } from "@phosphor-icons/react";
 
-import { useUserDetailsByIdQuery } from "../../features/api/adminApiSlice";
+import { usePersonalInfoQuery } from "../../features/api/adminApiSlice";
+import { formatDate } from "../../utils/dateUtils"
 
 const AdminCompanyDetails = () => {
   const params = useParams();
   const [userData, setUserData] = useState([]);
-  const { data, error, isLoading, refetch } = useUserDetailsByIdQuery({
-    userId: params?.id,
+  const { data, error, isLoading, refetch } = usePersonalInfoQuery({
+    companyId: params?.id,
   });
+
+  console.log("companydata1", userData)
 
   useEffect(() => {
     refetch();
@@ -39,15 +42,15 @@ const AdminCompanyDetails = () => {
   }, [data]);
 
   return (
-    <div className=" admincompany">
+    <div className="admincompany">
       <div className="admincompany__container">
         <div className="admincompany__head">
-          <img src={profile} alt="" />
+          <img src={profile} alt="" />  
         </div>
 
         <div className="admincompany__detials">
           <h3>
-            {userData?.firstName} {userData?.lastName}
+            {userData?.companyName}
           </h3>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aperiam
@@ -60,19 +63,19 @@ const AdminCompanyDetails = () => {
             </span>
             <span className="admincompany__address--links">
               <MapPin size={24} />
-              Los Angels,USA
+              {userData?.Address}
             </span>
             <span className="admincompany__address--links">
               <CalendarBlank size={24} />
-              Joined April 2022
+              {formatDate(userData?.createdAt)}
             </span>
             <span className="admincompany__address--links">
               <Phone size={24} />
-              8345373475
+              {userData?.phoneNumber}
             </span>
             <span className="admincompany__address--links">
               <WhatsappLogo size={24} />
-              8345373475
+              {userData?.phoneNumber}
             </span>
           </div>
           <div className="admincompany__icons">
@@ -95,12 +98,12 @@ const AdminCompanyDetails = () => {
                 {
                   label: "Personal Information",
                   key: "1",
-                  children: <CompanyPersonal />,
+                  children: <CompanyPersonal userData={userData} />,
                 },
                 {
                   label: "Contact Information",
                   key: "2",
-                  children: <CompanyContact />,
+                  children: <CompanyContact userData={userData} />,
                 },
                 {
                   label: "Identification Document",

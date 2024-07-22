@@ -257,6 +257,7 @@
     font-size: smaller;
   }
 }
+
 //Affiliater tab 2
 .admincontact {
   display: flex;
@@ -268,6 +269,7 @@
     font-size: smaller;
   }
 }
+
 //Affiliater tab 3
 .admindocuments {
   display: flex;
@@ -283,6 +285,7 @@
     font-size: smaller;
   }
 }
+
 //Affiliater tab 4
 .adminproof {
   display: flex;
@@ -298,6 +301,7 @@
     font-size: smaller;
   }
 }
+
 //Affiliater tab 5
 .admininfo {
   display: flex;
@@ -379,6 +383,12 @@
     display: flex;
     gap: 20px;
     margin-top: 10px;
+    cursor: pointer;
+
+    & :hover {
+      transform: scale(1.05);
+    }
+
   }
 
   &__tab {
@@ -427,6 +437,7 @@
     font-size: smaller;
   }
 }
+
 // admin tab forth
 .companyproof {
   display: flex;
@@ -436,6 +447,7 @@
   Button {
     height: 1.5rem;
   }
+
   &__tabs {
     line-height: 2rem;
     font-size: smaller;
