@@ -3,7 +3,6 @@ import bgCoverImg from "../../assets/images/affreg-coverimage.jpg";
 import { Button, Tabs } from "antd";
 import AffiliaterPersonal from "./AffiliaterPersonal";
 import AffiliaterProof from "./AffiliaterProof";
-import AffiliaterBusiness from "./AffiliaterBusiness";
 import AffiliaterBank from "./AffiliaterBank";
 import profile from "../../assets/images/affiliate-profile.png";
 import { useNavigate } from "react-router-dom";
@@ -96,17 +95,8 @@ const AffiliaterRegistrationPage = () => {
                   ),
                 },
                 {
-                  label: "Business Information",
-                  key: "3",
-                  children: (
-                    <>
-                      <AffiliaterBusiness />
-                    </>
-                  ),
-                },
-                {
                   label: "Bank Info",
-                  key: "4",
+                  key: "3",
                   children: (
                     <>
                       <AffiliaterBank />
