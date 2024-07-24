@@ -5,7 +5,7 @@
   width: 100%;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -73,27 +73,38 @@
   }
 }
 
-
 //affiliater personal
 .affiliaterpersonal {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  &__containers {
+    display: flex;
+  }
 
   &__containerone {
     display: flex;
     flex-direction: column;
-    width: 20rem;
+    width: 50%;
     height: auto;
+    align-items: flex-start;
   }
 
   &__containertwo {
     display: flex;
     flex-direction: column;
-    width: 20rem;
+    width: 50%;
     height: auto;
     padding: 0 0 9rem;
+    align-items: flex-end;
+    &--button {
+      display: flex;
+      align-items: flex-end;
+      justify-content: end;
+      width: 100%;
+      padding: 50px;
+    }
+
+    Button {
+      width: 100px;
+    }
   }
 
   &__containerone--input,
