@@ -142,6 +142,30 @@
     justify-content: end;
   }
 }
+// affiliater Proof
+.affiliaterProof{
+  &__container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+    align-items: flex-start;
+  }
+  &__container--input {
+    padding: 1rem;
+  }
+  &__container--label {
+    padding: 5px;
+  }
+  Button {
+    width: 100px;
+  }
+  &__button{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+}
 // affiliater international
 .affiliaterinternational{
   &__container{

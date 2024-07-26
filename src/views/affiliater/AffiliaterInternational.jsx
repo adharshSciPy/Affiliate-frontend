@@ -20,7 +20,6 @@ function affiliaterInternational() {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
-  //handlesubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -93,18 +92,18 @@ function affiliaterInternational() {
           </div>
           <div className="affiliaterinternational__container--input">
             <div className="affiliaterinternational__container--label">
-              <p>IBAN(International Bank Account Number,for countries that use IBAN )</p>
+              <p>IBAN(International Bank  )</p>
             </div>
             <Input
-              placeholder="XX00 0000 0000 0000 0000 00"
+              placeholder="XX00 0000 0000 "
               name="IBAN"
               value={form.IBAN}
               onChange={handleChange}
               size="medium"
             />
           </div>
-          <div className="affiliaterdomestic__container--input">
-            <div className="affiliaterdomestic__container--label">
+          <div className="affiliaterinternational__container--input">
+            <div className="affiliaterinternational__container--label">
               <p>SWIFT/BIC Code</p>
             </div>
             <Input
@@ -116,7 +115,7 @@ function affiliaterInternational() {
             />
           </div>
         </div>
-        <div className="affiliaterdomestic__button">
+        <div className="affiliaterinternational__button">
               <Button type="primary" success onClick={handleSubmit}>
                 Next
               </Button>
