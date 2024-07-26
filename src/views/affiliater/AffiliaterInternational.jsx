@@ -103,8 +103,8 @@ function affiliaterInternational() {
               size="medium"
             />
           </div>
-          <div className="affiliaterdomestic__container--input">
-            <div className="affiliaterdomestic__container--label">
+          <div className="affiliaterinternational__container--input">
+            <div className="affiliaterinternational__container--label">
               <p>SWIFT/BIC Code</p>
             </div>
             <Input
@@ -116,7 +116,7 @@ function affiliaterInternational() {
             />
           </div>
         </div>
-        <div className="affiliaterdomestic__button">
+        <div className="affiliaterinternational__button">
               <Button type="primary" success onClick={handleSubmit}>
                 Next
               </Button>
