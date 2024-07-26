@@ -13,7 +13,7 @@ import { useAuthLogoutMutation } from "../../features/api/authApiSlice";
 
 const AffiliaterRegistrationPage = () => {
   const [authLogout, { isLoading, isSuccess, isError, error }] =
-    useAuthLogoutMutation();
+    useAuthLogoutMutation();  
   const [isModal, setIsModal] = useState(false);
   const { notification } = useNotification();
   const [activeKey, setActiveKey] = useState("1");
