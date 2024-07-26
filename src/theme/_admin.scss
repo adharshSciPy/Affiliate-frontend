@@ -224,10 +224,14 @@
     }
 
     &--socialicons {
-      margin-top: 10px;
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
+      gap: 20px;
+      margin-top: 10px;
+      cursor: pointer;
+  
+      & :hover {
+        transform: scale(1.05);
+      }
     }
   }
 
