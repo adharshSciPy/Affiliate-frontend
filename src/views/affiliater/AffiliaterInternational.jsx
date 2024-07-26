@@ -20,7 +20,6 @@ function affiliaterInternational() {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
-  //handlesubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
