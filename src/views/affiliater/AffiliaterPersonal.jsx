@@ -1,25 +1,25 @@
 import { React, useState } from "react";
 import { Input, Button } from "antd";
-//import { usePersonalInformationMutation } from "../../features/api/companyApiSlice";
+import { useAffiliaterInformationMutation } from "../../features/api/affiliaterApiSlice";
 import { useNotification } from "../../context/NotificationContext";
 import useAuth from "../../hooks/useAuth";
 
 function AffiliaterPersonal() {
   const { TextArea } = Input;
-  //const [personaldetails] = usePersonalInformationMutation();
+  const [personaldetails] = useAffiliaterInformationMutation();
   const { notification } = useNotification();
-  const { logId } = useAuth();
+  const { loggedInUserId } = useAuth();
 
   const fields = {
     firstName: "",
     lastName: "",
     DOB: "",
-    Gender: "",
+    gender: "",
     nationality: "",
-    emailAddress: "",
+    email: "",
     phoneNumber: "",
-    website: "",
-    Address: "",
+    portfolio: "",
+    address: "",
   };
   //input field onchange handler
   const [form, setForm] = useState(fields);
@@ -35,15 +35,15 @@ function AffiliaterPersonal() {
         firstName: form.firstName,
         lastName: form.lastName,
         DOB: form.DOB,
-        Gender: form.Gender,
+        gender: form.gender,
         nationality: form.nationality,
-        emailAddress: form.emailAddress,
+        email: form.email,
         phoneNumber: form.phoneNumber,
-        website: form.website,
-        Address: form.Address,
+        portfolio: form.portfolio,
+        address: form.address,
       };
-      let userId = logId;
-      const result = await personaldetails({ userId, payload });
+      let affiliaterId = loggedInUserId;
+      const result = await personaldetails({ affiliaterId, payload });
       if (result) {
         notification(
           "success",
@@ -105,8 +105,8 @@ function AffiliaterPersonal() {
               <div>
                 <Input
                   placeholder="Male/Female"
-                  name="Gender"
-                  value={form.Gender}
+                  name="gender"
+                  value={form.gender}
                   onChange={handleChange}
                   size="medium"
                 />
@@ -134,8 +134,8 @@ function AffiliaterPersonal() {
               <div>
                 <TextArea
                   placeholder="John"
-                  name="Address"
-                  value={form.Address}
+                  name="address"
+                  value={form.address}
                   onChange={handleChange}
                   size="medium"
                   rows={4}
@@ -179,8 +179,8 @@ function AffiliaterPersonal() {
               <div>
                 <Input
                   placeholder="example@gmail.com"
-                  name="emailAddress"
-                  value={form.emailAddress}
+                  name="email"
+                  value={form.email}
                   onChange={handleChange}
                   size="medium"
                 />
@@ -188,13 +188,13 @@ function AffiliaterPersonal() {
             </div>
             <div className="affiliaterpersonal__containertwo--input">
               <div className="affiliaterpersonal__containertwo--label">
-                <p>Website</p>
+                <p>Portfolio</p>
               </div>
               <div>
                 <Input
                   placeholder="example@gmail.com"
-                  name="website"
-                  value={form.website}
+                  name="portfolio"
+                  value={form.portfolio}
                   onChange={handleChange}
                   size="medium"
                 />
