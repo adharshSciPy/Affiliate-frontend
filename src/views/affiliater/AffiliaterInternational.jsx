@@ -93,10 +93,10 @@ function affiliaterInternational() {
           </div>
           <div className="affiliaterinternational__container--input">
             <div className="affiliaterinternational__container--label">
-              <p>IBAN(International Bank Account Number,for countries that use IBAN )</p>
+              <p>IBAN(International Bank  )</p>
             </div>
             <Input
-              placeholder="XX00 0000 0000 0000 0000 00"
+              placeholder="XX00 0000 0000 "
               name="IBAN"
               value={form.IBAN}
               onChange={handleChange}
