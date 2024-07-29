@@ -10,9 +10,16 @@ export const affiliaterApiSlice = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: payload
             })
+        }),
+        proofOfAddress: builder.mutation({
+            query: ({ affiliaterId, payload }) => ({
+                url: `/user/affiliaters/${affiliaterId}/proof-of-address`,
+                method: 'PATCH',
+                body: payload
+            })       
         })
     })
 })
 
 
-export const { useAffiliaterInformationMutation } = affiliaterApiSlice
+export const { useAffiliaterInformationMutation, useProofOfAddressMutation } = affiliaterApiSlice
