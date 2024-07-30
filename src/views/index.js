@@ -21,6 +21,8 @@ export { default as AdminCompanyDetails } from './admin/AdminCompanyDetails'
 export { default as CompanyHome } from './company/CompanyHome'
 export { default as CompanyRegistrationPage } from './company/CompanyRegistrationPage'
 export { default as CompanyPersonal } from './company/CompanyPersonal'
+export { default as CompanyAddCourses } from './company/CompanyAddCourses'
+
 
 // affiliater
 export { default as AffiliaterHome } from './affiliater/AffiliaterHome'

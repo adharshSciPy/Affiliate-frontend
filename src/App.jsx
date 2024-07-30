@@ -23,7 +23,8 @@ import {
     AdminAffiliaterDetails,
     AffiliaterRegistrationPage,
     CompanyRegistrationPage,
-    AdminCompanyDetails
+    AdminCompanyDetails,
+    CompanyAddCourses
 } from './views';
 import {
     PersistLogin,
@@ -37,6 +38,7 @@ import {
 import { AuthLayout, AdminLayout, CustomerLayout, AffiliateLayout, CompanyLayout } from './layout';
 import { roles } from './constants/roles'
 import { NotificationProvider } from './context/NotificationContext';
+
 
 const router = createBrowserRouter([
     {
@@ -197,6 +199,10 @@ const router = createBrowserRouter([
             {
                 path: "home",
                 element: <CompanyHome />
+            },
+            {
+                path: "addcourses",
+                element: <CompanyAddCourses />
             },
         ]
     },
