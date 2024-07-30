@@ -15,7 +15,6 @@ function affiliaterInternational() {
     accountNumber: "",
     IBAN: "",
     BIC: "",
-    UPINumber: ""
   };
   //input field onchange handler
   const [form, setForm] = useState(fields);
@@ -31,8 +30,7 @@ function affiliaterInternational() {
         holderName: form.holderName,
         accountNumber: form.accountNumber,
         IBAN: form.IBAN,
-        BIC: form.BIC,
-        UPINumber: form.UPINumber
+        BIC: form.BIC
       };
       let affiliaterId = loggedInUserId;
       const result = await internationalBankDetails({ affiliaterId, payload });
