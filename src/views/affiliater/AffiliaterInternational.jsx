@@ -1,18 +1,21 @@
 import { React, useState } from "react";
 import { Input, Button } from "antd";
 import { useNotification } from "../../context/NotificationContext";
+import { useInternationalBankDetailsMutation } from "../../features/api/affiliaterApiSlice";
 import useAuth from "../../hooks/useAuth";
 
 function affiliaterInternational() {
   const { notification } = useNotification();
-  const { logId } = useAuth();
+  const [internationalBankDetails] = useInternationalBankDetailsMutation()
+  const { loggedInUserId } = useAuth();
 
   const fields = {
     bankName: "",
-    accountHolderName: "",
+    holderName: "",
     accountNumber: "",
     IBAN: "",
-    swiftCode: "",
+    BIC: "",
+    UPINumber: ""
   };
   //input field onchange handler
   const [form, setForm] = useState(fields);
@@ -25,13 +28,14 @@ function affiliaterInternational() {
     try {
       const payload = {
         bankName: form.bankName,
-        accountHolderName: form.accountHolderName,
+        holderName: form.holderName,
         accountNumber: form.accountNumber,
         IBAN: form.IBAN,
-        swiftCode: form.swiftCode,
+        BIC: form.BIC,
+        UPINumber: form.UPINumber
       };
-      let userId = logId;
-      const result = await personaldetails({ userId, payload });
+      let affiliaterId = loggedInUserId;
+      const result = await internationalBankDetails({ affiliaterId, payload });
       if (result) {
         notification(
           "success",
@@ -60,8 +64,8 @@ function affiliaterInternational() {
             </div>
             <Input
               placeholder="Bank of Example"
-              name="firstName"
-              value={form.firstName}
+              name="bankName"
+              value={form.bankName}
               onChange={handleChange}
               size="medium"
             />
@@ -72,8 +76,8 @@ function affiliaterInternational() {
             </div>
             <Input
               placeholder="John Doe"
-              name="accountHolderName"
-              value={form.accountHolderName}
+              name="holderName"
+              value={form.holderName}
               onChange={handleChange}
               size="medium"
             />
@@ -92,7 +96,7 @@ function affiliaterInternational() {
           </div>
           <div className="affiliaterinternational__container--input">
             <div className="affiliaterinternational__container--label">
-              <p>IBAN(International Bank  )</p>
+              <p>IBAN( International Bank )</p>
             </div>
             <Input
               placeholder="XX00 0000 0000 "
@@ -108,18 +112,18 @@ function affiliaterInternational() {
             </div>
             <Input
               placeholder="XXXXXXYY"
-              name="swiftCode"
-              value={form.swiftCode}
+              name="BIC"
+              value={form.BIC}
               onChange={handleChange}
               size="medium"
             />
           </div>
         </div>
         <div className="affiliaterinternational__button">
-              <Button type="primary" success onClick={handleSubmit}>
-                Next
-              </Button>
-            </div>
+          <Button type="primary" success onClick={handleSubmit}>
+            Next
+          </Button>
+        </div>
       </div>
     </>
   );

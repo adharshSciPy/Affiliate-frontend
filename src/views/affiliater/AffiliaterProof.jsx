@@ -1,19 +1,39 @@
 import { React, useState } from "react";
-import { Input, Button } from "antd";
-//import { usePersonalInformationMutation } from "../../features/api/companyApiSlice";
+import { useProofOfAddressMutation } from "../../features/api/affiliaterApiSlice";
 import { useNotification } from "../../context/NotificationContext";
 import useAuth from "../../hooks/useAuth";
+import { UploadOutlined } from '@ant-design/icons';
+import { Button, message, Upload, Input } from 'antd';
 
 function AffiliaterProof() {
+
+  const [proofdetails] = useProofOfAddressMutation();
+  const { loggedInUserId } = useAuth();
+
+  const props = {
+    name: 'file',
+    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    headers: {
+      authorization: 'authorization-text',
+    },
+    onChange(info) {
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === 'done') {
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
+
   const { TextArea } = Input;
   const { notification } = useNotification();
-  const { logId } = useAuth();
+
   const fields = {
-    ValidID: "",
     IDNumber: "",
-    ExpiryDateOfID: "",
-    BankStatement: "",
-    UtilityBill: "",
+    ExpiryDateOfID: ""
   };
   //input field onchange handler
   const [form, setForm] = useState(fields);
@@ -26,14 +46,13 @@ function AffiliaterProof() {
     e.preventDefault();
     try {
       const payload = {
-        ValidID: form.ValidID,
         IDNumber: form.IDNumber,
-        ExpiryDateOfID: form.ExpiryDateOfID,
-        BankStatement: form.BankStatement,
-        UtilityBill: form.UtilityBill,
+        ExpiryDateOfID: form.ExpiryDateOfID
       };
-      let userId = logId;
-      const result = await personaldetails({ userId, payload });
+      let affiliaterId = loggedInUserId;
+      console.log("idid", affiliaterId)
+      console.log("payload", payload)
+      const result = await proofdetails({ affiliaterId, payload });
       if (result) {
         notification(
           "success",
@@ -43,7 +62,7 @@ function AffiliaterProof() {
         );
         setForm(fields);
       }
-    } catch (error) {
+    } catch (error) {   
       notification(
         "error",
         "Registration Failed",
@@ -54,77 +73,62 @@ function AffiliaterProof() {
   };
   return (
     <>
-    <div className="affiliaterProof">
-      <div className="affiliaterProof__container">
-        <div className="affiliaterProof__container--input">
-          <div className="affiliaterProof__container--label">
-            <p>Valid ID</p>
+      <div className="affiliaterProof">
+        <div className="affiliaterProof__container">
+          <div className="affiliaterProof__container--input">
+            <div className="affiliaterProof__container--label">
+              <p>Valid ID:  <Upload {...props}>
+                <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
+              </Upload></p>
+            </div>
           </div>
-          <Input
-            placeholder="8768669"
-            name="ValidID"
-            value={form.ValidID}
-            onChange={handleChange}
-            size="medium"
-          />
+          <div className="affiliaterProof__container--input">
+            <div className="affiliaterProof__container--label">
+              <p>Utility Bill:  <Upload {...props}>
+                <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
+              </Upload></p>
+            </div>
+          </div>
+          <div className="affiliaterProof__container--input">
+            <div className="affiliaterProof__container--label">
+              <p>Bank Statement:  <Upload {...props}>
+                <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
+              </Upload></p>
+            </div>
+          </div>
+          <div className="affiliaterProof__container--input">
+            <div className="affiliaterProof__container--label">
+              <p>ID Number</p>
+            </div>
+            <Input
+              placeholder="5678"
+              name="IDNumber"
+              value={form.IDNumber}
+              onChange={handleChange}
+              size="medium"
+            />
+          </div>
+          <div className="affiliaterProof__container--input">
+            <div className="affiliaterProof__container--label">
+              <p>Expiry Date of ID</p>
+            </div>
+            <Input
+              placeholder="dd/mm/year"
+              name="ExpiryDateOfID"
+              value={form.ExpiryDateOfID}
+              onChange={handleChange}
+              size="medium"
+            />
+          </div>
         </div>
-        <div className="affiliaterProof__container--input">
-          <div className="affiliaterProof__container--label">
-            <p>ID Number</p>
-          </div>
-          <Input
-            placeholder="5678"
-            name="IDNumber"
-            value={form.IDNumber}
-            onChange={handleChange}
-            size="medium"
-          />
-        </div>
-        <div className="affiliaterProof__container--input">
-          <div className="affiliaterProof__container--label">
-            <p>Expiry Date of ID</p>
-          </div>
-          <Input
-            placeholder="dd/mm/year"
-            name="ExpiryDateOfID"
-            value={form.ExpiryDateOfID}
-            onChange={handleChange}
-            size="medium"
-          />
-        </div>
-        <div className="affiliaterProof__container--input">
-          <div className="affiliaterProof__container--label">
-            <p>Bank Statement</p>
-          </div>
-          <Input
-            placeholder="lhggiyouou"
-            name="BankStatement"
-            value={form.BankStatement}
-            onChange={handleChange}
-            size="medium"
-          />
-        </div>
-        <div className="affiliaterProof__container--input">
-          <div className="affiliaterProof__container--label">
-            <p>Utility Bill</p>
-          </div>
-          <Input
-            placeholder="ft678987"
-            name="UtilityBill"
-            value={form.UtilityBill}
-            onChange={handleChange}
-            size="medium"
-          />
+        <div className="affiliaterProof__button">
+          <Button type="primary" success onClick={handleSubmit}>
+            Next
+          </Button>
         </div>
       </div>
-      <div className="affiliaterProof__button">
-            <Button type="primary" success onClick={handleSubmit}>
-              Next
-            </Button>
-          </div>
-    </div>
-  </>
-);
+    </>
+  );
 }
 
 

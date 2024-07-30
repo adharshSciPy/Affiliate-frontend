@@ -1,18 +1,21 @@
 import { React, useState } from "react";
 import { Input, Button } from "antd";
 import { useNotification } from "../../context/NotificationContext";
+import { useDomesticBankDetailsMutation } from "../../features/api/affiliaterApiSlice";
 import useAuth from "../../hooks/useAuth";
 
 function affiliaterDomestic() {
   const { notification } = useNotification();
-  const { logId } = useAuth();
+  const [domesticbankdetails] = useDomesticBankDetailsMutation();
+  const { loggedInUserId } = useAuth();
 
   const fields = {
     bankName: "",
-    accountHolderName: "",
+    holderName: "",
     accountNumber: "",
-    bankbranch: "",
-    branchCode: "",
+    bankBranch: "",
+    IFSC: "",
+    UPINumber: ""
   };
   //input field onchange handler
   const [form, setForm] = useState(fields);
@@ -26,13 +29,16 @@ function affiliaterDomestic() {
     try {
       const payload = {
         bankName: form.bankName,
-        accountHolderName: form.accountHolderName,
+        holderName: form.holderName,
         accountNumber: form.accountNumber,
-        bankbranch: form.bankbranch,
-        branchCode: form.branchCode,
+        bankBranch: form.bankBranch,
+        IFSC: form.IFSC,
+        UPINumber: form.UPINumber
       };
-      let userId = logId;
-      const result = await personaldetails({ userId, payload });
+      let affiliaterId = loggedInUserId;
+      const result = await domesticbankdetails({ affiliaterId, payload });
+      console.log("idid", loggedInUserId)
+      console.log("payload", payload)
       if (result) {
         notification(
           "success",
@@ -61,8 +67,8 @@ function affiliaterDomestic() {
             </div>
             <Input
               placeholder="Bank of Example"
-              name="firstName"
-              value={form.firstName}
+              name="bankName"
+              value={form.bankName}
               onChange={handleChange}
               size="medium"
             />
@@ -73,8 +79,8 @@ function affiliaterDomestic() {
             </div>
             <Input
               placeholder="John Doe"
-              name="accountHolderName"
-              value={form.accountHolderName}
+              name="holderName"
+              value={form.holderName}
               onChange={handleChange}
               size="medium"
             />
@@ -98,7 +104,7 @@ function affiliaterDomestic() {
             <Input
               placeholder="Main Branch"
               name="bankBranch"
-              value={form.bankbranch}
+              value={form.bankBranch}
               onChange={handleChange}
               size="medium"
             />
@@ -109,8 +115,20 @@ function affiliaterDomestic() {
             </div>
             <Input
               placeholder="IFSC0001234"
-              name="branchCode"
-              value={form.branchCode}
+              name="IFSC"
+              value={form.IFSC}
+              onChange={handleChange}
+              size="medium"
+            />
+          </div>
+          <div className="affiliaterdomestic__container--input">
+            <div className="affiliaterdomestic__container--label">
+              <p>UPI Number</p>
+            </div>
+            <Input
+              placeholder="XXXXXX@YYY"
+              name="UPINumber"
+              value={form.UPINumber}
               onChange={handleChange}
               size="medium"
             />
