@@ -6,7 +6,7 @@ import { useUserDetailsByIdQuery } from '../../features/api/adminApiSlice'
 function AdminInfo() {
 
   const params = useParams()
-  const [userData, setUserData] = useState([])
+  const [userData, setUserData] = useState({})
   const { data, error, isLoading, refetch } = useUserDetailsByIdQuery({ userId: params?.id })
 
   useEffect(() => {
@@ -19,12 +19,13 @@ function AdminInfo() {
 
   return (
     <div className='admininfo'>
-        <div className="admininfo__childs">
-            <p>IFSC/BIC Code : {userData?.IFSC}</p>
-            <p>Account Number : {userData?.accountNumber}</p>
-            <p>UPI Number : 897787676</p>
-        </div>
-      
+      <div className="admininfo__childs">
+        {userData.IFSC && <p>IFSC Code : {userData.IFSC}</p>}
+        {userData.BIC && <p>BIC Code : {userData.BIC}</p>}
+        <p>Account Number : {userData?.accountNumber}</p>
+        <p>UPI Number : {userData?.UPINumber}</p>
+      </div>
+
     </div>
   )
 }
