@@ -5,7 +5,7 @@
   width: 100%;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -145,6 +145,12 @@
     width: 20rem;
     height: auto;
     padding: 0 0 9rem;
+    &--button {
+      width: 100%;
+      display: flex;
+      margin-top: 100px;
+      justify-content: end;
+    }
   }
 
   &__containerone--input,
@@ -155,5 +161,88 @@
   &__containerone--label,
   &__containertwo--label {
     padding: 5px;
+  }
+}
+
+// company bank
+.companybank {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+  }
+  &__container--input {
+    padding: 1rem;
+  }
+  &__container--label {
+    padding: 5px;
+  }
+  Button {
+    width: 100px;
+  }
+  &__button {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+}
+
+//Company proof
+.companyproof {
+  &__tabs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 14px;
+    font-weight: 400;
+    &--input {
+      width: 200px;
+    }
+    &--button {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+    }
+  }
+}
+
+// company business
+.companybusiness {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+  }
+  &__container--input {
+    padding: 1rem;
+  }
+  &__container--label {
+    padding: 5px;
+  }
+  &__button {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+  }
+}
+
+//company Licenses
+.companylicenses {
+  &__tabs {
+    display: flex;
+    flex-direction: column;
+    height: 50vh;
+    gap: 1.2rem;
+    &--button {
+      width: 100%;
+      margin-top: 150px;
+      display: flex;
+      justify-content: end;
+    }
   }
 }
