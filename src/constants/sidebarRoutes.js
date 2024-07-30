@@ -101,21 +101,14 @@ const companySidebarRoutes = [
         path: false,
         children: [
             {
-                title: '',
-                path: '#',
+                title: 'Active  Courses',
+                path: 'activecourses',
             },
             {
-                title: '',
-                path: '#',
-            },
-            {
-                title: '',
-                path: '#',
-            },
-            {
-                title: '',
-                path: '#',
+                title: 'Add Courses',
+                path: 'addcourses',
             }
+            
         ]
     },
     {
