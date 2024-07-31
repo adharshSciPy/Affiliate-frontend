@@ -126,6 +126,7 @@ const Sidebar = ({ isOpen }) => {
           <div className="sidebar__routes">
             {routes?.map((route, index) => (
               <SideRoutes
+                role={role}
                 route={route}
                 index={index}
                 key={index}

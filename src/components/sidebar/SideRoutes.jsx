@@ -4,11 +4,27 @@ import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 
-const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) => {
+const getBasePath = (role) => {
+    switch (role) {
+        case 500:
+            return 'admin';
+        case 400:
+            return 'company';
+        case 300:
+            return 'affiliater';
+        case 200:
+            return 'customer';
+        default:
+            return '';
+    }
+};
+
+const SideRoutes = ({ role, route, index, isActive, setActiveIndex, isWidthWorthy }) => {
 
     const location = useLocation()
     const navigate = useNavigate()
     const [isChildren, setIsChildren] = useState(route?.children && route?.children?.length > 0)
+    const basePath = getBasePath(role);
     const handleClick = (path) => {
         if (!path) {
             isChildren && setActiveIndex(isActive ? null : index);
@@ -18,6 +34,9 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) =
             navigate(path)
         }
     };
+
+    console.log("basepath", basePath)
+
 
     return (
         <div className={`sideroutes`} key={index}>
@@ -65,9 +84,9 @@ const SideRoutes = ({ route, index, isActive, setActiveIndex, isWidthWorthy }) =
             {isChildren && isActive &&
                 route?.children.map((child, idx) => (
                     <div
-                        className={`sideroutes__child ${location?.pathname === `/admin/${child?.path}` && 'selectedchild'}`}
+                        className={`sideroutes__child ${location?.pathname === `/${basePath}/${child?.path}` && 'selectedchild'}`}
                         key={idx}
-                        onClick={() => navigate(`/admin/${child?.path}`)}
+                        onClick={() => navigate(`/${basePath}/${child?.path}`)}
                     >
                         <p>{child.title}</p>
                     </div>
