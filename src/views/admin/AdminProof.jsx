@@ -33,6 +33,10 @@ function AdminProof() {
           <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
         </Upload></p>
 
+        <p>Identification Document :   <Upload {...props}>
+          <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
+        </Upload></p>
+
       </div>
 
 
