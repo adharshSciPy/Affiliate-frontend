@@ -25,13 +25,16 @@ function CompanyLicences() {
   return (
     <div className='companylicences'>
       <div className="companylicences__tabs">
-        <p>Articles of incorporation(or certificate of incorporation) :   <Upload {...props}>
+        <p>Financial Statments :   <Upload {...props}>
+          <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
+        </Upload></p>
+        <p>Partnership Agreement :   <Upload {...props}>
           <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
         </Upload></p>
         <p>Articles of organization(or certificate of organization) :   <Upload {...props}>
           <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
         </Upload></p>
-        <p>Partnership Agreement :   <Upload {...props}>
+        <p>Articles of incorporation(or certificate of incorporation) :   <Upload {...props}>
           <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
         </Upload></p>
       </div>

@@ -25,10 +25,13 @@ function CompanyProof() {
   return (
     <div className="companyproof">
       <div className="companyproof__tabs">
-        <p>Bank Statements :  <Upload {...props}>
+        <p>Documents :  <Upload {...props}>
           <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
         </Upload> </p>
         <p>Utility bills :  <Upload {...props}>
+          <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
+        </Upload> </p>
+        <p>Bank Statements :  <Upload {...props}>
           <Button style={{ marginLeft: '5px' }} icon={<UploadOutlined />}>Upload</Button>
         </Upload> </p>
       </div>

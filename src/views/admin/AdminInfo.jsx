@@ -20,10 +20,11 @@ function AdminInfo() {
   return (
     <div className='admininfo'>
       <div className="admininfo__childs">
+        <p>Account Number : {userData?.accountNumber}</p>
         {userData.IFSC && <p>IFSC Code : {userData.IFSC}</p>}
         {userData.BIC && <p>BIC Code : {userData.BIC}</p>}
-        <p>Account Number : {userData?.accountNumber}</p>
-        <p>UPI Number : {userData?.UPINumber}</p>
+        {userData.BIC && <p>IBAN : {userData.IBAN}</p>}
+        {userData?.UPINumber && <p>UPI Number : {userData?.UPINumber}</p>}
       </div>
 
     </div>

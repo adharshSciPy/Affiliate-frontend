@@ -1,17 +1,17 @@
 import { React, useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { Input, Button, message, Upload } from "antd";
-import { usePersonalInformationMutation } from "../../features/api/companyApiSlice";
+import { useIdentificationDetailsMutation } from "../../features/api/companyApiSlice";
 import { useNotification } from "../../context/NotificationContext";
 import useAuth from "../../hooks/useAuth";
 
 function CompanyProof() {
   const { notification } = useNotification();
-  const [personaldetails] = usePersonalInformationMutation();
+  const [identificationdetails] = useIdentificationDetailsMutation();
   const { logId } = useAuth();
   const fields = {
-    idNumber: "",
-    ExpiryDateOfId: "",
+    IDNumber: "",
+    ExpiryDateOfID: "",
   };
   //input field onchange handler
   const [form, setForm] = useState(fields);
@@ -24,11 +24,14 @@ function CompanyProof() {
     e.preventDefault();
     try {
       const payload = {
-        idNumber: form.idNumber,
-        ExpiryDateOfId: form.ExpiryDateOfId,
+        IDNumber: form.IDNumber,
+        ExpiryDateOfID: form.ExpiryDateOfID,
       };
       let companyId = logId;
-      const result = await personaldetails({ companyId, payload });
+      console.log("companyId", companyId);
+      console.log("payload", payload);
+      const result = await identificationdetails({ companyId, payload });
+      console.log("result", result);
       if (result) {
         notification(
           "success",
@@ -48,28 +51,10 @@ function CompanyProof() {
     }
   };
 
-  const props = {
-    name: "file",
-    action: "https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload",
-    headers: {
-      authorization: "authorization-text",
-    },
-    onChange(info) {
-      if (info.file.status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === "done") {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };
-
   return (
     <div className="companyproof">
       <div className="companyproof__tabs">
-        <p>
+        {/* <p>
           Documentation :{" "}
           <Upload {...props}>
             <Button style={{ marginLeft: "5px" }} icon={<UploadOutlined />}>
@@ -92,7 +77,7 @@ function CompanyProof() {
               Upload
             </Button>
           </Upload>{" "}
-        </p>
+        </p> */}
 
         <div className="companyproof__tabs--input">
           <div className="companyproof__tabs--label">
@@ -100,8 +85,8 @@ function CompanyProof() {
           </div>
           <Input
             placeholder="8767564"
-            name="ID Number"
-            value={form.idNumber}
+            name="IDNumber"
+            value={form.IDNumber}
             onChange={handleChange}
             size="medium"
           />
@@ -111,9 +96,9 @@ function CompanyProof() {
             <p>Expiry Date Of ID</p>
           </div>
           <Input
-            placeholder="mm/dd/year"
-            name="Expiry Date Of ID"
-            value={form.ExpiryDateOfId}
+            placeholder="dd/mm/year"
+            name="ExpiryDateOfID"
+            value={form.ExpiryDateOfID}
             onChange={handleChange}
             size="medium"
           />

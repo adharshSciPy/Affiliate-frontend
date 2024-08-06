@@ -8,7 +8,6 @@ function CompanyBussiness() {
         <p>Registration Number : </p>
         <p>Address of the Company : </p>
         <p>Nature of Bussiness : </p>
-        <p>Financial Statments : </p>
         <p>List of Directors and Beneficial owners : </p>
       </div>
     </div>

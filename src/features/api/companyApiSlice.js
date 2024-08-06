@@ -10,9 +10,18 @@ export const companyApiSlice = apiSlice.injectEndpoints({
                 method: 'PATCH',
                 body: payload
             })
+        }),
+        //company
+        //post the identification details of a company
+        identificationDetails: builder.mutation({
+            query: ({ companyId, payload }) => ({
+                url: `/company/companies/${companyId}/identification`,
+                method: 'PATCH',
+                body: payload
+            })
         })
     })
 })
 
 
-export const { usePersonalInformationMutation } = companyApiSlice
+export const { usePersonalInformationMutation, useIdentificationDetailsMutation } = companyApiSlice
