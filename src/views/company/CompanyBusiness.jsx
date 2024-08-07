@@ -1,39 +1,24 @@
 import { React, useState } from "react";
 import { UploadOutlined } from "@ant-design/icons";
 import { Input, Button, message, Upload } from "antd";
-import { usePersonalInformationMutation } from "../../features/api/companyApiSlice";
+import { useBusinessInformationMutation } from "../../features/api/companyApiSlice";
 import { useNotification } from "../../context/NotificationContext";
 import useAuth from "../../hooks/useAuth";
 
 function CompanyBusiness() {
-  const props = {
-    name: "file",
-    action: "https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload",
-    headers: {
-      authorization: "authorization-text",
-    },
-    onChange(info) {
-      if (info.file.status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (info.file.status === "done") {
-        message.success(`${info.file.name} file uploaded successfully`);
-      } else if (info.file.status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };
+
   const { TextArea } = Input;
-  const [personaldetails] = usePersonalInformationMutation();
+  const [businessinfo] = useBusinessInformationMutation();
   const { notification } = useNotification();
   const { logId } = useAuth();
 
+
   const fields = {
     companyName: "",
-    registrationNumber: "",
-    addressOfTheCompany: "",
-    natureOfBusiness: "",
-    listOfDirectors: "",
+    registerNumber: "",
+    companyAddress: "",
+    businessNature: "",
+    listOfOwners: "",
   };
   //input field onchange handler
   const [form, setForm] = useState(fields);
@@ -48,13 +33,15 @@ function CompanyBusiness() {
     try {
       const payload = {
         companyName: form.companyName,
-        registrationNumber: form.registrationNumber,
-        addressOfTheCompany: form.addressOfTheCompany,
-        natureOfBusiness: form.natureOfBusiness,
-        listOfDirectors: form.listOfDirectors,
+        registerNumber: form.registerNumber,
+        companyAddress: form.companyAddress,
+        businessNature: form.businessNature,
+        listOfOwners: form.listOfOwners,
       };
       let companyId = logId;
-      const result = await personaldetails({ companyId, payload });
+      console.log("id", companyId);
+      console.log("payload", payload);
+      const result = await businessinfo({ companyId, payload });
       if (result) {
         notification(
           "success",
@@ -95,8 +82,8 @@ function CompanyBusiness() {
             </div>
             <Input
               placeholder="4512 4512"
-              name="registrationNumber"
-              value={form.registrationNumber}
+              name="registerNumber"
+              value={form.registerNumber}
               onChange={handleChange}
               size="medium"
             />
@@ -107,8 +94,8 @@ function CompanyBusiness() {
             </div>
             <Input
               placeholder="XYZ Company"
-              name="addressOfTheCompany"
-              value={form.addressOfTheCompany}
+              name="companyAddress"
+              value={form.companyAddress}
               onChange={handleChange}
               size="medium"
             />
@@ -119,21 +106,11 @@ function CompanyBusiness() {
             </div>
             <Input
               placeholder="Business nature "
-              name="natureOfBusiness"
-              value={form.natureOfBusiness}
+              name="businessNature"
+              value={form.businessNature}
               onChange={handleChange}
               size="medium"
             />
-          </div>
-          <div className="companybusiness__container--input">
-            <p>
-              Financial Statments :{" "}
-              <Upload {...props}>
-                <Button style={{ marginLeft: "5px" }} icon={<UploadOutlined />}>
-                  Upload
-                </Button>
-              </Upload>{" "}
-            </p>
           </div>
           <div className="companybusiness__container--input">
             <div className="companybusiness__container--label">
@@ -141,8 +118,8 @@ function CompanyBusiness() {
             </div>
             <TextArea
               placeholder="List Of Directors"
-              name="listOfDirectors"
-              value={form.listOfDirectors}
+              name="listOfOwners"
+              value={form.listOfOwners}
               onChange={handleChange}
               size="medium"
               rows={4}

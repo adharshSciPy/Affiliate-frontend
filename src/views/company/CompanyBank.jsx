@@ -1,18 +1,18 @@
 import { React, useState } from "react";
 import { Input, Button } from "antd";
 import { useNotification } from "../../context/NotificationContext";
-import { useInternationalBankDetailsMutation } from "../../features/api/affiliaterApiSlice";
+import { useBankInfoMutation } from "../../features/api/companyApiSlice";
 import useAuth from "../../hooks/useAuth";
 
 function CompanyBank() {
   const { notification } = useNotification();
-  const [internationalBankDetails] = useInternationalBankDetailsMutation();
+  const [bankinfo] = useBankInfoMutation();
   const { logId } = useAuth();
 
   const fields = {
-    IFSCcode: "",
+    IFSC: "",
     accountNumber: "",
-    UPInumber: "",
+    UPINumber: "",
   };
   //input field onchange handler
   const [form, setForm] = useState(fields);
@@ -24,12 +24,12 @@ function CompanyBank() {
     e.preventDefault();
     try {
       const payload = {
-        IFSCcode: form.IFSCcode,
+        IFSC: form.IFSC,
         accountNumber: form.accountNumber,
-        UPInumber: form.UPInumber,
+        UPINumber: form.UPINumber,
       };
       let companyId = logId;
-      const result = await internationalBankDetails({ companyId, payload });
+      const result = await bankinfo({ companyId, payload });
       if (result) {
         notification(
           "success",
@@ -59,8 +59,8 @@ function CompanyBank() {
             </div>
             <Input
               placeholder="FGGXXXXX"
-              name="IFSCcode"
-              value={form.IFSCcode}
+              name="IFSC"
+              value={form.IFSC}
               onChange={handleChange}
               size="medium"
             />
@@ -83,8 +83,8 @@ function CompanyBank() {
             </div>
             <Input
               placeholder="1234XXX"
-              name="UPInumber"
-              value={form.UPInumber}
+              name="UPINumber"
+              value={form.UPINumber}
               onChange={handleChange}
               size="medium"
             />
