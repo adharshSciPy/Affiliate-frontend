@@ -29,7 +29,7 @@ function CompanyProof() {
     const formData = new FormData();
     Object.keys(files).forEach(key => {
       if (files[key]) {
-        formData.append('uploads[]', files[key]);
+        formData.append('addressProof[]', files[key]);
       }
     });
 
