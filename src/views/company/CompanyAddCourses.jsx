@@ -21,40 +21,42 @@ const CompanyAddCourses = () => {
     setIsModal(true);
   };
 
-  
+
   return (
     <>
       <div className="companyaddcourses">
-            <Tabs
-              defaultActiveKey="1"
-              tabPosition='top'
-              onChange={handleTabChange}
-              items={[
-                {
-                  label: 'Courses',
-                  key: '1',
-                  children: (
-                    <>
-                      <CompanyCourses />
-                    </>
-                  )
-                },
-                {
-                  label: 'Study Abroad',
-                  key: '2',
-                  children: (
-                    <>
-                      <CompanyStudyAbroad />
-                    </>
+        <div className='companyaddcourses__container'>
+          <Tabs
+            defaultActiveKey="1"
+            tabPosition='top'
+            onChange={handleTabChange}
+            items={[
+              {
+                label: 'Courses',
+                key: '1',
+                children: (
+                  <>
+                    <CompanyCourses />
+                  </>
+                )
+              },
+              {
+                label: 'Study Abroad',
+                key: '2',
+                children: (
+                  <>
+                    <CompanyStudyAbroad />
+                  </>
 
-                  )
-                },
-                
-                  
-              ]}
-            />
-          </div>
-        
+                )
+              },
+
+
+            ]}
+          />
+        </div>
+      </div>
+
 
     </>
   )
