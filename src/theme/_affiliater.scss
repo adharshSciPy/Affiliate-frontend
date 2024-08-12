@@ -94,6 +94,7 @@
     height: auto;
     padding: 0 0 9rem;
     align-items: flex-end;
+
     &--button {
       display: flex;
       align-items: flex-end;
@@ -119,72 +120,86 @@
 }
 
 // affiliater domestic
-.affiliaterdomestic{
-  &__container{
+.affiliaterdomestic {
+  &__container {
     display: flex;
     flex-direction: column;
     width: 50%;
     height: auto;
     align-items: flex-start;
   }
+
   &__container--input {
     padding: 1rem;
   }
+
   &__container--label {
     padding: 5px;
   }
+
   Button {
     width: 100px;
   }
-  &__button{
+
+  &__button {
     width: 100%;
     display: flex;
     justify-content: end;
   }
 }
+
 // affiliater Proof
-.affiliaterProof{
-  &__container{
+.affiliaterProof {
+  &__container {
     display: flex;
     flex-direction: column;
     width: 50%;
     height: auto;
     align-items: flex-start;
   }
+
   &__container--input {
     padding: 1rem;
   }
+
   &__container--label {
     padding: 5px;
   }
+
   Button {
     width: 100px;
   }
-  &__button{
+
+  &__button {
     width: 100%;
     display: flex;
     justify-content: end;
   }
 }
+
 // affiliater international
-.affiliaterinternational{
-  &__container{
+.affiliaterinternational {
+  &__container {
     display: flex;
     flex-direction: column;
     width: 50%;
     height: auto;
     align-items: flex-start;
   }
+
   &__container--input {
     padding: 1rem;
   }
+
   &__container--label {
     padding: 5px;
   }
+
   Button {
     width: 100px;
   }
-  &__button{
+
+  &__button {
     width: 100%;
     display: flex;
     justify-content: end;
@@ -689,41 +704,36 @@
     display: none;
   }
 
-  &__container {
-    display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 2rem;
-    height: 280px;
-    width: 100%;
-    border-radius: 15px;
-    padding: 1rem;
-    max-height: 100%;
+  &__buttoncontainer {
+    display: flex;
+    border: 1px solid var(--text-grey);
+    border-radius: 12px;
+    width: 250px;
+    height: 55px;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 
-    @include breakpoint(xl) {
-      grid-template-rows: auto;
-      height: 18rem;
+    Button {
+      width: 100px;
+      height: 40px;
     }
 
-    @include breakpoint(lg) {
-      grid-template-rows: auto;
-      height: 25rem;
-    }
-
-    @include breakpoint(md) {
-      grid-template-rows: auto;
-      height: 25rem;
-    }
-
-    @include breakpoint(sm) {
-      grid-template-rows: auto;
-      height: 25rem;
-    }
   }
+  &__notification{
+    h2{
+      color:  var(--primary-color);
+    }
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+
+
 }
 
 //affiliater Help
 .affiliaterhelp {
-  height: 280px;
+  height: 350px;
   max-height: 100vh;
   width: 100%;
   border-radius: 20px;
@@ -738,10 +748,10 @@
 
   &__container {
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
-    gap: 2rem;
-    height: 280px;
-    width: 100%;
+    // grid-template-rows: repeat(3, 1fr);
+    // gap: 2rem;
+    // height: 280px;
+    // width: 100%;
     border-radius: 15px;
     padding: 1rem;
     max-height: 100%;
@@ -765,7 +775,39 @@
       grid-template-rows: auto;
       height: 25rem;
     }
+
+    h2 {
+      color: var(--primary-color);
+    }
+
   }
+
+  &__details {
+    margin-left: 20px;
+    margin-top: 0.5rem;
+
+    p {
+      padding: 0.1rem;
+      font-size: 13px;
+    }
+  }
+
+  &__feedback {
+    margin-left: 20px;
+    margin-top: 0.5rem;
+    width: 50%;
+
+    Textarea {
+      margin-left: 20px;
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__button {
+    margin-left: 20px;
+    margin-top: 0.5rem;
+  }
+
 }
 
 .affiliaterpersonal {
@@ -796,17 +838,20 @@
         height: 30px;
         padding: 15px;
       }
+
       textarea {
         border: 1px solid var(--text-white);
         border-radius: 8px;
       }
     }
+
     &--right {
       width: 50%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-right: 200px;
+
       input {
         border: 1px solid var(--text-white);
         border-radius: 8px;
