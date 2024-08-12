@@ -1,16 +1,35 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import company from "../../assets/images/affiliate-profile.png";
 import { Progress } from "antd";
 import StarRating from "../rating/StarRating";
+import useAuth from "../../hooks/useAuth";
+import { useCompanyDetailsQuery } from "../../features/api/adminApiSlice";
+import { useParams } from "react-router-dom";
 
 const DashCompanyProfile = () => {
+  const { logId } = useAuth()
+  const params = useParams();
+  const [companyData, setCompanyData] = useState([])
+  const { data, error, isLoading, refetch } = useCompanyDetailsQuery({
+      companyId: logId,
+  });
+  
+  useEffect(() => {
+      refetch();
+  }, [params]);
+
+  useEffect(() => {
+      setCompanyData(data?.data);
+  }, [data]);
+  console.log("data", companyData)
+
   return (
     <div className="dashcompanyprofile">
       <div className="dashcompanyprofile__heading">
         <span>
           <img src={company} alt="Company Logo" />
         </span>
-        <h1>SciPy Technologies</h1>
+        <h1>{companyData?.companyName}</h1>
         <p>Service Provider</p>
       </div>
       <div className="dashcompanyprofile__courses">
