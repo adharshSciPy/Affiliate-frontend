@@ -54,30 +54,7 @@ function CompanyProof() {
   return (
     <div className="companyproof">
       <div className="companyproof__tabs">
-        {/* <p>
-          Documentation :{" "}
-          <Upload {...props}>
-            <Button style={{ marginLeft: "5px" }} icon={<UploadOutlined />}>
-              Upload
-            </Button>
-          </Upload>{" "}
-        </p>
-        <p>
-          Utility bills :{" "}
-          <Upload {...props}>
-            <Button style={{ marginLeft: "5px" }} icon={<UploadOutlined />}>
-              Upload
-            </Button>
-          </Upload>{" "}
-        </p>
-        <p>
-          Bank Statement :{" "}
-          <Upload {...props}>
-            <Button style={{ marginLeft: "5px" }} icon={<UploadOutlined />}>
-              Upload
-            </Button>
-          </Upload>{" "}
-        </p> */}
+        
 
         <div className="companyproof__tabs--input">
           <div className="companyproof__tabs--label">
