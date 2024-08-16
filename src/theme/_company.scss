@@ -1,4 +1,25 @@
 // company registration page
+
+$breakpoints: (
+  xs: 350px,
+  sm:576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1600px,
+  xxxl: 1920px,
+
+);
+
+@mixin breakpoint($point) {
+  @media (min-width: map-get($breakpoints, $point)) {
+    @content
+  }
+}
+
+
+
+
 .companyregpage {
   position: relative;
   height: 100vh;
@@ -309,7 +330,7 @@
 
 //course
 .companyaddcourses {
-   height: 100%;
+  height: 100%;
   // max-height: 100vh;
   width: 100%;
   border-radius: 20px;
@@ -331,55 +352,145 @@
   }
 
 }
+
 //studyabroad
-.studyabroad{
+.studyabroad {
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
-  &__container{
+
+  &__container {
     width: 100%;
     height: auto;
-    display: flex;
-    flex-direction: column;
-    
-
-   &__container--input {
-    padding: 1rem;
-    
-  }
-//   @include breakpoint(sm){
-//     background-color: red;
-//   }
-//   @include breakpoint(md){
-//     background-color: rgb(9, 58, 16);
-//   }
-//   @include breakpoint(lg){
-// background-color: rgb(37, 171, 176);
-//   }
-//   @include breakpoint(xl){
-//     background-color: rgb(208, 31, 161);
-//       }
-
-  
 
 
+    &__container--input {
+      padding: 1rem;
+    }
 
-  &__container--label {
-    padding: 5px;
-  }
+    @include breakpoint(md) {
+      width: 60%;
+    }
+
+    @include breakpoint(lg) {
+      width: 60%;
+    }
+
+    @include breakpoint(xl) {
+      width: 60%;
+    }
+
+    @include breakpoint(xxl) {
+      width: 60%;
+    }
+
+    &__container--label {
+      padding: 5px;
+    }
+
     &--button {
       width: 100%;
       display: flex;
       justify-content: end;
       padding: 20px;
-     
+
+      @include breakpoint(xs) {
+        transform: translateX(1%);
+      }
+
+      @include breakpoint(sm) {
+        transform: translateX(1%);
+      }
+
+      @include breakpoint(md) {
+        transform: translateX(65%);
+      }
+
+      @include breakpoint(lg) {
+        transform: translateX(65%);
+      }
+
+      @include breakpoint(xl) {
+        transform: translateX(65%);
+      }
+
+      @include breakpoint(xxl) {
+        transform: translateX(65%);
+      }
     }
 
   }
-  
- 
+
+}
+
+//course
+
+.course {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    width: 100%;
+    height: auto;
 
 
+    &__container--input {
+      padding: 1rem;
+    }
 
+    @include breakpoint(md) {
+      width: 60%;
+    }
+
+    @include breakpoint(lg) {
+      width: 60%;
+    }
+
+    @include breakpoint(xl) {
+      width: 60%;
+    }
+
+    @include breakpoint(xxl) {
+      width: 60%;
+    }
+
+    &__container--label {
+      padding: 5px;
+    }
+
+    &--button {
+      width: 100%;
+      display: flex;
+      justify-content: end;
+      padding: 20px;
+
+      @include breakpoint(xs) {
+        transform: translateX(1%);
+      }
+
+      @include breakpoint(sm) {
+        transform: translateX(1%);
+      }
+
+      @include breakpoint(md) {
+        transform: translateX(65%);
+      }
+
+      @include breakpoint(lg) {
+        transform: translateX(65%);
+      }
+
+      @include breakpoint(xl) {
+        transform: translateX(65%);
+      }
+
+      @include breakpoint(xxl) {
+        transform: translateX(65%);
+      }
+    }
+
+  }
 }
