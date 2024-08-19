@@ -1,11 +1,21 @@
 import React, { useState } from "react";
-import { Select, Button, Input, Descriptions } from "antd";
-const { options } = Select;
+import { Select, Button, Input } from "antd";
+const { Option } = Select;
+import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import { useNotification } from "../../context/NotificationContext";
+import { usePostServiceMutation } from "../../features/api/serviceApiSlice"
 
 function CompanyStudyAbroad() {
+  const { logId } = useAuth()
+  const { notification } = useNotification()
+  const [postService] = usePostServiceMutation()
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isOtherSelected, setIsOtherSelected] = useState(false);
   const [otherCategory, setOtherCategory] = useState("");
+  const [file, setFile] = useState('');
+
+
   const handleCategoryChange = (value) => {
     if (value === "Other") {
       setIsOtherSelected(true);
@@ -16,20 +26,20 @@ function CompanyStudyAbroad() {
     }
   };
 
-  const handleOtherCategoryChange = (event) => {
-    setOtherCategory(event.target.value);
+  console.log("companyId", logId);
+  let companyId = logId;
+
+
+
+  // const handleOtherCategoryChange = (event) => {
+  //   setOtherCategory(event.target.value);
+  // };
+
+  const handleFileChange = (event) => {
+    setFile(event.target.file)
   };
 
-  const [files, setFiles] = useState({
-    image: null,
-  });
 
-  const handleChange = (field) => (event) => {
-    setFiles((prevFiles) => ({
-      ...prevFiles,
-      [field]: event.target.files[0],
-    }));
-  };
   const fields = {
     courseCategory: "",
     courseName: "",
@@ -38,9 +48,11 @@ function CompanyStudyAbroad() {
     certificateOffered: "",
     courseFee: "",
     offerFee: "",
+    mode: "",
     addHeading: "",
     description: "",
   };
+
   const [form, setForm] = useState(fields);
   const formChange = (e) => {
     const { name, value } = e.target;
@@ -49,22 +61,49 @@ function CompanyStudyAbroad() {
   //handlesubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formData = new FormData();
+    if (file) {
+      formData.append('uploads', file)
+    }
+    try {
+      const result = await axios.post(`http://localhost:8000/api/v1/service/services/${companyId}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+      notification("success",
+        "Files Updation Succesfull",
+        result?.data?.message,
+        "bottomRight");
+
+    } catch (error) {
+      notification(
+        "error",
+        "Files Updation Failed",
+        error?.data?.message,
+        "bottomRight"
+      );
+    }
+
+
     try {
       const payload = {
-        courseCategory: form.courseCategory,
+        courseCategory: selectedCategory === "Other" ? otherCategory : selectedCategory,
         courseName: form.courseName,
-        courseDescription:form.courseDescription,
-        courseDuration:form.courseDuration,
-        certificateOffered:form.certificateOffered,
-        courseFee:form.courseFee,
-        offerFee:form.offerFee,
-        addHeading:form.addHeading,
-        description:form.description,
+        courseDescription: form.courseDescription,
+        courseDuration: form.courseDuration,
+        certificateOffered: form.certificateOffered,
+        courseFee: form.courseFee,
+        offerFee: form.offerFee,
+        addHeading: form.addHeading,
+        description: form.description,
+        mode: form.mode
       };
-      let companyId = logId;
+
       console.log("companyId", companyId);
       console.log("payload", payload);
-      const result = await identificationdetails({ companyId, payload });
+      const result = await postService({ companyId, payload });
       console.log("result", result);
       if (result) {
         notification(
@@ -110,24 +149,23 @@ function CompanyStudyAbroad() {
             <Input
               type="text"
               name="courseCategory"
-              // style={{ marginTop: "10px", width: 200, marginLeft: "116px" }}
+              style={{ marginTop: "15px", width: 200, marginLeft: '5px' }}
               placeholder="Please specify"
               value={otherCategory}
-              onChange={handleOtherCategoryChange}
+              onChange={(e) => setOtherCategory(e.target.value)}
             />
           )}
         </div>
-         <div className="studyabroad__container--input">
+        <div className="studyabroad__container--input">
           <div className="studyabroad__container--label">
             <p>Image: </p>
           </div>
           <Input
-            // style={{ width: "300px" }}
             type="file"
             name="uploads"
-            onChange={handleChange("image")}
+            onChange={handleFileChange}
           />
-        </div> 
+        </div>
         <div className="studyabroad__container--input">
           <div className="studyabroad__container--label">
             <p>Course Name:</p>
@@ -164,6 +202,12 @@ function CompanyStudyAbroad() {
           </div>
           <Input type="text" name="offerFee" onChange={formChange} />
         </div>
+        <div className="studyabroad__container--input">
+          <div className="studyabroad__container--label">
+            <p>Mode: </p>
+          </div>
+          <Input type="text" name="mode" onChange={formChange} />
+        </div>
         <p
           style={{
             fontSize: "20px",
@@ -186,11 +230,11 @@ function CompanyStudyAbroad() {
           <Input type="text" name="description" onChange={formChange} />
         </div>
         <div className="studyabroad__container--button">
-        <Button type="primary" success onClick={handleSubmit}>
+          <Button type="primary" success onClick={handleSubmit}>
             Submit
           </Button>
         </div>
-        
+
       </div>
     </div>
   );
