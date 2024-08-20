@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { Select, Input, Button } from 'antd';
-
 const { Option } = Select;
+import useAuth from '../../hooks/useAuth';
+import { useNotification } from '../../context/NotificationContext';
+import { usePostServiceMutation } from '../../features/api/serviceApiSlice';
 
 function CompanyCourses() {
+  const { logId } = useAuth()
+  const { notification } = useNotification()
+  const [postService] = usePostServiceMutation()
   const [selectedCategory, setSelectedCategory] = useState('');
   const [isOtherSelected, setIsOtherSelected] = useState(false);
   const [otherCategory, setOtherCategory] = useState('');
+  const [file, setFile] = useState(null)
 
   const handleCategoryChange = (value) => {
     if (value === 'Other') {
@@ -22,25 +28,20 @@ function CompanyCourses() {
     setOtherCategory(event.target.value);
   };
 
-  const [files, setFiles] = useState({
-    image: null
-  })
-
-  const handleChange = (field) => (event) => {
-    setFiles(prevFiles => ({
-      ...prevFiles,
-      [field]: event.target.files[0]
-    }))
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0])
   }
 
   const fields = {
-    courseCategory: '',
-    courseName: '',
+    category: '',
+    image: '',
+    title: '',
     courseDescription: '',
-    courseDuration: '',
-    certificateOffered: '',
+    duration: '',
+    certificate: '',
     courseFee: '',
     offerFee: '',
+    mode: '',
     addHeading: '',
     description: ''
   }
@@ -51,25 +52,29 @@ function CompanyCourses() {
     setForm({ ...form, [name]: value });
   }
 
+
   //handlesubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const payload = {
-        courseCategory: form.courseCategory,
-        courseName: form.courseName,
-        courseDescription: form.courseDescription,
-        courseDuration: form.courseDuration,
-        certificateOffered: form.certificateOffered,
-        courseFee: form.courseFee,
-        offerFee: form.offerFee,
-        addHeading: form.addHeading,
-        description: form.description,
-      };
+
+      const formData = new FormData();
+      formData.append('category', selectedCategory === 'Other' ? otherCategory : selectedCategory)
+      formData.append('image', file)
+      formData.append('title', form.title)
+      formData.append('courseDescription', form.courseDescription)
+      formData.append('duration', form.duration)
+      formData.append('certificate', form.certificate)
+      formData.append('courseFee', form.courseFee)
+      formData.append('offerFee', form.offerFee)
+      formData.append('mode', form.mode)
+      formData.append('addHeading', form.addHeading)
+      formData.append('description', form.description)
+
+
       let companyId = logId;
-      console.log("companyId", companyId);
-      console.log("payload", payload);
-      const result = await identificationdetails({ companyId, payload });
+
+      const result = await postService({ companyId, formData });
       console.log("result", result);
       if (result) {
         notification(
@@ -79,6 +84,9 @@ function CompanyCourses() {
           "bottomRight"
         );
         setForm(fields);
+        setSelectedCategory('')
+        setFile(null)
+        setOtherCategory('')
       }
     } catch (error) {
       notification(
@@ -100,6 +108,7 @@ function CompanyCourses() {
 
           <Select
             style={{ width: 200 }}
+            name="category"
             placeholder="Select a Category"
             onChange={handleCategoryChange}
             value={selectedCategory || undefined}
@@ -114,7 +123,7 @@ function CompanyCourses() {
           {isOtherSelected && (
             <Input
               type='text'
-              name='courseCategory'
+              name='category'
               style={{ marginTop: "15px", width: 200, marginLeft: '5px' }}
               placeholder="Please specify"
               value={otherCategory}
@@ -128,49 +137,56 @@ function CompanyCourses() {
           <div className="course__container--label">
             <p>Image: {' '}</p>
           </div>
-          <Input type='file' name='uploads' onChange={handleChange('image')} />
+          <Input type='file' name='image' value={form.file} onChange={handleFileChange} />
         </div>
 
         <div className="course__container--input">
           <div className="course__container--label">
             <p>Course Name:</p>
           </div>
-          <Input type='text' name='courseName' onChange={formChange} />
+          <Input type='text' name='title' value={form.title} onChange={formChange} />
         </div>
 
         <div className="course__container--input">
           <div className="course__container--label">
             <p>Course Description:</p>
           </div>
-          <Input type='text' name='courseDescription' onChange={formChange} />
+          <Input type='text' name='courseDescription' value={form.courseDescription} onChange={formChange} />
         </div>
 
         <div className="course__container--input">
           <div className="course__container--label">
             <p>Course Duration:</p>
           </div>
-          <Input type='text' name='courseDuration' onChange={formChange} />
+          <Input type='text' name='duration' value={form.duration} onChange={formChange} />
         </div>
 
         <div className="course__container--input">
           <div className="course__container--label">
             <p>Certificate Offered:</p>
           </div>
-          <Input type='text' name='certificateOffered' onChange={formChange} />
+          <Input type='text' name='certificate' value={form.certificate} onChange={formChange} />
         </div>
 
         <div className="course__container--input">
           <div className="course__container--label">
             <p>Course Fee:</p>
           </div>
-          <Input type='text' name='certificateOffered' onChange={formChange} />
+          <Input type='text' name='courseFee' value={form.courseFee} onChange={formChange} />
         </div>
 
         <div className="course__container--input">
           <div className="course__container--label">
             <p>Offer Fee:</p>
           </div>
-          <Input type='text' name='offerFee' onChange={formChange} />
+          <Input type='text' name='offerFee' value={form.offerFee} onChange={formChange} />
+        </div>
+
+        <div className="course__container--input">
+          <div className="course__container--label">
+            <p>Mode:</p>
+          </div>
+          <Input type='text' name='mode' value={form.mode} onChange={formChange} />
         </div>
 
         <div className="course__container--input">
@@ -178,14 +194,14 @@ function CompanyCourses() {
             <p style={{ fontSize: '20px', fontWeight: '700', color: 'var(--primary-color)' }}>Syllabus</p>
             <p>Add Heading:</p>
           </div>
-          <Input type='text' name='addHeading' onChange={formChange} />
+          <Input type='text' name='addHeading' value={form.addHeading} onChange={formChange} />
         </div>
 
         <div className="course__container--input">
           <div className="course__container--label">
             <p>Description:</p>
           </div>
-          <Input type='text' name='description' onChange={formChange} />
+          <Input type='text' name='description' value={form.description} onChange={formChange} />
         </div>
 
         <div className="studyabroad__container--button">

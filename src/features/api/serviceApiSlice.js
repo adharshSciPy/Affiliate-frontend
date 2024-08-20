@@ -6,10 +6,10 @@ export const serviceApiSlice = apiSlice.injectEndpoints({
         //services
         //post the service using company Id
         postService: builder.mutation({
-            query: ({ companyId, payload }) => ({
-                url: `service/services${companyId}`,
+            query: ({ companyId, formData }) => ({
+                url: `service/services/${companyId}`,
                 method: 'POST',
-                body: payload
+                body: formData
             })
         })
 

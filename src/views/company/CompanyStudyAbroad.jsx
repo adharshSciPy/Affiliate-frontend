@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Select, Button, Input } from "antd";
 const { Option } = Select;
-import axios from "axios";
 import useAuth from "../../hooks/useAuth";
 import { useNotification } from "../../context/NotificationContext";
 import { usePostServiceMutation } from "../../features/api/serviceApiSlice"
@@ -13,7 +12,7 @@ function CompanyStudyAbroad() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [isOtherSelected, setIsOtherSelected] = useState(false);
   const [otherCategory, setOtherCategory] = useState("");
-  const [file, setFile] = useState('');
+  const [file, setFile] = useState(null);
 
 
   const handleCategoryChange = (value) => {
@@ -29,23 +28,18 @@ function CompanyStudyAbroad() {
   console.log("companyId", logId);
   let companyId = logId;
 
-
-
-  // const handleOtherCategoryChange = (event) => {
-  //   setOtherCategory(event.target.value);
-  // };
-
   const handleFileChange = (event) => {
-    setFile(event.target.file)
+    setFile(event.target.files[0])
   };
 
 
   const fields = {
-    courseCategory: "",
-    courseName: "",
+    category: "",
+    image: "",
+    title: "",
     courseDescription: "",
-    courseDuration: "",
-    certificateOffered: "",
+    duration: "",
+    certificate: "",
     courseFee: "",
     offerFee: "",
     mode: "",
@@ -62,49 +56,23 @@ function CompanyStudyAbroad() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    if (file) {
-      formData.append('uploads', file)
-    }
     try {
-      const result = await axios.post(`http://localhost:8000/api/v1/service/services/${companyId}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-      notification("success",
-        "Files Updation Succesfull",
-        result?.data?.message,
-        "bottomRight");
 
-    } catch (error) {
-      notification(
-        "error",
-        "Files Updation Failed",
-        error?.data?.message,
-        "bottomRight"
-      );
-    }
+      const formData = new FormData();
+      formData.append('category', selectedCategory === "Other" ? otherCategory : selectedCategory);
+      formData.append('image', file);
+      formData.append('title', form.title);
+      formData.append('courseDescription', form.courseDescription);
+      formData.append('duration', form.duration);
+      formData.append('certificate', form.certificate);
+      formData.append('courseFee', form.courseFee);
+      formData.append('offerFee', form.offerFee);
+      formData.append('addHeading', form.addHeading);
+      formData.append('description', form.description);
+      formData.append('mode', form.mode);
 
+      const result = await postService({ companyId, formData })
 
-    try {
-      const payload = {
-        courseCategory: selectedCategory === "Other" ? otherCategory : selectedCategory,
-        courseName: form.courseName,
-        courseDescription: form.courseDescription,
-        courseDuration: form.courseDuration,
-        certificateOffered: form.certificateOffered,
-        courseFee: form.courseFee,
-        offerFee: form.offerFee,
-        addHeading: form.addHeading,
-        description: form.description,
-        mode: form.mode
-      };
-
-      console.log("companyId", companyId);
-      console.log("payload", payload);
-      const result = await postService({ companyId, payload });
-      console.log("result", result);
       if (result) {
         notification(
           "success",
@@ -113,6 +81,9 @@ function CompanyStudyAbroad() {
           "bottomRight"
         );
         setForm(fields);
+        setFile(null);
+        setSelectedCategory("");
+        setOtherCategory("");
       }
     } catch (error) {
       notification(
@@ -133,6 +104,7 @@ function CompanyStudyAbroad() {
           </div>
           <Select
             style={{ width: 200 }}
+            name="category"
             placeholder="Select a Category"
             onChange={handleCategoryChange}
             value={selectedCategory || undefined}
@@ -148,7 +120,7 @@ function CompanyStudyAbroad() {
           {isOtherSelected && (
             <Input
               type="text"
-              name="courseCategory"
+              name="category"
               style={{ marginTop: "15px", width: 200, marginLeft: '5px' }}
               placeholder="Please specify"
               value={otherCategory}
@@ -162,7 +134,8 @@ function CompanyStudyAbroad() {
           </div>
           <Input
             type="file"
-            name="uploads"
+            name="image"
+            value={form.file}
             onChange={handleFileChange}
           />
         </div>
@@ -170,43 +143,43 @@ function CompanyStudyAbroad() {
           <div className="studyabroad__container--label">
             <p>Course Name:</p>
           </div>
-          <Input type="text" name="courseName" onChange={formChange} />
+          <Input type="text" name="title" value={form.title} onChange={formChange} />
         </div>
         <div className="studyabroad__container--input">
           <div className="studyabroad__container--label">
             <p>Course Description: </p>
           </div>
-          <Input type="text" name="courseDescription" onChange={formChange} />
+          <Input type="text" name="courseDescription" value={form.courseDescription} onChange={formChange} />
         </div>
         <div className="studyabroad__container--input">
           <div className="studyabroad__container--label">
             <p>Course Duration: </p>
           </div>
-          <Input type="text" name="courseDuration" onChange={formChange} />
+          <Input type="text" name="duration" value={form.duration} onChange={formChange} />
         </div>
         <div className="studyabroad__container--input">
           <div className="studyabroad__container--label">
             <p>Certificate Offered: </p>
           </div>
-          <Input type="text" name="certificateOffered" onChange={formChange} />
+          <Input type="text" name="certificate" value={form.certificate} onChange={formChange} />
         </div>
         <div className="studyabroad__container--input">
           <div className="studyabroad__container--label">
             <p>Course Fee: </p>
           </div>
-          <Input type="text" name="courseFee" onChange={formChange} />
+          <Input type="text" name="courseFee" value={form.courseFee} onChange={formChange} />
         </div>
         <div className="studyabroad__container--input">
           <div className="studyabroad__container--label">
             <p>Offer Fee: </p>
           </div>
-          <Input type="text" name="offerFee" onChange={formChange} />
+          <Input type="text" name="offerFee" value={form.offerFee} onChange={formChange} />
         </div>
         <div className="studyabroad__container--input">
           <div className="studyabroad__container--label">
             <p>Mode: </p>
           </div>
-          <Input type="text" name="mode" onChange={formChange} />
+          <Input type="text" name="mode" value={form.mode} onChange={formChange} />
         </div>
         <p
           style={{
@@ -221,13 +194,13 @@ function CompanyStudyAbroad() {
           <div className="studyabroad__container--label">
             <p>Add Heading: </p>
           </div>
-          <Input type="text" name="addHeading" onChange={formChange} />
+          <Input type="text" name="addHeading" value={form.addHeading} onChange={formChange} />
         </div>
         <div className="studyabroad__container--input">
           <div className="studyabroad__container--label">
             <p>Description: </p>
           </div>
-          <Input type="text" name="description" onChange={formChange} />
+          <Input type="text" name="description" value={form.description} onChange={formChange} />
         </div>
         <div className="studyabroad__container--button">
           <Button type="primary" success onClick={handleSubmit}>
