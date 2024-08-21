@@ -11,11 +11,20 @@ export const serviceApiSlice = apiSlice.injectEndpoints({
                 method: 'POST',
                 body: formData
             })
+        }),
+
+        //get the service details
+        serviceDetails: builder.query({
+            query: ({ page = 1, limit = 10 }) => ({
+                url: `service/services?page=${page}&limit=${limit}`,
+                method: 'GET'
+            })
         })
 
     })
 })
 
 export const {
-    usePostServiceMutation
+    usePostServiceMutation,
+    useServiceDetailsQuery
 } = serviceApiSlice;

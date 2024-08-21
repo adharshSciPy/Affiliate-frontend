@@ -494,3 +494,29 @@ $breakpoints: (
 
   }
 }
+
+// company course
+
+.activecourses {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  background-color: var(--background-3);
+  padding: 2rem;
+  overflow-y: scroll;
+
+  &__container {
+    height: auto;
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: var(--background-1);
+  }
+
+  &__scrollablediv {
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+}

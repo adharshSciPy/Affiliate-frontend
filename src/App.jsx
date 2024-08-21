@@ -24,7 +24,8 @@ import {
     AffiliaterRegistrationPage,
     CompanyRegistrationPage,
     AdminCompanyDetails,
-    CompanyAddCourses
+    CompanyAddCourses,
+    ActiveCourses
 } from './views';
 import {
     PersistLogin,
@@ -194,7 +195,7 @@ const router = createBrowserRouter([
                     </IsVerifiedCompanyorAffiliater>
                 </AllowedRoles>
             </PersistLogin>,
-        // Define children routes for affiliate if necessary
+        // Define children routes for company if necessary
         children: [
             {
                 path: "home",
@@ -204,6 +205,14 @@ const router = createBrowserRouter([
                 path: "addcourses",
                 element: <CompanyAddCourses />
             },
+            {
+                path: "addcourses/:id",
+                element: <CompanyAddCourses />
+            },
+            {
+                path: "activecourses",
+                element: <ActiveCourses />
+            }
         ]
     },
     {

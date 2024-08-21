@@ -22,6 +22,7 @@ export { default as CompanyHome } from './company/CompanyHome'
 export { default as CompanyRegistrationPage } from './company/CompanyRegistrationPage'
 export { default as CompanyPersonal } from './company/CompanyPersonal'
 export { default as CompanyAddCourses } from './company/CompanyAddCourses'
+export { default as ActiveCourses } from './company/ActiveCourses'
 
 
 // affiliater
