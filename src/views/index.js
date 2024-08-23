@@ -16,6 +16,7 @@ export { default as AdminToken } from './admin/AdminToken'
 export { default as AdminCustomers } from './admin/AdminCustomers'
 export { default as AdminAffiliaterDetails } from './admin/AdminAffiliaterDetails'
 export { default as AdminCompanyDetails } from './admin/AdminCompanyDetails'
+export { default as AdminAffiliaterPayment } from './admin/AdminAffiliaterPayment'
 
 // company
 export { default as CompanyHome } from './company/CompanyHome'

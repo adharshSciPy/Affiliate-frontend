@@ -54,7 +54,7 @@ const adminSidebarRoutes = [
             },
             {
                 title: 'Payments',
-                path: '#',
+                path: 'affiliater-payments',
             }
         ]
     },
@@ -108,7 +108,7 @@ const companySidebarRoutes = [
                 title: 'Add Courses',
                 path: 'addcourses',
             }
-            
+
         ]
     },
     {

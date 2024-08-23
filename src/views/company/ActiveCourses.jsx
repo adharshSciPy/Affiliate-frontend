@@ -18,6 +18,7 @@ function ActiveCourses() {
 
 
     useEffect(() => {
+        refetch()
         if (data) {
             const structuredData = data?.data?.services.map((item, index) => {
                 return {

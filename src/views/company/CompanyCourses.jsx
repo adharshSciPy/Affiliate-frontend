@@ -1,18 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Select, Input, Button } from 'antd';
 const { Option } = Select;
 import useAuth from '../../hooks/useAuth';
+import { useParams } from 'react-router-dom';
 import { useNotification } from '../../context/NotificationContext';
-import { usePostServiceMutation } from '../../features/api/serviceApiSlice';
+import { usePostServiceMutation, useEditServiceMutation, useGetServiceByIdQuery } from '../../features/api/serviceApiSlice';
 
 function CompanyCourses() {
   const { logId } = useAuth()
   const { notification } = useNotification()
+  const { id: serviceId } = useParams()
   const [postService] = usePostServiceMutation()
+  const [updateService] = useEditServiceMutation();
   const [selectedCategory, setSelectedCategory] = useState('');
   const [isOtherSelected, setIsOtherSelected] = useState(false);
   const [otherCategory, setOtherCategory] = useState('');
   const [file, setFile] = useState(null)
+  // const serviceId = params?.id
+  const { data: existingService } = useGetServiceByIdQuery(serviceId, { skip: !serviceId });
+
+
+  console.log('serviceId', serviceId);
+
+  useEffect(() => {
+    if (existingService) {
+      setForm(existingService);
+      setSelectedCategory(existingService.category);
+    }
+  }, [existingService]);
 
   const handleCategoryChange = (value) => {
     if (value === 'Other') {
@@ -73,13 +88,20 @@ function CompanyCourses() {
 
 
       let companyId = logId;
+      let result;
+      console.log('companyId', companyId)
 
-      const result = await postService({ companyId, formData });
+      if (serviceId) {
+        result = await updateService({ serviceId, formData });
+      } else {
+        result = await postService({ companyId, formData });
+      }
+
       console.log("result", result);
-      if (result) {
+      if (result?.data) {
         notification(
           "success",
-          "Registration Succesfull",
+          serviceId ? "Updated Successfull" : "Registration Succesfull",
           result?.data?.message,
           "bottomRight"
         );
@@ -91,7 +113,7 @@ function CompanyCourses() {
     } catch (error) {
       notification(
         "error",
-        "Registration Failed",
+        serviceId ? "Updation Failed" : "Registration Failed",
         error?.data?.message,
         "bottomRight"
       );
@@ -206,7 +228,7 @@ function CompanyCourses() {
 
         <div className="studyabroad__container--button">
           <Button type="primary" success onClick={handleSubmit}>
-            Submit
+            {serviceId ? 'Update' : 'Submit'}
           </Button>
         </div>
 
