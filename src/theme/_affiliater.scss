@@ -437,7 +437,7 @@
   width: 100%;
   border-radius: 20px;
   background-color: var(--background-3);
-  padding: 1.5rem;
+  padding: 20px;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -464,6 +464,10 @@
   &__tabs {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    height: 100%;
+    max-height: 100vh;
+    width: 100%;
+    padding: 20px;
     padding-bottom: 10rem;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -494,7 +498,7 @@
   border-radius: 20px;
   background-color: var(--background-1);
   overflow-y: scroll;
-  padding: 1rem;
+  padding: 20px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -509,9 +513,9 @@
 
   &__container {
     display: grid;
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     border-radius: 15px;
-    padding: 1rem 0 8rem 1rem;
+    padding: 1rem 0 5rem 1rem;
 
     .text {
       font-size: 15px;
@@ -720,10 +724,12 @@
     }
 
   }
-  &__notification{
-    h2{
-      color:  var(--primary-color);
+
+  &__notification {
+    h2 {
+      color: var(--primary-color);
     }
+
     margin-top: 30px;
     margin-left: 30px;
   }

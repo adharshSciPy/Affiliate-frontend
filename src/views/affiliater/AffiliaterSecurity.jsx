@@ -1,11 +1,14 @@
 import { React, useState } from 'react'
 import { Button, Input } from 'antd';
+import useAuth from '../../hooks/useAuth'
 
 function AffiliaterSecurity() {
     const [isVerified, setIsVerified] = useState(false);
     const [verificationCode, setVerificationCode] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [verificationError, setVerificationError] = useState('');
+    const { loggedInUserId } = useAuth()
+
     const handleVerification = () => {
         // Simulate verification logic
         if (verificationCode === '12345') { // replace with actual verification logic
