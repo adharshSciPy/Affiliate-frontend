@@ -26,7 +26,8 @@ import {
     AdminCompanyDetails,
     CompanyAddCourses,
     ActiveCourses,
-    AdminAffiliaterPayment
+    AdminAffiliaterPayment,
+    AdminSettings
 } from './views';
 import {
     PersistLogin,
@@ -142,6 +143,10 @@ const router = createBrowserRouter([
             {
                 path: "affiliater-payments",
                 element: <AdminAffiliaterPayment />
+            },
+            {
+                path: "settings",
+                element: <AdminSettings />
             }
         ]
     },
