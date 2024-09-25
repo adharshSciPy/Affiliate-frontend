@@ -66,7 +66,7 @@ const adminSidebarRoutes = [
     {
         icon: sideIcon5,
         title: 'Settings',
-        path: '#',
+        path: '/admin/settings',
     }
 ]
 
