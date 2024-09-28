@@ -3,7 +3,9 @@ import { Tabs } from 'antd'
 
 function AdminSettings() {
     return (
-        <div>AdminSettings</div>
+        <div>AdminSettings
+            lorem ipsum dolor sit amet, consectet
+        </div>
     )
 }
 
